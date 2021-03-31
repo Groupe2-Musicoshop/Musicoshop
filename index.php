@@ -1,14 +1,14 @@
 <?php
 	// Initialiser la session
 	session_start();
-	//$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/musicoshop/";
-	//$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/mysqlicrud-master/";
+	//$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."musicoshop/";
+	
 	
 	// Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
-	if(!isset($_SESSION["username"])){
+	/*if(!isset($_SESSION["username"])){
 		header("Location:vue/login.php");
 		exit(); 
-	}
+	}*/
 	require_once 'vue/header.php';
 	
 	if($_SESSION['userType'] =='admin'){
