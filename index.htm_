@@ -28,7 +28,17 @@
 <body>
 
     <div class="container">
-        		<div id="title">Musicoshop</div>
+
+        <div id="header"></div>
+
+        
+        <div id="body-shop">
+            <div id="title">Musicoshop</div>
+            
+
+        </div>
+
+        <div id="footer"></div>
 
     </div>
 
