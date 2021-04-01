@@ -52,7 +52,7 @@ $instruments = '[
     {"id":32,"name":"lyre","cat":6},
     {"id":33,"name":"mandoline","cat":1},
     {"id":34,"name":"marimba","cat":2},
-    {"id":35,"name":"mellotran","cat":3},
+    {"id":35,"name":"mellotron","cat":3},
     {"id":36,"name":"mélodica","cat":4},
     {"id":37,"name":"hautbois","cat":4},
     {"id":38,"name":"flûte de pan","cat":4},
@@ -64,14 +64,13 @@ $instruments = '[
     {"id":44,"name":"tuba-contrebasse","cat":4},
     {"id":45,"name":"tambourin","cat":2},
     {"id":46,"name":"thérémine","cat":3},
-    {"id":47,"name":"trombone","cat":4},
+    {"id":47,"name":"trombone à coulisse","cat":4},
     {"id":48,"name":"tuba","cat":4},
     {"id":49,"name":"ukulélé","cat":1},
     {"id":50,"name":"alto","cat":5},
-    {"id":50,"name":"violon","cat":5},
-    {"id":50,"name":"vuvuzela","cat":4},
-    {"id":51,"name":"xylophone","cat":2},
-    {"id":52,"name":"cithare","cat":1}
+    {"id":51,"name":"violon","cat":5},
+    {"id":52,"name":"vuvuzela","cat":4},
+    {"id":53,"name":"cithare","cat":1}
 ]';
 
 $prepaNav = '[
@@ -141,3 +140,15 @@ $nav->set_userType($_SESSION['userType']);
                 </div>
             </nav>
         </div>
+        <?php
+           /* header('Content-type:application/json;charset=utf-8');
+            $arr =  json_encode($instruments);
+            foreach ($arr as $value) {
+                $id = $value->{'id'};
+                $imageBody = $value->{'name'};
+                $imageBody = str_replace(" ", $imageBody,);
+
+            $img = 'path/to/image.jpg';
+            header('Content-Type: image/jpeg');
+            readfile($img);*/
+        ?>
