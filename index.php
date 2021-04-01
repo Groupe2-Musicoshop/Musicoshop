@@ -1,6 +1,6 @@
 <?php
 	// Initialiser la session
-	session_start();
+	//session_start();
 	//$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."musicoshop/";
 	
 	

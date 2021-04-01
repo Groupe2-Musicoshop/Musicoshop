@@ -1,7 +1,7 @@
 <?php
-
 	session_start();
 	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/musicoshop";
+    $_SESSION['userType'] = "user";
 
 include_once(__DIR__."/../modele/Nav.php");
 $page = basename($_SERVER["PHP_SELF"]);
