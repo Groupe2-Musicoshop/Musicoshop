@@ -3,6 +3,7 @@
 class Nav{
     private ?string $pageActive;
     private ?string $userType;
+    private ?int $cartArticle;
     private ?string $root;
     private ?string $navigation;
 
@@ -50,6 +51,14 @@ class Nav{
         return $this->root;
     }
 
+    function set_cartArticle($cartArticle){
+        $this->cartArticle = $cartArticle;
+    }
+
+    function get_cartArticle(){
+        return $this->cartArticle;
+    }
+
     function set_userType($userType){
         $this->userType = $userType;
     }
@@ -77,24 +86,94 @@ class Nav{
             if(count($value->{'link'})>1){
                 echo "<li class='nav-item dropdown ".$this->get_MultiPageActive($value->{'link'})."'>";
                 echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' ";
-                echo "aria-haspopup='true' aria-expanded='false'>".$titreNav."<span class='caret'></span></a>";
+                echo "aria-haspopup='true' aria-expanded='false'>";
+                
+                if($value->{'type'}=="img"){
+                    echo "<img src='".$titreNav."' width='40' height='40' class='d-inline-block align-top' alt=''>";
+
+                    if($this->get_userType()=="user" && $titreNav =="img/user.svg"){
+                        echo "<img id='check' src='img/check.svg' width='15' height='15' class='d-inline-block align-top' alt=''>";
+                    }
+
+                    if($titreNav =="img/cart.svg" && $this->get_cartArticle()>0){
+                        echo "<div id='nbArt' ><span>".$this->get_cartArticle()."</span></div>";
+                    }
+
+                }else{
+                    echo $titreNav;
+                    echo "<span class='caret'></span>";
+                }
+
+                echo "</a>";
                 
                 echo "<div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
 
                 foreach ($value->{'link'} as $value2n){
-                    //if($value2n->{'userType'} == $this->get_userType() || $this->get_userType()=="admin"){
+                    if($value2n->{'userType'} == "all"){
+
                         echo "<a class='dropdown-item' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$value2n->{'titre'}."</a>";
-                    //}
+
+                    }
+                    else if( $value2n->{'userType'} == "logout" and $this->get_userType()=="user"){
+
+                        echo "<a class='dropdown-item bg-color-pla' href='".$this->get_Root()."/".$value2n->{'link'}."'>Bonjour ".$_SESSION['username'].".<br/>".$value2n->{'titre'}."</a>";
+                        
+                    }
+                    else if( $value2n->{'userType'} == $this->get_userType() || $this->get_userType()=="admin"){
+
+                        echo "<a class='dropdown-item' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$value2n->{'titre'}."</a>";
+                    }
                 }
                 echo "</div></li>";
             }
             else{
                 foreach ($value->{'link'} as $value2n){
-                    //if($value2n->{'userType'} == $this->get_userType() || $this->get_userType()=="admin"){
+
+                    
+                    if($value2n->{'userType'} == "all"){
+
                         echo "<li class='nav-item ".$this->get_PageActive($value2n->{'link'})."'>";
-                        echo "<a class='nav-link' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$titreNav."</a>";
+
+                        echo "<a class='nav-link' href='".$this->get_Root()."/".$value2n->{'link'}."'>";
+
+                        if($value->{'type'}=="img"){
+
+                            echo "<img src='".$titreNav."' width='40' height='40' class='d-inline-block align-top' alt=''>";
+
+                        }else{
+
+                            echo $titreNav;
+                            
+                        }
+
+                        echo "</a>";
+
+                        if($this->get_cartArticle()>0){                                
+                                
+                            echo "<div id='nbArt' ><span>".$this->get_cartArticle()."</span></div>";                               
+
+                        }
+                                                
                         echo "</li>";
-                    //}
+
+                    }else if( $value2n->{'userType'} == $this->get_userType() || $this->get_userType()=="admin"){
+                        
+                        echo "<li class='nav-item ".$this->get_PageActive($value2n->{'link'})."'>";
+                        echo "<a class='nav-link' href='".$this->get_Root()."/".$value2n->{'link'}."'>";
+
+                        if($value->{'type'}=="img"){
+
+                            echo "<img src='".$titreNav."' width='40' height='40' class='d-inline-block align-top' alt=''>";
+
+                        }else{
+                            
+                            echo $titreNav;
+
+                        }
+
+                        echo "</a></li>";
+
+                    }
                 }
             }
         }

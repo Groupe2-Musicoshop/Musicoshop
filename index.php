@@ -9,14 +9,14 @@
 		header("Location:vue/login.php");
 		exit(); 
 	}*/
-	require_once 'vue/header.php';
+	require_once 'vues/header.php';
 	
 	if($_SESSION['userType'] =='admin'){
-		require_once 'vue/admin/body-shop.php';
+		require_once 'vues/admin/body-shop.php';
 	}
 	else{
-		require_once 'vue/body-shop.php';
+		require_once 'vues/body-shop.php';
 	}
 	
-	require_once 'vue/footer.php';
+	require_once 'vues/footer.php';
 ?>
