@@ -3,7 +3,7 @@
 
 
 <div id="body-shop">
-    <div id="title">Musicoshop</div>
+    <div id="title">Mon espace Client</div>
 
 
 </div>

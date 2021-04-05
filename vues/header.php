@@ -1,6 +1,7 @@
 <?php
 	session_start();
-	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/musicoshop";
+    
+	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
     /* param : unlog  ou user ou admin */
     $_SESSION['userType'] = "unlog";
     $_SESSION['cartAticle'] = 0;
@@ -12,16 +13,16 @@ $page = basename($_SERVER["PHP_SELF"]);
 
 $prepaNav = '[    
     {"titre":"img/user.svg" , "type":"img" , "link":[
-    {"titre":"Se connecter","link":"model/utilisateur/insertUser.php","userType":"unlog"},
-    {"titre":"S\'inscrire","link":"model/utilisateur/users.php","userType":"unlog"},
+    {"titre":"Se connecter","link":"vues/login.php","userType":"unlog"},
+    {"titre":"S\'inscrire","link":"vues/signin.php","userType":"unlog"},
     {"titre":"Se déconnecter","link":"vues/logout.php","userType":"logout"},
-    {"titre":"Mon espace client","link":"model/utilisateur/users.php","userType":"user"},
-    {"titre":"Mes commandes","link":"model/utilisateur/users.php","userType":"user"},    
-    {"titre":"Nous contacter","link":"model/utilisateur/users.php","userType":"user"},
-    {"titre":"Changer mon mot de passe","link":"model/utilisateur/users.php","userType":"user"}
+    {"titre":"Mon espace client","link":"vues/my-space.php","userType":"user"},
+    {"titre":"Mes commandes","link":"vues/my-cmds.php","userType":"user"},    
+    {"titre":"Nous contacter","link":"vues/contact-us.php","userType":"user"},
+    {"titre":"Changer mon mot de passe","link":"vues/change-pwd.php","userType":"user"}
     ]},
     {"titre":"img/cart.svg" , "type":"img" , "link":[
-    {"titre":"Aller au panier","link":"model/entreprise/insertEntreprise.php","userType":"all"},    
+    {"titre":"Aller au panier","link":"vues/cart.php","userType":"all"},    
     {"titre":"","link":"","userType":"all"}    
     ]}
 ]';
