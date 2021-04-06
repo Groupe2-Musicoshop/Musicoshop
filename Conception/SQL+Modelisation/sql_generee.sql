@@ -1,16 +1,17 @@
-﻿CREATE TABLE Article(
-   Id_Article INT NOT NULL AUTO_INCREMENT,
-   designation VARCHAR(50),
-   qtestock INT,
-   prix DECIMAL(15,2),
-   tauremise DECIMAL(15,2),
-   img VARCHAR(50),
-   description VARCHAR(50),
-   PRIMARY KEY(Id_Article)
+﻿DROP DATABASE IF EXISTS musicoshop;
+
+CREATE DATABASE musicoshop;
+
+USE musicoshop;
+
+CREATE TABLE Catégorie(
+   idCategorie INT,
+   libele VARCHAR(50),
+   PRIMARY KEY(idCategorie)
 );
 
 CREATE TABLE Commande(
-   idCmd INT NOT NULL AUTO_INCREMENT,
+   idCmd INT,
    dateCmd VARCHAR(50),
    total DECIMAL(15,2),
    description VARCHAR(50),
@@ -18,33 +19,45 @@ CREATE TABLE Commande(
 );
 
 CREATE TABLE Panier(
-   Id_Panier INT NOT NULL AUTO_INCREMENT,
+   Id_Panier INT,
    idUtilisateur INT,
    idArticle INT,
    PRIMARY KEY(Id_Panier, idUtilisateur, idArticle)
 );
 
 CREATE TABLE Instruments(
-   Id_Instruments INT NOT NULL AUTO_INCREMENT,
+   Id_Instruments INT,
    designation VARCHAR(50),
    prix VARCHAR(50),
    img VARCHAR(50),
    description VARCHAR(50),
-   Id_Article INT NOT NULL,
+   idCategorie INT NOT NULL,
    PRIMARY KEY(Id_Instruments),
-   FOREIGN KEY(Id_Article) REFERENCES Article(Id_Article)
+   FOREIGN KEY(idCategorie) REFERENCES Catégorie(idCategorie)
 );
 
-CREATE TABLE Catégorie(
-   idCategorie INT NOT NULL AUTO_INCREMENT,
-   libele VARCHAR(50),
+CREATE TABLE navLink(
+   Id_navLink INT,
+   titre VARCHAR(50),
+   type VARCHAR(50),
+   PRIMARY KEY(Id_navLink)
+);
+
+CREATE TABLE Article(
+   Id_Article INT,
+   designation VARCHAR(50),
+   qtestock INT,
+   prix DECIMAL(15,2),
+   tauremise DECIMAL(15,2),
+   img VARCHAR(50),
+   description VARCHAR(50),
    Id_Instruments INT NOT NULL,
-   PRIMARY KEY(idCategorie),
+   PRIMARY KEY(Id_Article),
    FOREIGN KEY(Id_Instruments) REFERENCES Instruments(Id_Instruments)
 );
 
 CREATE TABLE Utilisateur(
-   idUtilisateur INT NOT NULL AUTO_INCREMENT,
+   idUtilisateur INT,
    mail VARCHAR(50),
    login VARCHAR(50),
    pass VARCHAR(50),
@@ -60,15 +73,8 @@ CREATE TABLE Utilisateur(
    FOREIGN KEY(idCmd) REFERENCES Commande(idCmd)
 );
 
-CREATE TABLE navLink(
-   Id_navLink INT NOT NULL AUTO_INCREMENT,
-   titre VARCHAR(50),
-   type VARCHAR(50),
-   PRIMARY KEY(Id_navLink)
-);
-
 CREATE TABLE Navitem(
-   Id_Navitem INT NOT NULL AUTO_INCREMENT,
+   Id_Navitem INT,
    titre VARCHAR(50),
    link VARCHAR(50),
    userType VARCHAR(50),
@@ -78,7 +84,7 @@ CREATE TABLE Navitem(
 );
 
 CREATE TABLE Ligne_Commande(
-   Id_Article INT NOT NULL AUTO_INCREMENT,
+   Id_Article INT,
    idCmd INT,
    PRIMARY KEY(Id_Article, idCmd),
    FOREIGN KEY(Id_Article) REFERENCES Article(Id_Article),
