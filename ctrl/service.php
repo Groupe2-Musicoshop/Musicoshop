@@ -72,6 +72,4 @@ function nameImage($id,$name){
     $id."-".$name;
 }
 
-
-
 ?>

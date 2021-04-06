@@ -8,31 +8,15 @@
     $_SESSION['nbAticle'] = 0;
     $_SESSION['username']="Pierre";
 
-include_once(__DIR__."/../modele/Nav.php");
-$page = basename($_SERVER["PHP_SELF"]);
-//echo $_SERVER['REQUEST_URI']."<br>";
+    include_once(__DIR__."/../modele/Nav.php");
+    $page = basename($_SERVER["PHP_SELF"]);
+    //echo $_SERVER['REQUEST_URI']."<br>";
 
-$prepaNav = '[    
-    {"titre":"img/user.svg" , "type":"img" , "link":[
-    {"titre":"Se connecter","link":"vues/login.php","userType":"unlog"},
-    {"titre":"S\'inscrire","link":"vues/signin.php","userType":"unlog"},
-    {"titre":"Se déconnecter","link":"vues/logout.php","userType":"logout"},
-    {"titre":"Mon espace client","link":"vues/my-space.php","userType":"user"},
-    {"titre":"Mes commandes","link":"vues/my-cmds.php","userType":"user"},    
-    {"titre":"Nous contacter","link":"vues/contact-us.php","userType":"user"},
-    {"titre":"Changer mon mot de passe","link":"vues/change-pwd.php","userType":"user"}
-    ]},
-    {"titre":"img/cart.svg" , "type":"img" , "link":[
-    {"titre":"Aller au panier","link":"vues/cart.php","userType":"all"},    
-    {"titre":"","link":"","userType":"all"}    
-    ]}
-]';
-
-$nav = new Nav($prepaNav);
-$nav->set_Root($_SESSION['root']);
-$nav->set_PageActive($page);
-$nav->set_userType($_SESSION['userType']);
-$nav->set_nbArticle($_SESSION['nbAticle']);
+    $nav = new Nav();
+    $nav->set_Root($_SESSION['root']);
+    $nav->set_PageActive($page);
+    $nav->set_userType($_SESSION['userType']);
+    $nav->set_nbArticle($_SESSION['nbAticle']);
 
 ?>
 <!DOCTYPE html>

@@ -60,23 +60,6 @@ CREATE TABLE Utilisateur(
    FOREIGN KEY(idCmd) REFERENCES Commande(idCmd)
 );
 
-CREATE TABLE navLink(
-   Id_navLink INT NOT NULL AUTO_INCREMENT,
-   titre VARCHAR(50),
-   type VARCHAR(50),
-   PRIMARY KEY(Id_navLink)
-);
-
-CREATE TABLE Navitem(
-   Id_Navitem INT NOT NULL AUTO_INCREMENT,
-   titre VARCHAR(50),
-   link VARCHAR(50),
-   userType VARCHAR(50),
-   Id_navLink INT NOT NULL,
-   PRIMARY KEY(Id_Navitem),
-   FOREIGN KEY(Id_navLink) REFERENCES navLink(Id_navLink)
-);
-
 CREATE TABLE Ligne_Commande(
    Id_Article INT NOT NULL AUTO_INCREMENT,
    idCmd INT,
