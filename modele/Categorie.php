@@ -59,12 +59,14 @@ class Categorie{
 
     function genCategories(){
         $stmt = $this->getSqlCategories();
+        
+        echo "<button class='button is-checked' data-filter='*'>show all</button>";
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
 
-            echo "<li  value=".$idCategorie.">".$libele."</li>";
-
+            //echo "<li  value=".$idCategorie."><a>".$libele."</a></li>";
+            echo "<button class='button' data-filter='.".$idCategorie."'>".$libele."</button>";
         }
     }
 
