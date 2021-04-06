@@ -2,9 +2,10 @@
 	session_start();
     
 	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+
     /* param : unlog  ou user ou admin */
     $_SESSION['userType'] = "unlog";
-    $_SESSION['cartAticle'] = 0;
+    $_SESSION['nbAticle'] = 0;
     $_SESSION['username']="Pierre";
 
 include_once(__DIR__."/../modele/Nav.php");
@@ -31,7 +32,7 @@ $nav = new Nav($prepaNav);
 $nav->set_Root($_SESSION['root']);
 $nav->set_PageActive($page);
 $nav->set_userType($_SESSION['userType']);
-$nav->set_cartArticle($_SESSION['cartAticle']);
+$nav->set_nbArticle($_SESSION['nbAticle']);
 
 ?>
 <!DOCTYPE html>
@@ -48,16 +49,16 @@ $nav->set_cartArticle($_SESSION['cartAticle']);
 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Varela+Round" />
 
-    <link rel="icon" href="img/favicon.ico" />
+    <link rel="icon" href="<?=$_SESSION['root']?>/img/favicon.ico" />
 
 
-    <link rel="stylesheet" type="text/css" href="css/global.css">
-    <link rel="stylesheet" type="text/css" href="css/nav.css">
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/fildarianne.css">
-    <link rel="stylesheet" type="text/css" href="css/formulaire.css">
-    <link rel="stylesheet" type="text/css" href="css/panier.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href='<?=$_SESSION['root']?>/css/global.css'>
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/header.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/fildarianne.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/formulaire.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/panier.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/footer.css">
 
     <title>Musicoshop</title>
 
@@ -70,7 +71,7 @@ $nav->set_cartArticle($_SESSION['cartAticle']);
         <div id="header">
             <nav id="barre-musicoshop" class="navbar sticky-top navbar-expand-lg navbar-light bg-color-bzb">
                 <a class="navbar-brand" href="index.php">
-                    <img src="img/logo/Musicoshop_logo.PNG" width="150" alt="">
+                    <img src="<?=$_SESSION['root']?>/img/logo/Musicoshop_logo.PNG" width="150" alt="">
                 </a>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -85,7 +86,7 @@ $nav->set_cartArticle($_SESSION['cartAticle']);
         </div>
         <?php
             //header('Content-type:application/json;charset=utf-8');
-            $arr =  json_decode($instruments);
+            //$arr =  json_decode($instruments);
             //echo $arr;
             /*foreach ($arr as $value) {
                 $id = $value->{'id'};

@@ -3,7 +3,7 @@
 class Nav{
     private ?string $pageActive;
     private ?string $userType;
-    private ?int $cartArticle;
+    private ?int $nbArticle;
     private ?string $root;
     private ?string $navigation;
 
@@ -51,12 +51,12 @@ class Nav{
         return $this->root;
     }
 
-    function set_cartArticle($cartArticle){
-        $this->cartArticle = $cartArticle;
+    function set_nbArticle($nbArticle){
+        $this->nbArticle = $nbArticle;
     }
 
-    function get_cartArticle(){
-        return $this->cartArticle;
+    function get_nbArticle(){
+        return $this->nbArticle;
     }
 
     function set_userType($userType){
@@ -89,14 +89,14 @@ class Nav{
                 echo "aria-haspopup='true' aria-expanded='false'>";
                 
                 if($value->{'type'}=="img"){
-                    echo "<img src='".$titreNav."' width='40' height='40' class='d-inline-block align-top' alt=''>";
+                    echo "<img src='".$_SESSION['root']."/".$titreNav."' width='40' height='40' class='d-inline-block align-top' alt=''>";
 
                     if($this->get_userType()=="user" && $titreNav =="img/user.svg"){
-                        echo "<img id='check' src='img/check.svg' width='15' height='15' class='d-inline-block align-top' alt=''>";
+                        echo "<img id='check' src='".$_SESSION['root']."/img/check.svg' width='15' height='15' class='d-inline-block align-top' alt=''>";
                     }
 
-                    if($titreNav =="img/cart.svg" && $this->get_cartArticle()>0){
-                        echo "<div id='nbArt' ><span>".$this->get_cartArticle()."</span></div>";
+                    if($titreNav =="img/cart.svg" && $this->get_nbArticle()>0){
+                        echo "<div id='nbArt' ><span>".$this->get_nbArticle()."</span></div>";
                     }
 
                 }else{
@@ -148,9 +148,9 @@ class Nav{
 
                         echo "</a>";
 
-                        if($this->get_cartArticle()>0){                                
+                        if($this->get_nbArticle()>0){                                
                                 
-                            echo "<div id='nbArt' ><span>".$this->get_cartArticle()."</span></div>";                               
+                            echo "<div id='nbArt' ><span>".$this->get_nbArticle()."</span></div>";                               
 
                         }
                                                 
