@@ -4,9 +4,14 @@
 	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
     /* param : unlog  ou user ou admin */
-    $_SESSION['userType'] = "unlog";
+    if (!isset ($_SESSION['isLogged'])){
+
+        $_SESSION['userType'] = "unlog";
+        
+    }
+    
     $_SESSION['nbAticle'] = 0;
-    $_SESSION['username']="Pierre";
+    //$_SESSION['username']="Pierre";
 
 include_once(__DIR__."/../modele/Nav.php");
 $page = basename($_SERVER["PHP_SELF"]);
