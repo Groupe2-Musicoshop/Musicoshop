@@ -5,14 +5,27 @@ class Nav{
     private ?string $userType;
     private ?int $nbArticle;
     private ?string $root;
-    private ?string $navigation;
+    private ?string $navigation = '[    
+        {"titre":"img/user.svg" , "type":"img" , "link":[
+        {"titre":"Se connecter","link":"vues/login.php","userType":"unlog"},
+        {"titre":"S\'inscrire","link":"vues/signin.php","userType":"unlog"},
+        {"titre":"Se déconnecter","link":"vues/logout.php","userType":"logout"},
+        {"titre":"Mon espace client","link":"vues/my-space.php","userType":"user"},
+        {"titre":"Mes commandes","link":"vues/my-cmds.php","userType":"user"},    
+        {"titre":"Nous contacter","link":"vues/contact-us.php","userType":"user"},
+        {"titre":"Changer mon mot de passe","link":"vues/change-pwd.php","userType":"user"}
+        ]},
+        {"titre":"img/cart.svg" , "type":"img" , "link":[
+        {"titre":"Aller au panier","link":"vues/cart.php","userType":"all"},    
+        {"titre":"","link":"","userType":"all"}    
+        ]}
+    ]';
 
     /**
      * constructeur
      */
-    function __construct($navigation){
-     $this->navigation = $navigation;
-
+    function __construct(){
+     
     }
 
     function get_PageActive($pageAtester){
@@ -76,11 +89,11 @@ class Nav{
     }
     
     function genNav(){        
+
         $parsed_json = json_decode($this->navigation);
-        
-        //var_dump(json_decode($this->navigation));
 
         foreach ($parsed_json as $value) {
+
             $titreNav = $value->{'titre'};
 
             if(count($value->{'link'})>1){

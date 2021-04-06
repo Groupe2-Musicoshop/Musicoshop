@@ -4,7 +4,7 @@ CREATE DATABASE musicoshop;
 
 USE musicoshop;
 
-CREATE TABLE Catégorie(
+CREATE TABLE Categorie(
    idCategorie INT,
    libele VARCHAR(50),
    PRIMARY KEY(idCategorie)
@@ -33,14 +33,7 @@ CREATE TABLE Instruments(
    description VARCHAR(50),
    idCategorie INT NOT NULL,
    PRIMARY KEY(Id_Instruments),
-   FOREIGN KEY(idCategorie) REFERENCES Catégorie(idCategorie)
-);
-
-CREATE TABLE navLink(
-   Id_navLink INT,
-   titre VARCHAR(50),
-   type VARCHAR(50),
-   PRIMARY KEY(Id_navLink)
+   FOREIGN KEY(idCategorie) REFERENCES Categorie(idCategorie)
 );
 
 CREATE TABLE Article(
@@ -71,16 +64,6 @@ CREATE TABLE Utilisateur(
    idCmd INT NOT NULL,
    PRIMARY KEY(idUtilisateur),
    FOREIGN KEY(idCmd) REFERENCES Commande(idCmd)
-);
-
-CREATE TABLE Navitem(
-   Id_Navitem INT,
-   titre VARCHAR(50),
-   link VARCHAR(50),
-   userType VARCHAR(50),
-   Id_navLink INT NOT NULL,
-   PRIMARY KEY(Id_Navitem),
-   FOREIGN KEY(Id_navLink) REFERENCES navLink(Id_navLink)
 );
 
 CREATE TABLE Ligne_Commande(
