@@ -1,14 +1,29 @@
 <?php
 
+require_once '../vues/config.php';
+
 $categories = '[
     {"cat":1,"categorie":"Guitares & Basses"},
     {"cat":2,"categorie":"Batteries & Percussions"},
     {"cat":3,"categorie":"Pianos & Claviers"},
-    {"cat":4,"categorie":" Instruments à Vent"},
+    {"cat":4,"categorie":"Instruments à Vent"},
     {"cat":5,"categorie":"Instruments à Cordes Frottées"},
-    {"cat":6,"categorie":"Instruments à Cordes"},
-        
+    {"cat":6,"categorie":"Instruments à Cordes"}
 ]';
+
+
+$array = json_decode($categories, true);
+
+var_dump($array);
+
+foreach($array as $row){
+    $sql = "INSERT INTO categorie(idCategorie, libele) VALUES ('".$row["cat"]."','".$row["categorie"]."')";
+    
+    mysqli_query($conn, $sql);
+}
+
+echo "Categorie inserted";
+
 
 $instruments = '[
     {"id":1,"name":"accordéon","cat":3},
@@ -65,6 +80,18 @@ $instruments = '[
     {"id":52,"name":"vuvuzela","cat":4},
     {"id":53,"name":"cithare","cat":1}
 ]';
+
+$array2 = json_decode($instruments, true);
+
+var_dump($array2);
+
+foreach($array2 as $row){
+    $sql = "INSERT INTO instruments(Id_Instruments, designation,idCategorie) VALUES ('".$row["id"]."','".$row["name"]."','".$row["cat"]."')";
+    
+    mysqli_query($conn, $sql);
+}
+
+echo 'Inserted instrument';
 
 function nameImage($id,$name){
     $name = str_replace(" ", "_", $name);

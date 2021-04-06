@@ -4,7 +4,7 @@ CREATE DATABASE musicoshop;
 
 USE musicoshop;
 
-CREATE TABLE Catégorie(
+CREATE TABLE Categorie(
    idCategorie INT,
    libele VARCHAR(50),
    PRIMARY KEY(idCategorie)
