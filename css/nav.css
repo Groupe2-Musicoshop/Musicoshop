@@ -1,28 +1,31 @@
-#barre-musicoshop li:first-child{
+#barre-musicoshop li:first-child {
     margin-left: 100%;
 }
 
-#barre-musicoshop ul{
+#barre-musicoshop ul {
     width: 80%;
 }
 
-#barre-musicoshop li a.dropdown-toggle::after{
+#barre-musicoshop li a.dropdown-toggle::after {
     content: none;
 }
 
-#barre-musicoshop li a.dropdown-toggle #check{
+#barre-musicoshop li a.dropdown-toggle #check {
     position: absolute;
     top: 30px;
     left: 35px;
 }
+
+
 /*#barre-musicoshop li a.dropdown-toggle img.nbArt:after{*/
-#nbArt{
+
+#nbArt {
     position: absolute;
     width: 20px;
     height: 20px;
     top: 12px;
     left: 21px;
-    background-color:rgba(13, 27, 42, 0.6);
+    background-color: rgba(13, 27, 42, 0.6);
     color: #fff;
     border-radius: 50%;
     -webkit-border-radius: 50%;

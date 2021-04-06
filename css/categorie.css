@@ -1,0 +1,17 @@
+#barre-Categories {
+    border-bottom: 1px solid #0d1b2a;
+}
+
+#barre-Categories ul {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+#barre-Categories li {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: justify;
+}

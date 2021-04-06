@@ -9,6 +9,8 @@
     $_SESSION['username']="Pierre";
 
     include_once(__DIR__."/../modele/Nav.php");
+    include_once(__DIR__."/../modele/Categorie.php");
+
     $page = basename($_SERVER["PHP_SELF"]);
     //echo $_SERVER['REQUEST_URI']."<br>";
 
@@ -17,6 +19,9 @@
     $nav->set_PageActive($page);
     $nav->set_userType($_SESSION['userType']);
     $nav->set_nbArticle($_SESSION['nbAticle']);
+
+    $cat = new Categorie();
+
 
 ?>
 <!DOCTYPE html>
@@ -37,8 +42,9 @@
 
 
     <link rel="stylesheet" type="text/css" href='<?=$_SESSION['root']?>/css/global.css'>
-    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/nav.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/header.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/categorie.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/fildarianne.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/formulaire.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/panier.css">
@@ -64,6 +70,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <?php $nav->genNav();?>
+                    </ul>
+                </div>
+            </nav>
+            <nav id="barre-Categories" class="navbar sticky-top navbar-expand-lg navbar-light bg-color-pla">
+                <div class="collapse navbar-collapse" id="navbarSupportedContentCat">
+                    <ul class="navbar-nav">
+                        <?php $cat->genCategories();?>
                     </ul>
                 </div>
             </nav>
