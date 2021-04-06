@@ -35,23 +35,6 @@ CREATE TABLE Instruments(
    FOREIGN KEY(Id_Article) REFERENCES Article(Id_Article)
 );
 
-CREATE TABLE Navitem(
-   Id_Navitem INT,
-   titre VARCHAR(50),
-   accueil VARCHAR(50),
-   droit VARCHAR(50),
-   link VARCHAR(50),
-   PRIMARY KEY(Id_Navitem)
-);
-
-CREATE TABLE navLink(
-   Id_navLink INT,
-   titre VARCHAR(50),
-   droit VARCHAR(50),
-   link VARCHAR(50),
-   PRIMARY KEY(Id_navLink)
-);
-
 CREATE TABLE Catégorie(
    idCategorie INT,
    libele VARCHAR(50),
@@ -75,6 +58,23 @@ CREATE TABLE Utilisateur(
    idCmd INT NOT NULL,
    PRIMARY KEY(idUtilisateur),
    FOREIGN KEY(idCmd) REFERENCES Commande(idCmd)
+);
+
+CREATE TABLE navLink(
+   Id_navLink INT,
+   titre VARCHAR(50),
+   type VARCHAR(50),
+   PRIMARY KEY(Id_navLink)
+);
+
+CREATE TABLE Navitem(
+   Id_Navitem INT,
+   titre VARCHAR(50),
+   link VARCHAR(50),
+   userType VARCHAR(50),
+   Id_navLink INT NOT NULL,
+   PRIMARY KEY(Id_Navitem),
+   FOREIGN KEY(Id_navLink) REFERENCES navLink(Id_navLink)
 );
 
 CREATE TABLE Ligne_Commande(
