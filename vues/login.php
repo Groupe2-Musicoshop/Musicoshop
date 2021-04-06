@@ -16,18 +16,25 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 //session_start();
 
 
-require('config.php');
+require_once '../modele/Database.php';
+
+$database = new Database();
+$conn = $database->getConnection();
 
 if (isset($_POST['username'])){
 	$username = stripslashes($_REQUEST['username']);
-	$username = mysqli_real_escape_string($conn, $username);
+	//$username = $conn->quote($username);
 	$_SESSION['username'] = $username;
 	$password = stripslashes($_REQUEST['password']);
-	$password = mysqli_real_escape_string($conn, $password);
-    $query = "SELECT * FROM `users` WHERE username='".$username."' and password='".hash('sha256', "$password")."'";
-	$result = mysqli_query($conn,$query);
+	$password =  $conn->quote($password);
+
+    $sqlQuery = "SELECT * FROM `users` WHERE username='".$username."' and password='".hash('sha256', "$password")."'";
+
+	//$stmt = $conn->prepare($sqlQuery);
+
+    $stmt = $conn->query($sqlQuery);   
 	
-	if (mysqli_num_rows($result) == 1) {
+	if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 		$user = mysqli_fetch_assoc($result);
 		$_SESSION['userType'] = $user['type'];
 		$_SESSION['isLogged'] = 'yes';

@@ -1,5 +1,6 @@
 #barre-Categories {
     border-bottom: 1px solid #0d1b2a;
+    z-index: 999;
 }
 
 #barre-Categories ul {
