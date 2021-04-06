@@ -80,9 +80,9 @@
             </nav>
             <nav id="barre-Categories" class="navbar sticky-top navbar-expand-lg navbar-light bg-color-pla">
                 <div class="collapse navbar-collapse" id="navbarSupportedContentCat">
-                    <ul class="navbar-nav">
+                    <div class="filters button-group js-radio-button-group">
                         <?php $cat->genCategories();?>
-                    </ul>
+                    </div>
                 </div>
             </nav>
         </div>
