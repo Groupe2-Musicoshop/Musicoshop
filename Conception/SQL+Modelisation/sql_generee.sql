@@ -1,5 +1,5 @@
 ﻿CREATE TABLE Article(
-   Id_Article INT,
+   Id_Article INT NOT NULL AUTO_INCREMENT,
    designation VARCHAR(50),
    qtestock INT,
    prix DECIMAL(15,2),
@@ -10,7 +10,7 @@
 );
 
 CREATE TABLE Commande(
-   idCmd INT,
+   idCmd INT NOT NULL AUTO_INCREMENT,
    dateCmd VARCHAR(50),
    total DECIMAL(15,2),
    description VARCHAR(50),
@@ -18,14 +18,14 @@ CREATE TABLE Commande(
 );
 
 CREATE TABLE Panier(
-   Id_Panier INT,
+   Id_Panier INT NOT NULL AUTO_INCREMENT,
    idUtilisateur INT,
    idArticle INT,
    PRIMARY KEY(Id_Panier, idUtilisateur, idArticle)
 );
 
 CREATE TABLE Instruments(
-   Id_Instruments INT,
+   Id_Instruments INT NOT NULL AUTO_INCREMENT,
    designation VARCHAR(50),
    prix VARCHAR(50),
    img VARCHAR(50),
@@ -36,7 +36,7 @@ CREATE TABLE Instruments(
 );
 
 CREATE TABLE Catégorie(
-   idCategorie INT,
+   idCategorie INT NOT NULL AUTO_INCREMENT,
    libele VARCHAR(50),
    Id_Instruments INT NOT NULL,
    PRIMARY KEY(idCategorie),
@@ -44,7 +44,7 @@ CREATE TABLE Catégorie(
 );
 
 CREATE TABLE Utilisateur(
-   idUtilisateur INT,
+   idUtilisateur INT NOT NULL AUTO_INCREMENT,
    mail VARCHAR(50),
    login VARCHAR(50),
    pass VARCHAR(50),
@@ -78,7 +78,7 @@ CREATE TABLE Navitem(
 );
 
 CREATE TABLE Ligne_Commande(
-   Id_Article INT,
+   Id_Article INT NOT NULL AUTO_INCREMENT,
    idCmd INT,
    PRIMARY KEY(Id_Article, idCmd),
    FOREIGN KEY(Id_Article) REFERENCES Article(Id_Article),
