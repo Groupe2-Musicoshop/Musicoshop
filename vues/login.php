@@ -1,15 +1,18 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+?>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="<?=$_SESSION['root']?>/css/login.css" />
 </head>
 
 <body>
     <?php
-session_start();
+//session_start();
 
-$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/musicoshop";
 
 require('config.php');
 
