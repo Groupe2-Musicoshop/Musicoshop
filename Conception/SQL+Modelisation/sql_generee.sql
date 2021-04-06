@@ -61,14 +61,14 @@ CREATE TABLE Utilisateur(
 );
 
 CREATE TABLE navLink(
-   Id_navLink INT,
+   Id_navLink INT NOT NULL AUTO_INCREMENT,
    titre VARCHAR(50),
    type VARCHAR(50),
    PRIMARY KEY(Id_navLink)
 );
 
 CREATE TABLE Navitem(
-   Id_Navitem INT,
+   Id_Navitem INT NOT NULL AUTO_INCREMENT,
    titre VARCHAR(50),
    link VARCHAR(50),
    userType VARCHAR(50),
