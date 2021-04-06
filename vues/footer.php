@@ -12,6 +12,7 @@
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
 </script>
 
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 <script language="javascript" type="text/javascript" src="ctrl/main.js"></script>
 </body>
 

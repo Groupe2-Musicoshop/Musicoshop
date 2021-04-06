@@ -38,3 +38,33 @@
     font-size: 0.7em;
     padding-top: 1px;
 }
+
+#categorie{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #0d1b2a;
+}
+
+#categorie button{
+    border:none;
+    background-color: transparent;
+}
+
+#categorie button.is-checked,
+#categorie button:hover{
+    color: #6D81A8;
+}
+
+#categorie button.is-checked{
+    border-left: 2px solid #415a77;
+    border-right: 2px solid #415a77;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-radius: 30%;
+    -webkit-border-radius: 30%;
+    -moz-border-radius: 30%;
+    -ms-border-radius: 30%;
+    -o-border-radius: 30%;
+    font-weight: 400;
+    color: #415a77;
+}
