@@ -1,14 +1,33 @@
 <?php
 
+require_once '../modele/Database.php';
+
+$database = new Database();
+$conn = $database->getConnection();
+
 $categories = '[
     {"cat":1,"categorie":"Guitares & Basses"},
     {"cat":2,"categorie":"Batteries & Percussions"},
     {"cat":3,"categorie":"Pianos & Claviers"},
-    {"cat":4,"categorie":" Instruments à Vent"},
+    {"cat":4,"categorie":"Instruments à Vent"},
     {"cat":5,"categorie":"Instruments à Cordes Frottées"},
-    {"cat":6,"categorie":"Instruments à Cordes"},
-        
+    {"cat":6,"categorie":"Instruments à Cordes"}
 ]';
+
+
+$array = json_decode($categories, true);
+
+var_dump($array);
+
+foreach($array as $row){
+    $sql = "INSERT INTO categorie(idCategorie, libele) VALUES ('".$row["cat"]."','".$row["categorie"]."')";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+}
+
+echo "Categorie inserted";
+
 
 $instruments = '[
     {"id":1,"name":"accordéon","cat":3},
@@ -31,7 +50,7 @@ $instruments = '[
     {"id":18,"name":"fifre","cat":4},
     {"id":19,"name":"Trumpette Soprano","cat":4},
     {"id":20,"name":"flûte","cat":4},
-    {"id":21,"name":"cor d\'harmonie","cat":4},
+    {"id":21,"name":"cor dharmonie","cat":4},
     {"id":22,"name":"Xylophone","cat":2},
     {"id":23,"name":"piano à queue","cat":3},
     {"id":24,"name":"guitare","cat":1},
@@ -65,6 +84,20 @@ $instruments = '[
     {"id":52,"name":"vuvuzela","cat":4},
     {"id":53,"name":"cithare","cat":1}
 ]';
+
+$array2 = json_decode($instruments, true);
+
+var_dump($array2);
+
+foreach($array2 as $row){
+    
+    $sql = "INSERT INTO instruments(Id_Instruments, designation,idCategorie) VALUES ('".$row["id"]."','".$row["name"]."','".$row["cat"]."')";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+}
+
+echo 'Inserted instrument';
 
 function nameImage($id,$name){
     $name = str_replace(" ", "_", $name);
