@@ -9,6 +9,15 @@ class Categorie{
     // Table
     private $db_table = "categorie";
 
+    private $pagesCategories = '[
+        {"page":"/cat-guitares_basses.php"},
+        {"page":"/cat-batteries_percussions.php"},
+        {"page":"/cat-pianos_claviers.php"},        
+        {"page":"/cat-instruments_a_vent.php"},
+        {"page":"/cat-instruments_a_cordes_frottees.php"},
+        {"page":"/cat-instruments_a_cordes.php"}
+    ]';
+
     /**
      * Get the value of libele
      *
@@ -71,13 +80,20 @@ class Categorie{
     }
 
     function genCategoriesVerticaly(){
+
+        $pages_json = json_decode($this->pagesCategories,true);
+
+        $numpage="0";
+
+        //print_r($pages_json);
+
         $stmt = $this->getSqlCategories();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
 
-            echo "<li  value=".$idCategorie."><a>".$libele."</a></li>";
-            
+            echo "<li  value=".$idCategorie."><a href='".$_SESSION['root']."/vues".$pages_json[$numpage]['page']."'>".$libele."</a></li>";
+            $numpage+=1;
         }
     }
 

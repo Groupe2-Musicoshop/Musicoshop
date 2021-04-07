@@ -1,8 +1,4 @@
 <?php
-	session_start();
-    
-	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
-
     /* param : unlog  ou user ou admin */
     if (!isset($_SESSION['isLogged'])){
 
