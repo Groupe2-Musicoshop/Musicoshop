@@ -7,12 +7,6 @@ require_once '../modele/Database.php';
 $database = new Database();
 $conn = $database->getConnection();
 
-
-function before ($thi, $inthat)
-    {
-        return substr($inthat, 0, strpos($inthat, $thi));
-    }
-
 $categories = '[
     {"cat":1,"categorie":"Guitares & Basses"},
     {"cat":2,"categorie":"Batteries & Percussions"},
@@ -22,20 +16,28 @@ $categories = '[
     {"cat":6,"categorie":"Instruments à Cordes"}
 ]';
 
+if (!isset($_SESSION['categories'])) {
 
-$array = json_decode($categories, true);
+    $array = json_decode($categories, true);
 
-var_dump($array);
+    //var_dump($array);
 
-foreach($array as $row){
-    $sql = "INSERT INTO categorie(idCategorie, libele) VALUES ('".$row["cat"]."','".$row["categorie"]."')";
+    foreach ($array as $row) {
+        $sql = "INSERT INTO categorie(idCategorie, libele) VALUES ('".$row["cat"]."','".$row["categorie"]."')";
 
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    }
+
+    $_SESSION['categories']="Categorie";
+
+    echo "Categorie inserted";
+
+}else{
+
+    echo "Categorie already inserted";
+
 }
-
-echo "Categorie inserted";
-
 
 $instruments = '[
     {"id":1,"name":"accordéon","cat":3},
@@ -93,19 +95,28 @@ $instruments = '[
     {"id":53,"name":"cithare","cat":1}
 ]';
 
-$array2 = json_decode($instruments, true);
+if (!isset($_SESSION['Instrument'])) {
 
-var_dump($array2);
+    $array2 = json_decode($instruments, true);
 
-foreach($array2 as $row){
+    //var_dump($array2);
+
+    foreach ($array2 as $row) {
+        $sql = "INSERT INTO instruments(Id_Instrument, designation,idCategorie) VALUES ('".$row["id"]."','".$row["name"]."','".$row["cat"]."')";
     
-    $sql = "INSERT INTO instruments(Id_Instruments, designation,idCategorie) VALUES ('".$row["id"]."','".$row["name"]."','".$row["cat"]."')";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    }
+
+    $_SESSION['instrument']="Instrument";
+
+    echo 'Inserted instrument';
+
+}else{
+
+    echo "Instrument already inserted";
+
 }
-
-echo 'Inserted instrument';
 
 $dirImg = '../img/cart_img';
 
@@ -116,13 +127,21 @@ print_r($files);
 
 //Envoyer le chemin absolu en base
 
+function before ($thi, $inthat){
+    
+        return substr($inthat, 0, strpos($inthat, $thi));
+    }
+
 foreach ($files as $file) {
+
     if ($file[0] !== '.') { 
+
         $chemin = $_SESSION['root'].'/img/cart_img';
         $indice = before('-', $file);
-        $sql = "UPDATE instruments SET img = '".$chemin."/".$file."' WHERE Id_Instruments = $indice";
+        $sql = "UPDATE instruments SET img = '".$chemin."/".$file."' WHERE Id_Instrument = $indice";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
+        
     }
 }
 
@@ -132,4 +151,5 @@ function nameImage($id,$name){
     $id."-".$name;
 }
 
+header("Location: ".$_SESSION['root']."/index.php");
 ?>

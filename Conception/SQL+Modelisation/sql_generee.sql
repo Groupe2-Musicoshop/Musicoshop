@@ -44,27 +44,23 @@ CREATE TABLE panier(
 );
 
 CREATE TABLE instruments(
-   Id_Instruments INT AUTO_INCREMENT,
-   designation VARCHAR(50),
-   prix VARCHAR(50),
-   img text,
-   description VARCHAR(50),
+   Id_Instrument INT AUTO_INCREMENT,
+   designation VARCHAR(50),   
+   img text,   
    idCategorie INT NOT NULL,
-   PRIMARY KEY(Id_Instruments),
+   PRIMARY KEY(Id_Instrument),
    FOREIGN KEY(idCategorie) REFERENCES categorie(idCategorie)
 );
 
 CREATE TABLE article(
-   Id_Article INT AUTO_INCREMENT,
-   designation VARCHAR(50),
+   Id_Article INT AUTO_INCREMENT,   
    qtestock INT,
    prix DECIMAL(15,2),
-   tauremise DECIMAL(15,2),
-   img VARCHAR(50),
+   tauremise DECIMAL(15,2),   
    description VARCHAR(50),
-   Id_Instruments INT NOT NULL,
+   Id_Instrument INT NOT NULL,
    PRIMARY KEY(Id_Article),
-   FOREIGN KEY(Id_Instruments) REFERENCES instruments(Id_Instruments)
+   FOREIGN KEY(Id_Instrument) REFERENCES instruments(Id_Instrument)
 );
 
 CREATE TABLE ligne_Commande(

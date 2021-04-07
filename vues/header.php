@@ -11,7 +11,6 @@
     }
     
     $_SESSION['nbAticle'] = 0;
-    //$_SESSION['username']="Pierre";
 
     include_once(__DIR__."/../modele/Nav.php");
     include_once(__DIR__."/../modele/Categorie.php");
