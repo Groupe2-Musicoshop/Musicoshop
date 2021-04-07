@@ -54,6 +54,10 @@
     width: auto;
 }
 
+#footer{
+    padding: 1rem;
+}
+
 #footer svg {
     overflow: hidden;
     vertical-align: bottom;
