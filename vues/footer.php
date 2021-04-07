@@ -1,8 +1,22 @@
 <?php
 
+    $cat = new Categorie();
 ?>
 <div id="footer" class="bg-color-bzb">
-    <?php require_once 'vues/social_footer.php';?>
+    <div class="row">
+
+        <div class="col-sd-12 col-md-6 col-xl-4">
+            <ul id="cat-footer" class="mr-auto">
+                <?php $cat->genCategoriesVerticaly()?>
+            </ul>
+        </div>
+
+        <div class="col-sd-12 col-md-6 col-xl-4">
+            <?php require_once 'vues/social_footer.php';?>
+        </div>
+
+        <div class="col-sd-12 col-md-6 col-xl-4"></div>
+    </div>
 </div>
 </div>
 

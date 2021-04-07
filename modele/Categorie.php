@@ -70,10 +70,8 @@ class Categorie{
         }
     }
 
-        function genCategoriesVerticaly(){
+    function genCategoriesVerticaly(){
         $stmt = $this->getSqlCategories();
-        
-        echo "<button class='button is-checked' data-filter='*'>show all</button>";
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);

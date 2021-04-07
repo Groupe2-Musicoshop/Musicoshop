@@ -4,7 +4,7 @@
 	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
     /* param : unlog  ou user ou admin */
-    if (!isset ($_SESSION['isLogged'])){
+    if (!isset($_SESSION['isLogged'])){
 
         $_SESSION['userType'] = "unlog";
         
@@ -26,7 +26,6 @@
     $nav->set_nbArticle($_SESSION['nbAticle']);
 
     $cat = new Categorie();
-
 
 ?>
 <!DOCTYPE html>
@@ -80,7 +79,7 @@
             </nav>
 
 
-            <div id="categorie" class="filters button-group js-radio-button-group">
+            <div id="categorie" class="filters button-group js-radio-button-group bg-color-whi">
                 <?php $cat->genCategories();?>
             </div>
 

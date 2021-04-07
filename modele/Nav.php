@@ -17,7 +17,7 @@ class Nav{
         ]},
         {"titre":"img/cart.svg" , "type":"img" , "link":[
         {"titre":"Aller au panier","link":"vues/cart.php","userType":"all"},    
-        {"titre":"","link":"","userType":"all"}    
+        {"titre":"","link":"","userType":"none"}    
         ]}
     ]';
 
@@ -97,47 +97,47 @@ class Nav{
             $titreNav = $value->{'titre'};
 
             if(count($value->{'link'})>1){
-                echo "<li class='nav-item dropdown ".$this->get_MultiPageActive($value->{'link'})."'>";
-                echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' ";
-                echo "aria-haspopup='true' aria-expanded='false'>";
+                if ($value->{'type'}!="none") {
+                    echo "<li class='nav-item dropdown ".$this->get_MultiPageActive($value->{'link'})."'>";
+                    echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' ";
+                    echo "aria-haspopup='true' aria-expanded='false'>";
                 
-                if($value->{'type'}=="img"){
-                    echo "<img src='".$_SESSION['root']."/".$titreNav."' width='40' height='40' class='d-inline-block align-top' alt=''>";
+                    if ($value->{'type'}=="img") {
+                        echo "<img src='".$_SESSION['root']."/".$titreNav."' width='40' height='40' class='d-inline-block align-top' alt=''>";
 
-                    if($this->get_userType()=="user" && $titreNav =="img/user.svg"){
-                        echo "<img id='check' src='".$_SESSION['root']."/img/check.svg' width='15' height='15' class='d-inline-block align-top' alt=''>";
+                        if (($this->get_userType()=="user" || $this->get_userType()=="admin") && $titreNav =="img/user.svg") {
+                            echo "<img id='check' src='".$_SESSION['root']."/img/check.svg' width='15' height='15' class='d-inline-block align-top' alt=''>";
+                        }
+
+                        if ($titreNav =="img/cart.svg" && $this->get_nbArticle()>0) {
+                            echo "<div id='nbArt' ><span>".$this->get_nbArticle()."</span></div>";
+                        }
+                    } else {
+                        echo $titreNav;
+                        echo "<span class='caret'></span>";
                     }
 
-                    if($titreNav =="img/cart.svg" && $this->get_nbArticle()>0){
-                        echo "<div id='nbArt' ><span>".$this->get_nbArticle()."</span></div>";
-                    }
-
-                }else{
-                    echo $titreNav;
-                    echo "<span class='caret'></span>";
-                }
-
-                echo "</a>";
+                    echo "</a>";
                 
-                echo "<div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
+                    echo "<div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
 
-                foreach ($value->{'link'} as $value2n){
-                    if($value2n->{'userType'} == "all"){
+                    foreach ($value->{'link'} as $value2n) {
+                        if ($value2n->{'userType'} == "all") {
 
-                        echo "<a class='dropdown-item' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$value2n->{'titre'}."</a>";
+                            echo "<a class='dropdown-item' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$value2n->{'titre'}."</a>";
 
+                        } elseif ($value2n->{'userType'} == "logout" and $this->get_userType()=="user") {
+
+                            echo "<a class='dropdown-item bg-color-pla' href='".$this->get_Root()."/".$value2n->{'link'}."'>Bonjour ".$_SESSION['username'].".<br/>".$value2n->{'titre'}."</a>";
+
+                        } elseif ($value2n->{'userType'} == $this->get_userType() || $this->get_userType()=="admin") {
+
+                            echo "<a class='dropdown-item' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$value2n->{'titre'}."</a>";
+                            
+                        }
                     }
-                    else if( $value2n->{'userType'} == "logout" and $this->get_userType()=="user"){
-
-                        echo "<a class='dropdown-item bg-color-pla' href='".$this->get_Root()."/".$value2n->{'link'}."'>Bonjour ".$_SESSION['username'].".<br/>".$value2n->{'titre'}."</a>";
-                        
-                    }
-                    else if( $value2n->{'userType'} == $this->get_userType() || $this->get_userType()=="admin"){
-
-                        echo "<a class='dropdown-item' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$value2n->{'titre'}."</a>";
-                    }
+                    echo "</div></li>";
                 }
-                echo "</div></li>";
             }
             else{
                 foreach ($value->{'link'} as $value2n){

@@ -41,6 +41,14 @@ CSS HEX
     background-color: #E0E1DD;
 }
 
+/*white: #f4f4f4;*/
+.color-whi{
+    color: #f4f4f4;
+}
+.bg-color-whi{
+    background-color: #f4f4f4;
+}
+
 
 
 /*
