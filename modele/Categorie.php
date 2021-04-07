@@ -70,6 +70,19 @@ class Categorie{
         }
     }
 
+        function genCategoriesVerticaly(){
+        $stmt = $this->getSqlCategories();
+        
+        echo "<button class='button is-checked' data-filter='*'>show all</button>";
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+
+            echo "<li  value=".$idCategorie."><a>".$libele."</a></li>";
+            
+        }
+    }
+
     public function getSqlCategories(){
         $database = new Database();
         $conn = $database->getConnection();

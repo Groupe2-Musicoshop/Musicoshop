@@ -91,3 +91,6 @@ $gradient-radial: radial-gradient(#0d1b2aff, #1b263bff, #415a77ff, #778da9ff, #e
     padding-left: 0px;
 }
 
+.body-mu{
+     height: 100vh;
+ }

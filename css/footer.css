@@ -63,15 +63,14 @@
     color:#0d1b2a;
 }
 
-
-
 #footer .rs-btn {
     z-index: 2;
     background: #f4f4f4;
     border: 1px solid #0d1b2a;
 }
 #footer .social{
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
 }
 #footer .social > a{
     display: flex;

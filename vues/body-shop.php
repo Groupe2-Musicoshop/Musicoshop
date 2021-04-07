@@ -2,7 +2,7 @@
 ?>
 
 
-<div id="body-shop">
+<div id="body-shop" class="body-mu">
     <div id="title">Mon espace Client</div>
 
 
