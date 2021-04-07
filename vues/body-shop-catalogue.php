@@ -9,7 +9,7 @@
 </div>
 
 <div id="body-shop" class="body-mu">
+    <div id="title">Catalogue</div>
 
-    <div id="title">Musicoshop Admin</div>
 
 </div>

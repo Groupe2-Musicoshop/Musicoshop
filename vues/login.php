@@ -19,8 +19,6 @@ require_once '../modele/Database.php';
 		$tab=$res->fetchAll();
 
         //print_r($tab);
-
-        //echo "<br>".$tab[0]["type"];
         
         if (count($tab)==0) {
             
@@ -30,7 +28,17 @@ require_once '../modele/Database.php';
             
 			$_SESSION["userType"]=$tab[0]["type"];
 			$_SESSION["isLogged"]=$_POST["valider"];
-            $_SESSION["username"]=$_POST["username"];
+
+            if($tab[0]["nom"]==""){
+                
+                $_SESSION["username"]=$_POST["username"];
+
+            }else{
+
+                $_SESSION["username"]=$tab[0]["prenom"]." ".$tab[0]["nom"];
+
+            }
+
 
 
         header('Location: ../index.php');

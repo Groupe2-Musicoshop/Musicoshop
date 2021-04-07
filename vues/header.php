@@ -25,8 +25,6 @@
     $nav->set_userType($_SESSION['userType']);
     $nav->set_nbArticle($_SESSION['nbAticle']);
 
-    $cat = new Categorie();
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -77,12 +75,6 @@
                     </ul>
                 </div>
             </nav>
-
-
-            <div id="categorie" class="filters button-group js-radio-button-group bg-color-whi">
-                <?php $cat->genCategories();?>
-            </div>
-
 
         </div>
         <?php

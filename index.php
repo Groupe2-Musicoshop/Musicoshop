@@ -15,7 +15,7 @@
 		require_once 'vues/admin/body-shop.php';
 	}
 	else{
-		require_once 'vues/body-shop.php';
+		require_once 'vues/body-shop-catalogue.php';
 	}
 	
 	require_once 'vues/footer.php';
