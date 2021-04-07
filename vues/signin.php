@@ -13,7 +13,7 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
 <body>
     <?php
-require('config.php');
+require_once '../modele/Database.php';
 
 if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['password'])){
 	// récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
@@ -26,7 +26,7 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['password'])){
 	$password = stripslashes($_REQUEST['password']);
 	$password = mysqli_real_escape_string($conn, $password);
 	
-	$query = "INSERT into `users` (username, email, type, password)
+	$query = "INSERT into `users` (userName, email, type, password)
 				VALUES ('$username', '$email', 'user', '".hash('sha256', $password)."')";
 	$res = mysqli_query($conn, $query);
 

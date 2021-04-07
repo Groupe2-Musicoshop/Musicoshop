@@ -1,7 +1,31 @@
 ﻿<?php
-session_start();
-$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+	session_start();
+	@$username=$_POST["username"];
+	@$pass=$_POST["password"];
+	@$valider=$_POST["valider"];
+	$message="";
+    $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+
+	if(isset($valider)){
+require_once '../modele/Database.php';
+		$pdo=new PDO("mysql:host=localhost;dbname=musicoshop","root","");
+		$res=$pdo->prepare("select * from utilisateur where userName=? and password=? limit 1");
+		$res->setFetchMode(PDO::FETCH_ASSOC);
+		$res->execute(array($username,hash('sha256', "$pass")));
+		$tab=$res->fetchAll();
+		if(count($tab)==0)
+			$message="Mauvais email ou mot de passe!";
+		else{
+			$_SESSION["userType"]="user";
+			$_SESSION["islogged"]="yes";
+            $_SESSION["username"]=$_POST["username"];
+
+
+        header('Location: ../index.php');
+		}
+	}
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -12,42 +36,7 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 </head>
 
 <body>
-    <?php
-//session_start();
-
-
-require_once '../modele/Database.php';
-
-$database = new Database();
-$conn = $database->getConnection();
-
-if (isset($_POST['username'])){
-	$username = stripslashes($_REQUEST['username']);
-	//$username = $conn->quote($username);
-	$_SESSION['username'] = $username;
-	$password = stripslashes($_REQUEST['password']);
-	$password =  $conn->quote($password);
-
-    $sqlQuery = "SELECT * FROM `users` WHERE username='".$username."' and password='".hash('sha256', "$password")."'";
-
-	//$stmt = $conn->prepare($sqlQuery);
-
-    $stmt = $conn->query($sqlQuery);   
-	
-	if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-		$user = mysqli_fetch_assoc($result);
-		$_SESSION['userType'] = $user['type'];
-		$_SESSION['isLogged'] = 'yes';
-
-        echo "login usertype => ".$_SESSION['userType'];
-
-        header('Location: ../index.php');
-		
-	}else{
-		$message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
-	}
-}
-?>
+   
     <div class="jumbotron">
         <form class="box" action="" method="post" name="login">
             <div class="mb-3">
@@ -62,7 +51,7 @@ if (isset($_POST['username'])){
             <?php if (! empty($message)) { ?>
             <p class="errorMessage"><?php echo $message; ?></p>
             <?php } ?>
-            <input type="submit" value="Connexion " name="submit" class="box-button">
+            <input type="submit" value="Connexion " name="valider" class="box-button">
             <p class="box-register"><a href="pwlost.php"><u>Vous avez oublié votre mot de passe ?</u></a></p>
           
             </p>
