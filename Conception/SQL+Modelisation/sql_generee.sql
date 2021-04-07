@@ -47,7 +47,7 @@ CREATE TABLE instruments(
    Id_Instruments INT AUTO_INCREMENT,
    designation VARCHAR(50),
    prix VARCHAR(50),
-   img VARCHAR(50),
+   img text,
    description VARCHAR(50),
    idCategorie INT NOT NULL,
    PRIMARY KEY(Id_Instruments),

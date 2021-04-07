@@ -1,9 +1,36 @@
 <?php
+session_start();
+$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
 require_once '../modele/Database.php';
 
 $database = new Database();
 $conn = $database->getConnection();
+
+
+function before ($thi, $inthat)
+    {
+        return substr($inthat, 0, strpos($inthat, $thi));
+    }
+
+$dirImg = '../img/cart_img';
+
+echo $dirImg;
+$files = scandir($dirImg);
+
+print_r($files);
+
+//Envoyer le chemin absolu en base
+
+foreach ($files as $file) {
+    if ($file[0] !== '.') { 
+        $chemin = $_SESSION['root'].'/img/cart_img';
+        $indice = before('-', $file);
+        $sql = "UPDATE instruments SET img = '".$chemin."/".$file."' WHERE Id_Instruments = $indice";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    }
+}
 
 $categories = '[
     {"cat":1,"categorie":"Guitares & Basses"},
@@ -99,6 +126,7 @@ foreach($array2 as $row){
 
 echo 'Inserted instrument';
 
+/*
 $users = '[
 {"idUtilisateur":1,"userName" :"toto","email":"constmatsima@gmail.com", "type":"admin", "password":"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"},
 {"idUtilisateur":2,"userName" :"Afpatoto","email":"constmatsima@gmail.com", "type":"user", "password":"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"}
@@ -117,7 +145,7 @@ foreach($array3 as $row){
 }
 
 echo 'Inserted Users';
-
+*/
 function nameImage($id,$name){
     $name = str_replace(" ", "_", $name);
     $name = str_replace("à", "a", $name);
