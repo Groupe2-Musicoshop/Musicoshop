@@ -98,6 +98,7 @@ class Nav{
 
             if(count($value->{'link'})>1){
                 if ($value->{'type'}!="none") {
+
                     echo "<li class='nav-item dropdown ".$this->get_MultiPageActive($value->{'link'})."'>";
                     echo "<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' ";
                     echo "aria-haspopup='true' aria-expanded='false'>";
@@ -122,15 +123,16 @@ class Nav{
                     echo "<div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
 
                     foreach ($value->{'link'} as $value2n) {
+
                         if ($value2n->{'userType'} == "all") {
 
                             echo "<a class='dropdown-item' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$value2n->{'titre'}."</a>";
 
-                        } elseif ($value2n->{'userType'} == "logout" and $this->get_userType()=="user") {
+                        } elseif ($value2n->{'userType'} == "logout" and ($this->get_userType()=="user" || $this->get_userType()=="admin")) {
 
                             echo "<a class='dropdown-item bg-color-pla' href='".$this->get_Root()."/".$value2n->{'link'}."'>Bonjour ".$_SESSION['username'].".<br/>".$value2n->{'titre'}."</a>";
 
-                        } elseif ($value2n->{'userType'} == $this->get_userType() || $this->get_userType()=="admin") {
+                        } elseif ($value2n->{'userType'} == $this->get_userType()) {
 
                             echo "<a class='dropdown-item' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$value2n->{'titre'}."</a>";
                             

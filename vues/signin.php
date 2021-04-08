@@ -27,6 +27,7 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 			$req->setFetchMode(PDO::FETCH_ASSOC);
 			$req->execute(array($email));
 			$tab=$req->fetchAll();
+
 			if(count($tab)>0)
 				$message="Adresse e-mail existe déjà!";
 			else{
@@ -34,8 +35,8 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
                 $database = new Database();
                 $pdo = $database->getConnection();
 
-				$ins=$pdo->prepare("insert into utilisateur(userName,email,password) values(?,?,?)");
-				$ins->execute(array($username,$email,hash('sha256', $password)));
+				$ins=$pdo->prepare("insert into utilisateur(userName,email,password,type) values(?,?,?)");
+				$ins->execute(array($username,$email,hash('sha256', $password),'user'));
 
         header('Location:login.php');
 			}
