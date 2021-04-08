@@ -125,6 +125,8 @@ $gradient-radial: radial-gradient(#0d1b2aff, #1b263bff, #415a77ff, #778da9ff, #e
 
 .body-mu {
     min-height: 100vh;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .w100 {
