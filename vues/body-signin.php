@@ -26,7 +26,7 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 		if(empty($password)) $message.="Mot de passe invalide!";
 		if($password!=$repass) $message.="Mots de passe non identiques!";	
 		if(empty($message)){
-			require_once '../modele/Database.php';
+			require_once 'modele/Database.php';
             $database = new Database();
             $pdo = $database->getConnection();
 
@@ -43,9 +43,15 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
                 $database = new Database();
                 $pdo = $database->getConnection();
 
+<<<<<<< HEAD
 				$ins=$pdo->prepare("insert into utilisateur(userName,prenom,adresse,ville,codePostal,email,password,type,valideuser) values(?,?,?,?,?,?,?,?,?)");
 				$ins->execute(array($username,$prenom,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user',0));
 				header('Location:../ghj-login.php');
+=======
+				$ins=$pdo->prepare("insert into utilisateur(userName,prenom,adresse,ville,codePostal,email,password,type) values(?,?,?,?,?,?,?,?)");
+				$ins->execute(array($username,$prenom,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user'));
+				header('Location:../body-login.php');
+>>>>>>> 7f1fc759aec791d15fd9c55b4405ce2bf88325ad
 			}
 		}
 	}
