@@ -71,6 +71,6 @@ CREATE TABLE ligne_Commande(
    FOREIGN KEY(idCmd) REFERENCES commande(idCmd)
 );
 
-INSERT INTO `utilisateur` (`idUtilisateur`, `username`, `email`, `type`, `password`,`sexe`,`nom`,`prenom`) VALUES
-(1, 'toto', 'constmatsima@gmail.com', 'admin', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','','',''),
-(2, 'Afpatoto', 'constmatsima@gmail.com', 'user', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','','matsima','Constant');
+INSERT INTO `utilisateur` (`idUtilisateur`, `username`, `email`, `type`,`valideuser`, `password`,`sexe`,`nom`,`prenom`) VALUES
+(1, 'toto', 'constmatsima@gmail.com', 'admin','1', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','','',''),
+(2, 'Afpatoto', 'constmatsima@gmail.com', 'user','0', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','','matsima','Constant');
