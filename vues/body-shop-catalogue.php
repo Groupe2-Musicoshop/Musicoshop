@@ -19,7 +19,7 @@
             $sql = 'SELECT * FROM instruments';
             foreach ($conn->query($sql) as $row) {
         ?>
-            <div class="card col-md-4 my-2 py-4" >
+            <div class="card col-md-4 my-2" >
                 <div class="box_img">
                     <img src="<?=$row['img']?>" class="img_thumb card-img-top" alt="">
                 </div>

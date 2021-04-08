@@ -38,8 +38,9 @@
     <link rel="icon" href="<?=$_SESSION['root']?>/img/favicon.ico" />
 
 
-    <link rel="stylesheet" type="text/css" href='<?=$_SESSION['root']?>/css/global.css'>
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/global.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/header.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/article.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/nav.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/categorie.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/fildarianne.css">
