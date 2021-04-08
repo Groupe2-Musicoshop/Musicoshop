@@ -74,7 +74,7 @@ $conn = $database->getConnection();
                 foreach ($conn->query($sql) as $row) {
                 ?>
                 <option value="<?php echo $row['Id_Instrument'];?>">
-                <?php echo ucfirst($row['designation']);?></option>
+                    <?php echo ucfirst($row['designation']);?></option>
                 <?php
             }
             ?>
