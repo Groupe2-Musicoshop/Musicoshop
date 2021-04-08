@@ -101,15 +101,20 @@ $gradient-radial: radial-gradient(#0d1b2aff, #1b263bff, #415a77ff, #778da9ff, #e
     margin-left: 2rem;
 }
 
-.container{
-    padding-right: 0px;
-    padding-left: 0px;
+.box_img{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+.img_thumb{
+    margin: 0 auto;
+    width: auto;
+    max-width: 200px;
+    height: auto;
+    max-height: 200px;
 }
 
-.body-mu{
-     height: 100vh;
- }
- .w100{
-     width: 100%;
+.w100{
+    width: 100%;
     height: auto;
- }
+}
