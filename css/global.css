@@ -137,3 +137,7 @@ p {
     margin-bottom: 1rem;
     text-align: justify;
 }
+
+.card {
+    min-width: 350px;
+}

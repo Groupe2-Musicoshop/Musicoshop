@@ -90,8 +90,8 @@ $instruments = '[
     {"id":48,"name":"ukulélé","cat":1},
     {"id":49,"name":"alto","cat":5},
     {"id":50,"name":"violon","cat":5},
-    {"id":51,"name":"vuvuzela","cat":4},
-    {"id":52,"name":"cithare","cat":1}
+    {"id":51,"name":"cithare","cat":1},
+    {"id":52,"name":"vuvuzela","cat":4}
 ]';
 
 if (!isset($_SESSION['Instrument'])) {
