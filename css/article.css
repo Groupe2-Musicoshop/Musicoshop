@@ -1,0 +1,12 @@
+.box_img{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+.img_thumb{
+    margin: 0 auto;
+    width: auto;
+    max-width: 200px;
+    height: auto;
+    max-height: 200px;
+}

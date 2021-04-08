@@ -57,8 +57,7 @@ CREATE TABLE article(
    Id_Article INT AUTO_INCREMENT,   
    qtestock INT,
    prix DECIMAL(15,2),
-   tauremise DECIMAL(15,2),   
-   description VARCHAR(50),
+   note DECIMAL(15,2),
    Id_Instrument INT NOT NULL,
    PRIMARY KEY(Id_Article),
    FOREIGN KEY(Id_Instrument) REFERENCES instruments(Id_Instrument)

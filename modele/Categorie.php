@@ -90,7 +90,7 @@ class Categorie{
             extract($row);
 
             //echo "<li  value=".$idCategorie."><a>".$libele."</a></li>";
-            echo "<button class='button' data-filter='.".$idCategorie."'>".$libele."</button>";
+            echo "<button class='button' data-filter='.cat".$idCategorie."'>".$libele."</button>";
         }
     }
 
