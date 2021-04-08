@@ -44,8 +44,8 @@
                     <span></span>
                     <img src="https://www.datatrans.ch/media/filer_public/06/89/06898aeb-f744-4082-a8dd-8d0353a43df0/diners.svg" srcset="" alt="Datatrans AG – Cartes de Crédit | Diners Club (International)">
                 </div>  
-    
-                </a> <p>Réglez de manière sûre et sécurisée par Carte bancaire, Virement, PayPal ou Amazon Pay.</p>  
+                <p>&nbsp;</p>
+                <p>Réglez de manière sûre et sécurisée par Carte bancaire, Virement, PayPal ou Amazon Pay.</p>  
 
             </div>
         </div>
