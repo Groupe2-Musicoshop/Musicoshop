@@ -134,72 +134,40 @@ class Article{
 
         return $this;
     }
-
-    function genCategories(){
-        $stmt = $this->getSqlCategories();
-        
-        echo "<button class='button is-checked' data-filter='*'>show all</button>";
+    
+    function genCardArticle(){
+        $stmt = $this->getSqlArticles();
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
-
-            //echo "<li  value=".$idCategorie."><a>".$designation."</a></li>";
-            echo "<button class='button' data-filter='.".$idCategorie."'>".$designation."</button>";
+            echo '<div class="card cat'.$row["idCategorie"].' col-md-4" data-category="cat'.$row['idCategorie'].'">';
+                echo '<div class="box_img">';
+                    echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
+                echo '</div>';
+                echo '<div class="card-body row">';
+                    echo '<div class="col-md-8">';
+                        echo '<h5 class="card-title">'.ucfirst($row['designation']).'</h5>';
+                        echo '<a href="" class="btn btn-primary ">Lire plus</a>';
+                    echo '</div>';
+                    echo '<div class="col-md-4">';
+                        echo '<h5>'.$row['prix'].' €</h5>';
+                        echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
+                    echo '</div>';
+                echo '</div>';
+            echo '</div>';
+            
         }
     }
-
-    function genCategoriesVerticaly(){
-
-        $pages_json = json_decode($this->pagesCategories,true);
-
-        $numpage="0";
-
-        //print_r($pages_json);
-
-        $stmt = $this->getSqlCategories();
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            extract($row);
-
-            echo "<li  value=".$idCategorie."><a href='".$_SESSION['root']."/".$pages_json[$numpage]['page']."'>".$designation."</a></li>";
-            $numpage+=1;
-        }
-    }
-
-        function genCategoriesHorizontaly(){
-
-        $pages_json = json_decode($this->pagesCategories,true);
-
-        $numpage="0";
-
-        //print_r($pages_json);
-
-        $stmt = $this->getSqlCategories();
-        echo "<nav class='navbar navbar-expand-lg navbar-light bg-color-whi'>";
-
-        echo "<div class='collapse navbar-collapse' id='navbarCatHorizontalyContent'>";
-
-        echo "<ul id='cat-horizontaly' class='navbar-nav'>";
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            extract($row);
-               
-            echo "<li class='nav-item ".$this->get_PageActive($pages_json[$numpage]['page'])."' value=".$idCategorie."><a class='nav-link' href='".$_SESSION['root']."/".$pages_json[$numpage]['page']."'>".$designation."</a></li>";
-            $numpage+=1;
-        }
-        echo "</ul></div></nav>";
-    }
-
-    public function getSqlCategories(){
+    
+    public function getSqlArticles(){
         $database = new Database();
         $conn = $database->getConnection();
 
-        $sqlQuery = "SELECT 
-                    idCategorie, designation
-                  FROM
-                    ". $this->db_table;
-
-         
+        $sqlQuery = "SELECT * FROM "
+                        .$this->db_tables[0].
+                    " INNER JOIN ".$this->db_tables[1].
+                    " ON instruments.Id_Instrument = article.Id_Instrument";
+        
         $stmt = $conn->prepare($sqlQuery);              
         
         $stmt->execute();
