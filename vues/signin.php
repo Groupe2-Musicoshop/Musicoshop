@@ -1,7 +1,48 @@
 <?php
-session_start();
+//session_start();
 $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+
+
+	@$username=$_POST["username"];
+	//@$prenom=$_POST["prenom"];
+	@$email=$_POST["email"];
+	@$password=$_POST["password"];
+	//@$repass=$_POST["repass"];
+	@$valider=$_POST["valider"];
+	$message="";
+	if(isset($valider)){
+        require_once '../modele/Database.php';
+
+		if(empty($username)) $message="Nom invalide!";
+		//if(empty($prenom)) $message.="Prénom invalide!";
+		if(empty($email)) $message.="email invalide!";
+		if(empty($password)) $message.="Mot de passe invalide!";
+		//if($pass!=$repass) $message.="Mots de passe non identiques!";	
+		if(empty($message)){
+
+            $database = new Database();
+            $pdo = $database->getConnection();
+
+			$req=$pdo->prepare("select idUtilisateur from utilisateur where email=? limit 1");
+			$req->setFetchMode(PDO::FETCH_ASSOC);
+			$req->execute(array($email));
+			$tab=$req->fetchAll();
+			if(count($tab)>0)
+				$message="Adresse e-mail existe déjà!";
+			else{
+                
+                $database = new Database();
+                $pdo = $database->getConnection();
+
+				$ins=$pdo->prepare("insert into utilisateur(userName,email,password) values(?,?,?)");
+				$ins->execute(array($username,$email,hash('sha256', $password)));
+
+        header('Location:login.php');
+			}
+		}
+	}
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -12,33 +53,6 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 </head>
 
 <body>
-    <?php
-require_once '../modele/Database.php';
-
-if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['password'])){
-	// récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
-	$username = stripslashes($_REQUEST['username']);
-	$username = mysqli_real_escape_string($conn, $username); 
-	// récupérer l'email et supprimer les antislashes ajoutés par le formulaire
-	$email = stripslashes($_REQUEST['email']);
-	$email = mysqli_real_escape_string($conn, $email);
-	// récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
-	$password = stripslashes($_REQUEST['password']);
-	$password = mysqli_real_escape_string($conn, $password);
-	
-	$query = "INSERT into `users` (userName, email, type, password)
-				VALUES ('$username', '$email', 'user', '".hash('sha256', $password)."')";
-	$res = mysqli_query($conn, $query);
-
-    if($res){
-       echo "<div class='sucess'>
-             <h3>Vous êtes inscrit avec succès.</h3>
-             <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
-			 </div>";
-    }
-}else{
-?>
-
 <form class="box" action="" method="post">
 <div class="mb-3">
 	<h4 class="title">Enregistrement</h4>
@@ -52,9 +66,11 @@ if (isset($_REQUEST['username'], $_REQUEST['email'], $_REQUEST['password'])){
     <div class="mb-3">
     <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
     </div>
-    <input type="submit" name="submit" value="S'inscrire" class="box-button" />
+         <?php if (! empty($message)) { ?>
+            <p class="errorMessage"><?php echo $message; ?></p>
+            <?php } ?>
+    <input type="submit" name="valider" value="valider" class="box-button" />
     <p class="box-register">Déjà inscrit? <a href="login.php"><u>Connectez-vous ici<u></a></p>
 </form>
-<?php } ?>
 </body>
 </html>
