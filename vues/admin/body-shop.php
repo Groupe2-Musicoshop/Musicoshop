@@ -1,16 +1,25 @@
 <?php
 
-    $cat = new Categorie();
+    if(isset($_SESSION['idUtilisateur'])){
+
+        echo $_SESSION['idUtilisateur'];
+
+        $user->updatelUser($_SESSION['idUtilisateur']);
+
+    }else{
+
+        //include_once(__DIR__."/../../modele/Database.php");
+        include_once(__DIR__."/../../modele/User.php");
+    
+        $user = new User();
+    }
 
 ?>
-
-<div id="categorie" class="filters button-group js-radio-button-group bg-color-whi">
-    <?php $cat->genCategories();?>
-</div>
 
 <div id="body-shop" class="body-mu">
 
     <div id="title">Musicoshop Admin</div>
     <a class="dropdown-item bg-color-pla" href="http://localhost:8080/Musicoshop/ctrl/service.php">Update BDD</a>
-
+    
+    <?php $user->genUsersToValidate();?>
 </div>

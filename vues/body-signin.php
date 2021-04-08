@@ -43,8 +43,8 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
                 $database = new Database();
                 $pdo = $database->getConnection();
 
-				$ins=$pdo->prepare("insert into utilisateur(userName,prenom,adresse,ville,codePostal,email,password,type) values(?,?,?,?,?,?,?,?)");
-				$ins->execute(array($username,$prenom,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user'));
+				$ins=$pdo->prepare("insert into utilisateur(userName,prenom,adresse,ville,codePostal,email,password,type,valideuser) values(?,?,?,?,?,?,?,?,?)");
+				$ins->execute(array($username,$prenom,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user',0));
 				header('Location:../ghj-login.php');
 			}
 		}

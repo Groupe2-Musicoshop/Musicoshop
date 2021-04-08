@@ -4,11 +4,11 @@
 	@$pass=$_POST["password"];
 	@$valider=$_POST["valider"];
 	$message="";
+    
     $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
 	if(isset($valider)){
     require_once 'modele/Database.php';
-		//$pdo=new PDO("mysql:host=localhost;dbname=musicoshop","root","");
 
         $database = new Database();
         $pdo = $database->getConnection();
@@ -25,23 +25,28 @@
             $message="Mauvais email ou mot de passe!";
         
         }else{
-            
-			$_SESSION["userType"]=$tab[0]["type"];
-			$_SESSION["isLogged"]=$_POST["valider"];
 
-            if($tab[0]["nom"]==""){
+            if($tab[0]["valideuser"]!=0){
+
                 
-                $_SESSION["username"]=$_POST["username"];
-
+                $_SESSION["userType"]=$tab[0]["type"];
+                $_SESSION["isLogged"]=$_POST["valider"];
+                
+                if($tab[0]["nom"]==""){
+                    
+                    $_SESSION["username"]=$_POST["username"];
+                    
+                }else{
+                    
+                    $_SESSION["username"]=$tab[0]["prenom"]." ".$tab[0]["nom"];
+                    
+                }
+                header('Location:index.php');
             }else{
 
-                $_SESSION["username"]=$tab[0]["prenom"]." ".$tab[0]["nom"];
+                $message="Votre compte n'a pas encore été validé par l'administrateur";
 
-            }
-
-
-
-        header('Location:index.php');
+            }        
 		}
 	}
 ?>
