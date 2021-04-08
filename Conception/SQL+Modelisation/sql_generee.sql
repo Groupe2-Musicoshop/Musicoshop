@@ -16,6 +16,7 @@ CREATE TABLE utilisateur(
    email VARCHAR(100),
    type VARCHAR(100),
    password VARCHAR(100),
+   valideuser Boolean,
    sexe VARCHAR(50),
    nom VARCHAR(50),
    prenom VARCHAR(50),
