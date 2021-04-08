@@ -5,17 +5,18 @@ require_once 'modele/Database.php';
 class Categorie{
     private ?string $libele;
     private ?string $categorieActive;
+    private ?string $pageActive;
 
     // Table
     private $db_table = "categorie";
 
     private $pagesCategories = '[
-        {"page":"/cat-guitares_basses.php"},
-        {"page":"/cat-batteries_percussions.php"},
-        {"page":"/cat-pianos_claviers.php"},        
-        {"page":"/cat-instruments_a_vent.php"},
-        {"page":"/cat-instruments_a_cordes_frottees.php"},
-        {"page":"/cat-instruments_a_cordes.php"}
+        {"page":"cat-guitares_basses.php"},
+        {"page":"cat-batteries_percussions.php"},
+        {"page":"cat-pianos_claviers.php"},        
+        {"page":"cat-instruments_a_vent.php"},
+        {"page":"cat-instruments_a_cordes_frottees.php"},
+        {"page":"cat-instruments_a_cordes.php"}
     ]';
 
     /**
@@ -66,6 +67,20 @@ class Categorie{
         return $this;
     }
 
+    function get_PageActive($pageAtester){
+
+        if($this->pageActive==$pageAtester){ 
+            return 'active';
+        }else{
+            return '';
+        }
+
+    }
+
+    function set_PageActive($pageActive){
+        $this->pageActive = $pageActive;
+    }
+
     function genCategories(){
         $stmt = $this->getSqlCategories();
         
@@ -92,9 +107,33 @@ class Categorie{
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
 
-            echo "<li  value=".$idCategorie."><a href='".$_SESSION['root']."/vues".$pages_json[$numpage]['page']."'>".$libele."</a></li>";
+            echo "<li  value=".$idCategorie."><a href='".$_SESSION['root']."/".$pages_json[$numpage]['page']."'>".$libele."</a></li>";
             $numpage+=1;
         }
+    }
+
+        function genCategoriesHorizontaly(){
+
+        $pages_json = json_decode($this->pagesCategories,true);
+
+        $numpage="0";
+
+        //print_r($pages_json);
+
+        $stmt = $this->getSqlCategories();
+        echo "<nav class='navbar navbar-expand-lg navbar-light bg-color-whi'>";
+
+        echo "<div class='collapse navbar-collapse' id='navbarCatHorizontalyContent'>";
+
+        echo "<ul id='cat-horizontaly' class='navbar-nav'>";
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+               
+            echo "<li class='nav-item ".$this->get_PageActive($pages_json[$numpage]['page'])."' value=".$idCategorie."><a class='nav-link' href='".$_SESSION['root']."/".$pages_json[$numpage]['page']."'>".$libele."</a></li>";
+            $numpage+=1;
+        }
+        echo "</ul></div></nav>";
     }
 
     public function getSqlCategories(){

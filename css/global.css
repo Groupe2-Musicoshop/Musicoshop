@@ -92,8 +92,15 @@ $gradient-radial: radial-gradient(#0d1b2aff, #1b263bff, #415a77ff, #778da9ff, #e
 
 #title{
     font-family:"Fontastique Fontastique";
-    font-size: 4.2em;
+    font-size: 2.2em;
 }
+
+#title.white{
+    color: #f4f4f4;
+    position: absolute;
+    margin-left: 2rem;
+}
+
 .container{
     padding-right: 0px;
     padding-left: 0px;
@@ -101,4 +108,8 @@ $gradient-radial: radial-gradient(#0d1b2aff, #1b263bff, #415a77ff, #778da9ff, #e
 
 .body-mu{
      height: 100vh;
+ }
+ .w100{
+     width: 100%;
+    height: auto;
  }
