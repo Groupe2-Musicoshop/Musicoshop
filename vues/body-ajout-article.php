@@ -2,13 +2,12 @@
     //session_start();
     //$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
-    require_once '../modele/Database.php';
+    require_once 'modele/Database.php';
 
     $database = new Database();
 
     $conn = $database->getConnection();
 
-    var_dump($_POST);
 
 	@$username=$_POST["qtestock"];
 	@$prenom=$_POST["prix"];
