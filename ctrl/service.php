@@ -118,92 +118,95 @@ if (!isset($_SESSION['Instrument'])) {
     echo "Instrument already inserted";
 
 }
-/*
+
 
 // ----------------- Articles -----------------------
-function rand($nb1, $nb2){
+function artRand($nb1, $nb2){
     return rand($nb1,$nb2);
 }
 
 
 $articles = '[
-    {"id":1,"name":"accordéon","cat":3},
-    {"id":2,"name":"corne de brume","cat":4},
-    {"id":3,"name":"piano à queue","cat":3},
-    {"id":4,"name":"cornemuse","cat":4},
-    {"id":5,"name":"banjo","cat":1},
-    {"id":6,"name":"guitare basse","cat":1},
-    {"id":7,"name":"basson","cat":4},
-    {"id":8,"name":"Trompette","cat":4},
-    {"id":9,"name":"calliope","cat":4},
-    {"id":10,"name":"violoncelle","cat":5},
-    {"id":11,"name":"clarinette","cat":4},
-    {"id":12,"name":"clavicorde","cat":3},
-    {"id":13,"name":"concertina","cat":3},
-    {"id":14,"name":"didgeridoo","cat":4},
-    {"id":15,"name":"dobro","cat":1},
-    {"id":16,"name":"dulcimer","cat":1},
-    {"id":17,"name":"violon","cat":5},
-    {"id":18,"name":"fifre","cat":4},
-    {"id":19,"name":"Trumpette Soprano","cat":4},
-    {"id":20,"name":"flûte","cat":4},
-    {"id":21,"name":"cor dharmonie","cat":4},
-    {"id":22,"name":"Xylophone","cat":2},
-    {"id":23,"name":"guitare","cat":1},
-    {"id":24,"name":"harmonica","cat":4},
-    {"id":25,"name":"harpe","cat":6},
-    {"id":26,"name":"clavecin","cat":3},
-    {"id":27,"name":"vielle à roue","cat":5},
-    {"id":28,"name":"kazoo","cat":4},
-    {"id":29,"name":"grosse caisse","cat":2},
-    {"id":30,"name":"luth","cat":1},
-    {"id":31,"name":"lyre","cat":6},
-    {"id":32,"name":"mandoline","cat":1},
-    {"id":33,"name":"marimba","cat":2},
-    {"id":34,"name":"mellotron","cat":3},
-    {"id":35,"name":"mélodica","cat":4},
-    {"id":36,"name":"hautbois","cat":4},
-    {"id":37,"name":"flûte de pan","cat":4},
-    {"id":38,"name":"piano","cat":3},
-    {"id":39,"name":"piccolo","cat":4},
-    {"id":40,"name":"orgue à tuyaux","cat":3},
-    {"id":41,"name":"saxophone","cat":4},
-    {"id":42,"name":"sitar","cat":1},
-    {"id":43,"name":"tuba-contrebasse","cat":4},
-    {"id":44,"name":"tambourin","cat":2},
-    {"id":45,"name":"thérémine","cat":3},
-    {"id":46,"name":"trombone à coulisse","cat":4},
-    {"id":47,"name":"tuba","cat":4},
-    {"id":48,"name":"ukulélé","cat":1},
-    {"id":49,"name":"alto","cat":5},
-    {"id":50,"name":"violon","cat":5},
-    {"id":51,"name":"cithare","cat":1},
-    {"id":52,"name":"vuvuzela","cat":4}
+    {"id":1,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":1},
+    {"id":2,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":2},
+    {"id":3,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":3},
+    {"id":4,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":4},
+    {"id":5,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":5},
+    {"id":6,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":6},
+    {"id":7,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":7},
+    {"id":8,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":8},
+    {"id":9,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":9},
+    {"id":10,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":10},
+    {"id":11,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":11},
+    {"id":12,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":12},
+    {"id":13,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":13},
+    {"id":14,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":14},
+    {"id":15,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":15},
+    {"id":16,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":16},
+    {"id":17,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":17},
+    {"id":18,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":18},
+    {"id":19,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":19},
+    {"id":20,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":20},
+    {"id":21,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":21},
+    {"id":22,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":22},
+    {"id":23,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":23},
+    {"id":24,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":24},
+    {"id":25,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":25},
+    {"id":26,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":26},
+    {"id":27,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":27},
+    {"id":28,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":28},
+    {"id":29,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":29},
+    {"id":30,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":30},
+    {"id":31,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":31},
+    {"id":32,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":32},
+    {"id":33,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":33},
+    {"id":34,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":34},
+    {"id":35,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":35},
+    {"id":36,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":36},
+    {"id":37,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":37},
+    {"id":38,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":38},
+    {"id":39,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":39},
+    {"id":40,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":40},
+    {"id":41,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":41},
+    {"id":42,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":42},
+    {"id":43,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":43},
+    {"id":44,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":44},
+    {"id":45,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":45},
+    {"id":46,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":46},
+    {"id":47,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":47},
+    {"id":48,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":48},
+    {"id":49,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":49},
+    {"id":50,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":50},
+    {"id":51,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":51},
+    {"id":52,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":52}
 ]';
 
-if (!isset($_SESSION['Article'])) {
 
-    $array2 = json_decode($instruments, true);
 
-    //var_dump($array2);
+if (!isset($_SESSION['articles'])) {
 
-    foreach ($array2 as $row) {
-        $sql = "INSERT INTO instruments(Id_Instrument, designation,idCategorie) VALUES ('".$row["id"]."','".$row["name"]."','".$row["cat"]."')";
-    
+    $array3 = json_decode($articles, true);
+
+    //var_dump($array3);
+
+    foreach ($array3 as $row) {
+        $sql = "INSERT INTO article(Id_Article, qtestock, prix, note, Id_Instrument) VALUES ('".$row["id"]."','".$row["stock"]."','".$row["prix"]."','".$row["note"]."','".$row["instrument"]."')";
+
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
 
-    $_SESSION['instrument']="Instrument";
+    $_SESSION['articles']="articles";
 
-    echo 'Inserted instrument';
+    echo 'Inserted Article';
 
 }else{
 
-    echo "Instrument already inserted";
+    echo "article already inserted";
 
 }
-*/
+
+
 // ----------------- Images -----------------------
 
 $dirImg = '../img/cart_img';
@@ -240,4 +243,5 @@ function nameImage($id,$name){
 }
 
 header("Location: ".$_SESSION['root']."/index.php");
+
 ?>
