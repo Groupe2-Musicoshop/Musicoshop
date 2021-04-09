@@ -45,11 +45,15 @@
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/header.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/article.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/login.css" />
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/categorie.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/fildarianne.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/formulaire.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/panier.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/footer.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <title>Musicoshop</title>
 

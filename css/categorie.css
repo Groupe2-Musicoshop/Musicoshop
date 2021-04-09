@@ -3,6 +3,8 @@
     justify-content: space-around;
     border-bottom: 1px solid #0d1b2a;
     padding: .5rem;
+    border-radius: 0.3rem;
+    margin-top: 1rem;
 }
 
 #categorie button{

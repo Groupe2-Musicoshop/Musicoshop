@@ -13,13 +13,15 @@
     <?php $cat->genCategories();?>
 </div>
 
-<div id="body-shop" class="body-mu">
-    <p id="title">Catalogue</p>
-    <div class="row">
-        <div class="col-12">
-            <div class="catalog">
-                <?php $art->genCardArticle();?>
+<div class="jumbotron">
+    <div id="body-shop" class="body-mu">
+        <p id="title">Catalogue</p>
+        <div class="row">
+            <div class="col-12">
+                <div class="catalog">
+                    <?php $art->genCardArticle();?>
 
+                </div>
             </div>
         </div>
     </div>
