@@ -1,13 +1,5 @@
 <?php
 	session_start();
-
-	if(isset($_POST["idUtilisateur"])){
-
-        echo $_POST["idUtilisateur"];
-
-        $_SESSION['idUtilisateur']=$_POST["idUtilisateur"];
-
-    }
     
 	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 

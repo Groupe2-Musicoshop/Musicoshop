@@ -26,16 +26,18 @@ class User{
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
-            
+            echo "<form action='' method='POST'>";	//added
+		    echo "<input type='hidden' value='". $row['idUtilisateur']."' name='idUtilisateur' />"; //added
             echo "<tr><th scope='row'>".$numUser."</th>";
             echo "<td>".$userName."</td>";
             echo "<td>".$nom."</td>";
             echo "<td>".$prenom."</td>";
             echo "<td>".$type."</td>";
-            echo "<td><a href='".$_SESSION['root']."/index.php?idUtilisateur=".$row['idUtilisateur']."' class='btn btn-info'>Valider</a></td>";
+            echo "<td><input type='submit' name='Valider' value='Valider' class='btn btn-primary' /></td>";
             echo "</tr>";
         }
         echo "</tbody></table>";
+        echo "</form>";
     }
 
     public function getSqlUsersToValidate(){
@@ -55,7 +57,10 @@ class User{
         $database = new Database();
         $conn = $database->getConnection();
 
-        $sqlQuery = "UPDATE ". $this->db_table." SET valideuser = 1  WHERE idUtilisateur=".$idUtilisateur;
+        $sqlQuery = "UPDATE ". $this->db_table." SET valideuser=1  WHERE idUtilisateur=".$idUtilisateur;
+
+        echo $sqlQuery;
+        exit;
          
         $stmt = $conn->prepare($sqlQuery);              
         

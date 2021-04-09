@@ -43,15 +43,9 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
                 $database = new Database();
                 $pdo = $database->getConnection();
 
-<<<<<<< HEAD
 				$ins=$pdo->prepare("insert into utilisateur(userName,prenom,adresse,ville,codePostal,email,password,type,valideuser) values(?,?,?,?,?,?,?,?,?)");
 				$ins->execute(array($username,$prenom,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user',0));
 				header('Location:../ghj-login.php');
-=======
-				$ins=$pdo->prepare("insert into utilisateur(userName,prenom,adresse,ville,codePostal,email,password,type) values(?,?,?,?,?,?,?,?)");
-				$ins->execute(array($username,$prenom,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user'));
-				header('Location:../body-login.php');
->>>>>>> 7f1fc759aec791d15fd9c55b4405ce2bf88325ad
 			}
 		}
 	}
@@ -100,11 +94,12 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
         </div>
 
         <div class="mb-3">
-            <input type="password" class="form-control" name="repass" placeholder="Confirmation du mot de passe" required>
+            <input type="password" class="form-control" name="repass" placeholder="Confirmation du mot de passe"
+                required>
         </div>
 
         <?php if (!empty($message)) { ?>
-            <p class="errorMessage"><?php echo $message; ?></p>
+        <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
 
         <input type="submit" name="valider" value="valider" class="box-button" />

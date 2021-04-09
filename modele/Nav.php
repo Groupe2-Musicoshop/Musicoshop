@@ -13,7 +13,8 @@ class Nav{
         {"titre":"Mon espace client","link":"vues/my-space.php","userType":"user"},
         {"titre":"Mes commandes","link":"vues/my-cmds.php","userType":"user"},    
         {"titre":"Nous contacter","link":"vues/contact-us.php","userType":"user"},
-        {"titre":"Changer mon mot de passe","link":"pwlost.php","userType":"user"}
+        {"titre":"Changer mon mot de passe","link":"pwlost.php","userType":"user"},
+        {"titre":"Ajouter un Article","link":"ajout-article.php","userType":"admin"}
         ]},
         {"titre":"img/cart.svg" , "type":"img" , "link":[
         {"titre":"Aller au panier","link":"vues/cart.php","userType":"all"},    
@@ -22,7 +23,7 @@ class Nav{
     ]';
 
     /**
-     * constructeur
+     * constructeur 
      */
     function __construct(){
      

@@ -1,10 +1,15 @@
 <?php
-session_start();
-$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
-require_once '../modele/Database.php';
-$database = new Database();
-$conn = $database->getConnection();
+    //session_start();
+    //$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+
+    require_once '../modele/Database.php';
+
+    $database = new Database();
+
+    $conn = $database->getConnection();
+
     var_dump($_POST);
+
 	@$username=$_POST["qtestock"];
 	@$prenom=$_POST["prix"];
 	@$adresse=$_POST["note"];
@@ -14,23 +19,26 @@ $conn = $database->getConnection();
 	//@$password=$_POST["password"];
 	//@$repass=$_POST["repass"];
 	@$valider=$_POST["valider"];
+
 	$message="";
+
 	if(isset($valider)){
 
-		if(empty($username)) $message="Nom invalide!";
-		if(empty($prenom)) $message.="Prénom invalide!";
-		if(empty($adresse)) $message.="adresse invalide!";
-		if(empty($ville)) $message.="ville invalide!";
-		//if(empty($codepostal)) $message.="Code-postal invalide!";
-		//if(empty($email)) $message.="email invalide!";
-		//if(empty($password)) $message.="Mot de passe invalide!";
-		//if($password!=$repass) $message.="Mots de passe non identiques!";	
-		//if(empty($message)){
-				$ins=$conn->prepare("insert into article(qtestock,prix,note,Id_Instrument) values(?,?,?,?)");
-				$ins->execute(array($username,$prenom,$adresse,$ville));
-				echo "Article ajouté à la base";
-			
-		}
+        if(empty($username)) $message="Nom invalide!";
+        if(empty($prenom)) $message.="Prénom invalide!";
+        if(empty($adresse)) $message.="adresse invalide!";
+        if(empty($ville)) $message.="ville invalide!";
+        //if(empty($codepostal)) $message.="Code-postal invalide!";
+        //if(empty($email)) $message.="email invalide!";
+        //if(empty($password)) $message.="Mot de passe invalide!";
+        //if($password!=$repass) $message.="Mots de passe non identiques!";	
+        //if(empty($message)){
+
+        $ins=$conn->prepare("insert into article(qtestock,prix,note,Id_Instrument) values(?,?,?,?)");
+        $ins->execute(array($username,$prenom,$adresse,$ville));
+        echo "Article ajouté à la base";
+        
+    }
 	
 ?>
 
@@ -69,7 +77,7 @@ $conn = $database->getConnection();
 
         <div class="mb-3">
             <select name="id_instrument" class="form-select" aria-label="Default select example">
-            <?php
+                <?php
                 $sql = 'SELECT Id_Instrument, designation FROM instruments ';
                 foreach ($conn->query($sql) as $row) {
                 ?>
@@ -78,12 +86,12 @@ $conn = $database->getConnection();
                 <?php
             }
             ?>
-                
+
             </select>
         </div>
 
         <?php if (!empty($message)) { ?>
-            <p class="errorMessage"><?php echo $message; ?></p>
+        <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
 
         <input type="submit" name="valider" value="valider" class="box-button" />
