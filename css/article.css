@@ -1,14 +1,15 @@
 .box_img{
-    width: 200px;
-    height: 200px;
+    width: 260px;
+    height: 260px;
     margin: 0 auto;
+    padding-top: 1rem;
 }
 .img_thumb{
     margin: 0 auto;
     width: auto;
-    max-width: 200px;
+    max-width: 260px;
     height: auto;
-    max-height: 200px;
+    max-height: 260px;
 }
 .card-body{
     padding: 1.25rem 0;

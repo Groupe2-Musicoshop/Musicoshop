@@ -30,8 +30,8 @@
 <div id="body-shop" class="body-mu">
 
     <div id="title">Musicoshop Admin</div>
-    <a class="dropdown-item bg-color-pla" href="http://localhost:8080/Musicoshop/ctrl/service.php">Update BDD</a>
-    <a class="dropdown-item bg-color-pla" href="http://localhost:8080/Musicoshop/vues/body-ajout-article.php">Ajouter un
+    <a class="dropdown-item bg-color-pla" href="<?=$_SESSION['root']?>/ctrl/service.php">Update BDD</a>
+    <a class="dropdown-item bg-color-pla" href="<?=$_SESSION['root']?>/vues/body-ajout-article.php">Ajouter un
         article</a>
 
     <?php $user->genUsersToValidate();?>
