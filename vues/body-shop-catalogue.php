@@ -4,9 +4,6 @@
     $cat = new Categorie();
     $art = new Article();
 
-    $database = new Database();
-    $conn = $database->getConnection();
-
 ?>
 
 <div id="categorie" class="filters button-group js-radio-button-group bg-color-whi">
@@ -19,7 +16,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="catalog">
-                   <?php $art->genCardArticle();?>
+
+                    <?php $art->genCardArticle(0);?>
 
                    <?php
                    /*

@@ -1,16 +1,31 @@
 .box_img{
     width: 300px;
     height: 300px;
-    margin: 0 auto;
-    padding-top: 2rem;
+    margin: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+
 }
 .img_thumb{
     margin: 0 auto;
-    width: auto;
+    width: auto !important;
     max-width: 300px;
     height: auto;
     max-height: 300px;
 }
 .card-body{
     padding: 1.25rem 0;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.star{
+    height: 17px;
+}
+h5{
+    font-family: "Fontastique Fontastique";
 }
