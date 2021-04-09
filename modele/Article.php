@@ -12,7 +12,8 @@ class Article{
     // Table
     private $db_tables = [
         "instruments",
-        "article"
+        "article",
+        "categorie"
     ];
 
     /**
@@ -135,15 +136,27 @@ class Article{
         return $this;
     }
     
-    function genCardArticle(){
-        $stmt = $this->getSqlArticles();
+    function genCardArticle($numCat){
+
+        echo $numCat;
+
+        if($numCat>0){
+
+            $stmt = $this->getSqlArticleByCat($numCat);
+
+        }else{
+
+            $stmt = $this->getSqlArticles();
+
+        }
+
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             echo '<div class="card cat'.$row["idCategorie"].' col-md-4" data-category="cat'.$row['idCategorie'].'">';
             echo '<div class="box_img">';
             echo '<span class="helper"></span>';
-                echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
+            echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
             echo '</div>';
             echo '<div class="card-body row">';
             echo '<div class="col-md-8">';
@@ -153,32 +166,46 @@ class Article{
                 echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
             }
             echo '</h6>';
+            echo '<a href="" class="btn btn-primary ">Lire plus</a>';
+            echo '</div>';
+            echo '<div class="col-md-4">';
+                echo '<h5>'.$row['prix'].' €</h5>';
+                echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
+                echo '</div>';
+            echo '</div>';
+            echo '</div>';
+        }
+    }
 
-echo '<a href="" class="btn btn-primary ">Lire plus</a>';
-echo '</div>';
-echo '<div class="col-md-4">';
-    echo '<h5>'.$row['prix'].' €</h5>';
-    echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
-    echo '</div>';
-echo '</div>';
-echo '</div>';
+    public function getSqlArticles(){
+        $database = new Database();
+        $conn = $database->getConnection();
 
-}
-}
+        $sqlQuery = "SELECT * FROM "
+        .$this->db_tables[0].
+        " INNER JOIN ".$this->db_tables[1].
+        " ON instruments.Id_Instrument = article.Id_Instrument";
 
-public function getSqlArticles(){
-$database = new Database();
-$conn = $database->getConnection();
+        $stmt = $conn->prepare($sqlQuery);
 
-$sqlQuery = "SELECT * FROM "
-.$this->db_tables[0].
-" INNER JOIN ".$this->db_tables[1].
-" ON instruments.Id_Instrument = article.Id_Instrument";
+        $stmt->execute();
+        return $stmt;
+    }
 
-$stmt = $conn->prepare($sqlQuery);
+    public function getSqlArticleByCat($numCat){
+        $database = new Database();
+        $conn = $database->getConnection();
 
-$stmt->execute();
-return $stmt;
-}
+        $sqlQuery = "SELECT * FROM "
+        .$this->db_tables[0].
+        " INNER JOIN ".$this->db_tables[1].
+        " ON instruments.Id_Instrument = article.Id_Instrument".
+        " WHERE idCategorie = ".$numCat;
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+        return $stmt;
+    }
 }
 ?>
