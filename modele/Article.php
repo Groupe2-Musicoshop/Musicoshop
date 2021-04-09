@@ -147,33 +147,32 @@ class Article{
                 echo '<div class="card-body row">';
                     echo '<div class="col-md-8">';
                         echo '<h5 class="card-title">'.ucfirst($row['designation']).'</h5>';
-                        /*echo "<img src='".$_SESSION['root']."/img/article/star.svg' class='img_thumb star card-img-top'
-alt=''>";*/
-echo '<a href="" class="btn btn-primary ">Lire plus</a>';
-echo '</div>';
-echo '<div class="col-md-4">';
-    echo '<h5>'.$row['prix'].' €</h5>';
-    echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
-    echo '</div>';
-echo '</div>';
-echo '</div>';
+                        /*echo "<img src='".$_SESSION['root']."/img/article/star.svg' class='img_thumb star card-img-top'alt=''>";*/
+                echo '<a href="" class="btn btn-primary ">Lire plus</a>';
+                echo '</div>';
+                echo '<div class="col-md-4">';
+                    echo '<h5>'.$row['prix'].' €</h5>';
+                    echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
+                    echo '</div>';
+                echo '</div>';
+                echo '</div>';
 
-}
+        }
 }
 
 public function getSqlArticles(){
-$database = new Database();
-$conn = $database->getConnection();
+    $database = new Database();
+    $conn = $database->getConnection();
 
-$sqlQuery = "SELECT * FROM "
-.$this->db_tables[0].
-" INNER JOIN ".$this->db_tables[1].
-" ON instruments.Id_Instrument = article.Id_Instrument";
+    $sqlQuery = "SELECT * FROM "
+    .$this->db_tables[0].
+    " INNER JOIN ".$this->db_tables[1].
+    " ON instruments.Id_Instrument = article.Id_Instrument";
 
-$stmt = $conn->prepare($sqlQuery);
+    $stmt = $conn->prepare($sqlQuery);
 
-$stmt->execute();
-return $stmt;
+    $stmt->execute();
+    return $stmt;
 }
 }
 ?>
