@@ -142,6 +142,7 @@ class Article{
             extract($row);
             echo '<div class="card cat'.$row["idCategorie"].' col-md-4" data-category="cat'.$row['idCategorie'].'">';
                 echo '<div class="box_img">';
+                echo '<span class="helper"></span>';
                     echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
                 echo '</div>';
                 echo '<div class="card-body row">';
@@ -149,16 +150,16 @@ class Article{
                         echo '<h5 class="card-title">'.ucfirst($row['designation']).'</h5>';
                         /*echo "<img src='".$_SESSION['root']."/img/article/star.svg' class='img_thumb star card-img-top'
 alt=''>";*/
-echo '<a href="" class="btn btn-primary ">Lire plus</a>';
-echo '</div>';
-echo '<div class="col-md-4">';
-    echo '<h5>'.$row['prix'].' €</h5>';
-    echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
-    echo '</div>';
-echo '</div>';
-echo '</div>';
+                echo '<a href="" class="btn btn-primary ">Lire plus</a>';
+                echo '</div>';
+                echo '<div class="col-md-4">';
+                    echo '<h5>'.$row['prix'].' €</h5>';
+                    echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
+                    echo '</div>';
+                echo '</div>';
+                echo '</div>';
 
-}
+                }
 }
 
 public function getSqlArticles(){
