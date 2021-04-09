@@ -147,32 +147,33 @@ class Article{
                 echo '<div class="card-body row">';
                     echo '<div class="col-md-8">';
                         echo '<h5 class="card-title">'.ucfirst($row['designation']).'</h5>';
-                        echo "<div class='rs-rating-stars'> <span class='rs-stars skin-small '><span class='background-wrapper'><span class='inner'><svg class='rs-icon rs-icon-rating-star star background'><use xlink:href='/static/icons/icons.svg?v=74#rating-star'></use></svg><svg class='rs-icon rs-icon-rating-star star background'><use xlink:href='/static/icons/icons.svg?v=74#rating-star'></use></svg><svg class='rs-icon rs-icon-rating-star star background'><use xlink:href='/static/icons/icons.svg?v=74#rating-star'></use></svg><svg class='rs-icon rs-icon-rating-star star background'><use xlink:href='/static/icons/icons.svg?v=74#rating-star'></use></svg><svg class='rs-icon rs-icon-rating-star star background'><use xlink:href='/static/icons/icons.svg?v=74#rating-star'></use></svg></span></span><span class='overlay-wrapper' style='width: 70%'><span class='inner'><svg class='rs-icon rs-icon-rating-star star overlay'><use xlink:href='/static/icons/icons.svg?v=74#rating-star'></use></svg><svg class='rs-icon rs-icon-rating-star star overlay'><use xlink:href='/static/icons/icons.svg?v=74#rating-star'></use></svg><svg class='rs-icon rs-icon-rating-star star overlay'><use xlink:href='/static/icons/icons.svg?v=74#rating-star'></use></svg><svg class='rs-icon rs-icon-rating-star star overlay'><use xlink:href='/static/icons/icons.svg?v=74#rating-star'></use></svg><svg class='rs-icon rs-icon-rating-star star overlay'><use xlink:href='/static/icons/icons.svg?v=74#rating-star'></use></svg></span></span></span><span class='count'>2</span> </div>";
-                        echo '<a href="" class="btn btn-primary ">Lire plus</a>';
-                    echo '</div>';
-                    echo '<div class="col-md-4">';
-                        echo '<h5>'.$row['prix'].' €</h5>';
-                        echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
-                    echo '</div>';
-                echo '</div>';
-            echo '</div>';
-            
-        }
-    }
-    
-    public function getSqlArticles(){
-        $database = new Database();
-        $conn = $database->getConnection();
+                        /*echo "<img src='".$_SESSION['root']."/img/article/star.svg' class='img_thumb star card-img-top'
+alt=''>";*/
+echo '<a href="" class="btn btn-primary ">Lire plus</a>';
+echo '</div>';
+echo '<div class="col-md-4">';
+    echo '<h5>'.$row['prix'].' €</h5>';
+    echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
+    echo '</div>';
+echo '</div>';
+echo '</div>';
 
-        $sqlQuery = "SELECT * FROM "
-                        .$this->db_tables[0].
-                    " INNER JOIN ".$this->db_tables[1].
-                    " ON instruments.Id_Instrument = article.Id_Instrument";
-        
-        $stmt = $conn->prepare($sqlQuery);              
-        
-        $stmt->execute();
-        return $stmt;
-    }
+}
+}
+
+public function getSqlArticles(){
+$database = new Database();
+$conn = $database->getConnection();
+
+$sqlQuery = "SELECT * FROM "
+.$this->db_tables[0].
+" INNER JOIN ".$this->db_tables[1].
+" ON instruments.Id_Instrument = article.Id_Instrument";
+
+$stmt = $conn->prepare($sqlQuery);
+
+$stmt->execute();
+return $stmt;
+}
 }
 ?>
