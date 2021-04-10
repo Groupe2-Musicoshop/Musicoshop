@@ -153,7 +153,7 @@ class Article{
             extract($row);
             echo "<form>";
             echo '<div class="card cat'.$row["idCategorie"].' col-md-4" data-category="cat'.$row['idCategorie'].'">';
-                echo '<a class="linkcat" href="'.$_SESSION['root'].'/'.$row["page"].'"><i class="fa fa-quote-left"></i>'.$row["libele"].'<i class="fa fa-quote-right"></i></a>';
+                echo '<a class="linkcat" href="'.$_SESSION['root'].'/'.$row["page"].'"><i class="fa fa-quote-left"></i>&nbsp;'.$row["libele"].'&nbsp;<i class="fa fa-quote-right"></i></a>';
 
             echo '<div class="box_img">';
             echo '<span class="helper"></span>';

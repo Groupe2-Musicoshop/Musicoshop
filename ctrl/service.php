@@ -91,9 +91,8 @@ $instruments = '[
     {"id":47,"name":"tuba","cat":4},
     {"id":48,"name":"ukulélé","cat":1},
     {"id":49,"name":"alto","cat":5},
-    {"id":50,"name":"violon","cat":5},
-    {"id":51,"name":"cithare","cat":1},
-    {"id":52,"name":"vuvuzela","cat":4}
+    {"id":50,"name":"cithare","cat":1},
+    {"id":51,"name":"vuvuzela","cat":4}
 ]';
 
 if (!isset($_SESSION['Instrument'])) {
@@ -177,8 +176,7 @@ $articles = '[
     {"id":48,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":48},
     {"id":49,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":49},
     {"id":50,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":50},
-    {"id":51,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":51},
-    {"id":52,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":52}
+    {"id":51,"stock":'.artRand(0,15).',"prix":'.artRand(150,1500).',"note":'.artRand(1,5).',"instrument":51}
 ]';
 
 

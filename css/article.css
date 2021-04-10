@@ -9,7 +9,15 @@
 }
 
 #catalog a.linkcat{
-    color: #415a77;
+    color: #1b263b;
+    text-decoration: none;
+    margin-top: 1rem;
+
+}
+
+#catalog a.linkcat:hover{
+    color: #6D81A8;
+    text-decoration: none;
 }
 
 #catalog .btn-primary{
@@ -36,6 +44,10 @@
     padding: 1.25rem 0;
 }
 
+#catalog .card-title{
+    margin-bottom: 0;
+}
+
 .helper {
     display: inline-block;
     height: 100%;
@@ -45,7 +57,14 @@
 .star{
     height: 17px;
 }
-
 h5{
     font-family: "Fontastique Fontastique";
+    margin-bottom: 0;
 }
+
+#catalog h6{
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 0.1rem;
+}
+
