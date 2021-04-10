@@ -10,12 +10,12 @@ $conn = $database->getConnection();
 // ----------------- Categories -----------------------
 
 $categories = '[
-    {"cat":1,"categorie":"Guitares & Basses"},
-    {"cat":2,"categorie":"Batteries & Percussions"},
-    {"cat":3,"categorie":"Pianos & Claviers"},
-    {"cat":4,"categorie":"Instruments à Vent"},
-    {"cat":5,"categorie":"Instruments à Cordes Frottées"},
-    {"cat":6,"categorie":"Instruments à Cordes"}
+    {"cat":1,"categorie":"Guitares & Basses","page":"cat-guitares_basses.php"},
+    {"cat":2,"categorie":"Batteries & Percussions","page":"cat-batteries_percussions.php"},
+    {"cat":3,"categorie":"Pianos & Claviers","page":"cat-pianos_claviers.php"},
+    {"cat":4,"categorie":"Instruments à Vent","page":"cat-instruments_a_vent.php"},
+    {"cat":5,"categorie":"Instruments à Cordes Frottées","page":"cat-instruments_a_cordes_frottees.php"},
+    {"cat":6,"categorie":"Instruments à Cordes","page":"cat-instruments_a_cordes.php"}
 ]';
 
 if (!isset($_SESSION['categories'])) {
@@ -25,7 +25,7 @@ if (!isset($_SESSION['categories'])) {
     //var_dump($array);
 
     foreach ($array as $row) {
-        $sql = "INSERT INTO categorie(idCategorie, libele) VALUES ('".$row["cat"]."','".$row["categorie"]."')";
+        $sql = "INSERT INTO categorie(idCategorie, libele,page) VALUES ('".$row["cat"]."','".$row["categorie"]."','".$row["page"]."')";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();

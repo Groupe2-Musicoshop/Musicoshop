@@ -7,6 +7,7 @@ USE musicoshop;
 CREATE TABLE categorie(
    idCategorie INT AUTO_INCREMENT,
    libele VARCHAR(50),
+   page VARCHAR(50),
    PRIMARY KEY(idCategorie)
 );
 

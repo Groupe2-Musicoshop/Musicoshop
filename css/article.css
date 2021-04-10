@@ -7,6 +7,23 @@
     text-align: center;
 
 }
+
+#catalog a.linkcat{
+    color: #415a77;
+}
+
+#catalog .btn-primary{
+    background-color: #6D81A8;
+    border-color: #1b263b;
+    color:#fff;
+}
+
+#catalog .btn-primary:hover{
+    background-color: #1b263b;
+    border-color: #1b263b;
+    color:#fff;
+}
+
 .img_thumb{
     margin: 0 auto;
     width: auto !important;
@@ -14,6 +31,7 @@
     height: auto;
     max-height: 300px;
 }
+
 .card-body{
     padding: 1.25rem 0;
 }
@@ -23,9 +41,11 @@
     height: 100%;
     vertical-align: middle;
 }
+
 .star{
     height: 17px;
 }
+
 h5{
     font-family: "Fontastique Fontastique";
 }

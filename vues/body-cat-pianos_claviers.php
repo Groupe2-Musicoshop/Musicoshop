@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col-12">
-                <div class="catalog">
+                <div id="catalog" class="catalog">
 
                     <?php $art->genCardArticle(3);?>
 

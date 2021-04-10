@@ -1,10 +1,11 @@
 #categorie{
     display: flex;
     justify-content: space-around;
-    border-bottom: 1px solid #0d1b2a;
+    
     padding: .5rem;
     border-radius: 0.3rem;
-    margin-top: 1rem;
+    /*margin-top: 1rem;
+    margin-bottom: 1rem;*/
 }
 
 #categorie button{

@@ -6,20 +6,24 @@
 
 ?>
 
-<div id="categorie" class="filters button-group js-radio-button-group bg-color-whi">
-    <?php $cat->genCategories();?>
-</div>
+
 
 <div class="jumbotron">
     <div id="body-shop" class="body-mu">
-        <p id="title">Catalogue</p>
+        <div id="title" class="white">Catalogue</div>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_no.jpg' class='w100 d-inline-block align-top' alt=''>
+
+        <div id="categorie" class="filters button-group js-radio-button-group bg-color-whi">
+            <?php $cat->genCategories();?>
+        </div>
+
         <div class="row">
             <div class="col-12">
-                <div class="catalog">
+                <div id="catalog" class="catalog">
 
                     <?php $art->genCardArticle(0);?>
 
-                   <?php
+                    <?php
                    /*
                         $nbPage = 1;
                         $limit = 6;
@@ -49,10 +53,10 @@
                         }
                         
                         ?>
-                
+
                     <nav>
                         <ul class="pagination justify-content-center">
-                        <?php
+                            <?php
                             // ON RECUPERE LE NOMBRE DE PAGE
 
                             if($page < 1){
@@ -60,8 +64,9 @@
                             }
                             if($page > 1){
                         ?>
-                            <li class="page-item"><a class="page-link" href="index.php?page=<?=$page-1?>">Previous</a></li>
-                        <?php
+                            <li class="page-item"><a class="page-link" href="index.php?page=<?=$page-1?>">Previous</a>
+                            </li>
+                            <?php
                             }
                         ?>
                             <?php
@@ -72,7 +77,8 @@
                                 $nbArticle = $stmt->fetch();
                                 for($i=0; $i < $nbArticle[0]; $i=$i+$limit){
                             ?>
-                            <li class="page-item"><a class="page-link" href="index.php?page=<?=$nbPage?>"><?=$nbPage?></a></li>
+                            <li class="page-item"><a class="page-link"
+                                    href="index.php?page=<?=$nbPage?>"><?=$nbPage?></a></li>
                             <?php
                                 $nbPage++;
                                 }
@@ -85,10 +91,10 @@
                                 }
                                 */
                             ?>
-                        <!--</ul>
+                            <!--</ul>
                 </nav> -->
-                
+
+                </div>
             </div>
         </div>
     </div>
-</div>

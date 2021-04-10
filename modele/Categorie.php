@@ -84,7 +84,7 @@ class Categorie{
     function genCategories(){
         $stmt = $this->getSqlCategories();
         
-        echo "<button class='button is-checked' data-filter='*'>show all</button>";
+        echo "<button class='button is-checked' data-filter='*'>Toutes</button>";
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
@@ -104,10 +104,12 @@ class Categorie{
 
         $stmt = $this->getSqlCategories();
 
+        echo "<li value='all'><a href='".$_SESSION['root']."/index.php'>Catalogue</a></li>";
+
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
 
-            echo "<li  value=".$idCategorie."><a href='".$_SESSION['root']."/".$pages_json[$numpage]['page']."'>".$libele."</a></li>";
+            echo "<li value=".$idCategorie."><a href='".$_SESSION['root']."/".$pages_json[$numpage]['page']."'>".$libele."</a></li>";
             $numpage+=1;
         }
     }
@@ -126,6 +128,9 @@ class Categorie{
         echo "<div class='collapse navbar-collapse' id='navbarCatHorizontalyContent'>";
 
         echo "<ul id='cat-horizontaly' class='navbar-nav'>";
+
+            echo "<li class='nav-item ' value='all'><a class='nav-link' href='".$_SESSION['root']."/index.php'>Catalogue</a></li>";
+
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);

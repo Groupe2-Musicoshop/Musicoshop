@@ -151,7 +151,10 @@ class Article{
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
+            echo "<form>";
             echo '<div class="card cat'.$row["idCategorie"].' col-md-4" data-category="cat'.$row['idCategorie'].'">';
+                echo '<a class="linkcat" href="'.$_SESSION['root'].'/'.$row["page"].'"><i class="fa fa-quote-left"></i>'.$row["libele"].'<i class="fa fa-quote-right"></i></a>';
+
             echo '<div class="box_img">';
             echo '<span class="helper"></span>';
             echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
@@ -169,9 +172,13 @@ class Article{
             echo '<div class="col-md-4">';
                 echo '<h5>'.$row['prix'].' €</h5>';
                 echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
+
+		        echo "<input type='hidden' value='". $row['Id_Article']."' name='addCart' />"; //added
+
                 echo '</div>';
             echo '</div>';
             echo '</div>';
+            echo "</form>";
         }
     }
 
@@ -180,9 +187,11 @@ class Article{
         $conn = $database->getConnection();
 
         $sqlQuery = "SELECT * FROM "
-        .$this->db_tables[0].
-        " INNER JOIN ".$this->db_tables[1].
-        " ON instruments.Id_Instrument = article.Id_Instrument";
+        .$this->db_tables[1].
+        " INNER JOIN ".$this->db_tables[0].
+        " ON instruments.Id_Instrument = article.Id_Instrument ".
+        " INNER JOIN ".$this->db_tables[2].
+        " on categorie.idCategorie = instruments.idCategorie";
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -195,10 +204,12 @@ class Article{
         $conn = $database->getConnection();
 
         $sqlQuery = "SELECT * FROM "
-        .$this->db_tables[0].
-        " INNER JOIN ".$this->db_tables[1].
+        .$this->db_tables[1].
+        " INNER JOIN ".$this->db_tables[0].
         " ON instruments.Id_Instrument = article.Id_Instrument".
-        " WHERE idCategorie = ".$numCat;
+        " INNER JOIN ".$this->db_tables[2].
+        " on categorie.idCategorie = instruments.idCategorie".
+        " WHERE instruments.idCategorie = ".$numCat;
 
         $stmt = $conn->prepare($sqlQuery);
 

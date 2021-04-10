@@ -1,7 +1,7 @@
 // init Isotope
 var $grid = $('.catalog').isotope({
     itemSelector: '.card',
-    layoutMode: 'fitRows',
+    layoutMode: 'fitRows',    
     getSortData: {
         name: '.name',
         symbol: '.symbol',
