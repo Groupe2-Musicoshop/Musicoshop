@@ -17,6 +17,7 @@ CREATE TABLE utilisateur(
    type VARCHAR(100),
    password VARCHAR(100),
    valideuser Boolean,
+   changepwd Boolean,
    sexe VARCHAR(50),
    nom VARCHAR(50),
    prenom VARCHAR(50),
@@ -71,6 +72,6 @@ CREATE TABLE ligne_Commande(
    FOREIGN KEY(idCmd) REFERENCES commande(idCmd)
 );
 
-INSERT INTO `utilisateur` (`idUtilisateur`, `username`, `email`, `type`,`valideuser`, `password`,`sexe`,`nom`,`prenom`) VALUES
-(1, 'toto', 'constmatsima@gmail.com', 'admin','1', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','','',''),
-(2, 'Afpatoto', 'constmatsima@gmail.com', 'user','0', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','','matsima','Constant');
+INSERT INTO `utilisateur` (`idUtilisateur`, `username`, `email`, `type`,`valideuser`,`changepwd`, `password`,`sexe`,`nom`,`prenom`) VALUES
+(1, 'toto', 'pierre.lange@gmail.com', 'admin','1','0', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','','',''),
+(2, 'Afpatoto', 'constmatsima@gmail.com', 'user','0','0', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','','matsima','Constant');

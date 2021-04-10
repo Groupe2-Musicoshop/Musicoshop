@@ -138,8 +138,6 @@ class Article{
     
     function genCardArticle($numCat){
 
-        echo $numCat;
-
         if($numCat>0){
 
             $stmt = $this->getSqlArticleByCat($numCat);

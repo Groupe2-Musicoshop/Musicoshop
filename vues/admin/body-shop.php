@@ -8,14 +8,12 @@
         $conn = $database->getConnection();
 
         $sqlQuery = "UPDATE utilisateur SET valideuser=1  WHERE idUtilisateur=".$_POST["idUtilisateur"];
-
-        echo $sqlQuery;
          
         $stmt = $conn->prepare($sqlQuery);              
         
         $stmt->execute();
         
-        header('Location:index.php');
+        echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
 
     }else{
 
@@ -31,7 +29,7 @@
 
     <div id="title">Musicoshop Admin</div>
     <a class="dropdown-item bg-color-pla" href="<?=$_SESSION['root']?>/ctrl/service.php">Update BDD</a>
-    <a class="dropdown-item bg-color-pla" href="<?=$_SESSION['root']?>/vues/body-ajout-article.php">Ajouter un
+    <a class="dropdown-item bg-color-pla" href="<?=$_SESSION['root']?>/vues/ajout-article.php">Ajouter un
         article</a>
 
     <?php $user->genUsersToValidate();?>

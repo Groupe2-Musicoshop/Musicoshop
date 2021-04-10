@@ -58,9 +58,18 @@ class User{
         $conn = $database->getConnection();
 
         $sqlQuery = "UPDATE ". $this->db_table." SET valideuser=1  WHERE idUtilisateur=".$idUtilisateur;
+         
+        $stmt = $conn->prepare($sqlQuery);              
+        
+        $stmt->execute();
 
-        echo $sqlQuery;
-        exit;
+    }
+
+    public function updatelUserChangePwd($email){
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $sqlQuery = "UPDATE ". $this->db_table." SET changepwd=1  WHERE email=".$email;
          
         $stmt = $conn->prepare($sqlQuery);              
         

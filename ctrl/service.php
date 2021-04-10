@@ -195,15 +195,15 @@ if (!isset($_SESSION['articles'])) {
         $stmt = $conn->prepare($sql);
         $stmt->execute();
     }
-
+    
     $_SESSION['articles']="articles";
-
+    
     echo 'Inserted Article';
-
+    
 }else{
-
+    
     echo "article already inserted";
-
+    
 }
 
 
@@ -220,13 +220,13 @@ print_r($files);
 
 function before ($thi, $inthat){
     
-        return substr($inthat, 0, strpos($inthat, $thi));
-    }
+    return substr($inthat, 0, strpos($inthat, $thi));
+}
 
 foreach ($files as $file) {
-
+    
     if ($file[0] !== '.') { 
-
+        
         $chemin = $_SESSION['root'].'/img/cart_img';
         $indice = before('-', $file);
         $sql = "UPDATE instruments SET img = '".$chemin."/".$file."' WHERE Id_Instrument = $indice";
@@ -236,12 +236,14 @@ foreach ($files as $file) {
     }
 }
 
+$message="Update BDD ok";
+echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+header("Location: ".$_SESSION['root']."/index.php");
+
 function nameImage($id,$name){
     $name = str_replace(" ", "_", $name);
     $name = str_replace("à", "a", $name);
     $id."-".$name;
 }
-
-header("Location: ".$_SESSION['root']."/index.php");
 
 ?>

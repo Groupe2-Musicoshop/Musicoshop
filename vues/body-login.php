@@ -5,7 +5,8 @@
 	@$valider=$_POST["valider"];
 	$message="";
     
-    $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+    session_start();
+    //$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
 	if(isset($valider)){
     require_once 'modele/Database.php';
@@ -18,7 +19,6 @@
 		$res->execute(array($username,hash('sha256', "$pass")));
 		$tab=$res->fetchAll();
 
-        //print_r($tab);
         
         if (count($tab)==0) {
             
@@ -28,20 +28,35 @@
 
             if($tab[0]["valideuser"]!=0){
 
+                if($tab[0]["changepwd"]!=0){
+                    
+                    $_SESSION["username"]=$_POST["username"];
+
+                    //header("Location: ".$_SESSION['root']."/change-password.php");
+                    echo "<script type='text/javascript'> document.location = 'change-password.php'; </script>";
+                    exit;
+                }
+
                 
                 $_SESSION["userType"]=$tab[0]["type"];
                 $_SESSION["isLogged"]=$_POST["valider"];
+
+                $_SESSION["username"]=$_POST["username"];
                 
                 if($tab[0]["nom"]==""){
                     
-                    $_SESSION["username"]=$_POST["username"];
+                    $_SESSION["navUsername"]=$_POST["username"];
+
                     
                 }else{
                     
-                    $_SESSION["username"]=$tab[0]["prenom"]." ".$tab[0]["nom"];
+                    $_SESSION["navUsername"]=$tab[0]["prenom"]." ".$tab[0]["nom"];
                     
                 }
-                header('Location:index.php');
+                
+
+                echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+
             }else{
 
                 $message="Votre compte n'a pas encore été validé par l'administrateur";
@@ -49,6 +64,7 @@
             }        
 		}
 	}
+    header("Location: ".$_SESSION['root']."/index.php");
 ?>
 
 <div class="jumbotron">

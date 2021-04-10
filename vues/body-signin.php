@@ -1,10 +1,8 @@
 <?php
-//session_start();
-$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+    session_start();
+    $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
-
-
-	@$username=$_POST["username"];
+	@$nom=$_POST["nom"];
 	@$prenom=$_POST["prenom"];
 	@$adresse=$_POST["adresse"];
 	@$ville=$_POST["ville"];
@@ -13,11 +11,12 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 	@$password=$_POST["password"];
 	@$repass=$_POST["repass"];
 	@$valider=$_POST["valider"];
-	$message="";
-	if(isset($valider)){
-        
 
-		if(empty($username)) $message="Nom invalide!";
+	$message="";
+
+	if(isset($valider)){        
+
+		if(empty($nom))$message="Nom invalide!";
 		if(empty($prenom)) $message.="Prénom invalide!";
 		if(empty($adresse)) $message.="adresse invalide!";
 		if(empty($ville)) $message.="ville invalide!";
@@ -25,7 +24,9 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 		if(empty($email)) $message.="email invalide!";
 		if(empty($password)) $message.="Mot de passe invalide!";
 		if($password!=$repass) $message.="Mots de passe non identiques!";	
+
 		if(empty($message)){
+            
 			require_once 'modele/Database.php';
             $database = new Database();
             $pdo = $database->getConnection();
@@ -43,9 +44,15 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
                 $database = new Database();
                 $pdo = $database->getConnection();
 
-				$ins=$pdo->prepare("insert into utilisateur(userName,prenom,adresse,ville,codePostal,email,password,type,valideuser) values(?,?,?,?,?,?,?,?,?)");
-				$ins->execute(array($username,$prenom,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user',0));
-				header('Location:../ghj-login.php');
+                $username = $nom.$prenom;
+
+				$ins=$pdo->prepare("insert into utilisateur(userName,nom,prenom,adresse,ville,codePostal,email,password,type,valideuser,changepwd) values(?,?,?,?,?,?,?,?,?,?,?)");
+				$ins->execute(array($username,$nom,$prenom,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user',0,0));
+				
+                $message="Votre inscription a bien té prise en compte un Administrateur la valideras sous 24h";
+
+				echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+				echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
 			}
 		}
 	}
@@ -59,7 +66,7 @@ $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
         </div>
 
         <div class="mb-3">
-            <input type="text" class="form-control" name="username" placeholder="Nom" required>
+            <input type="text" class="form-control" name="nom" placeholder="Nom" required>
         </div>
 
         <div class="mb-3">

@@ -13,7 +13,7 @@ class Nav{
         {"titre":"Mon espace client","link":"vues/my-space.php","userType":"user"},
         {"titre":"Mes commandes","link":"vues/my-cmds.php","userType":"user"},    
         {"titre":"Nous contacter","link":"vues/contact-us.php","userType":"user"},
-        {"titre":"Changer mon mot de passe","link":"pwlost.php","userType":"user"},
+        {"titre":"Changer mon mot de passe","link":"change-password.php","userType":"user"},
         {"titre":"Ajouter un Article","link":"ajout-article.php","userType":"admin"}
         ]},
         {"titre":"img/cart.svg" , "type":"img" , "link":[
@@ -131,7 +131,7 @@ class Nav{
 
                         } elseif ($value2n->{'userType'} == "logout" and ($this->get_userType()=="user" || $this->get_userType()=="admin")) {
 
-                            echo "<a class='dropdown-item bg-color-pla' href='".$this->get_Root()."/".$value2n->{'link'}."'>Bonjour ".$_SESSION['username'].".<br/>".$value2n->{'titre'}."</a>";
+                            echo "<a class='dropdown-item bg-color-pla' href='".$this->get_Root()."/".$value2n->{'link'}."'>Bonjour ".$_SESSION['navUsername'].".<br/>".$value2n->{'titre'}."</a>";
 
                         } elseif ($value2n->{'userType'} == $this->get_userType()) {
 
