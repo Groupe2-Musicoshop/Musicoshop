@@ -5,11 +5,11 @@
 	@$valider=$_POST["valider"];
 	$message="";
     
-    session_start();
+    if (!isset($_SESSION)) { session_start(); }
     //$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
 	if(isset($valider)){
-    require_once 'modele/Database.php';
+        require_once 'modele/Database.php';
 
         $database = new Database();
         $pdo = $database->getConnection();
@@ -63,8 +63,9 @@
 
             }        
 		}
+
+        header("Location: ".$_SESSION['root']."/index.php");
 	}
-    header("Location: ".$_SESSION['root']."/index.php");
 ?>
 
 <div class="jumbotron">

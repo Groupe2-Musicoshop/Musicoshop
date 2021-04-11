@@ -1,12 +1,22 @@
 <?php
+    if (!isset($_SESSION)) { session_start(); }
+    
     /* param : unlog  ou user ou admin */
     if (!isset($_SESSION['isLogged'])){
 
         $_SESSION['userType'] = "unlog";
         
     }
-   
-    $_SESSION['nbAticle'] = 0;
+
+    if (!isset($_SESSION['cart'])) {
+
+        $_SESSION['nbAticle'] = count($_SESSION['cart']);
+
+    }else{
+
+        $_SESSION['nbAticle'] = 0;
+
+    }
 
     include_once(__DIR__."/../modele/Nav.php");
     include_once(__DIR__."/../modele/Categorie.php");

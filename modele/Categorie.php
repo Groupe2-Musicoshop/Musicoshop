@@ -149,7 +149,6 @@ class Categorie{
                     idCategorie, libele
                   FROM
                     ". $this->db_table;
-
          
         $stmt = $conn->prepare($sqlQuery);              
         

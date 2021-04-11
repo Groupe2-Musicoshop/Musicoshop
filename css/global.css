@@ -21,7 +21,7 @@ CSS HEX
 }
 
 .bg-color-oxb {
-    background-color: #1b263b;
+    background-color: #1b263b !important;
 }
 
 
@@ -32,7 +32,7 @@ CSS HEX
 }
 
 .bg-color-bzb {
-    background-color: #415a77;
+    background-color: #415a77 !important;
 }
 
 
@@ -43,7 +43,7 @@ CSS HEX
 }
 
 .bg-color-gla {
-    background-color: #6D81A8;
+    background-color: #6D81A8 !important;
 }
 
 
@@ -54,7 +54,7 @@ CSS HEX
 }
 
 .bg-color-pla {
-    background-color: #E0E1DD;
+    background-color: #E0E1DD !important;
 }
 
 
@@ -65,7 +65,7 @@ CSS HEX
 }
 
 .bg-color-whi {
-    background-color: #f4f4f4;
+    background-color: #f4f4f4 !important;
 }
 
 

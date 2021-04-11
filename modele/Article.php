@@ -151,7 +151,7 @@ class Article{
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
-            echo "<form>";
+            echo '<form method="POST">';
             echo '<div class="card cat'.$row["idCategorie"].' col-md-4" data-category="cat'.$row['idCategorie'].'">';
                 echo '<a class="linkcat" href="'.$_SESSION['root'].'/'.$row["page"].'"><i class="fa fa-quote-left"></i>&nbsp;'.$row["libele"].'&nbsp;<i class="fa fa-quote-right"></i></a>';
 
@@ -171,15 +171,45 @@ class Article{
             echo '</div>';
             echo '<div class="col-md-4">';
                 echo '<h5>'.$row['prix'].' €</h5>';
-                echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
+                //echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
 
-		        echo "<input type='hidden' value='". $row['Id_Article']."' name='addCart' />"; //added
+		        echo '<button class="btn btn-success " type="submit" value="+" name="addCart" ><i class="fa fa-cart-plus"></i></button>';
+		        echo '<input type="hidden" value="'.$row['Id_Article'].'" name="Id_Article" />';
 
                 echo '</div>';
             echo '</div>';
             echo '</div>';
-            echo "</form>";
+            echo '</form>';
         }
+    }
+
+    function genTabCartArticles($cart){
+
+        $numUser=1;
+        
+        echo "<table class='table table-dark'><thead><tr>";
+        echo "<th scope='col'>#</th>";
+        echo "<th scope='col'>Id_Article</th>";
+        //echo "<th scope='col'>Nom</th>";
+        //echo "<th scope='col'>Prénom</th>";
+        //echo "<th scope='col'>Type</th>";
+        echo "<th scope='col'>Action</th>";
+        echo "</tr></thead><tbody>";
+
+        for($i = 0 ; $i < count($cart) ; $i++) {
+
+            echo "<form action='' method='POST'>";	//added
+		    echo "<input type='hidden' value='". $cart[$i] ."' name='Id_Article' />"; //added
+            echo "<tr><th scope='row'>". $cart[$i] ."</th>";
+            echo "<td>". $cart[$i] ."</td>";
+            //echo "<td>".$nom."</td>";
+            //echo "<td>".$prenom."</td>";
+            //echo "<td>".$type."</td>";
+            echo "<td><input type='submit' name='view' value='Voir' class='btn btn-primary' /></td>";
+            echo "</tr>";
+        }
+        echo "</tbody></table>";
+        echo "</form>";
     }
 
     public function getSqlArticles(){

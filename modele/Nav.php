@@ -17,7 +17,7 @@ class Nav{
         {"titre":"Ajouter un Article","link":"ajout-article.php","userType":"admin"}
         ]},
         {"titre":"img/cart.svg" , "type":"img" , "link":[
-        {"titre":"Aller au panier","link":"vues/cart.php","userType":"all"},    
+        {"titre":"Aller au panier","link":"cart.php","userType":"all"},    
         {"titre":"","link":"","userType":"none"}    
         ]}
     ]';

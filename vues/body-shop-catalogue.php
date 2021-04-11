@@ -4,6 +4,22 @@
     $cat = new Categorie();
     $art = new Article();
 
+    @$addCart=$_POST["addCart"];
+	@$Id_Article=$_POST["Id_Article"];
+
+	$message="";
+    
+    if (isset($addCart)) {
+
+        array_push($_SESSION['cart'],$Id_Article);   
+
+        $_SESSION['nbAticle'] += 1;
+                
+    }else{
+
+        $_SESSION['cart']=array();
+
+    }
 ?>
 
 
