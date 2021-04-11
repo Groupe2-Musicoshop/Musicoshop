@@ -1,4 +1,5 @@
 <?php
+   if (!isset($_SESSION)) { session_start(); }
 
     $page = basename($_SERVER["PHP_SELF"]);
     $cat = new Categorie();
@@ -6,12 +7,10 @@
 
     $art = new Article();
 
+    $cart = $_SESSION['cart'];
 
-
-    if (!isset($_SESSION['cart'])) {
-
-        $_SESSION['cart']=array();
-
+    if (isset($_POST["Id_Article"])) {
+        echo "<script type='text/javascript'> document.location = 'singleArticle.php'; </script>";
     }
 
 ?>
@@ -30,7 +29,7 @@
 
             <div class="col-12">
 
-                <?php $art->genTabCartArticles($_SESSION['cart']);?>
+                <?php $art->genTabCartArticles($cart);?>
 
             </div>
         </div>

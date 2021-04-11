@@ -13,12 +13,7 @@
 
         array_push($_SESSION['cart'],$Id_Article);   
 
-        $_SESSION['nbAticle'] += 1;
-                
-    }else{
-
-        $_SESSION['cart']=array();
-
+        $_SESSION['nbAticle'] += 1;                
     }
 ?>
 

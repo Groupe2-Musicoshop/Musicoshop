@@ -8,6 +8,8 @@ class Article{
     private ?float $prix;
     private ?float $note;
     private ?int $stock;
+    
+    private ?int $Id_Article=0;
 
     // Table
     private $db_tables = [
@@ -136,6 +138,30 @@ class Article{
         return $this;
     }
     
+    /**
+     * Get the value of Id_Article
+     *
+     * @return  ?int
+     */
+    public function getIdArticle()
+    {
+        return $this->Id_Article;
+    }
+
+    /**
+     * Set the value of Id_Article
+     *
+     * @param  ?int  $Id_Article
+     *
+     * @return  self
+     */
+    public function setIdArticle(?int $Id_Article)
+    {
+        $this->Id_Article = $Id_Article;
+
+        return $this;
+    }
+
     function genCardArticle($numCat){
 
         if($numCat>0){
@@ -144,7 +170,16 @@ class Article{
 
         }else{
 
-            $stmt = $this->getSqlArticles();
+            if($this->Id_Article>0){
+
+                $stmt = $this->getSqlSingleArticleByID($this->Id_Article);
+
+            }else{
+
+                $stmt = $this->getSqlArticles();
+
+            }
+
 
         }
 
@@ -246,5 +281,24 @@ class Article{
         $stmt->execute();
         return $stmt;
     }
+
+    public function getSqlSingleArticleByID(){
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $sqlQuery = "SELECT * FROM "
+        .$this->db_tables[1].
+        " INNER JOIN ".$this->db_tables[0].
+        " ON instruments.Id_Instrument = article.Id_Instrument".
+        " INNER JOIN ".$this->db_tables[2].
+        " on categorie.idCategorie = instruments.idCategorie".
+        " WHERE instruments.Id_Article = ".$this->Id_Article;
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+        return $stmt;
+    }
+
 }
 ?>

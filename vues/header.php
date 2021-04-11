@@ -8,15 +8,13 @@
         
     }
 
-    if (!isset($_SESSION['cart'])) {
+    if (!isset($_SESSION['nbAticle'])) { 
+		$_SESSION['nbAticle']=0;
+	}
 
-        $_SESSION['nbAticle'] = count($_SESSION['cart']);
-
-    }else{
-
-        $_SESSION['nbAticle'] = 0;
-
-    }
+    if (!isset($_SESSION['cart'])) { 
+		$_SESSION['cart']=array();
+	}
 
     include_once(__DIR__."/../modele/Nav.php");
     include_once(__DIR__."/../modele/Categorie.php");
