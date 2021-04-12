@@ -1,7 +1,8 @@
 <?php
     require_once 'modele/Database.php';
+    require 'vues/add-to-cart.php';	
 
-    $page = basename($_SERVER["PHP_SELF"]);
+    /*$page = basename($_SERVER["PHP_SELF"]);
 
     $cat = new Categorie();
     $art = new Article();
@@ -30,12 +31,7 @@
             $cart->addArticleToCart(1,$Id_Article,$prix);
             
         }
-
-        /*array_push($_SESSION['cart'],$Id_Article);   
-
-        $_SESSION['nbAticle'] += 1;     */
-
-    }
+    }*/
 ?>
 
 
