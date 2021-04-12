@@ -1,0 +1,43 @@
+#cart table{
+    border-radius: 0.3rem;
+}
+
+#cart .box_img {
+    width: 300px;
+    height: 30px!important;
+    margin: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+#cart h6{
+    font-family: "Fontastique Fontastique";
+}
+
+#cart h5,
+#cart h6,
+#cart .card-title{
+    color: #1b263b;
+}
+
+#cart .img_thumb{
+    max-height: 120px;
+}
+
+#cart .btn.btn-light{
+    padding: 0px;
+    padding-bottom: 2px;
+    height: 18px;
+    line-height: 10px;
+    width: 18px;
+}
+
+#cart .btn.btn-light:hover{
+    background-color: #0d1b2a;
+    color:#fff;
+}
+
+#cart .text_right{
+    text-align: right;
+}

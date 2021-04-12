@@ -1,26 +1,26 @@
 <?php
     if (!isset($_SESSION)) { session_start(); }
     
-    /* param : unlog  ou user ou admin */
-    if (!isset($_SESSION['isLogged'])){
-
-        $_SESSION['userType'] = "unlog";
-        
-    }
-
-    if (!isset($_SESSION['nbAticle'])) { 
-		$_SESSION['nbAticle']=0;
-	}
-
-    if (!isset($_SESSION['cart'])) { 
-		$_SESSION['cart']=array();
-	}
-
     include_once(__DIR__."/../modele/Nav.php");
     include_once(__DIR__."/../modele/Categorie.php");
     include_once(__DIR__."/../modele/Article.php");
     include_once(__DIR__."/../modele/Panier.php");
     include_once(__DIR__."/../modele/User.php");
+    
+    /* param : unlog  ou user ou admin */
+    if (!isset($_SESSION['isLogged'])){
+
+        $_SESSION['userType'] = "unlog";      
+    }
+
+    if(!isset($cart)){ $cart = new Panier();} 
+	$_SESSION['nbAticle']=$cart->getSumQteCart();
+
+
+    if (!isset($_SESSION['cart'])) { 
+		$_SESSION['cart']=array();
+	}
+
 
     $page = basename($_SERVER["PHP_SELF"]);
     //echo $_SERVER['REQUEST_URI']."<br>";
@@ -43,6 +43,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -53,8 +54,9 @@
 
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/global.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/header.css">
-    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/article.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/article.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/panier.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/login.css" />
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/categorie.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/fildarianne.css">

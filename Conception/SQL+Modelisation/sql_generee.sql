@@ -63,6 +63,7 @@ CREATE TABLE panier(
    Id_Panier INT AUTO_INCREMENT,
    qtite_Art INT,
    Id_Article INT,
+   prixT DECIMAL(15,2),
    PRIMARY KEY(Id_Panier)
 );
 

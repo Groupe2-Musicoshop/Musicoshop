@@ -1,17 +1,20 @@
 <?php
 
 require_once 'modele/Database.php';
+require_once 'modele/Article.php';
 
 class Panier{
     private ?int $Id_Panier;
     private ?int $qtite_Art;
     private ?int $Id_Article;
+    private ?float $prixT;
 
     // Table
     private $db_tables = [
         "panier",
         "article",
-        "instruments"
+        "instruments",
+        "categorie"
     ];
 
     /**
@@ -86,72 +89,105 @@ class Panier{
         return $this;
     }
 
-    function genCardArticle($numCat){
+        /**
+     * Get the value of prixT
+     *
+     * @return  ?float
+     */
+    public function getPrixT()
+    {
+        return $this->prixT;
+    }
 
-        if($numCat>0){
+    /**
+     * Set the value of prixT
+     *
+     * @param  ?float  $prixT
+     *
+     * @return  self
+     */
+    public function setPrixT(?float $prixT)
+    {
+        $this->prixT = $prixT;
 
-            $stmt = $this->getSqlArticleByCat($numCat);
+        return $this;
+    }
 
-        }else{
+    function genCardArticle(){
+      
+        $stmt = $this->getSqlArticles();
 
-            if($this->Id_Article>0){
+        $MontantTotal = floatval(0.00);
 
-                $stmt = $this->getSqlSingleArticleByID($this->Id_Article);
-
-            }else{
-
-                $stmt = $this->getSqlArticles();
-
-            }
-
-        }
-
-
+        
+        echo "<table id='tabCart' class='table table-dark'><thead><tr>";
+        echo "<th scope='col'>Article</th>";
+        echo "<th scope='col'>Qte</th>";
+        echo "<th scope='col'>Prix Total</th>";
+        echo "<th scope='col'>Action</th>";
+        echo "</tr></thead><tbody>";
+        
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            
             extract($row);
-            echo '<form method="POST">';
-            echo '<div class="card cat'.$row["idCategorie"].' col-md-4" data-category="cat'.$row['idCategorie'].'">';
-                echo '<a class="linkcat" href="'.$_SESSION['root'].'/'.$row["page"].'"><i class="fa fa-quote-left"></i>&nbsp;'.$row["libele"].'&nbsp;<i class="fa fa-quote-right"></i></a>';
-
+            
+            echo "<form action='' method='POST'>";
+            echo '<tr><td>';
+            echo '<div class="card cat'.$row["idCategorie"].' col-md-12" data-category="cat'.$row['idCategorie'].'">';                    
+            
             echo '<div class="box_img">';
             echo '<span class="helper"></span>';
             echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
             echo '</div>';
             echo '<div class="card-body row">';
             echo '<div class="col-md-8">';
-            echo '<h5 class="card-title">'.ucfirst($row['designation']).'</h5>';
-            echo '<h6>';
+            echo '<h5 class="card-title">Cat : '.ucfirst($row['libele']).'</h5>';
+            echo '<h5 class="card-title">Article : '.ucfirst($row['designation']).' '.$row['Id_Article'] .'</h5>';
+            echo "<input type='hidden' value='". $row['Id_Article'] ."' name='Id_Article_cart' />"; 
+            echo '<h6>Noté : ';
             for ($i = 1; $i <= $row['note']; $i++) {
                 echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
             }
             echo '</h6>';
-            echo '<a href="" class="btn btn-primary ">Lire plus</a>';
             echo '</div>';
             echo '<div class="col-md-4">';
-                echo '<h5>'.$row['prix'].' €</h5>';
-                //echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
+                echo '<h5>'.$row['qtestock'].' en stock <br>au prix de '.$row['prix'].' €</h5>';
 
-		        echo '<button class="btn btn-success " type="submit" value="+" name="addCart" ><i class="fa fa-cart-plus"></i></button>';
-		        echo '<input type="hidden" value="'.$row['Id_Article'].'" name="Id_Article" />';
+                echo '<input type="hidden" value="'.$row['Id_Panier'].'" name="Id_Panier" />';
+                echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
 
                 echo '</div>';
             echo '</div>';
             echo '</div>';
+            echo '</td>';
+
+            echo '<td><button class="btn btn-light" type="submit" value="-" name="moinsQte" >-</button>&nbsp;'. $row['qtite_Art'] .'&nbsp;<button class="btn btn-light" type="submit" value="+" name="plusQte" >+</button></td>';
+            echo '<td>'. $row['prixT'] .' €</td>';
+            echo '<td><button class="btn btn-danger " type="submit" value="" name="trashArt" ><i class="fa fa-trash"></i></button></td>';
+            echo '</tr>';
             echo '</form>';
+
+            $MontantTotal = $MontantTotal + $row['prixT'];
         }
+
+        echo "</tbody>       
+        <tfoot>
+        <tr>
+          <td class='text_right' colspan='2'>Montant total</td>
+          <td >".number_format($MontantTotal,2)." €</td><td></td>
+        </tr>
+      </tfoot></table>";
     }
 
-    function genTabCartArticles($cart){
+    function genTabCartArticles(){
 
         $numUser=1;
         
         echo "<table class='table table-dark'><thead><tr>";
         echo "<th scope='col'>#</th>";
-        echo "<th scope='col'>Id_Article</th>";
-        //echo "<th scope='col'>Nom</th>";
-        //echo "<th scope='col'>Prénom</th>";
-        //echo "<th scope='col'>Type</th>";
-        echo "<th scope='col'>Action</th>";
+        echo "<th scope='col'>Article</th>";
+        echo "<th scope='col'>Qte</th>";
+        echo "<th scope='col'>Prix Total</th>";
         echo "</tr></thead><tbody>";
 
         for($i = 0 ; $i < count($cart) ; $i++) {
@@ -174,12 +210,13 @@ class Panier{
         $database = new Database();
         $conn = $database->getConnection();
 
-        $sqlQuery = "SELECT * FROM "
-        .$this->db_tables[1].
-        " INNER JOIN ".$this->db_tables[0].
-        " ON instruments.Id_Instrument = article.Id_Instrument ".
-        " INNER JOIN ".$this->db_tables[2].
-        " on categorie.idCategorie = instruments.idCategorie";
+        $sqlQuery = "SELECT * FROM `panier`
+        INNER JOIN article
+        ON panier.Id_Article = article.Id_Instrument
+        INNER JOIN instruments
+        on article.Id_Instrument = instruments.Id_Instrument
+        INNER JOIN categorie
+        on categorie.idCategorie  = instruments.idCategorie ";
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -223,12 +260,12 @@ class Panier{
         return $stmt;
     }
 
-    public function addArticleToCart(){
+    public function addArticleToCart($Qte,$Id_Article,$prix){
         $database = new Database();
         $conn = $database->getConnection();   
 
-        $sqlQuery = "INSERT INTO panier(qtite_Art, Id_Article)".
-        " VALUES ('".$this->qtite_Art."','".$this->Id_Article."')";
+        $sqlQuery = "INSERT INTO panier(qtite_Art, Id_Article,prixT)".
+        " VALUES ('".$Qte."','".$Id_Article."','".$prix."')";
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -236,15 +273,37 @@ class Panier{
         //return $stmt;
     }
 
-    public function updateQtiteArtCart($Id_Article){
+    public function updateQtiteArtCart($Id_Article,$prix){
         $database = new Database();
         $conn = $database->getConnection();   
 
         $qte = $this->getQte_ArtById_Article($Id_Article);
 
-        $qte +=1;
+        $qte = $qte + 1;
 
-        $sqlQuery = "update panier set qtite_Art=".$qte;
+        $prixT = $qte * $prix;
+
+        $sqlQuery = "update panier set qtite_Art=".$qte.",prixT =".$prixT." WHERE Id_Article=".$Id_Article;
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+        //return $stmt;
+    }
+
+    public function updateQtitePlusMoinsArtCart($Id_Article,$action,$prix){
+        $database = new Database();
+        $conn = $database->getConnection();   
+
+        $qte = $this->getQte_ArtById_Article($Id_Article);
+
+        if($action=="plusQte"){$qte = $qte + 1;}
+
+        if($action=="moinsQte"){$qte = $qte - 1;}
+
+        $prixT = $qte * $prix;
+
+        $sqlQuery = "update panier set qtite_Art=".$qte.",prixT =".$prixT." WHERE Id_Article=".$Id_Article;
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -291,6 +350,34 @@ class Panier{
         return $qtite_ArtToReturn;
 
     }
+
+    public function getSumQteCart(){
+        $database = new Database();
+        $conn = $database->getConnection();
+        $sumQteToReturn=0;
+
+        $sqlQuery = "SELECT sum(qtite_Art)as sumQte FROM panier";
  
-}
+        $stmt = $conn->prepare($sqlQuery);              
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $sumQteToReturn = $sumQte;
+        }
+
+        return $sumQteToReturn;
+    }
+    public function deleteArtCart($Id_Panier){
+        $database = new Database();
+        $conn = $database->getConnection();   
+
+        $sqlQuery = "DELETE FROM panier WHERE Id_Panier = ".$Id_Panier;
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+    }
+ }
 ?>
