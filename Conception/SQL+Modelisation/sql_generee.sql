@@ -39,13 +39,6 @@ CREATE TABLE commande(
    FOREIGN KEY(idUtilisateur) REFERENCES utilisateur(idUtilisateur)
 );
 
-CREATE TABLE panier(
-   Id_Panier INT,
-   idUtilisateur INT,
-   idArticle INT,
-   PRIMARY KEY(Id_Panier, idUtilisateur, idArticle)
-);
-
 CREATE TABLE instruments(
    Id_Instrument INT AUTO_INCREMENT,
    designation VARCHAR(50),   
@@ -63,6 +56,14 @@ CREATE TABLE article(
    Id_Instrument INT NOT NULL,
    PRIMARY KEY(Id_Article),
    FOREIGN KEY(Id_Instrument) REFERENCES instruments(Id_Instrument)
+);
+
+/*drop table panier; */
+CREATE TABLE panier(
+   Id_Panier INT AUTO_INCREMENT,
+   qtite_Art INT,
+   Id_Article INT,
+   PRIMARY KEY(Id_Panier)
 );
 
 CREATE TABLE ligne_Commande(

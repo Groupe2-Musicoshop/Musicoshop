@@ -9,13 +9,32 @@
     @$addCart=$_POST["addCart"];
 	@$Id_Article=$_POST["Id_Article"];
 
+    if(!isset($cat)){ $cat = new Categorie();}
+    if(!isset($art)){ $art = new Article();}
+    if(!isset($cart)){ $cart = new Panier();}
+    if(!isset($user)){ $user = new User();}
+
 	$message="";
     
     if (isset($addCart)) {
 
+        if($cart->getId_PanierById_Article($Id_Article)>0){
+
+            $cart->updateQtiteArtCart($Id_Article);
+
+        }else{
+            
+            $cart->setQtiteArt(1);
+
+            $cart->setIdArticle($Id_Article);
+            $cart->addArticleToCart();
+            
+        }
+
         array_push($_SESSION['cart'],$Id_Article);   
 
-        $_SESSION['nbAticle'] += 1;                
+        $_SESSION['nbAticle'] += 1;     
+
     }
 ?>
 

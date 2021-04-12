@@ -19,6 +19,8 @@
     include_once(__DIR__."/../modele/Nav.php");
     include_once(__DIR__."/../modele/Categorie.php");
     include_once(__DIR__."/../modele/Article.php");
+    include_once(__DIR__."/../modele/Panier.php");
+    include_once(__DIR__."/../modele/User.php");
 
     $page = basename($_SERVER["PHP_SELF"]);
     //echo $_SERVER['REQUEST_URI']."<br>";

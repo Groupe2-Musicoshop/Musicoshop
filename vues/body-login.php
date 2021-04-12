@@ -64,7 +64,8 @@
             }        
 		}
 
-        header("Location: ".$_SESSION['root']."/index.php");
+        //header("Location: ".$_SESSION['root']."/index.php");
+        echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
 	}
 ?>
 
