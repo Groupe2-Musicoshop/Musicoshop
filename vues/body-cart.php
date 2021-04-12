@@ -21,17 +21,19 @@
     
     if (isset($_POST["moinsQte"])) {
         $cart->updateQtitePlusMoinsArtCart($Id_Article_cart,"moinsQte",$prix);
+        $_SESSION['nbAticle']=$cart->getSumQteCart($Id_Panier);
     }
 
     if (isset($_POST["plusQte"])) {
         $cart->updateQtitePlusMoinsArtCart($Id_Article_cart,"plusQte",$prix);
+        $_SESSION['nbAticle']=$cart->getSumQteCart($Id_Panier);
     }
 
     if (isset($_POST["trashArt"])) {
         $cart->deleteArtCart($Id_Panier);
+        $_SESSION['nbAticle']=$cart->getSumQteCart($Id_Panier);
     }
       
-    $_SESSION['nbAticle']=$cart->getSumQteCart($Id_Panier);
 
 ?>
 

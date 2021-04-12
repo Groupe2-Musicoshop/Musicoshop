@@ -176,12 +176,15 @@ class Article{
 
             }else{
 
-                $stmt = $this->getSqlArticles();
+                $stmt = $this->getSqlArticlesNoOffSet();
 
             }
 
         }
 
+        /*if($numCat=='noOffSet'){
+            $stmt = $this->getSqlArticlesNoOffSet();
+        }*/
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
@@ -297,6 +300,23 @@ class Article{
         " on categorie.idCategorie = instruments.idCategorie ".
         "LIMIT $limit OFFSET $offset";
         
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function getSqlArticlesNoOffSet(){
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $sqlQuery = "SELECT * FROM "
+        .$this->db_tables[1].
+        " INNER JOIN ".$this->db_tables[0].
+        " ON instruments.Id_Instrument = article.Id_Instrument ".
+        " INNER JOIN ".$this->db_tables[2].
+        " on categorie.idCategorie = instruments.idCategorie";
+
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();

@@ -56,7 +56,7 @@
                     <?php $art->genCardArticle(0);?>
 
                 </div>
-                <?php $art->getPagination(0, $page);?>
+                <?php /*$art->getPagination(0, $page);*/?>
             </div>
         </div>
     </div>
