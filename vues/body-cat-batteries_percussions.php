@@ -16,10 +16,9 @@
         <div class="row">
             <div class="col-12">
                 <div id="catalog" class="catalog">
-
                     <?php $art->genCardArticle(2);?>
-
                 </div>
+                <?php $art->getPagination(2, $page);?>    
             </div>
         </div>
 

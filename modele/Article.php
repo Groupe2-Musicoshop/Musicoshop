@@ -247,17 +247,56 @@ class Article{
         echo "</form>";
     }
 
+    public function getPagination($numCat, $self){
+        $limit = 6;
+        $pageCount = (!isset($_GET['page']))? 1 : $_GET['page'];
+        $offset = ($pageCount - 1)*$limit;
+
+        echo '<nav> <ul class="pagination justify-content-center">';
+        if($numCat==0){
+            $stmt = $this->sqlCountArticle();
+
+        }else{
+            $stmt = $this->sqlCountArticleByCat($numCat);
+
+        }
+        
+        $nbArticle = $stmt->fetch();
+        // ON RECUPERE LE NOMBRE DE PAGE
+        $nbPage = 1;
+        if($pageCount < 1){
+            $pageCount = 1;
+        }
+        if($pageCount > 1){
+            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$pageCount-1 .'">Précédent</a></li>';
+        }
+        for($i=0; $i < $nbArticle[0]; $i=$i+$limit){
+            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$nbPage.'">'.$nbPage.'</a></li>';
+            $nbPage++;
+        }
+        if($pageCount < $nbPage-1){
+            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$pageCount+1 .'">Suivant</a></li>';
+        }
+            
+        echo '</ul> </nav>';
+    }
+
     public function getSqlArticles(){
         $database = new Database();
         $conn = $database->getConnection();
+
+        $limit = 6;
+        $pageCount = (!isset($_GET['page']))? 1 : $_GET['page'];
+        $offset = ($pageCount - 1)*$limit;
 
         $sqlQuery = "SELECT * FROM "
         .$this->db_tables[1].
         " INNER JOIN ".$this->db_tables[0].
         " ON instruments.Id_Instrument = article.Id_Instrument ".
         " INNER JOIN ".$this->db_tables[2].
-        " on categorie.idCategorie = instruments.idCategorie";
-
+        " on categorie.idCategorie = instruments.idCategorie ".
+        "LIMIT $limit OFFSET $offset";
+        
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();
@@ -268,13 +307,18 @@ class Article{
         $database = new Database();
         $conn = $database->getConnection();
 
+        $limit = 6;
+        $pageCount = (!isset($_GET['page']))? 1 : $_GET['page'];
+        $offset = ($pageCount - 1)*$limit;
+
         $sqlQuery = "SELECT * FROM "
         .$this->db_tables[1].
         " INNER JOIN ".$this->db_tables[0].
         " ON instruments.Id_Instrument = article.Id_Instrument".
         " INNER JOIN ".$this->db_tables[2].
         " on categorie.idCategorie = instruments.idCategorie".
-        " WHERE instruments.idCategorie = ".$numCat;
+        " WHERE instruments.idCategorie = ".$numCat.
+        " LIMIT $limit OFFSET $offset";
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -299,5 +343,43 @@ class Article{
         $stmt->execute();
         return $stmt;
     }
+
+    public function sqlCountArticleByCat($numCat){
+    
+        $database = new Database();
+        $conn = $database->getConnection();
+    
+        $countQuery = "SELECT COUNT(Id_Article) AS nbarticle FROM "
+                        .$this->db_tables[1].
+                        " INNER JOIN ".$this->db_tables[0].
+                        " ON instruments.Id_Instrument = article.Id_Instrument".
+                        " INNER JOIN ".$this->db_tables[2].
+                        " on categorie.idCategorie = instruments.idCategorie".
+                        " WHERE instruments.idCategorie = ".$numCat;
+
+        $stmt = $conn->prepare($countQuery);
+    
+        $stmt->execute();
+        return $stmt;
+    }
+    public function sqlCountArticle(){
+        
+        $database = new Database();
+        $conn = $database->getConnection();
+    
+        $countQuery = "SELECT COUNT(Id_Article) AS nbarticle FROM "
+                        .$this->db_tables[1].
+                        " INNER JOIN ".$this->db_tables[0].
+                        " ON instruments.Id_Instrument = article.Id_Instrument".
+                        " INNER JOIN ".$this->db_tables[2].
+                        " on categorie.idCategorie = instruments.idCategorie";
+
+        $stmt = $conn->prepare($countQuery);
+    
+        $stmt->execute();
+        return $stmt;
+    }
 }
+
+
 ?>

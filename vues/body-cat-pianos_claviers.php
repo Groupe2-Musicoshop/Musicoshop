@@ -20,6 +20,7 @@
                     <?php $art->genCardArticle(3);?>
 
                 </div>
+                <?php $art->getPagination(3, $page);?>    
             </div>
         </div>
 

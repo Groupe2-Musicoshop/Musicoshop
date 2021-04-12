@@ -4,6 +4,8 @@
 
 	@$nom=$_POST["nom"];
 	@$prenom=$_POST["prenom"];
+    	@$sexe=$_POST["sexe"];
+
 	@$adresse=$_POST["adresse"];
 	@$ville=$_POST["ville"];
 	@$codepostal=$_POST["codepostal"];
@@ -18,6 +20,8 @@
 
 		if(empty($nom))$message="Nom invalide!";
 		if(empty($prenom)) $message.="Prénom invalide!";
+        		if(empty($sexe)) $message.="Sexe invalide!";
+
 		if(empty($adresse)) $message.="adresse invalide!";
 		if(empty($ville)) $message.="ville invalide!";
 		if(empty($codepostal)) $message.="Code-postal invalide!";
@@ -46,8 +50,8 @@
 
                 $username = $nom.$prenom;
 
-				$ins=$pdo->prepare("insert into utilisateur(userName,nom,prenom,adresse,ville,codePostal,email,password,type,valideuser,changepwd) values(?,?,?,?,?,?,?,?,?,?,?)");
-				$ins->execute(array($username,$nom,$prenom,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user',0,0));
+				$ins=$pdo->prepare("insert into utilisateur(userName,nom,prenom,sexe,adresse,ville,codePostal,email,password,type,valideuser,changepwd) values(?,?,?,?,?,?,?,?,?,?,?,?)");
+				$ins->execute(array($username,$nom,$prenom,$sexe,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user',0,0));
 				
                 $message="Votre inscription a bien té prise en compte un Administrateur la valideras sous 24h";
 
@@ -72,7 +76,13 @@
         <div class="mb-3">
             <input type="text" class="form-control" name="prenom" placeholder="Prénom" required>
         </div>
-
+        <div class="mb-3">
+            <select name="sexe" class="form-select" aria-label="Default select example" required>
+                <option selected>Sexe</option>
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+            </select>
+        </div>
         <div class="mb-3">
             <input type="text" class="form-control" name="adresse" placeholder="Rue et n°" required>
         </div>
