@@ -76,5 +76,25 @@ class User{
         $stmt->execute();
 
     }
+
+    public function getUserIdByUserName($userName){
+        $database = new Database();
+        $conn = $database->getConnection();
+        $idUtilisateurToReturn=0;
+
+        $sqlQuery = "SELECT idUtilisateur from ". $this->db_table." WHERE userName=".$userName;
+ 
+        $stmt = $conn->prepare($sqlQuery);              
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $idUtilisateurToReturn = $idUtilisateur;
+        }
+
+        return $idUtilisateurToReturn;
+
+    }
 }
 ?>

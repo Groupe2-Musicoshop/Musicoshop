@@ -2,142 +2,66 @@
 
 require_once 'modele/Database.php';
 
-class Article{
-    private ?string $designation;
-    private ?string $image;
-    private ?float $prix;
-    private ?float $note;
-    private ?int $stock;
-    
-    private ?int $Id_Article=0;
+class Panier{
+    private ?int $Id_Panier;
+    private ?int $qtite_Art;
+    private ?int $Id_Article;
 
     // Table
     private $db_tables = [
-        "instruments",
+        "panier",
         "article",
-        "categorie"
+        "instruments"
     ];
 
     /**
-     * Get the value of designation
-     *
-     * @return  ?string
-     */
-    public function getDesignation()
-    {
-        return $this->designation;
-    }
-
-    /**
-     * Set the value of designation
-     *
-     * @param  ?string  $designation
-     *
-     * @return  self
-     */
-    public function setDesignation(?string $designation)
-    {
-        $this->designation = $designation;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of image
-     *
-     * @return  ?string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set the value of image
-     *
-     * @param  ?string  $image
-     *
-     * @return  self
-     */
-    public function setImage(?string $image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-        /**
-     * Get the value of prix
-     *
-     * @return  ?float
-     */
-    public function getPrix()
-    {
-        return $this->prix;
-    }
-
-    /**
-     * Set the value of prix
-     *
-     * @param  ?float  $prix
-     *
-     * @return  self
-     */
-    public function setPrix(?float $prix)
-    {
-        $this->prix = $prix;
-
-        return $this;
-    }
-
-            /**
-     * Get the value of note
-     *
-     * @return  ?float
-     */
-    public function getNote()
-    {
-        return $this->note;
-    }
-
-    /**
-     * Set the value of note
-     *
-     * @param  ?float  $note
-     *
-     * @return  self
-     */
-    public function setNote(?float $note)
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-    
-    /**
-     * Get the value of stock
+     * Get the value of Id_Panier
      *
      * @return  ?int
      */
-    public function getStock()
+    public function getIdPanier()
     {
-        return $this->stock;
+        return $this->Id_Panier;
     }
 
     /**
-     * Set the value of stock
+     * Set the value of Id_Panier
      *
-     * @param  ?int  $stock
+     * @param  ?int  $Id_Panier
      *
      * @return  self
      */
-    public function setStock(?int $stock)
+    public function setIdPanier(?int $Id_Panier)
     {
-        $this->stock = $stock;
+        $this->Id_Panier = $Id_Panier;
 
         return $this;
     }
-    
+
+    /**
+     * Get the value of qtite_Art
+     *
+     * @return  ?int
+     */
+    public function getQtiteArt()
+    {
+        return $this->qtite_Art;
+    }
+
+    /**
+     * Set the value of qtite_Art
+     *
+     * @param  ?int  $qtite_Art
+     *
+     * @return  self
+     */
+    public function setQtiteArt(?int $qtite_Art)
+    {
+        $this->qtite_Art = $qtite_Art;
+
+        return $this;
+    }
+
     /**
      * Get the value of Id_Article
      *
@@ -298,5 +222,75 @@ class Article{
         $stmt->execute();
         return $stmt;
     }
+
+    public function addArticleToCart(){
+        $database = new Database();
+        $conn = $database->getConnection();   
+
+        $sqlQuery = "INSERT INTO panier(qtite_Art, Id_Article)".
+        " VALUES ('".$this->qtite_Art."','".$this->Id_Article."')";
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+        //return $stmt;
+    }
+
+    public function updateQtiteArtCart($Id_Article){
+        $database = new Database();
+        $conn = $database->getConnection();   
+
+        $qte = $this->getQte_ArtById_Article($Id_Article);
+
+        $qte +=1;
+
+        $sqlQuery = "update panier set qtite_Art=".$qte;
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+        //return $stmt;
+    }
+
+    public function getId_PanierById_Article($Id_Article){
+        $database = new Database();
+        $conn = $database->getConnection();
+        $Id_PanierToReturn=0;
+
+        $sqlQuery = "SELECT Id_Panier from panier WHERE Id_Article=".$Id_Article ;
+ 
+        $stmt = $conn->prepare($sqlQuery);              
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $Id_PanierToReturn = $Id_Panier;
+        }
+
+        return $Id_PanierToReturn;
+
+    }
+
+    public function getQte_ArtById_Article($Id_Article){
+        $database = new Database();
+        $conn = $database->getConnection();
+        $qtite_ArtToReturn=0;
+
+        $sqlQuery = "SELECT qtite_Art from panier WHERE Id_Article=".$Id_Article ;
+ 
+        $stmt = $conn->prepare($sqlQuery);              
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $qtite_ArtToReturn = $qtite_Art;
+        }
+
+        return $qtite_ArtToReturn;
+
+    }
+ 
 }
 ?>
