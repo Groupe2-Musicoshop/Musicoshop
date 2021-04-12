@@ -10,9 +10,9 @@ class Nav{
         {"titre":"Se connecter","link":"login.php","userType":"unlog"},
         {"titre":"S\'inscrire","link":"signin.php","userType":"unlog"},
         {"titre":"Se déconnecter","link":"vues/logout.php","userType":"logout"},
-        {"titre":"Mon espace client","link":"vues/my-space.php","userType":"user"},
+        {"titre":"Mon espace client","link":"my-space.php","userType":"user"},
         {"titre":"Mes commandes","link":"vues/my-cmds.php","userType":"user"},    
-        {"titre":"Nous contacter","link":"vues/contact-us.php","userType":"user"},
+        {"titre":"Nous contacter","link":"contact-us.php","userType":"user"},
         {"titre":"Changer mon mot de passe","link":"change-password.php","userType":"user"},
         {"titre":"Ajouter un Article","link":"ajout-article.php","userType":"admin"}
         ]},
