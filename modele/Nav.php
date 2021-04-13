@@ -14,7 +14,10 @@ class Nav{
         {"titre":"Mes commandes","link":"vues/my-cmds.php","userType":"user"},    
         {"titre":"Nous contacter","link":"contact-us.php","userType":"user"},
         {"titre":"Changer mon mot de passe","link":"change-password.php","userType":"user"},
-        {"titre":"Ajouter un Article","link":"ajout-article.php","userType":"admin"}
+        {"titre":"Ajouter un Article","link":"ajout-article.php","userType":"admin"},
+        {"titre":"Ajouter un Instrument","link":"ajout-instrument.php","userType":"admin"},
+        {"titre":"Liste des Articles","link":"liste-des-articles.php","userType":"admin"},
+        {"titre":"Liste des Instruments","link":"liste-des-instruments.php","userType":"admin"}
         ]},
         {"titre":"img/cart.svg" , "type":"img" , "link":[
         {"titre":"Aller au panier","link":"cart.php","userType":"all"},    

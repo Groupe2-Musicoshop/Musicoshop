@@ -1,7 +1,7 @@
 <?php
 
-require_once 'modele/Database.php';
-require_once 'modele/Article.php';
+require_once __DIR__.'/Database.php';
+require_once __DIR__.'/Article.php';
 
 class Panier{
     private ?int $Id_Panier;
@@ -131,7 +131,8 @@ class Panier{
             
             extract($row);
             
-            echo "<form action='' method='POST'>";
+            echo "<form action='' method='POST' name='formData".$row["Id_Panier"]."'>";
+            
             echo '<tr><td>';
             echo '<div class="card cat'.$row["idCategorie"].' col-md-12" data-category="cat'.$row['idCategorie'].'">';                    
             
@@ -145,9 +146,11 @@ class Panier{
             echo '<h5 class="card-title">Article : '.ucfirst($row['designation']).'</h5>';
             echo "<input type='hidden' value='". $row['Id_Article'] ."' name='Id_Article_cart' />"; 
             echo '<h6>Noté : ';
+
             for ($i = 1; $i <= $row['note']; $i++) {
                 echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
             }
+
             echo '</h6>';
             echo '</div>';
             echo '<div class="col-md-2">';
@@ -162,11 +165,13 @@ class Panier{
             echo '</td>';
 
             echo '<td><button class="btn btn-light" type="submit" value="-" name="moinsQte" >-</button>&nbsp;'. $row['qtite_Art'] .'&nbsp;<button class="btn btn-light" type="submit" value="+" name="plusQte" >+</button></td>';
-            echo '<td>'. $row['prixT'] .' €</td>';
+            //echo '<td><button class="btn btn-light" type="button" onClick="retireQte("'.$row['Id_Panier'].'","'. $row['Id_Article'] .'","'.$row['prix'].'")" value="-" name="moinsQte" >-</button>&nbsp;<input class="mini" value="'. $row['qtite_Art'] .'" name="Qte'.$row['Id_Panier'].'" disabled>&nbsp;<button class="btn btn-light" type="submit" value="+" name="plusQte" >+</button></td>';
+            //echo '<td><button id="btnQte'.$row['Id_Panier'].'" class="btn btn-light" type="button" onClick="retireQte("'.$row['Id_Panier'].'","'. $row['Id_Article'] .'","'. $row['prix'] .'")" value="-" name="moinsQte" >-</button>&nbsp;<input id="qte'.$row['Id_Panier'].'" value="'. $row['qtite_Art'] .'"/>&nbsp;<button class="btn btn-light" type="button" value="+" name="plusQte" >+</button></td>';
+            
+            echo '<td><span id="prixT'.$row['Id_Panier'].'">'. $row['prixT'] .'</span> €</td>';
             echo '<td><button class="btn btn-danger " type="submit" value="" name="trashArt" ><i class="fa fa-trash"></i></button></td>';
             echo '</tr>';
             echo '</form>';
-
             $MontantTotal = $MontantTotal + $row['prixT'];
         }
 
@@ -308,7 +313,7 @@ class Panier{
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();
-        //return $stmt;
+        return [$qte,$prixT];
     }
 
     public function getId_PanierById_Article($Id_Article){

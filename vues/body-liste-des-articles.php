@@ -58,9 +58,27 @@ if ($result->rowCount() > 0)
         echo "<td>".$row['note'] . "</td>";
 		echo "<td>".$row['Id_Instrument'] . "</td>";
 		//echo "<td>".$row['contact'] . "</td>";
-		echo "<td><input type='submit' name='delete' value='Delete' class='btn btn-danger' /></td>";  
+		echo "<td><a href='#' class='btn btn-danger' data-toggle='modal' data-target='#smallModal".$row['Id_Article']."'>Delete</a></td>"; 
 		echo "<td><a href='modifier-article.php?id=".$row['Id_Article']."' class='btn btn-info'>Edit</a></td>";
 		echo "</tr>";
+		echo "<div class='modal' id='smallModal".$row['Id_Article']."' tabindex='-1' role='dialog' aria-labelledby='smallModal' aria-hidden='true'>";
+		echo "    <div class='modal-dialog'>";
+		echo "        <div class='modal-content'>";
+		echo "        <div class='modal-header'>";
+		echo "           <h5 class='modal-title' id='myModalLabel'>Confirmation</h5>";
+
+		echo "            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'>&times;</button>";
+		echo "        </div>";
+		echo "       <div class='modal-body'>";
+		echo "           <p>Confirmez la suppression de l'article<br><p>";
+		echo "       </div>";
+		echo "       <div class='modal-footer'>";
+		echo "           <button type='button' class='btn btn-secondary' data-dismiss='modal'>Annuler</button>";
+		echo "           <input type='submit' name='delete' value='Confirmer' class='btn btn-danger' />";
+		echo "       </div>";
+		echo "       </div>";
+		echo "   </div>";
+		echo "</div>";
 		echo "</form>"; //added 
 	}
 	?>
