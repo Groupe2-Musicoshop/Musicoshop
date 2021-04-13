@@ -33,7 +33,7 @@
     <div id="<?=$page?>" class="body-mu">
 
         <div id="title" class="white">Instruments à Vent</div>
-        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_iav.jpg' class='w100 d-inline-block align-top' alt=''>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_iav.jpg' class='w100 d-inline-block align-top landscape' alt=''>
 
         <?php $cat->genCategoriesHorizontaly()?>
 

@@ -123,7 +123,7 @@ $gradient-radial: radial-gradient(#0d1b2aff, #1b263bff, #415a77ff, #778da9ff, #e
     padding-left: 0px;
 }
 
-.jumbotron{
+.jumbotron {
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding: 1rem 1rem;
@@ -149,6 +149,16 @@ p {
 .card {
     min-width: 350px;
 }
-a{
+
+a {
     color: #415a77;
+}
+
+img.landscape {
+    border-radius: .25rem;
+}
+
+.m1rem {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }

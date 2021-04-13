@@ -123,7 +123,7 @@ class Categorie{
         //print_r($pages_json);
 
         $stmt = $this->getSqlCategories();
-        echo "<nav class='navbar navbar-expand-lg navbar-light bg-color-whi'>";
+        echo "<nav class='navbar navbar-expand-lg navbar-light bg-color-whi m1rem'>";
 
         echo "<div class='collapse navbar-collapse' id='navbarCatHorizontalyContent'>";
 
