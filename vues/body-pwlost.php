@@ -4,22 +4,14 @@
 	require_once 'modele/Database.php';
 	require_once 'modele/User.php';
 
-
-	//@$username=$_POST["username"];
-	//@$prenom=$_POST["prenom"];
 	@$email=$_POST["email"];
-	//@$password=$_POST["password"];
-	//@$repass=$_POST["repass"];
+	
 	@$valider=$_POST["valider"];
-	//$message="";
-
+	
 	if(isset($valider)){
 
-		//if(empty($username)) $message="Nom invalide!";
-		//if(empty($prenom)) $message.="Prénom invalide!";
-		if(empty($email)) $message.="email invalide!";
-		//if(empty($password)) $message.="Mot de passe invalide!";
-		//if($pass!=$repass) $message.="Mots de passe non identiques!";	
+		if(empty($email)) $message="email invalide!";
+		
 		if(empty($message)){
 
             $database = new Database();
@@ -36,8 +28,6 @@
 
             }else{
 
-				/*$user = new User();
-				$user->updatelUserChangePwd($email);*/
 				$database = new Database();
             	$conn = $database->getConnection();
 
@@ -56,22 +46,18 @@
 		}
 	}
 ?>
-
 <div class="jumbotron">
     <form class="box" action="" method="post" name="login">
         <div class="mb-3">
             <h4 class="title">Vous avez oublié votre mot de passe</h4>
-        </div>
-        <div class="mb-3">
-            <input type="email" class="form-control" name="email" placeholder="Adresse e-mail" required>
-        </div>
-
+        </div>    
+		<div class="form-floating mb-3">
+  <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+  <label for="floatingInput">Adresse e-mail</label>
+</div>
         <?php if (! empty($message)) { ?>
-
         <p class="errorMessage"><?php echo $message; ?></p>
-
         <?php } ?>
-
         <input type="submit" value="Envoyer " name="valider" class="box-button">
         <p class="box-register"><a href="<?=$_SESSION['root']?>/login.php"><u>Se connecter<u></a></p>
         <p class="box-register"><a href="<?=$_SESSION['root']?>/signin.php"><u>S'inscrire maintenant</u></a></p>

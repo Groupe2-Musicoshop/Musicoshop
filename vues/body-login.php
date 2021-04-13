@@ -74,12 +74,14 @@
         <div class="mb-3">
             <h4 class="title">Connexion espace client</h4>
         </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" name="username" placeholder="Nom d'utilisateur" required>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="username" placeholder="Nom d'utilisateur" required>
+            <label for="floatingInput">Nom d'utilisateur</label>
         </div>
-        <div class="mb-3">
-            <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
-        </div>
+            <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Mot de passe" required>
+            <label for="floatingPassword">Mot de passe</label>
+        </div><br>
         <?php if (! empty($message)) { ?>
         <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>

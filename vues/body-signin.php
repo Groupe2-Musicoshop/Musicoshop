@@ -79,8 +79,8 @@
         <div class="mb-3">
             <select name="sexe" class="form-select" aria-label="Default select example" required>
                 <option selected>Sexe</option>
-                <option value="homme">Homme</option>
-                <option value="femme">Femme</option>
+                <option value="homme" required>Homme</option>
+                <option value="femme" required>Femme</option>
             </select>
         </div>
         <div class="mb-3">
@@ -96,7 +96,7 @@
         </div>
 
         <div class="mb-3">
-            <input type="text" class="form-control" name="email" placeholder="Adresse e-mail" required>
+            <input type="email" class="form-control" name="email" placeholder="Adresse e-mail" required>
         </div>
 
         <div class="mb-3">
