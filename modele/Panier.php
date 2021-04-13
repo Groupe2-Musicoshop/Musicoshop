@@ -179,7 +179,7 @@ class Panier{
       </tfoot></table></div>";
     }
 
-    function genTabCartArticles(){
+    function genTabCartArticles($cart){
 
         $numUser=1;
         
