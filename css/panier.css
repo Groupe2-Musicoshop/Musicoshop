@@ -1,5 +1,6 @@
-#cart table{
+#cart table {
     border-radius: 0.3rem;
+    color: #fff;
 }
 
 #cart .box_img {
@@ -11,21 +12,21 @@
     text-align: center;
 }
 
-#cart h6{
+#cart h6 {
     font-family: "Fontastique Fontastique";
 }
 
 #cart h5,
 #cart h6,
-#cart .card-title{
+#cart .card-title {
     color: #1b263b;
 }
 
-#cart .img_thumb{
+#cart .img_thumb {
     max-height: 120px;
 }
 
-#cart .btn.btn-light{
+#cart .btn.btn-light {
     padding: 0px;
     padding-bottom: 2px;
     height: 18px;
@@ -33,11 +34,17 @@
     width: 18px;
 }
 
-#cart .btn.btn-light:hover{
+#cart .btn.btn-light:hover {
     background-color: #0d1b2a;
-    color:#fff;
+    color: #fff;
 }
 
-#cart .text_right{
+#cart .text_right {
     text-align: right;
+}
+
+#cart .tbl-container {
+    border-radius: 0.3rem;
+    background-color: #415A77;
+    color: #fff;
 }

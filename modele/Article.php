@@ -182,10 +182,6 @@ class Article{
 
         }
 
-        /*if($numCat=='noOffSet'){
-            $stmt = $this->getSqlArticlesNoOffSet();
-        }*/
-
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             extract($row);
             echo '<form method="POST">';
@@ -197,24 +193,26 @@ class Article{
             echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
             echo '</div>';
             echo '<div class="card-body row">';
-            echo '<div class="col-md-10">';
+            echo '<div class="col-md-8">';
             echo '<h5 class="card-title">'.ucfirst($row['designation']).'</h5>';
             echo '<h6>';
+
             for ($i = 1; $i <= $row['note']; $i++) {
                 echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
             }
+
             echo '</h6>';
             echo '<a href="" class="btn btn-primary ">Lire plus</a>';
             echo '</div>';
-            echo '<div class="col-md-2">';
-                echo '<h5>'.$row['prix'].' €</h5>';
-                //echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
+            echo '<div class="col-md-4">';
+            echo '<h5>'.$row['prix'].' €</h5>';
+            //echo '<a class="btn btn-success" href=""><i class="fa fa-cart-plus"></i></a>';
 
-		        echo '<button class="btn btn-success " type="submit" value="+" name="addCart" ><i class="fa fa-cart-plus"></i></button>';
-		        echo '<input type="hidden" value="'.$row['Id_Article'].'" name="Id_Article" />';
-		        echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
+            echo '<button class="btn btn-success " type="submit" value="+" name="addCart" ><i class="fa fa-cart-plus"></i></button>';
+            echo '<input type="hidden" value="'.$row['Id_Article'].'" name="Id_Article" />';
+            echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
 
-                echo '</div>';
+            echo '</div>';
             echo '</div>';
             echo '</div>';
             echo '</form>';

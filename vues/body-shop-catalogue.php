@@ -1,40 +1,7 @@
 <?php
     require_once 'modele/Database.php';
     require 'vues/add-to-cart.php';	
-
-    /*$page = basename($_SERVER["PHP_SELF"]);
-
-    $cat = new Categorie();
-    $art = new Article();
-
-    @$addCart=$_POST["addCart"];
-	@$Id_Article=$_POST["Id_Article"];
-	@$prix=$_POST["prix"];
-
-    echo $Id_Article.' '.$prix;
-
-    $cat = new Categorie();
-    $art = new Article();
-    $cart = new Panier();
-    $user = new User();
-
-	$message="";
-    
-    if (isset($addCart)) {
-
-        if($cart->getId_PanierById_Article($Id_Article)>0){
-          
-            $cart->updateQtiteArtCart($Id_Article,$prix);
-
-        }else{
-            
-            $cart->addArticleToCart(1,$Id_Article,$prix);
-            
-        }
-    }*/
 ?>
-
-
 
 <div class="jumbotron">
     <div id="body-shop" class="body-mu">
@@ -49,7 +16,7 @@
             <div class="col-12">
                 <div id="catalog" class="catalog">
 
-                    <?php $art->genCardArticle(0);?>
+                    <?php $art->genCardArticle(0,false);?>
 
                 </div>
                 <?php /*$art->getPagination(0, $page);*/?>

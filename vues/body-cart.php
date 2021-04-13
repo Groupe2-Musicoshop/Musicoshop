@@ -13,10 +13,7 @@
    
    $art = new Article();
    $cart = new Panier();
-   
-   
-
-    
+       
     if (isset($_POST["moinsQte"])) {
         $cart->updateQtitePlusMoinsArtCart($Id_Article_cart,"moinsQte",$prix);
         $_SESSION['nbAticle']=$cart->getSumQteCart($Id_Panier);

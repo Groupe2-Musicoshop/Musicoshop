@@ -119,8 +119,8 @@ class Panier{
 
         $MontantTotal = floatval(0.00);
 
-        
-        echo "<table id='tabCart' class='table table-dark'><thead><tr>";
+        echo'<div class="tbl-container">';
+        echo "<table id='tabCart' class='table'><thead><tr>";
         echo "<th scope='col'>Article</th>";
         echo "<th scope='col'>Qte</th>";
         echo "<th scope='col'>Prix Total</th>";
@@ -140,9 +140,9 @@ class Panier{
             echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
             echo '</div>';
             echo '<div class="card-body row">';
-            echo '<div class="col-md-8">';
+            echo '<div class="col-md-10">';
             echo '<h5 class="card-title">Cat : '.ucfirst($row['libele']).'</h5>';
-            echo '<h5 class="card-title">Article : '.ucfirst($row['designation']).' '.$row['Id_Article'] .'</h5>';
+            echo '<h5 class="card-title">Article : '.ucfirst($row['designation']).'</h5>';
             echo "<input type='hidden' value='". $row['Id_Article'] ."' name='Id_Article_cart' />"; 
             echo '<h6>Noté : ';
             for ($i = 1; $i <= $row['note']; $i++) {
@@ -150,7 +150,7 @@ class Panier{
             }
             echo '</h6>';
             echo '</div>';
-            echo '<div class="col-md-4">';
+            echo '<div class="col-md-2">';
                 echo '<h5>'.$row['qtestock'].' en stock <br>au prix de '.$row['prix'].' €</h5>';
 
                 echo '<input type="hidden" value="'.$row['Id_Panier'].'" name="Id_Panier" />';
@@ -176,7 +176,7 @@ class Panier{
           <td class='text_right' colspan='2'>Montant total</td>
           <td >".number_format($MontantTotal,2)." €</td><td></td>
         </tr>
-      </tfoot></table>";
+      </tfoot></table></div>";
     }
 
     function genTabCartArticles(){
