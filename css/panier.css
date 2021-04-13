@@ -48,3 +48,13 @@
     background-color: #415A77;
     color: #fff;
 }
+
+#cart input.mini {
+    width: 28px !important;
+    border-radius: 0.25rem;
+    text-align: center;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+}

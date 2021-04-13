@@ -1,7 +1,7 @@
 // init Isotope
 var $grid = $('.catalog').isotope({
     itemSelector: '.card',
-    layoutMode: 'fitRows',    
+    layoutMode: 'fitRows',
     getSortData: {
         name: '.name',
         symbol: '.symbol',
@@ -52,3 +52,24 @@ $(document).ready(function() {
         });
     });
 });
+
+function retireQte(Id_Panier, Id_Article, prix) {
+
+    let params = [Id_Panier, Id_Article, prix];
+
+    // jQuery Ajax Post Request
+    $.post('vues/process-cart.php', {
+        params: params
+    }, (response) => {
+        // response from PHP back-end
+        console.log(response);
+
+        let respArr = $.parseJSON(response);
+        console.log(respArr[0]);
+        console.log(respArr[1]);
+
+        $('#qte' + Id_Panier).val = respArr[0];
+        $('#prixT' + Id_Panier).html = respArr[1];
+    });
+
+};

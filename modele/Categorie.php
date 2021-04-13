@@ -1,6 +1,8 @@
 <?php
 
-require_once 'modele/Database.php';
+//require_once $_SESSION['root'].'/modele/Database.php';
+require_once __DIR__.'/Database.php';
+//include_once(__DIR__."/../modele/Database.php";
 
 class Categorie{
     private ?string $libele;
