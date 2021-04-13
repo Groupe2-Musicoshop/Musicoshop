@@ -1,6 +1,7 @@
 <?php
 	if (!isset($_SESSION)) { session_start(); }
 	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+	
 	require_once 'modele/Database.php';
 	require_once 'modele/User.php';
 
@@ -28,19 +29,27 @@
 
             }else{
 
-				$database = new Database();
-            	$conn = $database->getConnection();
+				if($tab[0]["valideuser"]!=0){
 
-				$sqlQuery = "UPDATE utilisateur SET changepwd=1  WHERE email='".$email."'";
-         
-				$stmt = $conn->prepare($sqlQuery);              
-				
-				$stmt->execute();
+					$database = new Database();
+					$conn = $database->getConnection();
 
-                $message="Vous avez reçu un lien sur votre boite mail pour modifier votre mot de passe!";
+					$sqlQuery = "UPDATE utilisateur SET changepwd=1  WHERE email='".$email."'";
+			
+					$stmt = $conn->prepare($sqlQuery);              
+					
+					$stmt->execute();
 
-				echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-				echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+					$message="Vous avez reçu un lien sur votre boite mail pour modifier votre mot de passe!";
+
+					echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+					echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
+
+				}else{
+
+					$message="Votre compte n'a pas encore été validé par l'administrateur";
+	
+				}      
 				
 			}
 		}

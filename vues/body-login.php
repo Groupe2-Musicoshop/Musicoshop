@@ -55,7 +55,7 @@
                 }
                 
 
-                echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+                echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
 
             }else{
 
@@ -65,7 +65,7 @@
 		}
 
         //header("Location: ".$_SESSION['root']."/index.php");
-        echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
+        //echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
 	}
 ?>
 
