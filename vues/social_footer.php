@@ -18,7 +18,7 @@
         </svg>
         <span>Partager</span>
     </a>
-    <a class="rs-btn twitter" href="#bookmark-twitter" target="_blank" rel="twitter">
+    <a class="rs-btn twitter" href="https://twitter.com/?lang=fr" target="_blank" rel="twitter">
         <svg viewBox="0 0 24 24"
             class="r-k200y r-13gxpu9 r-4qtqp9 r-yyyyoo r-5sfk15 r-dnmrzs r-kzbkwu r-bnwqim r-1plcrui r-lrvibr">
             <g>
@@ -29,7 +29,7 @@
         </svg>
         <span>Twitter</span>
     </a>
-    <a class="rs-btn mail" href="https://twitter.com/?lang=fr" target="_blank" rel="mail">
+    <a class="rs-btn mail" href="mailto:contact@musicoshop.com" target="_blank" rel="mail">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px" y="0px" viewBox="0 0 568.601 568.601" style="enable-background:new 0 0 568.601 568.601;"
             xml:space="preserve">
@@ -48,4 +48,5 @@
         </svg>
         <span>E-mail</span>
     </a>
+     
 </div>
