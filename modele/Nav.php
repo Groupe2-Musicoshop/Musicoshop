@@ -15,7 +15,7 @@ class Nav{
         {"titre":"Nous contacter","link":"contact-us.php","userType":"user"},
         {"titre":"Changer mon mot de passe","link":"change-password.php","userType":"user"},
         {"titre":"Ajouter un Article","link":"ajout-article.php","userType":"admin"},
-        {"titre":"Ajouter un Article","link":"ajout-article.php","userType":"admin"},
+        {"titre":"Ajouter un Instrument","link":"ajout-instrument.php","userType":"admin"},
         {"titre":"Liste des Articles","link":"liste-des-articles.php","userType":"admin"},
         {"titre":"Liste des Instruments","link":"liste-des-instruments.php","userType":"admin"}
         ]},
