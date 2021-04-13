@@ -4,7 +4,7 @@
     $page = basename($_SERVER["PHP_SELF"]);
 
     @$addCart=$_POST["addCart"];
-	@$Id_Article=$_POST["Id_Article"];
+	@$Id_Article=$_GET["id_art"];
 
     $cat = new Categorie();
 
@@ -12,7 +12,6 @@
 
     $art = new Article();
     $art->setIdArticle($Id_Article);
-
 
 	$message="";
     

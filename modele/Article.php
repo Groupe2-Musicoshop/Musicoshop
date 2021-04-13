@@ -202,7 +202,7 @@ class Article{
             }
 
             echo '</h6>';
-            echo '<a href="" class="btn btn-primary ">Lire plus</a>';
+            echo '<a href="singleArticle.php?id_art='.$row['Id_Article'].'" class="btn btn-primary ">Lire plus</a>';
             echo '</div>';
             echo '<div class="col-md-4">';
             echo '<h5>'.$row['prix'].' €</h5>';
@@ -253,14 +253,8 @@ class Article{
         $offset = ($pageCount - 1)*$limit;
 
         echo '<nav> <ul class="pagination justify-content-center">';
-        if($numCat==0){
-            $stmt = $this->sqlCountArticle();
-
-        }else{
-            $stmt = $this->sqlCountArticleByCat($numCat);
-
-        }
         
+        $stmt = $this->sqlCountArticleByCat($numCat);
         $nbArticle = $stmt->fetch();
         // ON RECUPERE LE NOMBRE DE PAGE
         $nbPage = 1;
@@ -353,8 +347,8 @@ class Article{
         " ON instruments.Id_Instrument = article.Id_Instrument".
         " INNER JOIN ".$this->db_tables[2].
         " on categorie.idCategorie = instruments.idCategorie".
-        " WHERE instruments.Id_Article = ".$this->Id_Article;
-
+        " WHERE article.Id_Article = ".$this->Id_Article;
+        
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();
@@ -379,23 +373,7 @@ class Article{
         $stmt->execute();
         return $stmt;
     }
-    public function sqlCountArticle(){
-        
-        $database = new Database();
-        $conn = $database->getConnection();
-    
-        $countQuery = "SELECT COUNT(Id_Article) AS nbarticle FROM "
-                        .$this->db_tables[1].
-                        " INNER JOIN ".$this->db_tables[0].
-                        " ON instruments.Id_Instrument = article.Id_Instrument".
-                        " INNER JOIN ".$this->db_tables[2].
-                        " on categorie.idCategorie = instruments.idCategorie";
 
-        $stmt = $conn->prepare($countQuery);
-    
-        $stmt->execute();
-        return $stmt;
-    }
 }
 
 
