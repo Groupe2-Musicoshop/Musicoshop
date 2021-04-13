@@ -45,7 +45,7 @@ CREATE TABLE instruments(
    img text,   
    idCategorie INT NOT NULL,
    PRIMARY KEY(Id_Instrument),
-   FOREIGN KEY(idCategorie) REFERENCES categorie(idCategorie)
+   FOREIGN KEY(idCategorie) REFERENCES categorie(idCategorie) 
 );
 
 CREATE TABLE article(
@@ -55,7 +55,7 @@ CREATE TABLE article(
    note DECIMAL(15,2),
    Id_Instrument INT NOT NULL,
    PRIMARY KEY(Id_Article),
-   FOREIGN KEY(Id_Instrument) REFERENCES instruments(Id_Instrument)
+   FOREIGN KEY(Id_Instrument) REFERENCES instruments(Id_Instrument) ON DELETE CASCADE
 );
 
 /*drop table panier; */
