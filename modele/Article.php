@@ -207,7 +207,7 @@ class Article{
             echo '<div class="col-md-4">';
             echo '<h5>'.$row['prix'].' €</h5>';
             echo '<h5>'.$row['qtestock'].' en stock<h5>';
-            echo '<button class="btn btn-success " type="submit" value="+" name="addCart" ';
+            echo '<button id="addCart'.$row['Id_Article'].'" class="btn btn-success " type="submit" value="+" name="addCart" ';
 
             if($row['qtestock']==0){
                 echo 'Disabled';
@@ -220,7 +220,7 @@ class Article{
 
             echo '</div>';
             echo '</div>';
-            echo '</div>';
+            echo '</div>';            
             echo '</form>';
         }
     }
@@ -438,6 +438,5 @@ class Article{
     }
 
 }
-
 
 ?>

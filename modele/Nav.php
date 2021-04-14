@@ -115,8 +115,15 @@ class Nav{
                         }
 
                         if ($titreNav =="img/cart.svg" && $this->get_nbArticle()>0) {
-                            echo "<div id='nbArt' ><span>".$this->get_nbArticle()."</span></div>";
+
+                            echo "<div id='nbArt' class='view' ><span>".$this->get_nbArticle()."</span></div>";
+
+                        }else if ($titreNav =="img/cart.svg" && $this->get_nbArticle()==0) {
+
+                            echo "<div id='nbArt' ><span></span></div>";
+
                         }
+
                     } else {
                         echo $titreNav;
                         echo "<span class='caret'></span>";
@@ -169,7 +176,10 @@ class Nav{
 
                         if($this->get_nbArticle()>0){                                
                                 
-                            echo "<div id='nbArt' ><span>".$this->get_nbArticle()."</span></div>";                               
+                            echo "<div id='nbArt' ><span>".$this->get_nbArticle()."</span></div>";
+
+                        }else{
+                            echo "<div id='nbArt' ><span></span></div>";
 
                         }
                                                 

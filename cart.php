@@ -1,7 +1,7 @@
 <?php
-	require_once 'vues/header.php';
+	require 'vues/header.php';
 	
-	require_once 'vues/body-cart.php';
+	require 'vues/body-cart.php';
 	
-	require_once 'vues/footer.php';
+	require 'vues/footer.php';
 ?>

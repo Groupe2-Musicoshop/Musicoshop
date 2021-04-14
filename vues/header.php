@@ -14,14 +14,8 @@
         $_SESSION['userType'] = "unlog";      
     }
 
-    if(!isset($cart)){ $cart = new Panier();} 
+    $cart = new Panier();
 	$_SESSION['nbAticle']=$cart->getSumQteCart();
-
-
-    if (!isset($_SESSION['cart'])) { 
-		$_SESSION['cart']=array();
-	}
-
 
     $page = basename($_SERVER["PHP_SELF"]);
     //echo $_SERVER['REQUEST_URI']."<br>";
@@ -30,7 +24,7 @@
     $nav->set_Root($_SESSION['root']);
     $nav->set_PageActive($page);
     $nav->set_userType($_SESSION['userType']);
-    $nav->set_nbArticle($_SESSION['nbAticle']);
+    $nav->set_nbArticle($cart->getSumQteCart());
 
 ?>
 <!DOCTYPE html>
@@ -91,19 +85,4 @@
                     </ul>
                 </div>
             </nav>
-
         </div>
-        <?php
-            //header('Content-type:application/json;charset=utf-8');
-            //$arr =  json_decode($instruments);
-            //echo $arr;
-            /*foreach ($arr as $value) {
-                $id = $value->{'id'};
-                $imageBody = $value->{'name'};
-                $imageBody = str_replace(" ", "_", $imageBody);
-                $imageBody = str_replace("à", "a", $imageBody);
-                $id."-".$imageBody;
-
-                echo $img = "<h6>../img/".$id."-".$imageBody.".png</h6>";
-            }*/
-        ?>

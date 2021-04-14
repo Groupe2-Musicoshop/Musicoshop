@@ -56,8 +56,6 @@
     height: 20px;
     top: 12px;
     left: 21px;
-    background-color: rgba(13, 27, 42, 0.6);
-    color: #fff;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -69,6 +67,9 @@
     font-size: 0.7rem;
     padding-top: 0.1rem;
 }
-
+#nbArt.view {
+    background-color: rgba(13, 27, 42, 0.6);
+    color: #fff;
+}
 
 

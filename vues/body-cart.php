@@ -33,22 +33,35 @@
         $_SESSION['nbAticle']=$cart->getSumQteCart($Id_Panier);
     }
 
-    /*if (isset($_POST["params"])) {
-        $cart->updateQtitePlusMoinsArtCart($postArray[1],"plusQte",$postArray[2]);
-
-        $_SESSION['nbAticle']=$cart->getSumQteCart($postArray[0]);
-        header("Location: ".$_SESSION['root']."/cart.php");
-    }*/
 
     if (isset($_POST["trashArt"])) {
 
         $cart->deleteArtCart($Id_Panier,$qtite_Art,$Id_Article_cart);
         $_SESSION['nbAticle']=$cart->getSumQteCart();
+        
     }     
 
-    /*if (isset($_POST["Id_Article_cart"])) {
-       echo "<script type='text/javascript'> document.location = 'singleArticle.php'; </script>";
-    }*/	
+    if($cart->getSumQteCart()>0){
+
+        echo "<script type='text/javascript'> 
+        (function() {
+            var element = document.getElementById('nbArt');
+            element.innerHTML = ".$cart->getSumQteCart()."; 
+            element.classList.add('view'); 
+        })();
+        </script>";
+                
+    }else{
+        
+        echo "<script type='text/javascript'> 
+        (function() {
+            var element = document.getElementById('nbArt');
+            element.innerHTML = '';
+            element.classList.remove('view'); 
+        })();
+        </script>";
+
+    }
 
 ?>
 

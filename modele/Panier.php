@@ -137,21 +137,22 @@ class Panier{
             echo '<div class="card cat'.$row["idCategorie"].' col-md-12" data-category="cat'.$row['idCategorie'].'">';                    
             
             echo '<div class="box_img">';
-            echo '<span class="helper"></span>';
-            echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
+                echo '<span class="helper"></span>';
+                echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
             echo '</div>';
             echo '<div class="card-body row">';
-            echo '<div class="col-md-10">';
-            echo '<h5 class="card-title">Cat : '.ucfirst($row['libele']).'</h5>';
-            echo '<h5 class="card-title">Article : '.ucfirst($row['designation']).'</h5>';
-            echo "<input type='hidden' value='". $row['Id_Article'] ."' name='Id_Article_cart' />"; 
-            echo '<h6>Noté : ';
+                echo '<div class="col-md-10">';
+                echo '<h5 class="card-title">Cat : '.ucfirst($row['libele']).'</h5>';
+                echo '<h5 class="card-title">Article : '.ucfirst($row['designation']).'</h5>';
+                echo "<input type='hidden' value='". $row['Id_Article'] ."' name='Id_Article_cart' />"; 
+                echo '<h6>Noté : ';
 
-            for ($i = 1; $i <= $row['note']; $i++) {
-                echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
-            }
+                    for ($i = 1; $i <= $row['note']; $i++) {
+                        echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
+                    }
 
-            echo '</h6>';
+                echo '</h6>';
+                echo '<a href="singleArticle.php?id_art='.$row['Id_Article'].'" class="btn btn-primary ">Lire plus</a>';
             echo '</div>';
             echo '<div class="col-md-2">';
                 echo '<h5>'.$row['qtestock'].' en stock <br>au prix de '.$row['prix'].' €</h5>';
@@ -166,9 +167,7 @@ class Panier{
             echo '</td>';
 
             echo '<td><button class="btn btn-light" type="submit" value="-" name="moinsQte" >-</button>&nbsp;'. $row['qtite_Art'] .'&nbsp;<button class="btn btn-light" type="submit" value="+" name="plusQte" >+</button></td>';
-            //echo '<td><div class="btn btn-light" type="button" onClick="retireQte("'.$row['Id_Panier'].'","'. $row['Id_Article'] .'","'.$row['prix'].'")" value="-" name="moinsQte" >-</div>&nbsp;<input class="mini" value="'. $row['qtite_Art'] .'" name="Qte'.$row['Id_Panier'].'" disabled>&nbsp;<div class="btn btn-light" type="submit" value="+" name="plusQte" >+</div></td>';
-            //echo '<td><button id="btnQte'.$row['Id_Panier'].'" class="btn btn-light" type="button" onClick="retireQte("'.$row['Id_Panier'].'","'. $row['Id_Article'] .'","'. $row['prix'] .'")" value="-" name="moinsQte" >-</button>&nbsp;<input id="qte'.$row['Id_Panier'].'" value="'. $row['qtite_Art'] .'"/>&nbsp;<button class="btn btn-light" type="button" value="+" name="plusQte" >+</button></td>';
-            
+                        
             echo '<td><span id="prixT'.$row['Id_Panier'].'">'. $row['prixT'] .'</span> €</td>';
             echo '<td><button class="btn btn-danger " type="submit" value="" name="trashArt" ><i class="fa fa-trash"></i></button></td>';
             echo '</tr>';
@@ -303,6 +302,7 @@ class Panier{
 
         $article = new Article();
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
+
     }
 
     public function updateQtitePlusMoinsArtCart($Id_Article,$action,$prix){
@@ -339,6 +339,9 @@ class Panier{
 
         $article = new Article();
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
+
+        $nav = new Nav();
+        $nav->set_nbArticle($this->getSumQteCart());
 
         return [$qte,$prixT];
     }
@@ -439,6 +442,9 @@ class Panier{
         $article = new Article();        
         
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
+
+        $nav = new Nav();
+        $nav->set_nbArticle($this->getSumQteCart());        
     }
  }
 ?>

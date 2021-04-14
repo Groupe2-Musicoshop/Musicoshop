@@ -13,6 +13,8 @@
 
 	$message="";
     
+    $_SESSION['nbAticle'] = $cart->getSumQteCart();
+    
     if (isset($addCart)) {
 
         if($cart->getId_PanierById_Article($Id_Article)>0){
@@ -24,5 +26,13 @@
             $cart->addArticleToCart(1,$Id_Article,$prix,$qtestock);
 
         }
+      
+        echo "<script type='text/javascript'> 
+        (function() {
+            var element = document.getElementById('nbArt');
+            element.innerHTML = ".$cart->getSumQteCart()."; 
+            element.classList.add('view');
+        })();
+        </script>";
     }
 ?>
