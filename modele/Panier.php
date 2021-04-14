@@ -158,6 +158,7 @@ class Panier{
 
                 echo '<input type="hidden" value="'.$row['Id_Panier'].'" name="Id_Panier" />';
                 echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
+                echo '<input type="hidden" value="'.$row['qtite_Art'].'" name="qtite_Art" />';
 
                 echo '</div>';
             echo '</div>';
@@ -165,7 +166,7 @@ class Panier{
             echo '</td>';
 
             echo '<td><button class="btn btn-light" type="submit" value="-" name="moinsQte" >-</button>&nbsp;'. $row['qtite_Art'] .'&nbsp;<button class="btn btn-light" type="submit" value="+" name="plusQte" >+</button></td>';
-            //echo '<td><button class="btn btn-light" type="button" onClick="retireQte("'.$row['Id_Panier'].'","'. $row['Id_Article'] .'","'.$row['prix'].'")" value="-" name="moinsQte" >-</button>&nbsp;<input class="mini" value="'. $row['qtite_Art'] .'" name="Qte'.$row['Id_Panier'].'" disabled>&nbsp;<button class="btn btn-light" type="submit" value="+" name="plusQte" >+</button></td>';
+            //echo '<td><div class="btn btn-light" type="button" onClick="retireQte("'.$row['Id_Panier'].'","'. $row['Id_Article'] .'","'.$row['prix'].'")" value="-" name="moinsQte" >-</div>&nbsp;<input class="mini" value="'. $row['qtite_Art'] .'" name="Qte'.$row['Id_Panier'].'" disabled>&nbsp;<div class="btn btn-light" type="submit" value="+" name="plusQte" >+</div></td>';
             //echo '<td><button id="btnQte'.$row['Id_Panier'].'" class="btn btn-light" type="button" onClick="retireQte("'.$row['Id_Panier'].'","'. $row['Id_Article'] .'","'. $row['prix'] .'")" value="-" name="moinsQte" >-</button>&nbsp;<input id="qte'.$row['Id_Panier'].'" value="'. $row['qtite_Art'] .'"/>&nbsp;<button class="btn btn-light" type="button" value="+" name="plusQte" >+</button></td>';
             
             echo '<td><span id="prixT'.$row['Id_Panier'].'">'. $row['prixT'] .'</span> €</td>';
@@ -265,7 +266,7 @@ class Panier{
         return $stmt;
     }
 
-    public function addArticleToCart($Qte,$Id_Article,$prix){
+    public function addArticleToCart($Qte,$Id_Article,$prix,$qtestock){
         $database = new Database();
         $conn = $database->getConnection();   
 
@@ -275,10 +276,14 @@ class Panier{
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();
-        //return $stmt;
+
+        $qtestock = $qtestock - 1;
+
+        $article = new Article();
+        $article->updateStock_ArtById_Article($qtestock,$Id_Article);
     }
 
-    public function updateQtiteArtCart($Id_Article,$prix){
+    public function updateQtiteArtCart($Id_Article,$prix,$qtestock){
         $database = new Database();
         $conn = $database->getConnection();   
 
@@ -286,6 +291,8 @@ class Panier{
 
         $qte = $qte + 1;
 
+        $qtestock = $qtestock - 1;
+
         $prixT = $qte * $prix;
 
         $sqlQuery = "update panier set qtite_Art=".$qte.",prixT =".$prixT." WHERE Id_Article=".$Id_Article;
@@ -293,18 +300,34 @@ class Panier{
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();
-        //return $stmt;
+
+        $article = new Article();
+        $article->updateStock_ArtById_Article($qtestock,$Id_Article);
     }
 
     public function updateQtitePlusMoinsArtCart($Id_Article,$action,$prix){
         $database = new Database();
+
+        $qte=0;
+        $qtestock=0;
+
         $conn = $database->getConnection();   
 
         $qte = $this->getQte_ArtById_Article($Id_Article);
+        $qtestock = $this->getStock_ArtById_Article($Id_Article);
 
-        if($action=="plusQte"){$qte = $qte + 1;}
+        if($action=="plusQte" && $qtestock>0){
 
-        if($action=="moinsQte"){$qte = $qte - 1;}
+            $qte = $qte + 1;
+            $qtestock = $qtestock - 1;
+        }
+
+        if($action=="moinsQte" && $qte>1){
+
+                $qte = $qte - 1;
+                $qtestock = $qtestock + 1;
+
+        }
 
         $prixT = $qte * $prix;
 
@@ -313,6 +336,10 @@ class Panier{
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();
+
+        $article = new Article();
+        $article->updateStock_ArtById_Article($qtestock,$Id_Article);
+
         return [$qte,$prixT];
     }
 
@@ -356,6 +383,26 @@ class Panier{
 
     }
 
+    public function getStock_ArtById_Article($Id_Article){
+        $database = new Database();
+        $conn = $database->getConnection();
+        $qtestock_ArtToReturn=0;
+
+        $sqlQuery = "SELECT qtestock FROM `panier` INNER JOIN article ON panier.Id_Article = article.Id_Instrument INNER JOIN instruments on article.Id_Instrument = instruments.Id_Instrument  WHERE panier.Id_Article=".$Id_Article ;
+ 
+        $stmt = $conn->prepare($sqlQuery);              
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $qtestock_ArtToReturn = $qtestock;
+        }
+
+        return $qtestock_ArtToReturn;
+
+    }
+
     public function getSumQteCart(){
         $database = new Database();
         $conn = $database->getConnection();
@@ -374,7 +421,8 @@ class Panier{
 
         return $sumQteToReturn;
     }
-    public function deleteArtCart($Id_Panier){
+
+    public function deleteArtCart($Id_Panier,$qtite_Art,$Id_Article){
         $database = new Database();
         $conn = $database->getConnection();   
 
@@ -383,6 +431,13 @@ class Panier{
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();
+
+        $qtestock = $this->getStock_ArtById_Article($Id_Article);
+
+        $qtestock = $qtestock + $qtite_Art;
+
+        $article = new Article();
+        $article->updateStock_ArtById_Article($qtestock,$Id_Article);
     }
  }
 ?>

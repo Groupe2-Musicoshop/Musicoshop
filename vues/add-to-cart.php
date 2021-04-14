@@ -4,6 +4,7 @@
     @$addCart=$_POST["addCart"];
 	@$Id_Article=$_POST["Id_Article"];
 	@$prix=$_POST["prix"];
+	@$qtestock=$_POST["qtestock"];
 
     $cat = new Categorie();
     $art = new Article();
@@ -16,11 +17,11 @@
 
         if($cart->getId_PanierById_Article($Id_Article)>0){
           
-            $cart->updateQtiteArtCart($Id_Article,$prix);
+            $cart->updateQtiteArtCart($Id_Article,$prix,$qtestock);
 
         }else{
             
-            $cart->addArticleToCart(1,$Id_Article,$prix);
+            $cart->addArticleToCart(1,$Id_Article,$prix,$qtestock);
 
         }
     }
