@@ -1,8 +1,6 @@
 <?php
     require_once 'modele/Database.php';
     require 'vues/add-to-cart.php';	
-    var_dump($_POST);
-
     //Recuperer l'id de l'article
 	@$idArticle=$_GET["id_art"];
 

@@ -1,13 +1,11 @@
 <?php
     $page = basename($_SERVER["PHP_SELF"]);
     
-    @$addCart=$_POST["addCart"];
-	@$Id_Article=$_POST["Id_Article"];
-	@$prix=$_POST["prix"];
+    require_once 'modele/Database.php';
+    require 'vues/add-to-cart.php';	
     
     $cat = new Categorie();
     $cat->set_PageActive($page);   
-
 
     $art = new Article();
     $cart = new Panier();
@@ -15,18 +13,7 @@
 
 	$message="";
     
-    if (isset($addCart)) {
-
-        if($cart->getId_PanierById_Article($Id_Article)>0){
-          
-            $cart->updateQtiteArtCart($Id_Article,$prix);
-
-        }else{
-            
-            $cart->addArticleToCart(1,$Id_Article,$prix);
-            
-        }
-    }
+   
 ?>
 
 <div class="jumbotron">

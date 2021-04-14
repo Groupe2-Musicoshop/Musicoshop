@@ -259,6 +259,7 @@ class Article{
                                 echo '<button class="btn btn-lg btn-block btn-success " type="submit" value="+" name="addCart" ><i class="fa fa-cart-plus"></i> Ajouter au panier</button>';
                                 echo '<input type="hidden" value="'.$row['Id_Article'].'" name="Id_Article" />';
                                 echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
+                                echo '<input type="hidden" value="'.$row['qtestock'].'" name="qtestock" />';
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
