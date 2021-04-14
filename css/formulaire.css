@@ -1,0 +1,17 @@
+/* modifier-article.php */
+p.box-return {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #0d1b2a;
+}
+
+p.box-return:hover a{
+    color: #415a77;
+}
+
+p.box-return a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: #000;
+}
+

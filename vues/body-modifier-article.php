@@ -58,7 +58,9 @@ require_once 'modele/Database.php';
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 <div class="jumbotron">
-			<form class="box" action="" method="POST">
+	<form class="box" action="" method="POST">
+					<p class="box-return"><a href="liste-des-articles.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+<u>Retour à la liste des articles</u></a></p>
             			<h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier un article</h3> 
 
 				    <input type="hidden" value="<?php echo $row['Id_Article']; ?>" name="articleid">
@@ -86,7 +88,6 @@ require_once 'modele/Database.php';
 				    <input type="text"  name="designation" id="idCategorie" value="<?php echo $row1['designation']; ?>" class="form-control"><br>
 			
 				    <input type="submit" name="update" class="box-button" value="Update">
-					<p class="box-register"><a href="liste-des-articles.php"><u>Retour à la liste des articles</u></a></p>
 
 			</form>
 		</div>

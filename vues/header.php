@@ -1,12 +1,7 @@
 <?php
     if (!isset($_SESSION)) { session_start(); }
-<<<<<<< HEAD
     	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
-=======
-    $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
-    
->>>>>>> 07f6c7bbe7a9c9e191de7f19b67f38baddfb9fa8
     include_once(__DIR__."/../modele/Nav.php");
     include_once(__DIR__."/../modele/Categorie.php");
     include_once(__DIR__."/../modele/Article.php");

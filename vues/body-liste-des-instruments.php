@@ -32,7 +32,8 @@ if ($result->rowCount() > 0)
 </head>
 <div class="jumbotron">
 
-
+<p class="box-return"><a href="index.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+<u>Retour à l'index</u></a></p>
 	<h2>liste des instruments</h2>
 
 	<table class="table table-bordered table-striped">

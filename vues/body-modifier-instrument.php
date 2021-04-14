@@ -49,6 +49,8 @@ require_once 'modele/Database.php';
 </head>
 <div class="jumbotron">
 			<form class="box" action="" method="POST">
+			<p class="box-return"><a href="liste-des-instruments.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+<u>Retour à la liste des instruments</u></a></p>
             			<h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier un instrument</h3> 
 
 				    <input type="hidden" value="<?php echo $row['Id_Instrument']; ?>" name="instrumentid">
@@ -61,7 +63,5 @@ require_once 'modele/Database.php';
 				    <label for="idCategorie">ID Catégorie</label>
 				    <input type="text"  name="idCategorie" id="idCategorie" value="<?php echo $row['idCategorie']; ?>" class="form-control"><br>
 				    <input type="submit" name="update" class="box-button" value="Update">
-					<p class="box-register"><a href="liste-des-instruments.php"><u>Retour à la liste des instruments</u></a></p>
-
 			</form>
 		</div>
