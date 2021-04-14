@@ -232,7 +232,7 @@ class Article{
         $row = $stmt->execute();
         $row = $stmt->fetch();
         echo '<form method="POST">';
-            echo '<div class="card">';
+            echo '<div class="card cat'.$row["idCategorie"].'">';
                 echo '<div class="card-body">';
                     echo '<div class="row">';
                         echo '<div class="col-md-8">';

@@ -1,32 +1,21 @@
 <?php
     require_once 'modele/Database.php';
+    require 'vues/add-to-cart.php';	
+    var_dump($_POST);
 
-    $page = basename($_SERVER["PHP_SELF"]);
-
-    @$addCart=$_POST["addCart"];
     //Recuperer l'id de l'article
-	@$Id_Article=$_GET["id_art"];
+	@$idArticle=$_GET["id_art"];
 
     $cat = new Categorie();
 
     $cat->set_PageActive($page); 
 
     $art = new Article();
-    $art->setIdArticle($Id_Article);
+    $art->setIdArticle($idArticle);
 
 	$message="";
     
-    if (isset($addCart)) {
 
-        array_push($_SESSION['cart'],$Id_Article);   
-
-        $_SESSION['nbAticle'] += 1;
-                
-    }else{
-
-        $_SESSION['cart']=array();
-
-    }
 ?>
 
 
