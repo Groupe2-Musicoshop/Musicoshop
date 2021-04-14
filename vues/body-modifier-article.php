@@ -41,6 +41,15 @@ require_once 'modele/Database.php';
 		exit;
 	}
 	$row = $result->fetch(PDO::FETCH_ASSOC);
+
+		$id1=$row['Id_Instrument'];
+
+	$sql1 = "SELECT * FROM instruments WHERE Id_Instrument=$id1";
+	$result1 = $conn->query($sql1);
+	$row1 = $result1->fetch(PDO::FETCH_ASSOC);
+	//echo $row['designation'];
+
+
 	?>
 	<head>
     <link rel="stylesheet" href="<?=$_SESSION['root']?>css/login.css" />
@@ -69,10 +78,15 @@ require_once 'modele/Database.php';
 				    <label for="image">Note</label>
 				    <input type="text"  name="note" id="image" value="<?php echo $row['note']; ?>" class="form-control"><br>
 				
-				
-				    <label for="idCategorie">ID Instrument</label>
+				 	<label for="idCategorie">ID Instrument</label>
 				    <input type="text"  name="Id_Instrument" id="idCategorie" value="<?php echo $row['Id_Instrument']; ?>" class="form-control"><br>
 			
+				
+				    <label for="idCategorie">Désignation instrument</label>
+				    <input type="text"  name="designation" id="idCategorie" value="<?php echo $row1['designation']; ?>" class="form-control"><br>
+			
 				    <input type="submit" name="update" class="box-button" value="Update">
+					<p class="box-register"><a href="liste-des-articles.php"><u>Retour à la liste des articles</u></a></p>
+
 			</form>
 		</div>

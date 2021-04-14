@@ -61,5 +61,7 @@ require_once 'modele/Database.php';
 				    <label for="idCategorie">ID Catégorie</label>
 				    <input type="text"  name="idCategorie" id="idCategorie" value="<?php echo $row['idCategorie']; ?>" class="form-control"><br>
 				    <input type="submit" name="update" class="box-button" value="Update">
+					<p class="box-register"><a href="liste-des-instruments.php"><u>Retour à la liste des instruments</u></a></p>
+
 			</form>
 		</div>
