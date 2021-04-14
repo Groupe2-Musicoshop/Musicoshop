@@ -206,10 +206,17 @@ class Article{
             echo '</div>';
             echo '<div class="col-md-4">';
             echo '<h5>'.$row['prix'].' €</h5>';
-            echo '<br>';
-            echo '<button class="btn btn-success " type="submit" value="+" name="addCart" ><i class="fa fa-cart-plus"></i></button>';
+            echo '<h5>'.$row['qtestock'].' en stock<h5>';
+            echo '<button class="btn btn-success " type="submit" value="+" name="addCart" ';
+
+            if($row['qtestock']==0){
+                echo 'Disabled';
+            }
+
+            echo '><i class="fa fa-cart-plus"></i></button>';
             echo '<input type="hidden" value="'.$row['Id_Article'].'" name="Id_Article" />';
             echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
+            echo '<input type="hidden" value="'.$row['qtestock'].'" name="qtestock" />';
 
             echo '</div>';
             echo '</div>';
@@ -415,6 +422,18 @@ class Article{
     
         $stmt->execute();
         return $stmt;
+    }
+
+    public function updateStock_ArtById_Article($qtestock,$Id_Article){
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $sqlQuery = "Update `article` set qtestock=".$qtestock." WHERE Id_Article=".$Id_Article ;
+ 
+        $stmt = $conn->prepare($sqlQuery);              
+        
+        $stmt->execute();      
+
     }
 
 }

@@ -11,6 +11,8 @@
 
    @$Id_Panier=$_POST["Id_Panier"];
    @$prix=$_POST["prix"];   
+   @$qtite_Art=$_POST["qtite_Art"];   
+
    @$moinsQte=$_POST["moinsQte"];
    @$plusQte=$_POST["plusQte"];
    
@@ -39,8 +41,9 @@
     }*/
 
     if (isset($_POST["trashArt"])) {
-        $cart->deleteArtCart($Id_Panier);
-        $_SESSION['nbAticle']=$cart->getSumQteCart($Id_Panier);
+
+        $cart->deleteArtCart($Id_Panier,$qtite_Art,$Id_Article_cart);
+        $_SESSION['nbAticle']=$cart->getSumQteCart();
     }     
 
     /*if (isset($_POST["Id_Article_cart"])) {
