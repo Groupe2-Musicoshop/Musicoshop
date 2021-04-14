@@ -1,31 +1,19 @@
 <?php
     require_once 'modele/Database.php';
-
-    $page = basename($_SERVER["PHP_SELF"]);
-
-    @$addCart=$_POST["addCart"];
-	@$Id_Article=$_GET["id_art"];
+    require 'vues/add-to-cart.php';	
+    //Recuperer l'id de l'article
+	@$idArticle=$_GET["id_art"];
 
     $cat = new Categorie();
 
     $cat->set_PageActive($page); 
 
     $art = new Article();
-    $art->setIdArticle($Id_Article);
+    $art->setIdArticle($idArticle);
 
 	$message="";
     
-    if (isset($addCart)) {
 
-        array_push($_SESSION['cart'],$Id_Article);   
-
-        $_SESSION['nbAticle'] += 1;
-                
-    }else{
-
-        $_SESSION['cart']=array();
-
-    }
 ?>
 
 
@@ -37,13 +25,6 @@
 
         <?php $cat->genCategoriesHorizontaly()?>
 
-        <div class="row">
-            <div class="col-12">
-                <div id="catalog" class="catalog">
-
-                    <?php $art->genCardArticle(0)?>
-
-                </div>
-            </div>
-        </div>
+        <?php $art->genSingleArticle()?>
     </div>
+</div>

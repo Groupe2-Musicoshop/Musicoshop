@@ -1,7 +1,12 @@
 <?php
     if (!isset($_SESSION)) { session_start(); }
+<<<<<<< HEAD
     	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
+=======
+    $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+    
+>>>>>>> 07f6c7bbe7a9c9e191de7f19b67f38baddfb9fa8
     include_once(__DIR__."/../modele/Nav.php");
     include_once(__DIR__."/../modele/Categorie.php");
     include_once(__DIR__."/../modele/Article.php");
@@ -52,6 +57,9 @@
 
     <link rel="icon" href="<?=$_SESSION['root']?>/img/favicon.ico" />
 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/global.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/header.css">
@@ -64,10 +72,7 @@
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/formulaire.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/panier.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/footer.css">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
+    
     <title>Musicoshop</title>
 
 </head>
