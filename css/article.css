@@ -6,9 +6,11 @@
     padding-bottom: 1rem;
     text-align: center;
 }
+
 .dispo{
     color: green;
 }
+
 .indispo{
     color: red;
 }
@@ -35,12 +37,14 @@ a.linkcat:hover {
     text-decoration: none;
 }
 
+.btn.btn-primary,
 .btn-primary {
     background-color: #6D81A8;
     border-color: #1b263b;
     color: #fff;
 }
 
+.btn.btn-primary:hover,
 .btn-primary:hover {
     background-color: #1b263b;
     border-color: #1b263b;
@@ -57,6 +61,15 @@ a.linkcat:hover {
 
 .card-body {
     padding: 1.25rem 0;
+}
+
+.card-body .col-md-4 {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body .col-md-4 h5 button{
+    margin-top: 9px;
 }
 
 #catalog .card-title {
@@ -76,6 +89,10 @@ a.linkcat:hover {
 h5 {
     font-family: "Fontastique Fontastique";
     margin-bottom: 0;
+}
+
+h5.text-center {
+    margin-bottom: 1rem;
 }
 
 #catalog h6 {

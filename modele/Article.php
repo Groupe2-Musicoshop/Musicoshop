@@ -206,8 +206,16 @@ class Article{
             echo '</div>';
             echo '<div class="col-md-4">';
             echo '<h5>'.$row['prix'].' €</h5>';
-            echo '<h5>'.$row['qtestock'].' en stock<h5>';
-            echo '<button id="addCart'.$row['Id_Article'].'" class="btn btn-success " type="submit" value="+" name="addCart" ';
+            echo '<h5 class="';
+
+            if($row['qtestock']==0){
+                echo 'indispo';
+            }else{
+                echo 'dispo';
+            }
+
+            echo '">'.$row['qtestock'].' en stock<h5>';
+            echo '<button id="addCart'.$row['Id_Article'].'" class="btn btn-primary " type="submit" value="+" name="addCart" ';
 
             if($row['qtestock']==0){
                 echo 'Disabled';
@@ -232,8 +240,10 @@ class Article{
         $row = $stmt->execute();
         $row = $stmt->fetch();
         echo '<form method="POST">';
-            echo '<div class="card cat'.$row["idCategorie"].'">';
-                echo '<div class="card-body">';
+        echo '<div class="card cat'.$row["idCategorie"].'">';
+        echo '<div class="card-body">';
+                    echo '<p class="box-return"><a href="'.$_SESSION["page-retour"].'"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                    <u>Retour</u></a></p>';
                     echo '<div class="row">';
                         echo '<div class="col-md-8">';
                             echo '<div class="box_article">';
@@ -255,8 +265,22 @@ class Article{
                             echo '<div class="box_prix">';
                                 echo '<h2 class="text-center">'.$row['prix'].' €</h2>';
                                 echo '<br>';
-                                echo '<h5 class="text-center dispo">'.$row['qtestock'].' en stock</h5>';
-                                echo '<button class="btn btn-lg btn-block btn-success " type="submit" value="+" name="addCart" ><i class="fa fa-cart-plus"></i> Ajouter au panier</button>';
+                                echo '<h5 class="text-center ';
+
+                                if($row['qtestock']==0){
+                                    echo 'indispo';
+                                }else{
+                                    echo 'dispo';
+                                }
+
+                                echo '">'.$row['qtestock'].' en stock</h5>';
+                                echo '<button class="btn btn-lg btn-block btn-primary " type="submit" value="+" name="addCart" ';
+
+                                if($row['qtestock']==0){
+                                    echo 'Disabled';
+                                }
+                    
+                                echo '><i class="fa fa-cart-plus"></i> Ajouter au panier</button>';
                                 echo '<input type="hidden" value="'.$row['Id_Article'].'" name="Id_Article" />';
                                 echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
                                 echo '<input type="hidden" value="'.$row['qtestock'].'" name="qtestock" />';

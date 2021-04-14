@@ -13,7 +13,7 @@
     $user = new User();
 
 	$message="";
-    
+    $_SESSION['page-retour'] = basename($_SERVER["PHP_SELF"]);
 ?>
 
 <div class="jumbotron">

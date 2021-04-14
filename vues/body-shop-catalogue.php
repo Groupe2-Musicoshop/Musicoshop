@@ -1,6 +1,8 @@
 <?php
     require_once 'modele/Database.php';
     require 'vues/add-to-cart.php';	
+
+    $_SESSION['page-retour'] = basename($_SERVER["PHP_SELF"]);
 ?>
 
 <div class="jumbotron">

@@ -150,3 +150,11 @@
     list-style: none;
     padding: 0.7rem;
 }
+
+#footer .list-unstyled li p{
+    color: #415a77;
+}
+
+#footer .list-unstyled li p svg{
+    margin-bottom: 3px;
+}
