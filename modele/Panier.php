@@ -425,6 +425,8 @@ class Panier{
     public function deleteArtCart($Id_Panier,$qtite_Art,$Id_Article){
         $database = new Database();
         $conn = $database->getConnection();   
+        
+        $qtestock = $this->getStock_ArtById_Article($Id_Article);
 
         $sqlQuery = "DELETE FROM panier WHERE Id_Panier = ".$Id_Panier;
 
@@ -432,11 +434,10 @@ class Panier{
 
         $stmt->execute();
 
-        $qtestock = $this->getStock_ArtById_Article($Id_Article);
-
         $qtestock = $qtestock + $qtite_Art;
-
-        $article = new Article();
+        
+        $article = new Article();        
+        
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
     }
  }
