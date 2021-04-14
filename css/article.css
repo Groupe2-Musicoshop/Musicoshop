@@ -6,25 +6,42 @@
     padding-bottom: 1rem;
     text-align: center;
 }
+.dispo{
+    color: green;
+}
+.indispo{
+    color: red;
+}
+.box_prix{
+    padding: 130px 1rem;
+}
 
-#catalog a.linkcat {
+.box_article{
+    padding: 0 1rem;
+}
+
+.sep{
+    border-left: 1px solid black;
+}
+
+a.linkcat {
     color: #1b263b;
     text-decoration: none;
     margin-top: 1rem;
 }
 
-#catalog a.linkcat:hover {
+a.linkcat:hover {
     color: #6D81A8;
     text-decoration: none;
 }
 
-#catalog .btn-primary {
+.btn-primary {
     background-color: #6D81A8;
     border-color: #1b263b;
     color: #fff;
 }
 
-#catalog .btn-primary:hover {
+.btn-primary:hover {
     background-color: #1b263b;
     border-color: #1b263b;
     color: #fff;

@@ -218,6 +218,49 @@ class Article{
         }
     }
 
+    function genSingleArticle(){
+
+        $stmt = $this->getSqlSingleArticleByID($this->Id_Article);
+
+        $row = $stmt->execute();
+        $row = $stmt->fetch();
+        echo '<form method="POST">';
+            echo '<div class="card">';
+                echo '<div class="card-body">';
+                    echo '<div class="row">';
+                        echo '<div class="col-md-8">';
+                            echo '<div class="box_article">';
+                                echo '<h1 class="card-title">'.ucfirst($row['designation']).'</h1>';
+                                echo '<a class="linkcat" href="'.$_SESSION['root'].'/'.$row["page"].'"><i class="fa fa-quote-left"></i>&nbsp;'.$row["libele"].'&nbsp;<i class="fa fa-quote-right"></i></a>';
+                                echo '<br>';
+                                echo '<span>Note : </span>';
+                                for ($i = 1; $i <= $row['note']; $i++) {
+                                    echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
+                                }
+                                echo '<div class="box_img">';
+                                echo '<span class="helper"></span>';
+                                echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+
+                        echo '<div class="col-md-4 sep">';
+                            echo '<div class="box_prix">';
+                                echo '<h2 class="text-center">'.$row['prix'].' €</h2>';
+                                echo '<br>';
+                                echo '<h5 class="text-center dispo">'.$row['qtestock'].' en stock</h5>';
+                                echo '<button class="btn btn-lg btn-block btn-success " type="submit" value="+" name="addCart" ><i class="fa fa-cart-plus"></i> Ajouter au panier</button>';
+                                echo '<input type="hidden" value="'.$row['Id_Article'].'" name="Id_Article" />';
+                                echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</div>';
+            echo '</div>';
+        echo '</form>';
+    }
+    
+
     function genTabCartArticles($cart){
 
         $numUser=1;

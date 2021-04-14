@@ -4,6 +4,7 @@
     $page = basename($_SERVER["PHP_SELF"]);
 
     @$addCart=$_POST["addCart"];
+    //Recuperer l'id de l'article
 	@$Id_Article=$_GET["id_art"];
 
     $cat = new Categorie();
@@ -37,13 +38,6 @@
 
         <?php $cat->genCategoriesHorizontaly()?>
 
-        <div class="row">
-            <div class="col-12">
-                <div id="catalog" class="catalog">
-
-                    <?php $art->genCardArticle(0)?>
-
-                </div>
-            </div>
-        </div>
+        <?php $art->genSingleArticle()?>
     </div>
+</div>
