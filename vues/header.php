@@ -52,6 +52,9 @@
 
     <link rel="icon" href="<?=$_SESSION['root']?>/img/favicon.ico" />
 
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/global.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/header.css">
@@ -64,10 +67,7 @@
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/formulaire.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/panier.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/footer.css">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
+    
     <title>Musicoshop</title>
 
 </head>
