@@ -146,9 +146,10 @@ p {
     text-align: justify;
 }
 
-.card {
+
+/*.card {
     min-width: 350px;
-}
+}*/
 
 a {
     color: #415a77;
