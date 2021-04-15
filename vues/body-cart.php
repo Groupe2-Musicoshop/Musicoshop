@@ -83,8 +83,9 @@
 
             </div>
         </div>
+        <a href="../Musicoshop/paiement.php"  class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Passer votre commande</a>
 
-    </div><a href="../Musicoshop/paiement.php" class="btn btn-warning" role="button" aria-pressed="true">Passer votre commande</a>
+    </div>
 
 
 </div>

@@ -1,8 +1,18 @@
 
-
+<?php
+    $page = basename($_SERVER["PHP_SELF"]);
+    $cat = new Categorie();
+    $cat->set_PageActive($page);   
+?>
 <div class="jumbotron">
+    <div id="cat_b&p" class="body-mu">
 
-<!--Section: Contact v.2-->
+        <div id="title" class="white">Nous contacter</div>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
+
+        <?php $cat->genCategoriesHorizontaly()?>
+    
+
 <section class="mb-4">
 
     <!--Section heading-->
@@ -70,7 +80,7 @@
             </form>
 
             <div class="text-center text-md-left">
-            <a class="btn btn-primary" onclick="validateForm();">Envoyer</a> 
+            <a  class="btn btn-primary btn-lg btn-block" onclick="validateForm();">Envoyer</a> 
                       </div>
             <div class="status"></div>
        
@@ -80,7 +90,7 @@
 
 </section>
 
-</div>
+
 <script>
 function validateForm() {
     var name =  document.getElementById('name').value;

@@ -4,8 +4,7 @@
 
 	@$nom=$_POST["nom"];
 	@$prenom=$_POST["prenom"];
-    	@$sexe=$_POST["sexe"];
-
+    @$sexe=$_POST["sexe"];
 	@$adresse=$_POST["adresse"];
 	@$ville=$_POST["ville"];
 	@$codepostal=$_POST["codepostal"];
@@ -60,9 +59,28 @@
 			}
 		}
 	}
-?>
 
+    $page = basename($_SERVER["PHP_SELF"]);
+    $cat = new Categorie();
+    $cat->set_PageActive($page);   
+?>
 <div class="jumbotron">
+    <div id="cat_b&p" class="body-mu">
+
+        <div id="title" class="white">S'inscrire</div>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
+
+        <?php $cat->genCategoriesHorizontaly()?>
+
+        <div class="row">
+           
+        </div>
+
+   
+
+
+
+
     <form class="box" action="" method="post">
 
         <div class="mb-3">
