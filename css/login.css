@@ -30,7 +30,12 @@ body {
   }
   
   .box-button {
-    border-radius: 5px;
+    border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    -o-border-radius: 0.3rem;
+    border-color: #1b263b;
     background-color: #6D81A8;
     text-align: center;
     cursor: pointer;
@@ -49,7 +54,12 @@ body {
    
   }
   .box-button:hover {
-    border-radius: 5px;
+    border-radius: 0.3rem;
+    -webkit-border-radius: 0.3rem;
+    -moz-border-radius: 0.3rem;
+    -ms-border-radius: 0.3rem;
+    -o-border-radius: 0.3rem;
+    border: 1px solid transparent;
     background-color: #1b263b;
     text-align: center;
     cursor: pointer;
@@ -58,8 +68,7 @@ body {
     height: 51px;
     padding: 0;
     color: #fff;
-    border: 0;
-    outline:0;
+    
   }
   .box-register
   {
@@ -100,6 +109,7 @@ body {
   }
   .btn.btn-primary,
 .btn-primary {
+    border: 1px solid transparent;
     background-color: #6D81A8;
     border-color: #1b263b;
     color: #fff;
@@ -114,4 +124,9 @@ body {
 a {
   
   margin: center;
+}
+.center{
+
+  margin-left: auto;
+  margin-right: auto;
 }

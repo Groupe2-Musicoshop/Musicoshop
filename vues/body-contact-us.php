@@ -80,7 +80,7 @@
             </form>
 
             <div class="text-center text-md-left">
-            <a  class="btn btn-primary btn-lg btn-block" onclick="validateForm();">Envoyer</a> 
+            <div class="center col-4"><a  class="btn btn-primary btn-lg btn-block" onclick="validateForm();">Envoyer</a></div>
                       </div>
             <div class="status"></div>
        

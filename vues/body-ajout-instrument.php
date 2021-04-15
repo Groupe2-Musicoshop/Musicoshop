@@ -82,7 +82,7 @@
         <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
 
-        <input type="submit" name="valider" value="valider" class="box-button" />
+        <input type="submit" name="valider" value="valider" class="btn btn-primary box-button" />
         <!--<p class="box-register">Déjà inscrit? <a href="login.php"><u>Connectez-vous ici<u></a></p>-->
 
     </form>

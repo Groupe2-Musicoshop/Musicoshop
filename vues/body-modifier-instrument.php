@@ -62,6 +62,6 @@ require_once 'modele/Database.php';
 				    <input type="file"  name="image" id="image" value="<?php echo $row['img']; ?>" class="form-control"><br>
 				    <label for="idCategorie">ID Catégorie</label>
 				    <input type="text"  name="idCategorie" id="idCategorie" value="<?php echo $row['idCategorie']; ?>" class="form-control"><br>
-				    <input type="submit" name="update" class="box-button" value="Update">
+				    <input type="submit" name="update" class="btn btn-primary box-button" value="Update">
 			</form>
 		</div>

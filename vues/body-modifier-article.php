@@ -87,7 +87,7 @@ require_once 'modele/Database.php';
 				    <label for="idCategorie">Désignation instrument</label>
 				    <input type="text"  name="designation" id="idCategorie" value="<?php echo $row1['designation']; ?>" class="form-control"><br>
 			
-				    <input type="submit" name="update" class="box-button" value="Update">
+				    <input type="submit" name="update" class="btn btn-primary box-button" value="Update">
 
 			</form>
 		</div>

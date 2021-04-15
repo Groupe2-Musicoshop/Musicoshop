@@ -84,7 +84,9 @@
 	        </div> <!-- form-group.// -->
 	    </div>
 	</div> <!-- row.// -->
-	<button  class="btn btn-primary btn-lg btn-block" type="button" name="valider"> Acheter maintenant  </button>
+	<div class="row">
+	<div class="center col-4"><button  class="btn btn-primary btn-lg btn-block" type="button" name="valider"> Acheter maintenant  </button></div>
+	</div>
 	</form>
 </div> <!-- tab-pane.// -->
 <div class="tab-pane fade" id="nav-tab-paypal">
