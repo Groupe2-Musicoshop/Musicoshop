@@ -9,29 +9,20 @@
     $conn = $database->getConnection();
 
 
-	@$username=$_POST["qtestock"];
-	@$prenom=$_POST["prix"];
-	@$adresse=$_POST["note"];
-	@$ville=$_POST["id_instrument"];
-	//@$codepostal=$_POST["codepostal"];
-	//@$email=$_POST["email"];
-	//@$password=$_POST["password"];
-	//@$repass=$_POST["repass"];
+	@$qtestock=$_POST["qtestock"];
+	@$prix=$_POST["prix"];
+	@$note=$_POST["note"];
+	@$id_instrument=$_POST["id_instrument"];
 	@$valider=$_POST["valider"];
 
 	$message="";
 
 	if(isset($valider)){
 
-        if(empty($username)) $message="Nom invalide!";
-        if(empty($prenom)) $message.="Prénom invalide!";
-        if(empty($adresse)) $message.="adresse invalide!";
-        if(empty($ville)) $message.="ville invalide!";
-        //if(empty($codepostal)) $message.="Code-postal invalide!";
-        //if(empty($email)) $message.="email invalide!";
-        //if(empty($password)) $message.="Mot de passe invalide!";
-        //if($password!=$repass) $message.="Mots de passe non identiques!";	
-        //if(empty($message)){
+        if(empty($qtestock)) $message="Il faut renseigner un stock";
+        if(empty($prix)) $message.="Il faut renseigner un prix";
+        if(empty($note)) $message.="Il faut renseigner une note";
+        if(empty($id_instrument)) $message.="Il faut séléctionner un instrument";
 
         $ins=$conn->prepare("insert into article(qtestock,prix,note,Id_Instrument) values(?,?,?,?)");
         $ins->execute(array($username,$prenom,$adresse,$ville));
@@ -43,14 +34,6 @@
     $cat->set_PageActive($page);   
 	
 ?>
-
-<head>
-    <link rel="stylesheet" href="<?=$_SESSION['root']?>/css/login.css" />
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-</head>
-
 
 <div class="jumbotron">
     <div id="cat_b&p" class="body-mu">
@@ -108,3 +91,4 @@
         <!--<p class="box-register">Déjà inscrit? <a href="login.php"><u>Connectez-vous ici<u></a></p>-->
 
     </form>
+</div>

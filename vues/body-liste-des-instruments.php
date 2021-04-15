@@ -14,7 +14,7 @@ if( isset($_POST['delete'])){
 		echo "<div class='alert alert-success'>Successfully delete  instrument</div>";
 	}
 }
-$sql 	= "SELECT * FROM instruments INNER JOIN categorie ON categorie.idCategorie = instruments.idCategorie";
+$sql 	= "SELECT * FROM instruments INNER JOIN categorie ON categorie.idCategorie = instruments.idCategorie ORDER BY instruments.Id_Instrument ASC";
 $result = $conn->query($sql);
 
 if ($result->rowCount() > 0) { ?>
@@ -28,8 +28,8 @@ if ($result->rowCount() > 0) { ?>
 			<thead>
 				<tr>
 					<td>Désignation</td>
-					<td>Adresse Image</td>
-					<td>ID Catégorie</td>
+					<td>Image</td>
+					<td>Catégorie</td>
 					<td width="70px">Supprimer</td>
 					<td width="70px">Modifier</td>
 				</tr>
