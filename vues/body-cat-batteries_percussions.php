@@ -3,12 +3,8 @@
     require_once 'modele/Database.php';
     require 'vues/add-to-cart.php';	
     
-    var_dump($_POST);
-    
     $cat = new Categorie();
     $cat->set_PageActive($page);   
-
-
     $art = new Article();
     $cart = new Panier();
     $user = new User();

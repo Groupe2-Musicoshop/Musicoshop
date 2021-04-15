@@ -28,9 +28,29 @@ body {
     text-align:center;
     margin: -27px -26px 26px;
   }
+  
   .box-button {
     border-radius: 5px;
-    background: #0d6efd;
+    background-color: #6D81A8;
+    text-align: center;
+    cursor: pointer;
+    font-size: 19px;
+    width: 100%;
+    height: 51px;
+    padding: 0;
+    color: #fff;
+    border: 0;
+    outline:0;
+  }
+  #nav-link{
+    
+    background-color: #6D81A8;
+    color: white;
+   
+  }
+  .box-button:hover {
+    border-radius: 5px;
+    background-color: #1b263b;
     text-align: center;
     cursor: pointer;
     font-size: 19px;
@@ -78,3 +98,16 @@ body {
       color: red;
      
   }
+  .btn.btn-primary,
+.btn-primary {
+    background-color: #6D81A8;
+    border-color: #1b263b;
+    color: #fff;
+}
+
+.btn.btn-primary:hover,
+.btn-primary:hover {
+    background-color: #1b263b;
+    border-color: #1b263b;
+    color: #fff;
+}

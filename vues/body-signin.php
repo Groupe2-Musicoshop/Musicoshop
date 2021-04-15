@@ -4,8 +4,7 @@
 
 	@$nom=$_POST["nom"];
 	@$prenom=$_POST["prenom"];
-    	@$sexe=$_POST["sexe"];
-
+    @$sexe=$_POST["sexe"];
 	@$adresse=$_POST["adresse"];
 	@$ville=$_POST["ville"];
 	@$codepostal=$_POST["codepostal"];
@@ -60,7 +59,15 @@
 			}
 		}
 	}
+
+    $page = basename($_SERVER["PHP_SELF"]);
+    $cat = new Categorie();
+    $cat->set_PageActive($page);   
 ?>
+
+<div id="categorie" class="filters button-group js-radio-button-group bg-color-whi">
+            <?php $cat->genCategoriesHorizontaly();?>
+        </div>
 
 <div class="jumbotron">
     <form class="box" action="" method="post">

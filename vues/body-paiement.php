@@ -35,13 +35,13 @@
 
 <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
 	<li class="nav-item">
-		<a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
-		<i class="fa fa-credit-card"></i> Carte de crédit</a></li>
+		<a  class="nav-link active" data-toggle="pill" href="#nav-tab-card">
+		<i  class="fa fa-credit-card"></i> Carte de crédit</a></li>
 	<li class="nav-item">
-		<a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+		<a  class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
 		<i class="fab fa-paypal"></i>  Paypal</a></li>
 	<li class="nav-item">
-		<a class="nav-link" data-toggle="pill" href="#nav-tab-bank">
+		<a  class="nav-link" data-toggle="pill" href="#nav-tab-bank">
 		<i class="fa fa-university"></i>  Virement bancaire</a></li>
 </ul>
 
