@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/Panier.php';
+
 class Nav{
     private ?string $pageActive;
     private ?string $userType;
@@ -20,8 +22,8 @@ class Nav{
         {"titre":"Liste des Instruments","link":"liste-des-instruments.php","userType":"admin"}
         ]},
         {"titre":"img/cart.svg" , "type":"img" , "link":[
-        {"titre":"Aller au panier","link":"cart.php","userType":"all"},    
-        {"titre":"","link":"","userType":"none"}    
+        {"titre":"","link":"","userType":"cart"},
+        {"titre":"Aller au panier","link":"cart.php","userType":"btn"}
         ]}
     ]';
 
@@ -147,6 +149,16 @@ class Nav{
 
                             echo "<a class='dropdown-item' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$value2n->{'titre'}."</a>";
                             
+                        }else if($value2n->{'userType'} == "btn"){
+                            echo "<a class='dropdown-item btn btn-primary' href='".$this->get_Root()."/".$value2n->{'link'}."'>".$value2n->{'titre'}."</a>";
+
+                            //echo '<a href="singleArticle.php?id_art='.$row['Id_Article'].'" class="btn btn-primary ">'.ucfirst($row['designation']).'</a>';
+                        }
+
+
+                        if($value2n->{'userType'} == "cart"){
+                            $cart = new Panier();
+                            $cart->genMiniCardArticle();
                         }
                     }
                     echo "</div></li>";

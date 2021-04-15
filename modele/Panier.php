@@ -184,6 +184,52 @@ class Panier{
       </tfoot></table></div>";
     }
 
+    function genMiniCardArticle(){
+      
+        $stmt = $this->getSqlArticles();
+
+        $MontantTotal = floatval(0.00);
+
+        echo'<div class="tbl-container">';
+        echo "<table id='miniTabCart' class='table'>";
+        echo "<tbody>";
+        
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            
+            extract($row);
+            
+            echo "<form action='' method='POST' name='formData".$row["Id_Panier"]."'>";
+            
+            echo '<tr><td>';
+            echo '<div class="card col-md-12" data-category="cat'.$row['idCategorie'].'">';                    
+            
+
+            echo '<div class="card-body row">';
+                echo '<div class="col-md-4">';
+                echo '<div class="box_img">';
+                    echo '<span class="helper"></span>';
+                    echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
+                echo '</div>';
+                echo '</div>';
+                    echo '<div class="col-md-8">';
+
+                    echo '<h5 class="card-title"><a href="singleArticle.php?id_art='.$row['Id_Article'].'">'.ucfirst($row['designation']).'</a></h5>';
+                    echo "<input type='hidden' value='". $row['Id_Article'] ."' name='Id_Article_cart' />";
+                    echo '<h5>'.$row['qtestock'].' en stock '.$row['prix'].' €</h5>';
+                    echo '<input type="hidden" value="'.$row['Id_Panier'].'" name="Id_Panier" />';
+                    echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
+                    echo '<input type="hidden" value="'.$row['qtite_Art'].'" name="qtite_Art" />';
+                echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</td>';            
+            echo '</form>';            
+        }
+
+        echo "</table></div>";
+    }
+
+
     function genTabCartArticles($cart){
 
         $numUser=1;
