@@ -6,7 +6,7 @@
 	$message="";
     
     if (!isset($_SESSION)) { session_start(); }
-    //$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+    $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
 	if(isset($valider)){
         require_once 'modele/Database.php';
@@ -71,14 +71,14 @@
     $cat = new Categorie();
     $cat->set_PageActive($page);   
 ?>
-
 <div class="jumbotron">
-<div id="cat_b&p" class="body-mu">
+    <div id="cat_b&p" class="body-mu">
 
-<div id="title" class="white">S'inscrire</div>
-<img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
+        <div id="title" class="white">Se connecter</div>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
 
-<?php $cat->genCategoriesHorizontaly()?>
+        <?php $cat->genCategoriesHorizontaly()?>
+    
 
     <form class="box" action="" method="post" name="login">
         <div class="mb-3">

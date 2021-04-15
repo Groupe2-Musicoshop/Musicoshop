@@ -71,7 +71,15 @@
         <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
 
         <?php $cat->genCategoriesHorizontaly()?>
-    
+
+        <div class="row">
+           
+        </div>
+
+   
+
+
+
 
     <form class="box" action="" method="post">
 

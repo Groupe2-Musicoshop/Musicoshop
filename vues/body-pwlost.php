@@ -54,16 +54,27 @@
 			}
 		}
 	}
+	$page = basename($_SERVER["PHP_SELF"]);
+    $cat = new Categorie();
+    $cat->set_PageActive($page);   
 ?>
 <div class="jumbotron">
+    
+        <div id="title" class="white">Mot de passe oublié</div>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
+
+        <?php $cat->genCategoriesHorizontaly()?>
+   
+
     <form class="box" action="" method="post" name="login">
+	
         <div class="mb-3">
             <h4 class="title">Vous avez oublié votre mot de passe</h4>
         </div>    
 		<div class="form-floating mb-3">
-  <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
-  <label for="floatingInput">Adresse e-mail</label>
-</div>
+  		<input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+  		<label for="floatingInput">Adresse e-mail</label>
+		</div>
         <?php if (! empty($message)) { ?>
         <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>

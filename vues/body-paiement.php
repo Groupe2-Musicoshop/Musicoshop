@@ -27,7 +27,7 @@
 <hr>
 
 <div class="jumbotron">
-<form action="" method="POST">
+<form id="paiement" action="" method="POST">
 <p>Méthodes de paiement</p>
 
 <article class="card">
@@ -84,7 +84,7 @@
 	        </div> <!-- form-group.// -->
 	    </div>
 	</div> <!-- row.// -->
-	<button class="btn btn-warning" type="button" name="valider"> Acheter maintenant  </button>
+	<button  class="btn btn-primary btn-lg btn-block" type="button" name="valider"> Acheter maintenant  </button>
 	</form>
 </div> <!-- tab-pane.// -->
 <div class="tab-pane fade" id="nav-tab-paypal">

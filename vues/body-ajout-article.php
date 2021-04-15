@@ -38,6 +38,9 @@
         echo "Article ajouté à la base";
         
     }
+    $page = basename($_SERVER["PHP_SELF"]);
+    $cat = new Categorie();
+    $cat->set_PageActive($page);   
 	
 ?>
 
@@ -48,7 +51,15 @@
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 
+
 <div class="jumbotron">
+    <div id="cat_b&p" class="body-mu">
+
+        <div id="title" class="white">Ajouter un article</div>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
+
+        <?php $cat->genCategoriesHorizontaly()?>
+    
     <form class="box" action="" method="post">
 
         <div class="mb-3">
@@ -97,4 +108,3 @@
         <!--<p class="box-register">Déjà inscrit? <a href="login.php"><u>Connectez-vous ici<u></a></p>-->
 
     </form>
-</div>
