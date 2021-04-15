@@ -229,27 +229,27 @@ class Panier{
         echo "</table></div>";
     }
 
-    function cartToCmd() {
+    function cartToCmd($userName) {
         $stmt = $this->getSqlArticles();
 
-        $idCmd = $this->addCartToCmd();
+        $idCmd = $this->addCartToCmd("-","",$userName);
 
-        $numCmd = $this->getDatetimeNow("court");
-        $numCmd = $numCmd.$idCmd;
+        $datecourte = $this->getDatetimeNow("court");
+        $numCmd = str_replace($datecourte.$idCmd);
 
         $MontantTotal = floatval(0.00);
 
         $designationGlobale = "Comprenant: ";
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            $designationGlobale = $designationGlobale."<br> - ".$row['qtite_Art'];" ".$row['designation']." à ".$row['prix']." Pour un total de ".$row['prixT'];
+            $designationGlobale = $designationGlobale."<br> - ".$row['qtite_Art']." ".$row['designation']." à ".$row['prix']." Pour un total de ".$row['prixT'];
 
             $this->addLigneCmd($idCmd,$row['Id_Article'],$row['qtite_Art']);
 
             $MontantTotal = $MontantTotal + $row['prixT'];
         }
 
-        $this->updateCmd($idCmd,$numCmd,$description,$total);
+        $this->updateCmd($idCmd,$numCmd,$designationGlobale,$MontantTotal);
     }
 
 
@@ -351,16 +351,16 @@ class Panier{
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
     }
 
-    public function addCartToCmd(){
+    public function addCartToCmd($userName){
         $database = new Database();
         $conn = $database->getConnection();   
 
         $idCmdToReturn=0;
 
         $user = new User();
-        $idUtilisateur = $user->getUserIdByUserName($_SESSION["username"]);
+        $idUtilisateur = $user->getUserIdByUserName($userName);
 
-        $dateCmd = $this->getDatetimeNow();
+        $dateCmd = $this->getDatetimeNow("");
 
         $sqlQuery = "INSERT INTO commande(dateCmd,idUtilisateur)".
         " VALUES ('".$dateCmd."','".$idUtilisateur."')";
@@ -369,10 +369,25 @@ class Panier{
 
         $stmt->execute();
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            extract($row);
-            $idCmd = $idCmd;
-        }
+        $idCmdToReturn=$this->getIdCmd($idUtilisateur);
+
+        return $idCmdToReturn;
+    }
+
+    public function getIdCmd($idUtilisateur){
+        $database = new Database();
+        $conn = $database->getConnection();   
+
+        $idCmdToReturn=0;
+
+        $sqlQuery = "select idCmd from commande where idUtilisateur=".$idUtilisateur;
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+        $row = $stmt->fetch();
+        $idCmdToReturn = $row['idCmd'];
+
 
         return $idCmdToReturn;
     }
@@ -381,7 +396,8 @@ class Panier{
         $database = new Database();
         $conn = $database->getConnection();  
 
-        $sqlQuery = "update commande set idCmd=".$idCmd.",numCmd =".$numCmd.",description =".$description.",total =".$total." WHERE idCmd=".$idCmd;
+        $sqlQuery = "update commande set numCmd=".$numCmd.",description ='".$description."',total =".$total." WHERE idCmd=".$idCmd;
+        echo $sqlQuery;
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -395,7 +411,7 @@ class Panier{
         $user = new User();
         $idUtilisateur = $user->getUserIdByUserName($_SESSION["username"]);
 
-        $dateCmd = $this->getDatetimeNow();
+        $dateCmd = $this->getDatetimeNow("");
 
         $sqlQuery = "INSERT INTO ligne_Commande(idCmd,Id_Article,qtite)".
         " VALUES ('".$idCmd."','".$Id_Article."','".$qtite."')";

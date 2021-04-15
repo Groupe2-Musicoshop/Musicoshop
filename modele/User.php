@@ -78,11 +78,15 @@ class User{
     }
 
     public function getUserIdByUserName($userName){
+
+        echo "getUserIdByUserName:".$userName;
+
         $database = new Database();
         $conn = $database->getConnection();
+
         $idUtilisateurToReturn=0;
 
-        $sqlQuery = "SELECT idUtilisateur from ". $this->db_table." WHERE userName=".$userName;
+        $sqlQuery = "SELECT idUtilisateur from ". $this->db_table." WHERE userName LIKE '".$userName."'";
  
         $stmt = $conn->prepare($sqlQuery);              
         

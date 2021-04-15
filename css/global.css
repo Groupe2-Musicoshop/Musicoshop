@@ -163,3 +163,17 @@ img.landscape {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
+.btn.btn-primary,
+.btn-primary {
+    background-color: #6D81A8;
+    border-color: #1b263b;
+    color: #fff;
+}
+
+.btn.btn-primary:hover,
+.btn-primary:hover {
+    background-color: #1b263b;
+    border-color: #1b263b;
+    color: #fff;
+}

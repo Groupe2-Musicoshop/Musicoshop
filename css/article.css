@@ -7,22 +7,23 @@
     text-align: center;
 }
 
-.dispo{
+.dispo {
     color: green;
 }
 
-.indispo{
+.indispo {
     color: red;
 }
-.box_prix{
+
+.box_prix {
     padding: 130px 1rem;
 }
 
-.box_article{
+.box_article {
     padding: 0 1rem;
 }
 
-.sep{
+.sep {
     border-left: 1px solid black;
 }
 
@@ -35,20 +36,6 @@ a.linkcat {
 a.linkcat:hover {
     color: #6D81A8;
     text-decoration: none;
-}
-
-.btn.btn-primary,
-.btn-primary {
-    background-color: #6D81A8;
-    border-color: #1b263b;
-    color: #fff;
-}
-
-.btn.btn-primary:hover,
-.btn-primary:hover {
-    background-color: #1b263b;
-    border-color: #1b263b;
-    color: #fff;
 }
 
 .img_thumb {
@@ -68,7 +55,7 @@ a.linkcat:hover {
     flex-direction: column;
 }
 
-.card-body .col-md-4 h5 button{
+.card-body .col-md-4 h5 button {
     margin-top: 9px;
 }
 

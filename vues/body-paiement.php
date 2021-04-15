@@ -1,14 +1,25 @@
 <?php
     if (!isset($_SESSION)) { session_start(); }
-    $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+    
+	@$valider=$_POST["valider"];
+
     require_once 'modele/Database.php';
-    if(isset($valider)){        
+    require_once 'modele/Panier.php';
 
-                $message="Votre inscription a bien té prise en compte un Administrateur la valideras sous 24h";
+    if(isset($valider)){     
 
-				echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-				echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
-			}
+		
+		$userName = $_SESSION["username"];
+		
+		$cart = new Panier();
+		$cart->cartToCmd($userName);
+
+
+		$message="Payement accepté";
+
+		echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+		echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+	}
 		
 	
 
@@ -84,7 +95,7 @@
 	        </div> <!-- form-group.// -->
 	    </div>
 	</div> <!-- row.// -->
-	<button  class="btn btn-primary btn-lg btn-block" type="button" name="valider"> Acheter maintenant  </button>
+	<button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider"> Acheter maintenant  </button>
 	</form>
 </div> <!-- tab-pane.// -->
 <div class="tab-pane fade" id="nav-tab-paypal">
