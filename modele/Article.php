@@ -163,8 +163,12 @@ class Article{
     }
 
     function genCardArticle($numCat){
+        if($numCat == 'search'){
 
-        if($numCat>0){
+            $stmt = $this->sqlSearchArticle();
+
+        }
+        elseif($numCat>0){
 
             $stmt = $this->getSqlArticleByCat($numCat);
 
@@ -447,6 +451,33 @@ class Article{
     
         $stmt->execute();
         return $stmt;
+    }
+
+    public function sqlSearchArticle(){
+    
+        $database = new Database();
+        $conn = $database->getConnection();
+    
+        $searchQuery = "SELECT * FROM "
+                        .$this->db_tables[1].
+                        " INNER JOIN ".$this->db_tables[0].
+                        " ON instruments.Id_Instrument = article.Id_Instrument".
+                        " INNER JOIN ".$this->db_tables[2].
+                        " on categorie.idCategorie = instruments.idCategorie".
+                        " WHERE designation LIKE :search";
+
+        $stmt = $conn->prepare($searchQuery);
+        
+        $search = '%'.$_POST['search'].'%';
+
+        $stmt->bindParam(":search", $search);
+
+        $stmt->execute();
+        if($stmt->rowCount() > 0){
+            return $stmt;
+        } else{
+            echo "<p>Pas de resultats </p>";
+        }
     }
 
     public function updateStock_ArtById_Article($qtestock,$Id_Article){

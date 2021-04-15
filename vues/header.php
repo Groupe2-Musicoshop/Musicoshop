@@ -75,9 +75,9 @@
                 <a class="navbar-brand" href="index.php">
                     <img class="logo" src="<?=$_SESSION['root']?>/img/logo/Musicoshop_logo.PNG" width="150" alt="">
                 </a>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-mu my-2 my-sm-0" type="submit">Search</button>
+                <form class="form-inline my-2 my-lg-0" action="<?=$_SESSION['root']?>/searchArticle.php" method="POST">
+                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Rechercher un article" aria-label="Search">
+                    <button class="btn btn-outline-mu my-2 my-sm-0" type="submit">Rechercher</button>
                 </form>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
