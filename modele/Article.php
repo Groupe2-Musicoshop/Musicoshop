@@ -185,55 +185,57 @@ class Article{
             }
 
         }
+        if($stmt != NULL){
+            
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                extract($row);
+                echo '<form method="POST">';
+                echo '<div class="card cat'.$row["idCategorie"].' col-md-4" data-category="cat'.$row['idCategorie'].'">';
+                    echo '<a class="linkcat" href="'.$_SESSION['root'].'/'.$row["page"].'"><i class="fa fa-quote-left"></i>&nbsp;'.$row["libele"].'&nbsp;<i class="fa fa-quote-right"></i></a>';
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            extract($row);
-            echo '<form method="POST">';
-            echo '<div class="card cat'.$row["idCategorie"].' col-md-4" data-category="cat'.$row['idCategorie'].'">';
-                echo '<a class="linkcat" href="'.$_SESSION['root'].'/'.$row["page"].'"><i class="fa fa-quote-left"></i>&nbsp;'.$row["libele"].'&nbsp;<i class="fa fa-quote-right"></i></a>';
+                echo '<div class="box_img">';
+                echo '<span class="helper"></span>';
+                echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
+                echo '</div>';
+                echo '<div class="card-body row">';
+                echo '<div class="col-md-8">';
+                echo '<h5 class="card-title">'.ucfirst($row['designation']).'</h5>';
+                echo '<h6>';
 
-            echo '<div class="box_img">';
-            echo '<span class="helper"></span>';
-            echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
-            echo '</div>';
-            echo '<div class="card-body row">';
-            echo '<div class="col-md-8">';
-            echo '<h5 class="card-title">'.ucfirst($row['designation']).'</h5>';
-            echo '<h6>';
+                for ($i = 1; $i <= $row['note']; $i++) {
+                    echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
+                }
 
-            for ($i = 1; $i <= $row['note']; $i++) {
-                echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
+                echo '</h6>';
+                echo '<a href="singleArticle.php?id_art='.$row['Id_Article'].'" class="btn btn-primary ">Lire plus</a>';
+                echo '</div>';
+                echo '<div class="col-md-4">';
+                echo '<h5>'.$row['prix'].' €</h5>';
+                echo '<h5 class="';
+
+                if($row['qtestock']==0){
+                    echo 'indispo';
+                }else{
+                    echo 'dispo';
+                }
+
+                echo '">'.$row['qtestock'].' en stock<h5>';
+                echo '<button id="addCart'.$row['Id_Article'].'" class="btn btn-primary " type="submit" value="+" name="addCart" ';
+
+                if($row['qtestock']==0){
+                    echo 'Disabled';
+                }
+
+                echo '><i class="fa fa-cart-plus"></i></button>';
+                echo '<input type="hidden" value="'.$row['Id_Article'].'" name="Id_Article" />';
+                echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
+                echo '<input type="hidden" value="'.$row['qtestock'].'" name="qtestock" />';
+
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';            
+                echo '</form>';
             }
-
-            echo '</h6>';
-            echo '<a href="singleArticle.php?id_art='.$row['Id_Article'].'" class="btn btn-primary ">Lire plus</a>';
-            echo '</div>';
-            echo '<div class="col-md-4">';
-            echo '<h5>'.$row['prix'].' €</h5>';
-            echo '<h5 class="';
-
-            if($row['qtestock']==0){
-                echo 'indispo';
-            }else{
-                echo 'dispo';
-            }
-
-            echo '">'.$row['qtestock'].' en stock<h5>';
-            echo '<button id="addCart'.$row['Id_Article'].'" class="btn btn-primary " type="submit" value="+" name="addCart" ';
-
-            if($row['qtestock']==0){
-                echo 'Disabled';
-            }
-
-            echo '><i class="fa fa-cart-plus"></i></button>';
-            echo '<input type="hidden" value="'.$row['Id_Article'].'" name="Id_Article" />';
-            echo '<input type="hidden" value="'.$row['prix'].'" name="prix" />';
-            echo '<input type="hidden" value="'.$row['qtestock'].'" name="qtestock" />';
-
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';            
-            echo '</form>';
         }
     }
 
@@ -473,6 +475,7 @@ class Article{
         $stmt->bindParam(":search", $search);
 
         $stmt->execute();
+
         if($stmt->rowCount() > 0){
             return $stmt;
         } else{
