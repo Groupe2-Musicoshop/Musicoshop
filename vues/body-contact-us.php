@@ -12,7 +12,7 @@
         <?php $cat->genCategoriesHorizontaly()?>
     
 
-<section class="mb-4">
+    <section class="mb-4">
 
     <!--Section heading-->
     <h2 class="h1-responsive font-weight-bold text-center my-4">Nous contacter</h2>
@@ -61,6 +61,8 @@
 
     </section>
 </div>
+</div>
+
 <script>
 function validateForm() {
     var name =  document.getElementById('name').value;
