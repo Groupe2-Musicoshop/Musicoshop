@@ -68,7 +68,8 @@ body {
     height: 51px;
     padding: 0;
     color: #fff;
-    
+    border: 0;
+    outline:0;
   }
   .box-register
   {
