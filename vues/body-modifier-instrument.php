@@ -11,7 +11,7 @@ if(isset($_POST['update'])){
 	if(empty($_POST['image'])){
 		$sql = "SELECT img FROM instruments WHERE Id_Instrument=". $_POST['instrumentid'];
 		$stmt = $conn->prepare($sql);
-		$row = $stmt->execute();
+		$stmt->execute();
 		$row = $stmt->fetch();
 		$image = $row['img'];
 
@@ -57,9 +57,20 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 		<label for="designation">Désignation</label>
 		<input type="text" id="designation"  name="designation" value="<?=$row['designation'] ?>" class="form-control"><br>
 		<label for="image">Adresse image</label>
-		<input type="file"  name="image" id="image" value="<?=$row['img']?>" class="form-control"><br>
-		<label for="idCategorie">ID Catégorie</label>
-		<input type="text"  name="idCategorie" id="idCategorie" value="<?=$row['idCategorie'] ?>" class="form-control"><br>
+		<input type="file"  name="image" id="image" class="form-control"><br>
+		<label for="idCategorie">Catégorie</label>
+		<select name="idCategorie" class="form-select">
+			<?php
+			$sql = 'SELECT idCategorie, libele FROM categorie';
+			foreach ($conn->query($sql) as $row) {
+			?>
+			<option value="<?=$row['idCategorie']?>">
+				<?=ucfirst($row['libele'])?></option>
+			<?php
+			}
+			?>
+        </select>
+		<br>
 		<input type="submit" name="update" class="box-button" value="Update">
 	</form>
 </div>
