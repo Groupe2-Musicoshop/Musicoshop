@@ -51,43 +51,37 @@ require_once 'modele/Database.php';
 
 
 	?>
-	<head>
-    <link rel="stylesheet" href="<?=$_SESSION['root']?>css/login.css" />
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-</head>
 <div class="jumbotron">
 	<form class="box" action="" method="POST">
-					<p class="box-return"><a href="liste-des-articles.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
-<u>Retour à la liste des articles</u></a></p>
-            			<h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier un article</h3> 
+		<p class="box-return"><a href="liste-des-articles.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+		<u>Retour à la liste des articles</u></a></p>
+        <h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier un article</h3> 
 
-				    <input type="hidden" value="<?php echo $row['Id_Article']; ?>" name="articleid">
-				
-				    <label class="form-label" for="Id_Instrument">ID article</label>
-				    <input type="text" id="articleid"  name="articleid" value="<?php echo $row['Id_Article']; ?>" class="form-control"><br>
-				
-				
-				    <label for="designation">Stock</label>
-				    <input type="text" id="designation"  name="qtestock" value="<?php echo $row['qtestock']; ?>" class="form-control"><br>
-			
-				
-				    <label for="image">Prix</label>
-				    <input type="text"  name="prix" id="image" value="<?php echo $row['prix']; ?>" class="form-control"><br>
-			
-                
-				    <label for="image">Note</label>
-				    <input type="text"  name="note" id="image" value="<?php echo $row['note']; ?>" class="form-control"><br>
-				
-				 	<label for="idCategorie">ID Instrument</label>
-				    <input type="text"  name="Id_Instrument" id="idCategorie" value="<?php echo $row['Id_Instrument']; ?>" class="form-control"><br>
-			
-				
-				    <label for="idCategorie">Désignation instrument</label>
-				    <input type="text"  name="designation" id="idCategorie" value="<?php echo $row1['designation']; ?>" class="form-control"><br>
-			
-				    <input type="submit" name="update" class="box-button" value="Update">
+			<input type="hidden" value="<?php echo $row['Id_Article']; ?>" name="articleid">
+		
+			<label class="form-label" for="Id_Instrument">ID article</label>
+			<input type="text" id="articleid"  name="articleid" value="<?php echo $row['Id_Article']; ?>" class="form-control"><br>
+		
+		
+			<label for="designation">Stock</label>
+			<input type="text" id="designation"  name="qtestock" value="<?php echo $row['qtestock']; ?>" class="form-control"><br>
+	
+		
+			<label for="image">Prix</label>
+			<input type="text"  name="prix" id="image" value="<?php echo $row['prix']; ?>" class="form-control"><br>
+	
+		
+			<label for="image">Note</label>
+			<input type="text"  name="note" id="image" value="<?php echo $row['note']; ?>" class="form-control"><br>
+		
+			<label for="idCategorie">ID Instrument</label>
+			<input type="text"  name="Id_Instrument" id="idCategorie" value="<?php echo $row['Id_Instrument']; ?>" class="form-control"><br>
+	
+		
+			<label for="idCategorie">Désignation instrument</label>
+			<input type="text"  name="designation" id="idCategorie" value="<?php echo $row1['designation']; ?>" class="form-control"><br>
+	
+			<input type="submit" name="update" class="box-button" value="Update">
 
-			</form>
-		</div>
+	</form>
+</div>
