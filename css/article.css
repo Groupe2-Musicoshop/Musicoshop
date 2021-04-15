@@ -46,6 +46,14 @@ a.linkcat:hover {
     max-height: 300px;
 }
 
+.img_small {
+    margin: 0 auto;
+    width: auto !important;
+    max-width: 150px;
+    height: auto;
+    max-height: 150px;
+}
+
 .card-body {
     padding: 1.25rem 0;
 }
@@ -86,4 +94,12 @@ h5.text-center {
     margin-top: 0;
     margin-bottom: 1rem;
     line-height: 0.1rem;
+}
+
+.table_instrument tr td:first-child {
+    width: 15%;
+}
+
+.table_instrument tr td:nth-child(3) {
+    width: 15%;
 }

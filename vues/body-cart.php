@@ -62,7 +62,11 @@
         </script>";
 
     }
-
+    if(isset($_POST['valider'])){
+    if(isset($_SESSION['username'])){
+    echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/paiement.php'; </script>";
+    }echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/login.php'; </script>";
+    }
 ?>
 
 <div class="jumbotron">
@@ -83,8 +87,11 @@
 
             </div>
         </div>
-        <a href="../Musicoshop/paiement.php"  class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">Passer votre commande</a>
-
+        <div class="row">
+        <form action="" method="post">
+        <div class="center col-4"><button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider"> Acheter maintenant  </button></div>
+       </form>
+</div>
     </div>
 
 

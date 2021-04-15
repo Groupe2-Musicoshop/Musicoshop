@@ -19,15 +19,11 @@ p.box-return a{
 #paiement .nav-pills .nav-link.active, 
 #paiement .nav-pills .show>.nav-link{
     background-color:#6D81A8 ;
+    border: 1px solid #c4c4c4;
     color: white;
 }
 
 #paiement .nav-pills a.nav-link {
     color:#0d1b2a ;
+    border: 1px solid #c4c4c4;
 }
-a {
-  
-    display: block;
-      margin : auto;
-    
-    } 

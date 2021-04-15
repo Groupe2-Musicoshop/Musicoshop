@@ -39,7 +39,7 @@
 
 <div class="jumbotron">
 <form id="paiement" action="" method="POST">
-<p>Méthodes de paiement</p>
+<p>Modes de paiement</p>
 
 <article class="card">
 <div class="card-body p-5">
@@ -62,13 +62,13 @@
 	<form role="form">
 	<div class="form-group">
 		<label for="username">Nom mentionné sur la carte</label>
-		<input type="text" class="form-control" name="username" placeholder="" required="">
+		<input type="text" class="form-control" name="username" placeholder="" required>
 	</div> <!-- form-group.// -->
 
 	<div class="form-group">
 		<label for="cardNumber">Numéro de la carte</label>
 		<div class="input-group">
-			<input type="text" class="form-control" name="cardNumber" placeholder="">
+			<input type="text" class="form-control" name="cardNumber" placeholder="" required>
 			<div class="input-group-append">
 				<span class="input-group-text text-muted">
 					<i class="fab fa-cc-visa"></i>   <i class="fab fa-cc-amex"></i>   
@@ -83,8 +83,8 @@
 	        <div class="form-group">
 	            <label><span class="hidden-xs">Expiration</span> </label>
 	        	<div class="input-group">
-	        		<input type="number" class="form-control" placeholder="MM" name="">
-		            <input type="number" class="form-control" placeholder="YY" name="">
+	        		<input type="number" class="form-control" placeholder="MM" name="" required>
+		            <input type="number" class="form-control" placeholder="YY" name="" required>
 	        	</div>
 	        </div>
 	    </div>
@@ -95,7 +95,9 @@
 	        </div> <!-- form-group.// -->
 	    </div>
 	</div> <!-- row.// -->
-	<button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider"> Acheter maintenant  </button>
+	<div class="row">
+	<div class="center col-4"><button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider"> Acheter maintenant  </button></div>
+	</div>
 	</form>
 </div> <!-- tab-pane.// -->
 <div class="tab-pane fade" id="nav-tab-paypal">

@@ -95,7 +95,7 @@
         <?php if (! empty($message)) { ?>
         <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
-        <input type="submit" value="Connexion " name="valider" class="box-button">
+        <input type="submit" value="Connexion " name="valider" class="btn btn-primary box-button">
         <p class="box-register"><a href="pwlost.php"><u>Vous avez oublié votre mot de passe ?</u></a></p>
 
         </p>
