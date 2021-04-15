@@ -58,3 +58,30 @@
     background-color: transparent;
     color: #fff;
 }
+
+#miniTabCart .card.col-md-12 {
+    width: 290px;
+}
+
+#miniTabCart .box_img {
+    width: 100px;
+    height: 45px;
+    margin: 0;
+    padding: 0;
+}
+
+#miniTabCart .card-body {
+    padding: 0.25rem 0;
+}
+
+#miniTabCart .box_img .img_thumb {
+    max-width: 70px;
+    max-height: 45px;
+    margin: 0;
+    padding: 0;
+}
+
+#miniTabCart h5,
+#miniTabCart .card-title {
+    font-size: 1rem;
+}

@@ -64,12 +64,15 @@
     $cat = new Categorie();
     $cat->set_PageActive($page);   
 ?>
-
-<div id="categorie" class="filters button-group js-radio-button-group bg-color-whi">
-            <?php $cat->genCategoriesHorizontaly();?>
-        </div>
-
 <div class="jumbotron">
+    <div id="cat_b&p" class="body-mu">
+
+        <div id="title" class="white">S'inscrire</div>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
+
+        <?php $cat->genCategoriesHorizontaly()?>
+    
+
     <form class="box" action="" method="post">
 
         <div class="mb-3">
