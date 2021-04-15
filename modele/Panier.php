@@ -229,6 +229,29 @@ class Panier{
         echo "</table></div>";
     }
 
+    function cartToCmd() {
+        $stmt = $this->getSqlArticles();
+
+        $idCmd = $this->addCartToCmd();
+
+        $numCmd = $this->getDatetimeNow("court");
+        $numCmd = $numCmd.$idCmd;
+
+        $MontantTotal = floatval(0.00);
+
+        $designationGlobale = "Comprenant: ";
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $designationGlobale = $designationGlobale."<br> - ".$row['qtite_Art'];" ".$row['designation']." à ".$row['prix']." Pour un total de ".$row['prixT'];
+
+            $this->addLigneCmd($idCmd,$row['Id_Article'],$row['qtite_Art']);
+
+            $MontantTotal = $MontantTotal + $row['prixT'];
+        }
+
+        $this->updateCmd($idCmd,$numCmd,$description,$total);
+    }
+
 
     function genTabCartArticles($cart){
 
@@ -326,6 +349,60 @@ class Panier{
 
         $article = new Article();
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
+    }
+
+    public function addCartToCmd(){
+        $database = new Database();
+        $conn = $database->getConnection();   
+
+        $idCmdToReturn=0;
+
+        $user = new User();
+        $idUtilisateur = $user->getUserIdByUserName($_SESSION["username"]);
+
+        $dateCmd = $this->getDatetimeNow();
+
+        $sqlQuery = "INSERT INTO commande(dateCmd,idUtilisateur)".
+        " VALUES ('".$dateCmd."','".$idUtilisateur."')";
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $idCmd = $idCmd;
+        }
+
+        return $idCmdToReturn;
+    }
+
+    public function updateCmd($idCmd,$numCmd,$description,$total){
+        $database = new Database();
+        $conn = $database->getConnection();  
+
+        $sqlQuery = "update commande set idCmd=".$idCmd.",numCmd =".$numCmd.",description =".$description.",total =".$total." WHERE idCmd=".$idCmd;
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+    }
+
+    public function addLigneCmd($idCmd,$Id_Article,$qtite){
+        $database = new Database();
+        $conn = $database->getConnection();   
+
+        $user = new User();
+        $idUtilisateur = $user->getUserIdByUserName($_SESSION["username"]);
+
+        $dateCmd = $this->getDatetimeNow();
+
+        $sqlQuery = "INSERT INTO ligne_Commande(idCmd,Id_Article,qtite)".
+        " VALUES ('".$idCmd."','".$Id_Article."','".$qtite."')";
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
     }
 
     public function updateQtiteArtCart($Id_Article,$prix,$qtestock){
@@ -491,6 +568,22 @@ class Panier{
 
         $nav = new Nav();
         $nav->set_nbArticle($this->getSumQteCart());        
+    }
+
+    function getDatetimeNow($type) {
+        $tz_object = new DateTimeZone('Europe/Paris');
+    
+        $datetime = new DateTime();
+        $datetime->setTimezone($tz_object);
+
+        if($type=="court"){
+
+            return $datetime->format('Y\-m\-d');
+
+        }else{
+
+            return $datetime->format('Y\-m\-d\h:i:s');
+        }
     }
  }
 ?>
