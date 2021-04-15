@@ -16,3 +16,12 @@ p.box-return a{
     color: #000;
 }
 
+#paiement .nav-pills .nav-link.active, 
+#paiement .nav-pills .show>.nav-link{
+    background-color:#6D81A8 ;
+    color: white;
+}
+
+#paiement .nav-pills a.nav-link {
+    color:#0d1b2a ;
+}

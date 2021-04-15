@@ -1,7 +1,29 @@
+<?php
+    $page = basename($_SERVER["PHP_SELF"]);
+    $cat = new Categorie();
+    $cat->set_PageActive($page);   
+?>
 <div class="jumbotron">
-    <section class="mb-4">
-        <h2 class="h1-responsive font-weight-bold text-center my-4">Nous contacter</h2>
-        <p class="text-center w-responsive mx-auto mb-5">Vous avez une question? N'hésitez pas à nous contacter directement. Notre équipe reviendra à toute heure vers vous pour vous aider.</p>
+    <div id="cat_b&p" class="body-mu">
+
+        <div id="title" class="white">Nous contacter</div>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
+
+        <?php $cat->genCategoriesHorizontaly()?>
+    
+
+<section class="mb-4">
+
+    <!--Section heading-->
+    <h2 class="h1-responsive font-weight-bold text-center my-4">Nous contacter</h2>
+    <!--Section description-->
+    <p class="text-center w-responsive mx-auto mb-5">Vous avez une question? N'hésitez pas à nous contacter directement. Notre équipe reviendra à toute heure vers vous pour vous aider.
+</p>
+
+    <div class="row">
+
+        <!--Grid column-->
+        <div">
             <form id="contact-form" name="contact-form" action="" method="POST">
                 <div class="row">
                     <div class="col-md-6">
@@ -32,7 +54,7 @@
                 </div>
             </form>
             <div class="text-center text-md-left">
-            <a class="btn btn-primary" onclick="validateForm();">Envoyer</a> 
+            <div class="center col-4"><a  class="btn btn-primary btn-lg btn-block" onclick="validateForm();">Envoyer</a></div>
             </div>
             <div class="status"></div>
         </div>

@@ -57,31 +57,31 @@ require_once 'modele/Database.php';
 		<u>Retour à la liste des articles</u></a></p>
         <h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier un article</h3> 
 
-			<input type="hidden" value="<?php echo $row['Id_Article']; ?>" name="articleid">
-		
-			<label class="form-label" for="Id_Instrument">ID article</label>
-			<input type="text" id="articleid"  name="articleid" value="<?php echo $row['Id_Article']; ?>" class="form-control"><br>
-		
-		
-			<label for="designation">Stock</label>
-			<input type="text" id="designation"  name="qtestock" value="<?php echo $row['qtestock']; ?>" class="form-control"><br>
+		<input type="hidden" value="<?php echo $row['Id_Article']; ?>" name="articleid">
 	
-		
-			<label for="image">Prix</label>
-			<input type="text"  name="prix" id="image" value="<?php echo $row['prix']; ?>" class="form-control"><br>
+		<label class="form-label" for="Id_Instrument">ID article</label>
+		<input type="text" id="articleid"  name="articleid" value="<?php echo $row['Id_Article']; ?>" class="form-control"><br>
 	
-		
-			<label for="image">Note</label>
-			<input type="text"  name="note" id="image" value="<?php echo $row['note']; ?>" class="form-control"><br>
-		
-			<label for="idCategorie">ID Instrument</label>
-			<input type="text"  name="Id_Instrument" id="idCategorie" value="<?php echo $row['Id_Instrument']; ?>" class="form-control"><br>
 	
-		
-			<label for="idCategorie">Désignation instrument</label>
-			<input type="text"  name="designation" id="idCategorie" value="<?php echo $row1['designation']; ?>" class="form-control"><br>
+		<label for="designation">Stock</label>
+		<input type="text" id="designation"  name="qtestock" value="<?php echo $row['qtestock']; ?>" class="form-control"><br>
+
 	
-			<input type="submit" name="update" class="box-button" value="Update">
+		<label for="image">Prix</label>
+		<input type="text"  name="prix" id="image" value="<?php echo $row['prix']; ?>" class="form-control"><br>
+
+	
+		<label for="image">Note</label>
+		<input type="text"  name="note" id="image" value="<?php echo $row['note']; ?>" class="form-control"><br>
+	
+		<label for="idCategorie">ID Instrument</label>
+		<input type="text"  name="Id_Instrument" id="idCategorie" value="<?php echo $row['Id_Instrument']; ?>" class="form-control"><br>
+
+	
+		<label for="idCategorie">Désignation instrument</label>
+		<input type="text"  name="designation" id="idCategorie" value="<?php echo $row1['designation']; ?>" class="form-control"><br>
+
+		<input type="submit" name="update" class="btn btn-primary box-button" value="Update">
 
 	</form>
 </div>

@@ -29,16 +29,6 @@ CREATE TABLE utilisateur(
    PRIMARY KEY(idUtilisateur)   
 );
 
-CREATE TABLE commande(
-   idCmd INT NOT NULL AUTO_INCREMENT,
-   dateCmd VARCHAR(50),
-   total DECIMAL(15,2),
-   description VARCHAR(50),
-   PRIMARY KEY(idCmd),
-   idUtilisateur INT NOT NULL,
-   FOREIGN KEY(idUtilisateur) REFERENCES utilisateur(idUtilisateur)
-);
-
 CREATE TABLE instruments(
    Id_Instrument INT AUTO_INCREMENT,
    designation VARCHAR(50),   
@@ -67,10 +57,22 @@ CREATE TABLE panier(
    PRIMARY KEY(Id_Panier)
 );
 
+CREATE TABLE commande(
+   idCmd INT NOT NULL AUTO_INCREMENT,
+   idUtilisateur INT NOT NULL,
+   dateCmd VARCHAR(50),
+   description VARCHAR(50),
+   total DECIMAL(15,2),
+   PRIMARY KEY(idCmd),
+   FOREIGN KEY(idUtilisateur) REFERENCES utilisateur(idUtilisateur)
+);
+
 CREATE TABLE ligne_Commande(
-   Id_Article INT AUTO_INCREMENT,
+   idLigneCmd INT AUTO_INCREMENT,
    idCmd INT NOT NULL,
-   PRIMARY KEY(Id_Article, idCmd),
+   Id_Article INT NOT NULL,
+   qtite INT NOT NULL,
+   PRIMARY KEY(idLigneCmd),
    FOREIGN KEY(Id_Article) REFERENCES article(Id_Article),
    FOREIGN KEY(idCmd) REFERENCES commande(idCmd)
 );

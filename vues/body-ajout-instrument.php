@@ -27,9 +27,19 @@
         echo "Instrument ajouté à la base";
         
     }
+    $page = basename($_SERVER["PHP_SELF"]);
+    $cat = new Categorie();
+    $cat->set_PageActive($page);   
 	
 ?>
 <div class="jumbotron">
+    <div id="cat_b&p" class="body-mu">
+
+        <div id="title" class="white">Ajouter un instrument</div>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
+
+        <?php $cat->genCategoriesHorizontaly()?>
+    
     <form class="box" action="" method="post">
 
         <div class="mb-3">
@@ -52,7 +62,6 @@
         <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
 
-        <input type="submit" name="valider" value="Valider" class="btn btn-primary" />
+        <input type="submit" name="valider" value="valider" class="btn btn-primary box-button" />
 
     </form>
-</div>

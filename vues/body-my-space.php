@@ -1,8 +1,6 @@
 <?php 
 
 	// Initialiser la session
-	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."musicoshop/";
-
 
 require_once 'modele/Database.php';
 
@@ -51,46 +49,54 @@ require_once 'modele/Database.php';
 		exit;
 	}
 	$row = $result->fetch(PDO::FETCH_ASSOC);
-	?>
-	<head>
-    <link rel="stylesheet" href="<?=$_SESSION['root']?>css/login.css" />
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-</head>
+	$page = basename($_SERVER["PHP_SELF"]);
+    $cat = new Categorie();
+    $cat->set_PageActive($page);   
+	
+?>
+
 <div class="jumbotron">
-			<form class="box" action="" method="POST">
-            			<h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier votre profil</h3> 
+    <div id="cat_b&p" class="body-mu">
 
-				    <input type="hidden" value="<?php echo $row['idUtilisateur']; ?>" name="utilisateurid">
-				
-				    <label class="form-label" for="username">Username</label>
-				    <input type="text" id="articleid"  name="username" value="<?php echo $row['userName']; ?>" class="form-control"><br>
-				
-				
-				    <label for="email">Adresse e-mail</label>
-				    <input type="text" id="designation"  name="email" value="<?php echo $row['email']; ?>" class="form-control"><br>
-			
-				
-				    <label for="sexe">Sexe</label>
-				    <input type="text"  name="sexe" id="sexe" value="<?php echo $row['sexe']; ?>" class="form-control"><br>
-			
-                
-				    <label for="nom">Nom</label>
-				    <input type="text"  name="nom" id="nom" value="<?php echo $row['nom']; ?>" class="form-control"><br>
-				
-					<label for="prenom">Prénom</label>
-				    <input type="text"  name="prenom" id="prenom" value="<?php echo $row['prenom']; ?>" class="form-control"><br>
-				    
-                    <label for="adresse">Adresse</label>
-				    <input type="text"  name="adresse" id="adresse" value="<?php echo $row['adresse']; ?>" class="form-control"><br>
-				    
-                    <label for="ville">Ville</label>
-				    <input type="text"  name="ville" id="ville" value="<?php echo $row['ville']; ?>" class="form-control"><br>
+        <div id="title" class="white">Modifier votre profil</div>
+		
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
 
-				    <label for="codePostal">Code_Postal</label>
-				    <input type="text"  name="codePostal" id="codePostal" value="<?php echo $row['codePostal']; ?>" class="form-control"><br>
+        <?php $cat->genCategoriesHorizontaly()?>
+    
+		<form class="box" action="" method="POST">
+				<h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier votre profil</h3> 
+
+				<input type="hidden" value="<?php echo $row['idUtilisateur']; ?>" name="utilisateurid">
 			
-				    <input type="submit" name="update" class="box-button" value="Update">
-			</form>
-		</div>
+				<label class="form-label" for="username">Username</label>
+				<input type="text" id="articleid"  name="username" value="<?php echo $row['userName']; ?>" class="form-control"><br>
+			
+			
+				<label for="email">Adresse e-mail</label>
+				<input type="text" id="designation"  name="email" value="<?php echo $row['email']; ?>" class="form-control"><br>
+		
+			
+				<label for="sexe">Sexe</label>
+				<input type="text"  name="sexe" id="sexe" value="<?php echo $row['sexe']; ?>" class="form-control"><br>
+		
+			
+				<label for="nom">Nom</label>
+				<input type="text"  name="nom" id="nom" value="<?php echo $row['nom']; ?>" class="form-control"><br>
+			
+				<label for="prenom">Prénom</label>
+				<input type="text"  name="prenom" id="prenom" value="<?php echo $row['prenom']; ?>" class="form-control"><br>
+				
+				<label for="adresse">Adresse</label>
+				<input type="text"  name="adresse" id="adresse" value="<?php echo $row['adresse']; ?>" class="form-control"><br>
+				
+				<label for="ville">Ville</label>
+				<input type="text"  name="ville" id="ville" value="<?php echo $row['ville']; ?>" class="form-control"><br>
+
+				<label for="codePostal">Code_Postal</label>
+				<input type="text"  name="codePostal" id="codePostal" value="<?php echo $row['codePostal']; ?>" class="form-control"><br>
+		
+				<input type="submit" name="update" class="btn btn-primary box-button" value="Update">
+		</form>
+	</div>
+</div>

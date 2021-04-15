@@ -6,7 +6,7 @@
 	$message="";
     
     if (!isset($_SESSION)) { session_start(); }
-    //$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+    $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
 	if(isset($valider)){
         require_once 'modele/Database.php';
@@ -67,9 +67,19 @@
         //header("Location: ".$_SESSION['root']."/index.php");
         //echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
 	}
+    $page = basename($_SERVER["PHP_SELF"]);
+    $cat = new Categorie();
+    $cat->set_PageActive($page);   
 ?>
-
 <div class="jumbotron">
+    <div id="cat_b&p" class="body-mu">
+
+        <div id="title" class="white">Se connecter</div>
+        <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
+
+        <?php $cat->genCategoriesHorizontaly()?>
+    
+
     <form class="box" action="" method="post" name="login">
         <div class="mb-3">
             <h4 class="title">Connexion espace client</h4>
@@ -85,9 +95,8 @@
         <?php if (! empty($message)) { ?>
         <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
-        <input type="submit" value="Connexion " name="valider" class="box-button">
+        <input type="submit" value="Connexion " name="valider" class="btn btn-primary box-button">
         <p class="box-register"><a href="pwlost.php"><u>Vous avez oublié votre mot de passe ?</u></a></p>
 
         </p>
     </form>
-</div>
