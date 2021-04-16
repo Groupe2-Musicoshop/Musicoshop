@@ -1,5 +1,8 @@
 <?php
-	if (!isset($_SESSION)) { session_start(); }
+	$a = session_id();
+	if(empty($a)) session_start();
+
+	//if (!isset($_SESSION)) { session_start(); }
 	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
     
 	require 'vues/header.php';

@@ -4,6 +4,9 @@ require_once __DIR__.'/Database.php';
 require_once __DIR__.'/Article.php';
 
 class Panier{
+
+    //public ?string $_COOKIE["PHPSESSID"] = $_COOKIE["PHPSESSID"];
+
     private ?int $Id_Panier;
     private ?int $qtite_Art;
     private ?int $Id_Article;
@@ -254,32 +257,6 @@ class Panier{
         echo "</table></div>";
     }
 
-    function cartToCmd($userName) {
-        $stmt = $this->getSqlArticles();
-
-        $idCmd = $this->addCartToCmd($userName);
-
-        $datecourte = $this->getDatetimeNow("court");
-        $numCmd = str_replace("-","",$datecourte.$idCmd);
-
-        echo "numCmd".$numCmd;
-
-        $MontantTotal = floatval(0.00);
-
-        $designationGlobale = "Comprenant: ";
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            $designationGlobale = $designationGlobale."<br> - ".$row['qtite_Art']." ".$row['designation']." à ".$row['prix']."€ Pour un total de ".$row['prixT']." €";
-
-            $this->addLigneCmd($idCmd,$row['Id_Article'],$row['qtite_Art']);
-
-            $MontantTotal = $MontantTotal + $row['prixT'];
-        }
-
-        $this->updateCmd($idCmd,$numCmd,$designationGlobale,$MontantTotal);
-    }
-
-
     function genTabCartArticles($cart){
 
         $numUser=1;
@@ -317,8 +294,8 @@ class Panier{
         INNER JOIN instruments
         on article.Id_Instrument = instruments.Id_Instrument
         INNER JOIN categorie
-        on categorie.idCategorie  = instruments.idCategorie ";
-
+        on categorie.idCategorie  = instruments.idCategorie "
+        ." WHERE sessId='".$_COOKIE["PHPSESSID"]."'" ;
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();
@@ -335,7 +312,7 @@ class Panier{
         " ON instruments.Id_Instrument = article.Id_Instrument".
         " INNER JOIN ".$this->db_tables[2].
         " on categorie.idCategorie = instruments.idCategorie".
-        " WHERE instruments.idCategorie = ".$numCat;
+        " WHERE instruments.idCategorie = ".$numCat." and sessId='".$_COOKIE["PHPSESSID"]."'" ;
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -353,7 +330,7 @@ class Panier{
         " ON instruments.Id_Instrument = article.Id_Instrument".
         " INNER JOIN ".$this->db_tables[2].
         " on categorie.idCategorie = instruments.idCategorie".
-        " WHERE instruments.Id_Article = ".$this->Id_Article;
+        " WHERE instruments.Id_Article = ".$this->Id_Article." and sessId='".$_COOKIE["PHPSESSID"]."'" ;
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -365,8 +342,8 @@ class Panier{
         $database = new Database();
         $conn = $database->getConnection();   
 
-        $sqlQuery = "INSERT INTO panier(qtite_Art, Id_Article,prixT)".
-        " VALUES ('".$Qte."','".$Id_Article."','".$prix."')";
+        $sqlQuery = "INSERT INTO panier(sessId,qtite_Art, Id_Article,prixT)".
+        " VALUES ('".$_COOKIE["PHPSESSID"]."','".$Qte."','".$Id_Article."','".$prix."')";
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -376,72 +353,6 @@ class Panier{
 
         $article = new Article();
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
-    }
-
-    public function addCartToCmd($userName){
-        $database = new Database();
-        $conn = $database->getConnection();   
-
-        $idCmdToReturn=0;
-
-        $user = new User();
-        $idUtilisateur = $user->getUserIdByUserName($userName);
-        echo "idUtilisateur : ".$idUtilisateur;
-
-        $dateCmd = $this->getDatetimeNow("");
-
-        $sqlQuery = "INSERT INTO commande(dateCmd,idUtilisateur) VALUES ('".$dateCmd."','".$idUtilisateur."')";
-        echo $sqlQuery;
-
-        $stmt = $conn->prepare($sqlQuery);
-
-        $stmt->execute();
-
-        $idCmdToReturn=$this->getIdCmd($idUtilisateur);
-
-        return $idCmdToReturn;
-    }
-
-    public function getIdCmd($idUtilisateur){
-        $database = new Database();
-        $conn = $database->getConnection();   
-
-        $idCmdToReturn=0;
-
-        $sqlQuery = "select idCmd from commande where idUtilisateur=".$idUtilisateur;
-
-        $stmt = $conn->prepare($sqlQuery);
-
-        $stmt->execute();
-        $row = $stmt->fetch();
-        $idCmdToReturn = $row['idCmd'];
-
-
-        return $idCmdToReturn;
-    }
-
-    public function updateCmd($idCmd,$numCmd,$description,$total){
-        $database = new Database();
-        $conn = $database->getConnection();  
-
-        $sqlQuery = "update commande set numCmd=".$numCmd.",description ='".$description."',total =".$total." WHERE idCmd=".$idCmd;
-        echo $sqlQuery;
-
-        $stmt = $conn->prepare($sqlQuery);
-
-        $stmt->execute();
-    }
-
-    public function addLigneCmd($idCmd,$Id_Article,$qtite){
-        $database = new Database();
-        $conn = $database->getConnection();   
-
-        $sqlQuery = "INSERT INTO ligne_Commande(idCmd,Id_Article,qtite)".
-        " VALUES ('".$idCmd."','".$Id_Article."','".$qtite."')";
-
-        $stmt = $conn->prepare($sqlQuery);
-
-        $stmt->execute();
     }
 
     public function updateQtiteArtCart($Id_Article,$prix,$qtestock){
@@ -456,7 +367,7 @@ class Panier{
 
         $prixT = $qte * $prix;
 
-        $sqlQuery = "update panier set qtite_Art=".$qte.",prixT =".$prixT." WHERE Id_Article=".$Id_Article;
+        $sqlQuery = "update panier set qtite_Art=".$qte.",prixT =".$prixT." WHERE Id_Article=".$Id_Article." and sessId='".$_COOKIE["PHPSESSID"]."'" ;
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -493,7 +404,7 @@ class Panier{
 
         $prixT = $qte * $prix;
 
-        $sqlQuery = "update panier set qtite_Art=".$qte.",prixT =".$prixT." WHERE Id_Article=".$Id_Article;
+        $sqlQuery = "update panier set qtite_Art=".$qte.",prixT =".$prixT." WHERE Id_Article=".$Id_Article." and sessId='".$_COOKIE["PHPSESSID"]."'";
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -513,7 +424,7 @@ class Panier{
         $conn = $database->getConnection();
         $Id_PanierToReturn=0;
 
-        $sqlQuery = "SELECT Id_Panier from panier WHERE Id_Article=".$Id_Article ;
+        $sqlQuery = "SELECT Id_Panier from panier WHERE Id_Article=".$Id_Article." and sessId='".$_COOKIE["PHPSESSID"]."'" ;
  
         $stmt = $conn->prepare($sqlQuery);              
         
@@ -533,7 +444,7 @@ class Panier{
         $conn = $database->getConnection();
         $qtite_ArtToReturn=0;
 
-        $sqlQuery = "SELECT qtite_Art from panier WHERE Id_Article=".$Id_Article ;
+        $sqlQuery = "SELECT qtite_Art from panier WHERE Id_Article=".$Id_Article." and sessId='".$_COOKIE["PHPSESSID"]."'" ;
  
         $stmt = $conn->prepare($sqlQuery);              
         
@@ -553,7 +464,7 @@ class Panier{
         $conn = $database->getConnection();
         $qtestock_ArtToReturn=0;
 
-        $sqlQuery = "SELECT qtestock FROM `panier` INNER JOIN article ON panier.Id_Article = article.Id_Instrument INNER JOIN instruments on article.Id_Instrument = instruments.Id_Instrument  WHERE panier.Id_Article=".$Id_Article ;
+        $sqlQuery = "SELECT qtestock FROM `panier` INNER JOIN article ON panier.Id_Article = article.Id_Instrument INNER JOIN instruments on article.Id_Instrument = instruments.Id_Instrument  WHERE panier.Id_Article=".$Id_Article." and sessId='".$_COOKIE["PHPSESSID"]."'" ;
  
         $stmt = $conn->prepare($sqlQuery);              
         
@@ -573,7 +484,7 @@ class Panier{
         $conn = $database->getConnection();
         $sumQteToReturn=0;
 
-        $sqlQuery = "SELECT sum(qtite_Art)as sumQte FROM panier";
+        $sqlQuery = "SELECT sum(qtite_Art) as sumQte FROM `panier` WHERE sessId='".$_COOKIE["PHPSESSID"]."'";
  
         $stmt = $conn->prepare($sqlQuery);              
         
@@ -593,7 +504,7 @@ class Panier{
         
         $qtestock = $this->getStock_ArtById_Article($Id_Article);
 
-        $sqlQuery = "DELETE FROM panier WHERE Id_Panier = ".$Id_Panier;
+        $sqlQuery = "DELETE FROM panier WHERE Id_Panier = ".$Id_Panier." and sessId='".$_COOKIE["PHPSESSID"]."'" ;
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -609,20 +520,15 @@ class Panier{
         $nav->set_nbArticle($this->getSumQteCart());        
     }
 
-    function getDatetimeNow($type) {
-        $tz_object = new DateTimeZone('Europe/Paris');
-    
-        $datetime = new DateTime();
-        $datetime->setTimezone($tz_object);
+    public function deleteALlArtCart(){
+        $database = new Database();
+        $conn = $database->getConnection();   
+        
+        $sqlQuery = "DELETE FROM panier WHERE sessId='".$_COOKIE["PHPSESSID"]."'" ;
 
-        if($type=="court"){
+        $stmt = $conn->prepare($sqlQuery);
 
-            return $datetime->format('Y\-m\-d');
-
-        }else{
-
-            return $datetime->format('Y\-m\-d\h:i:s');
-        }
+        $stmt->execute();       
     }
  }
 ?>

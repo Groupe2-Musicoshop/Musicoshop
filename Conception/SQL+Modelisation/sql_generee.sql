@@ -51,6 +51,7 @@ CREATE TABLE article(
 /*drop table panier; */
 CREATE TABLE panier(
    Id_Panier INT AUTO_INCREMENT,
+   sessId VARCHAR(50),
    qtite_Art INT,
    Id_Article INT,
    prixT DECIMAL(15,2),

@@ -3,6 +3,7 @@
 	// Initialiser la session
 
 require_once 'modele/Database.php';
+require_once 'modele/Commande.php';
 
     $database = new Database();
 
@@ -56,7 +57,7 @@ require_once 'modele/Database.php';
     $cat = new Categorie();
     $cat->set_PageActive($page);   
 
-	
+	$cmd = new Commande();
 	
 ?>
 
