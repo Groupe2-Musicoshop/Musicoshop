@@ -11,13 +11,12 @@ require_once 'modele/Database.php';
 	
 	if(isset($_POST['update'])){
 		
-			$designation  = $_POST['qtestock'];
-			$image 	= $_POST['prix'];
+			$qtestock  = $_POST['qtestock'];
+			$prix 	= $_POST['prix'];
             $note 	= $_POST['note'];
-			$idCategorie 	= $_POST['Id_Instrument'];
-			//$contact  	= $_POST['contact'];
-			$sql = "UPDATE article SET qtestock='{$designation}', prix = '{$image}',note = '{$note}',
-						Id_Instrument = '{$idCategorie}'
+			$idInstrument 	= $_POST['Id_Instrument'];
+			$sql = "UPDATE article SET qtestock='{$qtestock}', prix = '{$prix}',note = '{$note}',
+						Id_Instrument = '{$idInstrument}'
 						WHERE Id_Article=" . $_POST['articleid'];
 
 			if( $conn->query($sql)){
@@ -26,14 +25,10 @@ require_once 'modele/Database.php';
 				echo "<div class='alert alert-danger'>Error: There was an error while updating user info</div>";
 			}
 		}
-
-	// recuperation du id passer en parametre 
-	
-	//$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 	
 	$id= $_GET['id'];
 	 	 
-	$sql = "SELECT * FROM article WHERE Id_Article={$id}";
+	$sql = "SELECT * FROM article INNER JOIN instruments ON instruments.Id_Instrument = article.Id_Instrument WHERE Id_Article={$id}";
 	$result = $conn->query($sql);
 
 	if($result->rowCount() < 1){
@@ -41,13 +36,7 @@ require_once 'modele/Database.php';
 		exit;
 	}
 	$row = $result->fetch(PDO::FETCH_ASSOC);
-
-		$id1=$row['Id_Instrument'];
-
-	$sql1 = "SELECT * FROM instruments WHERE Id_Instrument=$id1";
-	$result1 = $conn->query($sql1);
-	$row1 = $result1->fetch(PDO::FETCH_ASSOC);
-	//echo $row['designation'];
+	
 
 
 	?>
@@ -57,29 +46,22 @@ require_once 'modele/Database.php';
 		<u>Retour à la liste des articles</u></a></p>
         <h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier un article</h3> 
 
-		<input type="hidden" value="<?php echo $row['Id_Article']; ?>" name="articleid">
-	
-		<label class="form-label" for="Id_Instrument">ID article</label>
-		<input type="text" id="articleid"  name="articleid" value="<?php echo $row['Id_Article']; ?>" class="form-control"><br>
-	
-	
+		<input type="hidden" value="<?=$row['Id_Article'] ?>" name="articleid">
+
+		<strong><span>Id : <?=$row['Id_Article'] ?></span></strong>	
+		<br>
 		<label for="designation">Stock</label>
-		<input type="text" id="designation"  name="qtestock" value="<?php echo $row['qtestock']; ?>" class="form-control"><br>
+		<input type="text" id="designation"  name="qtestock" value="<?= $row['qtestock'] ?>" class="form-control"><br>
 
 	
-		<label for="image">Prix</label>
-		<input type="text"  name="prix" id="image" value="<?php echo $row['prix']; ?>" class="form-control"><br>
+		<label for="prix">Prix</label>
+		<input type="text"  name="prix" id="prix" value="<?=$row['prix'] ?>" class="form-control"><br>
 
+		<label for="note">Note</label>
+		<input type="text"  name="note" id="note" value="<?=$row['note'] ?>" class="form-control"><br>
 	
-		<label for="image">Note</label>
-		<input type="text"  name="note" id="image" value="<?php echo $row['note']; ?>" class="form-control"><br>
-	
-		<label for="idCategorie">ID Instrument</label>
-		<input type="text"  name="Id_Instrument" id="idCategorie" value="<?php echo $row['Id_Instrument']; ?>" class="form-control"><br>
-
-	
-		<label for="idCategorie">Désignation instrument</label>
-		<input type="text"  name="designation" id="idCategorie" value="<?php echo $row1['designation']; ?>" class="form-control"><br>
+		<label for="idCategorie">Id instrument</label>
+		<input type="text"  name="Id_Instrument" id="Id_Instrument" value="<?= ucfirst($row['Id_Instrument']) ?>" class="form-control"><br>
 
 		<input type="submit" name="update" class="btn btn-primary box-button" value="Update">
 

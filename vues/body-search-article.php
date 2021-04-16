@@ -27,7 +27,6 @@
                     <?php $art->genCardArticle('search');?>
 
                 </div>
-                <?php /*$art->getPagination(0, $page);*/?>
             </div>
         </div>
     </div>
