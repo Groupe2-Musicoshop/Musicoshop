@@ -6,14 +6,18 @@
 
 
     require_once 'modele/Database.php';
+    require_once 'modele/Commande.php';
     require_once 'modele/Panier.php';
 	
 	$userName = $_SESSION["username"];
 
-    if(isset($valider)){  
-   
+    if(isset($valider)){     
+		
+		$cmd = new Commande();
+		$cmd->cartToCmd($userName);
+
 		$cart = new Panier();
-		$cart->cartToCmd($userName);
+		$cart->deleteALlArtCart();
 
 
 		$message="Payement accepté";

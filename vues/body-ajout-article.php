@@ -8,7 +8,6 @@
 
     $conn = $database->getConnection();
 
-
 	@$qtestock=$_POST["qtestock"];
 	@$prix=$_POST["prix"];
 	@$note=$_POST["note"];

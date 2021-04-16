@@ -51,6 +51,7 @@ CREATE TABLE article(
 /*drop table panier; */
 CREATE TABLE panier(
    Id_Panier INT AUTO_INCREMENT,
+   sessId VARCHAR(50),
    qtite_Art INT,
    Id_Article INT,
    prixT DECIMAL(15,2),
@@ -62,7 +63,7 @@ CREATE TABLE commande(
    numCmd VARCHAR(50),
    idUtilisateur INT NOT NULL,
    dateCmd VARCHAR(50),
-   description VARCHAR(250),
+   description TEXT(250),
    total DECIMAL(15,2),
    PRIMARY KEY(idCmd),
    FOREIGN KEY(idUtilisateur) REFERENCES utilisateur(idUtilisateur)
