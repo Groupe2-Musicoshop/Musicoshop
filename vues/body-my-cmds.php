@@ -2,45 +2,45 @@
 
 	// Initialiser la session
 
-require_once 'modele/Database.php';
-require_once 'modele/Commande.php';
+	require_once 'modele/Database.php';
+	require_once 'modele/Commande.php';
+
+	@$addCart=$_POST["addCart"];
+	@$Id_Article=$_POST["Id_Article_cmd"];
+	@$prix=$_POST["prix"];
+	@$qtestock=$_POST["qtestock"];
+
+	$cat = new Categorie();
+	$art = new Article();
+	$cart = new Panier();
+	$user = new User();
 
     $database = new Database();
 
     $conn = $database->getConnection();
-
-?>
-	<?php 
 	
-	if(isset($_POST['update'])){
-		
-			$username  = $_POST['username'];
-			$email 	= $_POST['email'];
-            $sexe 	= $_POST['sexe'];
-			$nom 	= $_POST['nom'];
-			$prenom = $_POST['prenom'];
-            $adresse 	= $_POST['adresse'];
-			$ville  	= $_POST['ville'];
-			$codePostal 	= $_POST['codePostal'];
+	if (isset($addCart)) {
 
-			$sql = "UPDATE utilisateur SET userName='{$username}', email = '{$email}',sexe = '{$sexe}',
-						nom = '{$nom}',prenom = '{$prenom}',adresse = '{$adresse}',ville = '{$ville}',codePostal = '{codePostal}'
-						WHERE idUtilisateur=" . $_POST['utilisateurid'];
+        if($cart->getId_PanierById_Article($Id_Article)>0){
+          
+            $cart->updateQtiteArtCart($Id_Article,$prix,$qtestock);
 
-			if( $conn->query($sql)){
-				echo "<div class='alert alert-success'>Successfully updated  article</div>";
-			}else{
-				echo "<div class='alert alert-danger'>Error: There was an error while updating user info</div>";
-			}
-		}
+        }else{
+            
+            $cart->addArticleToCart(1,$Id_Article,$prix,$qtestock);
 
-	// recuperation du id passer en parametre 
-	
-	//$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+        }
+      
+        echo "<script type='text/javascript'> 
+        (function() {
+            var element = document.getElementById('nbArt');
+            element.innerHTML = ".$cart->getSumQteCart()."; 
+            element.classList.add('view');
+        })();
+        </script>";
+    }
 
     $username=$_SESSION["username"];
-	
-	//$id= $_GET['id'];
 	 	 
 	$sql = "SELECT * FROM utilisateur WHERE userName='$username'";
 	$result = $conn->query($sql);
@@ -51,11 +51,12 @@ require_once 'modele/Commande.php';
 		exit;
 	}
 
-
 	$row = $result->fetch(PDO::FETCH_ASSOC);
 	$page = basename($_SERVER["PHP_SELF"]);
     $cat = new Categorie();
     $cat->set_PageActive($page);   
+
+	$userName = $_SESSION["username"];
 
 	$cmd = new Commande();
 	
@@ -73,6 +74,7 @@ require_once 'modele/Commande.php';
             <div class="col-12">
                 <div id="commandes" class="commandes">
 
+				<?=$cmd->genCmds($userName) ?>
 
                 </div>
   

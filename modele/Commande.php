@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/Database.php';
 require_once __DIR__.'/Article.php';
+require_once __DIR__.'/User.php';
 
 class Commande{
     private ?int $Id_Panier;
@@ -12,7 +13,7 @@ class Commande{
 
     // Table
     private $db_tables = [
-        "panier",
+        "commande",
         "article",
         "instruments",
         "categorie"
@@ -138,6 +139,123 @@ class Commande{
         return $this;
     }
 
+    function genCmds($userName){
+      
+        $stmtCmd = $this->getSqlCmds($userName);
+
+        $MontantTotal = floatval(0.00);
+
+        echo'<div class="tbl-container">';
+
+        echo '<div class="card-body row">';
+        echo '<div class="col-md-12">';
+        
+        while ($rowCmd = $stmtCmd->fetch(PDO::FETCH_ASSOC)){
+            
+            extract($rowCmd);
+            
+            echo "<form action='' method='POST' name='formData".$rowCmd["idCmd"]."'>";
+            
+            echo '<tr><td>';
+            echo '<div class="card cmd'.$rowCmd["idCmd"].' col-md-12" data-category="cmd'.$rowCmd['idCmd'].'">';   
+            
+                echo '<h6 class="card-title">N°Commande : '.ucfirst($rowCmd['numCmd']).'</h6>';
+                echo '<h6 class="card-title">Date de la Commande : '.ucfirst($rowCmd['dateCmd']).'</h6>';
+
+                echo'<a data-toggle="collapse" href="#collapse'.$rowCmd["idCmd"].'" role="button" aria-expanded="false" aria-controls="collapse'.$rowCmd["idCmd"].'">
+                détails</a>';
+
+                echo'<div class="collapse" id="collapse'.$rowCmd["idCmd"].'">
+                <div class="card card-body">';
+
+                echo "<table id='tabCart' class='table'><thead><tr>";
+                echo "<th scope='col'></th>";
+                echo "<th scope='col'>Qte</th>";
+                echo "<th scope='col'>designation</th>";
+                echo "<th scope='col'>Prix</th>";
+                echo "<th scope='col'>Prix Total</th>";
+                echo "<th scope='col'>Action</th>";
+                echo "</tr></thead><tbody>";
+            
+                $stmtLigneCmd = $this->getSqlLigneCmds($idCmd);
+
+                $MontantTotal = 0;
+                
+                while ($rowtLigneCmd = $stmtLigneCmd->fetch(PDO::FETCH_ASSOC)){
+                    
+                    extract($rowtLigneCmd);
+                    
+                    echo "</tr>";
+
+                        echo '<td><div class="img_cmd">';
+                            echo '<span class="helper"></span>';
+                            echo '<img src="'.$rowtLigneCmd['img'].'" class="img_thumb card-img-top" alt="">';
+                        echo '</div></td>';
+
+                        echo '<td><h6 class="card-title">'.ucfirst($rowtLigneCmd['qtite']).'</h6></td>';
+
+                        echo '<td><h6 class="card-title"><a href="singleArticle.php?id_art='.$rowtLigneCmd['Id_Article'].'" class="">'.ucfirst($rowtLigneCmd['designation']).'</a></h6></td>';          
+                        echo '<td><h6 class="card-title">'.ucfirst($rowtLigneCmd['prix']).' €</h6></td>';         
+                        
+                        $prixT = $rowtLigneCmd['qtite'] * $rowtLigneCmd['prix'];
+
+                        echo '<td><h6 class="card-title">'.ucfirst($prixT).' €</h6></td>';         
+                        
+                        echo "<input type='hidden' value='". $rowtLigneCmd['Id_Article'] ."' name='Id_Article_cmd' />"; 
+                        echo '<input type="hidden" value="'.$rowtLigneCmd['prix'].'" name="prix" />';
+                        echo '<input type="hidden" value="'.$rowtLigneCmd['qtestock'].'" name="qtestock" />';
+
+                        echo '<td><button id="addCart'.$rowtLigneCmd['Id_Article'].'" class="btn btn-primary " type="submit" value="+" name="addCart">Acheter de nouveau</button></td>'; 
+
+                    echo '</tr>';
+                    echo '</form>';
+                    $MontantTotal = $MontantTotal + $prixT;
+                }
+            echo "</tbody>       
+            <tfoot>
+            <tr>
+                <td colspan='3'></td>
+                <td class='text_right' >Montant total</td>
+                <td>".number_format($MontantTotal,2)." €</td><td></td>
+            </tr>
+            </tfoot></table></div></div>
+            </div>";
+        }
+
+        echo "</div></div>";
+    }
+
+
+    public function getSqlCmds($userName){
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $user = new User();
+        $idUtilisateur = $user->getUserIdByUserName($userName);
+
+        $sqlQuery = "SELECT * FROM commande WHERE idUtilisateur=".$idUtilisateur;
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function getSqlLigneCmds($idCmd){
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $sqlQuery = "SELECT * FROM ligne_commande
+        INNER JOIN article ON  ligne_commande.Id_Article = article.Id_Article
+        INNER JOIN instruments on article.Id_Instrument = instruments.Id_Instrument".
+        " WHERE ligne_commande.idCmd=".$idCmd;
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+        return $stmt;
+    }
+
     function cartToCmd($userName) {
         $panier = new Panier();
         $stmt = $panier->getSqlArticles();
@@ -230,9 +348,13 @@ class Commande{
 
     function getDatetimeNow($type) {
         $tz_object = new DateTimeZone('Europe/Paris');
-    
+
+        setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
+
         $datetime = new DateTime();
         $datetime->setTimezone($tz_object);
+        $date1 = date("Y-m-d");
+
 
         if($type=="court"){
 
@@ -240,7 +362,7 @@ class Commande{
 
         }else{
 
-            return $datetime->format('Y\-m\-d\h:i:s');
+            return strftime("%A %d %B %G", strtotime($date1));
         }
     }
  }

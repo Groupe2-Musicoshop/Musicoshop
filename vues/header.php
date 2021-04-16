@@ -60,6 +60,7 @@
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/fildarianne.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/formulaire.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/panier.css">
+    <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/commandes.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/footer.css">
     
     <title>Musicoshop</title>
