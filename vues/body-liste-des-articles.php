@@ -17,19 +17,12 @@ if( isset($_POST['delete'])){
 	}
 }
 
-$sql 	= "SELECT * FROM article";
+$sql 	= "SELECT * FROM article INNER JOIN instruments ON instruments.Id_Instrument = article.Id_Instrument";
 $result = $conn->query($sql);
 
 if ($result->rowCount() > 0)
 { 
-	?>
-	
-<head>
-    <link rel="stylesheet" href="<?=$_SESSION['root']?>css/login.css" />
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-</head>
+?>
 <div class="jumbotron">
 
 <p class="box-return"><a href="index.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
@@ -37,27 +30,25 @@ if ($result->rowCount() > 0)
 	<h2>liste des articles</h2>
 
 	<table class="table table-bordered table-striped">
-		<tr>
-
-			<td>ID</td>
-			<td>Stock</td>
-			<td>Prix</td>
-            			<td>Note</td>
-
-			<td>ID Instrument</td>
-			<td width="70px">Supprimer</td>
-			<td width="70px">Modifier</td>
-		</tr>
+		<thead>
+			<tr>
+				<td>Instrument</td>
+				<td>Stock</td>
+				<td>Prix</td>
+				<td>Note</td>	
+				<td width="70px">Supprimer</td>
+				<td width="70px">Modifier</td>
+			</tr>
+		</thead>
 	<?php
 		while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 		echo "<form action='' method='POST'>";	//added
 		echo "<input type='hidden' value='". $row['Id_Article']."' name='articleid' />"; //added
 		echo "<tr>";
-		echo "<td>".$row['Id_Article'] . "</td>";
+		echo "<td>".ucfirst($row['designation']) . "</td>";
 		echo "<td>".$row['qtestock'] . "</td>";
 		echo "<td>".$row['prix'] . "</td>";
-        echo "<td>".$row['note'] . "</td>";
-		echo "<td>".$row['Id_Instrument'] . "</td>";
+        echo "<td>".intval($row['note']) . "</td>";
 		//echo "<td>".$row['contact'] . "</td>";
 		echo "<td><a href='#' class='btn btn-danger' data-toggle='modal' data-target='#smallModal".$row['Id_Article']."'>Delete</a></td>"; 
 		echo "<td><a href='modifier-article.php?id=".$row['Id_Article']."' class='btn btn-info'>Edit</a></td>";
