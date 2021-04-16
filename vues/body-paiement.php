@@ -2,16 +2,19 @@
     if (!isset($_SESSION)) { session_start(); }
     
 	@$valider=$_POST["valider"];
+	$date = new DateTime('Y');
+
 
     require_once 'modele/Database.php';
     require_once 'modele/Panier.php';
 	
 	$userName = $_SESSION["username"];
 
-    if(isset($valider)){     
-		
+    if(isset($valider)){  
+   
 		$cart = new Panier();
 		$cart->cartToCmd($userName);
+
 
 		$message="Payement accepté";
 
@@ -66,7 +69,7 @@
 	<div class="form-group">
 		<label for="cardNumber">Numéro de la carte</label>
 		<div class="input-group">
-			<input type="text" class="form-control" name="cardNumber" placeholder="" required>
+			<input type="text" class="form-control" name="cardNumber" placeholder="" pattern="^4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}$|^2(?:2(?:2[1-9]|[3-9][0-9])|[3-6][0-9][0-9]|7(?:[01][0-9]|20))[0-9]{12}$">
 			<div class="input-group-append">
 				<span class="input-group-text text-muted">
 					<i class="fab fa-cc-visa"></i>   <i class="fab fa-cc-amex"></i>   
@@ -80,21 +83,45 @@
 	    <div class="col-sm-8">
 	        <div class="form-group">
 	            <label><span class="hidden-xs">Expiration</span> </label>
-	        	<div class="input-group">
-	        		<input type="number" class="form-control" placeholder="MM" name="" required>
-		            <input type="number" class="form-control" placeholder="YY" name="" required>
-	        	</div>
-	        </div>
-	    </div>
+	        	<label><span class="hidden-xs">Expiration</span> </label>
+        	<div class="form-inline">
+        		<select class="form-control" style="width:45%">
+				  <option>01 - Janvier</option>
+				  <option>02 - Février</option>
+				  <option>03 - Mars</option>
+				  <option>04 - Avril</option>
+				  <option>05 - Mai</option>
+				  <option>06 - Juin</option>
+				  <option>07 - Juillet</option>
+				  <option>08 - Août</option>
+				  <option>09 - Septembre</option>
+				  <option>10 - Octobre</option>
+				  <option>11 - Novembre</option>
+				  <option>12 - Décembre</option>
+
+				</select>
+	            <span style="width:10%; text-align: center"> / </span>
+	            <select class="form-control" style="width:45%">
+					<option><?php echo $date->format('Y')?></option>
+					<option><?php echo $date->format('Y')+1?></option>
+					<option><?php echo $date->format('Y')+2?></option>
+					<option><?php echo $date->format('Y')+3?></option>
+
+
+
+				</select>
+        	</div>
+			</div>
+    </div>
 	    <div class="col-sm-4">
 	        <div class="form-group">
 	            <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
-	            <input type="number" class="form-control" required="">
+	            <input type="number" class="form-control" required="" placeholder="ex. 123">
 	        </div> <!-- form-group.// -->
 	    </div>
 	</div> <!-- row.// -->
 	<div class="row">
-	<div class="center col-4"><button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider"> Acheter maintenant  </button></div>
+	<div class="center col-4"><button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider" > Acheter maintenant  </button></div>
 	</div>
 	</form>
 </div> <!-- tab-pane.// -->
