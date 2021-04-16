@@ -8,6 +8,7 @@ class Panier{
     private ?int $qtite_Art;
     private ?int $Id_Article;
     private ?float $prixT;
+    private ?string $userName;
 
     // Table
     private $db_tables = [
@@ -109,6 +110,30 @@ class Panier{
     public function setPrixT(?float $prixT)
     {
         $this->prixT = $prixT;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of userName
+     *
+     * @return  ?string
+     */
+    public function getUserName()
+    {
+        return $this->userName;
+    }
+
+    /**
+     * Set the value of userName
+     *
+     * @param  ?string  $userName
+     *
+     * @return  self
+     */
+    public function setUserName(?string $userName)
+    {
+        $this->userName = $userName;
 
         return $this;
     }
@@ -232,10 +257,12 @@ class Panier{
     function cartToCmd($userName) {
         $stmt = $this->getSqlArticles();
 
-        $idCmd = $this->addCartToCmd("-","",$userName);
+        $idCmd = $this->addCartToCmd($userName);
 
         $datecourte = $this->getDatetimeNow("court");
-        $numCmd = str_replace($datecourte.$idCmd);
+        $numCmd = str_replace("-","",$datecourte.$idCmd);
+
+        echo "numCmd".$numCmd;
 
         $MontantTotal = floatval(0.00);
 
@@ -359,11 +386,12 @@ class Panier{
 
         $user = new User();
         $idUtilisateur = $user->getUserIdByUserName($userName);
+        echo "idUtilisateur : ".$idUtilisateur;
 
         $dateCmd = $this->getDatetimeNow("");
 
-        $sqlQuery = "INSERT INTO commande(dateCmd,idUtilisateur)".
-        " VALUES ('".$dateCmd."','".$idUtilisateur."')";
+        $sqlQuery = "INSERT INTO commande(dateCmd,idUtilisateur) VALUES ('".$dateCmd."','".$idUtilisateur."')";
+        echo $sqlQuery;
 
         $stmt = $conn->prepare($sqlQuery);
 
@@ -407,11 +435,6 @@ class Panier{
     public function addLigneCmd($idCmd,$Id_Article,$qtite){
         $database = new Database();
         $conn = $database->getConnection();   
-
-        $user = new User();
-        $idUtilisateur = $user->getUserIdByUserName($_SESSION["username"]);
-
-        $dateCmd = $this->getDatetimeNow("");
 
         $sqlQuery = "INSERT INTO ligne_Commande(idCmd,Id_Article,qtite)".
         " VALUES ('".$idCmd."','".$Id_Article."','".$qtite."')";

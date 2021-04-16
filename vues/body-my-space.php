@@ -45,9 +45,12 @@ require_once 'modele/Database.php';
 	$result = $conn->query($sql);
 
 	if($result->rowCount() < 1){
-		header('Location: #');
+		//header('Location: #');
+		echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
 		exit;
 	}
+
+
 	$row = $result->fetch(PDO::FETCH_ASSOC);
 	$page = basename($_SERVER["PHP_SELF"]);
     $cat = new Categorie();

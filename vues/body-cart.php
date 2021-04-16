@@ -63,9 +63,16 @@
 
     }
     if(isset($_POST['valider'])){
-    if(isset($_SESSION['username'])){
-    echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/paiement.php'; </script>";
-    }echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/login.php'; </script>";
+        
+        if(isset($_SESSION['username'])){
+
+            echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/paiement.php'; </script>";
+
+        }else{
+
+            echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/login.php'; </script>";
+            
+        }
     }
 ?>
 

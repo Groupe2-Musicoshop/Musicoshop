@@ -1,6 +1,6 @@
 <?php
     if (!isset($_SESSION)) { session_start(); }
-    	$_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
+    $_SESSION['root']="http://".$_SERVER['HTTP_HOST']."/Musicoshop";
 
     include_once(__DIR__."/../modele/Nav.php");
     include_once(__DIR__."/../modele/Categorie.php");

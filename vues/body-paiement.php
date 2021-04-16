@@ -5,15 +5,13 @@
 
     require_once 'modele/Database.php';
     require_once 'modele/Panier.php';
+	
+	$userName = $_SESSION["username"];
 
     if(isset($valider)){     
-
-		
-		$userName = $_SESSION["username"];
 		
 		$cart = new Panier();
 		$cart->cartToCmd($userName);
-
 
 		$message="Payement accepté";
 

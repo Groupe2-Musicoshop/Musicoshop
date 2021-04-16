@@ -86,7 +86,7 @@ class User{
 
         $idUtilisateurToReturn=0;
 
-        $sqlQuery = "SELECT idUtilisateur from ". $this->db_table." WHERE userName LIKE '".$userName."'";
+        $sqlQuery = "SELECT `idUtilisateur` from `utilisateur` WHERE userName LIKE '".$userName."'";
  
         $stmt = $conn->prepare($sqlQuery);              
         
