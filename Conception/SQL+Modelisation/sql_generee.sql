@@ -62,7 +62,7 @@ CREATE TABLE commande(
    numCmd VARCHAR(50),
    idUtilisateur INT NOT NULL,
    dateCmd VARCHAR(50),
-   description VARCHAR(250),
+   description TEXT(250),
    total DECIMAL(15,2),
    PRIMARY KEY(idCmd),
    FOREIGN KEY(idUtilisateur) REFERENCES utilisateur(idUtilisateur)

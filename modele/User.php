@@ -79,8 +79,6 @@ class User{
 
     public function getUserIdByUserName($userName){
 
-        echo "getUserIdByUserName:".$userName;
-
         $database = new Database();
         $conn = $database->getConnection();
 

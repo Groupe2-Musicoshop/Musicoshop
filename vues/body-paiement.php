@@ -4,14 +4,14 @@
 	@$valider=$_POST["valider"];
 
     require_once 'modele/Database.php';
-    require_once 'modele/Panier.php';
+    require_once 'modele/Commande.php';
 	
 	$userName = $_SESSION["username"];
 
     if(isset($valider)){     
 		
-		$cart = new Panier();
-		$cart->cartToCmd($userName);
+		$cmd = new Commande();
+		$cmd->cartToCmd($userName);
 
 		$message="Payement accepté";
 

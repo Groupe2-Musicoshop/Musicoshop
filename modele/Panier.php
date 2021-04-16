@@ -269,7 +269,7 @@ class Panier{
         $designationGlobale = "Comprenant: ";
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-            $designationGlobale = $designationGlobale."<br> - ".$row['qtite_Art']." ".$row['designation']." à ".$row['prix']." Pour un total de ".$row['prixT'];
+            $designationGlobale = $designationGlobale."<br> - ".$row['qtite_Art']." ".$row['designation']." à ".$row['prix']."€ Pour un total de ".$row['prixT']." €";
 
             $this->addLigneCmd($idCmd,$row['Id_Article'],$row['qtite_Art']);
 
