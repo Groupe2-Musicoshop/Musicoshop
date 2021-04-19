@@ -530,5 +530,25 @@ class Panier{
 
         $stmt->execute();       
     }
+
+    public function getNbArtCart(){
+        $database = new Database();
+        $conn = $database->getConnection();   
+
+        $nb_ArtToReturn= 0;
+        
+        $sqlQuery = "select Count(*) as nba  FROM panier WHERE sessId='".isset($_COOKIE["PHPSESSID"])."'";
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute(); 
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $nb_ArtToReturn = $nba;
+        }
+
+        return $nb_ArtToReturn;
+    }
  }
 ?>

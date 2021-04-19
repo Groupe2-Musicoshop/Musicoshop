@@ -57,13 +57,13 @@
         </div>
 
         <div class="mb-3">
-            <select name="note" class="form-select" aria-label="Default select example">
+            <select id="stars" name="note" class="form-select" aria-label="Default select example">
                 <option selected>Note de l'article</option>
-                <option value="1">One star</option>
-                <option value="2">Two stars</option>
-                <option value="3">Three stars</option>
-                <option value="4">four stars</option>
-                <option value="5">five stars</option>
+                <option class="ones" value="1">*</option>
+                <option class="twos" value="2">**</option>
+                <option class="threes" value="3">***</option>
+                <option class="fours" value="4">****</option>
+                <option class="fives" value="5">*****</option>
             </select>
         </div>
 
@@ -87,7 +87,6 @@
         <?php } ?>
 
         <input type="submit" name="valider" value="valider" class="btn btn-primary box-button" />
-        <!--<p class="box-register">Déjà inscrit? <a href="login.php"><u>Connectez-vous ici<u></a></p>-->
-
+        
     </form>
 </div>

@@ -27,3 +27,14 @@ p.box-return a{
     color:#0d1b2a ;
     border: 1px solid #c4c4c4;
 }
+
+select#stars .ones,
+select#stars .twos,
+select#stars .threes,
+select#stars .fours,
+select#stars .fives{ 
+    /*background-image:url(../img/sprite-star-def.png); */
+    background: 2px top repeat-x url("../img/article/star.png");
+    background-size: 20px 20px;
+    
+}

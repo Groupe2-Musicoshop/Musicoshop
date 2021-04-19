@@ -306,9 +306,6 @@ class Article{
         echo "<table class='table table-dark'><thead><tr>";
         echo "<th scope='col'>#</th>";
         echo "<th scope='col'>Id_Article</th>";
-        //echo "<th scope='col'>Nom</th>";
-        //echo "<th scope='col'>Prénom</th>";
-        //echo "<th scope='col'>Type</th>";
         echo "<th scope='col'>Action</th>";
         echo "</tr></thead><tbody>";
 
@@ -318,9 +315,6 @@ class Article{
 		    echo "<input type='hidden' value='". $cart[$i] ."' name='Id_Article' />"; //added
             echo "<tr><th scope='row'>". $cart[$i] ."</th>";
             echo "<td>". $cart[$i] ."</td>";
-            //echo "<td>".$nom."</td>";
-            //echo "<td>".$prenom."</td>";
-            //echo "<td>".$type."</td>";
             echo "<td><input type='submit' name='view' value='Voir' class='btn btn-primary' /></td>";
             echo "</tr>";
         }

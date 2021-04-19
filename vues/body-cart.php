@@ -96,7 +96,9 @@
         </div>
         <div class="row">
         <form action="" method="post">
-        <div class="center col-4"><button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider"> Acheter maintenant  </button></div>
+        <div class="center col-4"><button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider" <?php 
+        if($cart->getNbArtCart()==0)echo "Disabled" ;?>
+        > Acheter maintenant  </button></div>
        </form>
 </div>
     </div>
