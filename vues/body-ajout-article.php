@@ -49,16 +49,19 @@
         </div>
 
         <div class="mb-3">
-            <input type="text" class="form-control" name="qtestock" placeholder="Quantité" required>
+            <label for="floatingInput">Quantité</label>
+            <input type="text" class="form-control" name="qtestock" placeholder="" required>
         </div>
 
         <div class="mb-3">
-            <input type="text" class="form-control" name="prix" placeholder="Prix" required>
+            <label for="floatingInput">Prix</label>
+            <input type="text" class="form-control" name="prix" placeholder="" required>
         </div>
 
         <div class="mb-3">
+            <label for="floatingInput">Note de l'article</label>
             <select name="note" class="form-select" aria-label="Default select example">
-                <option selected>Note de l'article</option>
+                <option selected></option>
                 <option value="1">One star</option>
                 <option value="2">Two stars</option>
                 <option value="3">Three stars</option>
@@ -68,6 +71,7 @@
         </div>
 
         <div class="mb-3">
+            <label for="floatingInput">Désignation</label>
             <select name="id_instrument" class="form-select" aria-label="Default select example">
                 <?php
                 $sql = 'SELECT Id_Instrument, designation FROM instruments ';

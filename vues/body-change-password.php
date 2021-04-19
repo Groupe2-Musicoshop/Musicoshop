@@ -57,15 +57,16 @@ require_once 'modele/Database.php';
             <div class="mb-3">
                 <h4 class="title">Changement de Mot de passe </h4>
             </div>
+            <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Mot de passe" required>
+            <label for="floatingPassword">Mot de passe</label>
+            </div><br>
 
-            <div class="mb-3">
-                <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
-            </div>
-
-            <div class="mb-3">
-                <input type="password" class="form-control" name="repass" placeholder="Confirmation du mot de passe"
-                    required>
-            </div>
+            <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="repass" placeholder="Confirmation du mot de passe" required>
+            <label for="floatingPassword">Confirmation du mot de passe</label>
+            </div><br>
+        
 
             <?php if (!empty($message)) { ?>
             <p class="errorMessage"><?php echo $message; ?></p>
