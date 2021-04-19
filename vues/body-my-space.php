@@ -31,6 +31,8 @@ require_once 'modele/Database.php';
 			}else{
 				echo "<div class='alert alert-danger'>Error: There was an error while updating user info</div>";
 			}
+
+			$_SESSION["username"]=$_POST['username'];
 		}
 
 	// recuperation du id passer en parametre 
@@ -50,7 +52,6 @@ require_once 'modele/Database.php';
 		exit;
 	}
 
-
 	$row = $result->fetch(PDO::FETCH_ASSOC);
 	$page = basename($_SERVER["PHP_SELF"]);
     $cat = new Categorie();
@@ -59,7 +60,7 @@ require_once 'modele/Database.php';
 ?>
 
 <div class="jumbotron">
-	
+
     <div id="cat_b&p" class="body-mu">
 
         <div id="title" class="white">Modifier votre profil</div>

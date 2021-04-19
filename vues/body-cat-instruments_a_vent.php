@@ -7,10 +7,9 @@
     $cat = new Categorie();
     $cat->set_PageActive($page);   
 
-
     $art = new Article();
     $cart = new Panier();
-    
+
     if($_SESSION['userType'] =='admin'){
 		
         $cart->setCOOKIE($_COOKIE["PHPSESSID"].$_SESSION['username']);

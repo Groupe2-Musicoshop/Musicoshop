@@ -98,5 +98,27 @@ class User{
         return $idUtilisateurToReturn;
 
     }
+
+    public function getCoordonneesFromUser($idUtilisateur){
+
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $arryCoordUserToReturn=array();
+
+        $sqlQuery = "SELECT * from `utilisateur` WHERE idUtilisateur = ".$idUtilisateur;
+ 
+        $stmt = $conn->prepare($sqlQuery);              
+        
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $arryCoordUserToReturn = [$userName,$sexe,$nom,$prenom];
+        }
+
+        return $arryCoordUserToReturn;
+
+    }
 }
 ?>

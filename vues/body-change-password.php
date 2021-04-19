@@ -29,7 +29,8 @@ require_once 'modele/Database.php';
             echo "<script type='text/javascript'> document.location = '".$SESSION['root']."vues/logout.php'; </script>";
 			
 		}
-	} $page = basename($_SERVER["PHP_SELF"]);
+	} 
+    $page = basename($_SERVER["PHP_SELF"]);
     $cat = new Categorie();
     $cat->set_PageActive($page);   
 	
