@@ -170,14 +170,18 @@ class Commande{
                     echo '</div>'; 
 
                     echo '<div class="col-md-3">';                     
-                        echo '<h6 class="card-title">Commandée le : '.ucfirst($rowCmd['dateCmd']).'</h6>';
+                        echo '<h6 class="card-title">Effectuée le : '.ucfirst($rowCmd['dateCmd']).'</h6>';
                     echo '</div>'; 
 
-                    echo '<div class="col-md-3">';                     
+                    echo '<div class="col-md-2">';                     
+                        echo '<h6 class="card-title">D\'un total de : '.$rowCmd['total'].' €</h6>';
+                    echo '</div>'; 
+
+                    echo '<div class="col-md-2">';                     
                         echo '<h6 class="card-title">livré à : '.ucfirst($arrayCoordUser[1]).' '.ucfirst($arrayCoordUser[3]).' '.ucfirst($arrayCoordUser[2]).'</h6>';
                     echo '</div>'; 
 
-                    echo '<div class="col-md-3">'; 
+                    echo '<div class="col-md-2">'; 
                         echo '<a class="" target="_blank" href="facture.php?idCmd='.$rowCmd["idCmd"].'">Facture au format pdf</a>';
                     echo '</div>';                     
                 echo '</div>';

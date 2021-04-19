@@ -29,8 +29,6 @@
 
     <div id="title">Musicoshop Admin</div>
     <a class="dropdown-item bg-color-pla" href="<?=$_SESSION['root']?>/ctrl/service.php">Update BDD</a>
-    <a class="dropdown-item bg-color-pla" href="<?=$_SESSION['root']?>/vues/ajout-article.php">Ajouter un
-        article</a>
 
     <?php $user->genUsersToValidate();?>
 </div>
