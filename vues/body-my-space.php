@@ -76,16 +76,40 @@ require_once 'modele/Database.php';
 			<input type="hidden" value="<?php echo $row['idUtilisateur']; ?>" name="utilisateurid">
 		
 			<label class="form-label" for="username">Username</label>
-			<input type="text" id="articleid"  name="username" value="<?php echo $row['userName']; ?>" class="form-control">
-		
+			<input type="text" id="articleid"  name="username" value="<?php echo $row['userName']; ?>" class="form-control">	<br>	
 		
 			<label for="email">Adresse e-mail</label>
 			<input type="text" id="designation"  name="email" value="<?php echo $row['email']; ?>" class="form-control"><br>
 	
-		
-			<label for="sexe">Sexe</label>
-			<input type="text"  name="sexe" id="sexe" value="<?php echo $row['sexe']; ?>" class="form-control">
-	
+			<div class="mb-3">
+			<label>Civilitée</label>
+				<div class="row fieldset">					
+
+					<div class="col-1">
+						
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="sexe" value="M." id="flexRadioDefault1" <?php if($row['sexe']=='M.')echo 'checked'?>>
+							<label class="form-check-label" for="flexRadioDefault1">
+								M.
+							</label>
+						</div>
+						
+					</div>
+					
+					<div class="col-1">
+						
+						<div class="form-check ">
+							<input class="form-check-input" type="radio" name="sexe" value="Mme" id="flexRadioDefault2" <?php if($row['sexe']=='Mme')echo 'checked'?>>
+							<label class="form-check-label" for="flexRadioDefault2">
+								Mme
+							</label>
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+				
 			<div class="mb-3">
 
 				<div class="row">

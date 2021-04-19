@@ -48,7 +48,7 @@
                     
                 }else{
                     
-                    $_SESSION["navUsername"]=$tab[0]["prenom"]." ".$tab[0]["nom"];
+                    $_SESSION["navUsername"]=$tab[0]["sexe"]." ".$tab[0]["prenom"]." ".$tab[0]["nom"];
                     
                 }
                 
