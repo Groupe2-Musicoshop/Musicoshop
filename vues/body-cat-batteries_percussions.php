@@ -7,6 +7,17 @@
     $cat->set_PageActive($page);   
     $art = new Article();
     $cart = new Panier();
+
+    if($_SESSION['userType'] =='admin'){
+		
+        $cart->setCOOKIE($_COOKIE["PHPSESSID"].$_SESSION['username']);
+    }
+    else{
+
+        $cart->setCOOKIE($_COOKIE["PHPSESSID"]);
+    }
+
+
     $user = new User();
 
 	$message="";
@@ -15,20 +26,28 @@
 ?>
 
 <div class="jumbotron">
+
     <div id="cat_b&p" class="body-mu">
 
         <div id="title" class="white">Bateries & Percussions</div>
+        
         <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_b&p.jpg' class='w100 d-inline-block align-top landscape' alt=''>
 
         <?php $cat->genCategoriesHorizontaly()?>
 
         <div class="row">
+
             <div class="col-12">
+
                 <div id="catalog" class="catalog">
+
                     <?php $art->genCardArticle(2);?>
+
                 </div>
+
                 <?php $art->getPagination(2, $page);?>    
             </div>
+
         </div>
 
     </div>
