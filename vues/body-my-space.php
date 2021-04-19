@@ -23,7 +23,7 @@ require_once 'modele/Database.php';
 			$codePostal 	= $_POST['codePostal'];
 
 			$sql = "UPDATE utilisateur SET userName='{$username}', email = '{$email}',sexe = '{$sexe}',
-						nom = '{$nom}',prenom = '{$prenom}',adresse = '{$adresse}',ville = '{$ville}',codePostal = '{codePostal}'
+						nom = '{$nom}',prenom = '{$prenom}',adresse = '{$adresse}',ville = '{$ville}',codePostal = '{$codePostal}'
 						WHERE idUtilisateur=" . $_POST['utilisateurid'];
 
 			if( $conn->query($sql)){
@@ -83,23 +83,37 @@ require_once 'modele/Database.php';
 				<label for="sexe">Sexe</label>
 				<input type="text"  name="sexe" id="sexe" value="<?php echo $row['sexe']; ?>" class="form-control">
 		
-			
+				<div class="mb-3">
+				<div class="row">
+				<div class="col">
 				<label for="nom">Nom</label>
 				<input type="text"  name="nom" id="nom" value="<?php echo $row['nom']; ?>" class="form-control"><br>
-			
+				</div>
+				<div class="col">
 				<label for="prenom">Prénom</label>
 				<input type="text"  name="prenom" id="prenom" value="<?php echo $row['prenom']; ?>" class="form-control"><br>
-				
+				</div>
+				</div>
+				</div>
 				<label for="adresse">Adresse</label>
 				<input type="text"  name="adresse" id="adresse" value="<?php echo $row['adresse']; ?>" class="form-control"><br>
 				
+				<div class="mb-3">
+				<div class="row">
+				<div class="col">
 				<label for="ville">Ville</label>
 				<input type="text"  name="ville" id="ville" value="<?php echo $row['ville']; ?>" class="form-control"><br>
-
+				</div>
+				<div class="col">
 				<label for="codePostal">Code_Postal</label>
 				<input type="text"  name="codePostal" id="codePostal" value="<?php echo $row['codePostal']; ?>" class="form-control"><br>
-		
-				<input type="submit" name="update" class="btn btn-primary box-button" value="Update">
+				</div>
+				</div>
+				</div>
+
+				
+				<div class="center col-4"><input type="submit" name="update" class="btn btn-primary box-button" value="Update">
+				</div>
 		</form>
 	</div>
 </div>

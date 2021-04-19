@@ -73,7 +73,7 @@
 	<div class="form-group">
 		<label for="cardNumber">Numéro de la carte</label>
 		<div class="input-group">
-			<input type="text" class="form-control" name="cardNumber" placeholder="" pattern="^4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}$|^2(?:2(?:2[1-9]|[3-9][0-9])|[3-6][0-9][0-9]|7(?:[01][0-9]|20))[0-9]{12}$">
+			<input type="text" class="form-control" required name="cardNumber" placeholder="" pattern="^4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}$|^2(?:2(?:2[1-9]|[3-9][0-9])|[3-6][0-9][0-9]|7(?:[01][0-9]|20))[0-9]{12}$">
 			<div class="input-group-append">
 				<span class="input-group-text text-muted">
 					<i class="fab fa-cc-visa"></i>   <i class="fab fa-cc-amex"></i>   
@@ -120,7 +120,7 @@
 	    <div class="col-sm-4">
 	        <div class="form-group">
 	            <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
-	            <input type="number" class="form-control" required="" placeholder="ex. 123">
+	            <input type="text" class="form-control" pattern="^[0-9]{3}$" required="" placeholder="ex. 123">
 	        </div> <!-- form-group.// -->
 	    </div>
 	</div> <!-- row.// -->

@@ -86,15 +86,17 @@
         <div class="mb-3">
             <h4 class="title">Enregistrement</h4>
         </div>
-
         <div class="mb-3">
-            <input type="text" class="form-control" name="nom" placeholder="Nom" required>
+        <div class="row">
+        <div class="col">
+                    <input type="text" class="form-control" name="nom" placeholder="Nom" required>
         </div>
-
-        <div class="mb-3">
-            <input type="text" class="form-control" name="prenom" placeholder="Prénom" required>
+        <div class="col">
+                    <input type="text" class="form-control" name="prenom" placeholder="Prénom" required>
         </div>
-        <div class="mb-3">
+        </div>
+        </div>
+      <div class="mb-3">
             <select name="sexe" class="form-select" aria-label="Default select example" required>
                 <option selected>Sexe</option>
                 <option value="homme" required>Homme</option>
@@ -105,12 +107,15 @@
             <input type="text" class="form-control" name="adresse" placeholder="Rue et n°" required>
         </div>
 
-        <div class="mb-3">
+         <div class="mb-3">
+        <div class="row">
+        <div class="col">
             <input type="text" class="form-control" name="codepostal" placeholder="Code postal" required>
         </div>
-
-        <div class="mb-3">
+        <div class="col">
             <input type="text" class="form-control" name="ville" placeholder="ville" required>
+        </div>
+        </div>
         </div>
 
         <div class="mb-3">
@@ -130,7 +135,9 @@
         <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
 
-        <input type="submit" name="valider" value="valider" class="btn btn-primary box-button" />
+        <div class="center col-4"><input type="submit" name="valider" value="Valider" class="btn btn-primary btn-lg btn-block" />
+        	</div> 
+
         <p class="box-register">Déjà inscrit? <a href="login.php"><u>Connectez-vous ici<u></a></p>
 
     </form>

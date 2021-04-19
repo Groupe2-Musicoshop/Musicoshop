@@ -71,6 +71,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 			?>
         </select>
 		<br>
-		<input type="submit" name="update" class="box-button" value="Update">
+		<div class="center col-4"><input type="submit" name="update" class="btn btn-primary box-button" value="Update">
+		</div>
 	</form>
 </div>
