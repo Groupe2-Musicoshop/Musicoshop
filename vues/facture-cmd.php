@@ -41,9 +41,6 @@
 
     $pdf->Cell(130, 6,'', 0, 0);
     $pdf->Cell(59, 6, $client['codePostal'].' '.$client['ville'], 0, 1);
-
-    $pdf->Cell(130, 6,'', 0, 0);
-    $pdf->Cell(59, 6, utf8_decode('Tél : '). $client['tel'], 0, 1);
     $pdf->Ln(8);
 
     $idCmd=$_GET['idCmd'];
