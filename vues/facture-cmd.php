@@ -33,7 +33,7 @@
 
     $pdf->SetFont('Arial','B',14);
     $pdf->Cell(130, 6,'', 0, 0);
-    $pdf->Cell(59, 6,  $client['nom'] .' '.$client['prenom'], 0, 1);
+    $pdf->Cell(59, 6, $client['sexe'] .' '. $client['prenom'].' '.$client['nom'], 0, 1);
 
     $pdf->SetFont('Arial','',12);
     $pdf->Cell(130, 6,'', 0, 0);
