@@ -11,20 +11,20 @@ require_once 'modele/Database.php';
 	
 	if(isset($_POST['update'])){
 		
-			$qtestock  = $_POST['qtestock'];
-			$prix 	= $_POST['prix'];
-            $note 	= $_POST['note'];
-			$idInstrument 	= $_POST['Id_Instrument'];
-			$sql = "UPDATE article SET qtestock='{$qtestock}', prix = '{$prix}',note = '{$note}',
-						Id_Instrument = '{$idInstrument}'
-						WHERE Id_Article=" . $_POST['articleid'];
+		$qtestock  = $_POST['qtestock'];
+		$prix 	= $_POST['prix'];
+		$note 	= $_POST['note'];
+		$idInstrument 	= $_POST['Id_Instrument'];
+		$sql = "UPDATE article SET qtestock='{$qtestock}', prix = '{$prix}',note = '{$note}',
+					Id_Instrument = '{$idInstrument}'
+					WHERE Id_Article=" . $_POST['articleid'];
 
-			if( $conn->query($sql)){
-				echo "<div class='alert alert-success'>Successfully updated  article</div>";
-			}else{
-				echo "<div class='alert alert-danger'>Error: There was an error while updating user info</div>";
-			}
+		if( $conn->query($sql)){
+			echo "<div class='alert alert-success'>Successfully updated  article</div>";
+		}else{
+			echo "<div class='alert alert-danger'>Error: There was an error while updating user info</div>";
 		}
+	}
 	
 	$id= $_GET['id'];
 	 	 
@@ -41,7 +41,9 @@ require_once 'modele/Database.php';
 
 	?>
 <div class="jumbotron">
+
 	<form class="box" action="" method="POST">
+		
 		<p class="box-return"><a href="liste-des-articles.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
 		<u>Retour à la liste des articles</u></a></p>
         <h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier un article</h3> 
@@ -63,7 +65,7 @@ require_once 'modele/Database.php';
 		<label for="idCategorie">Id instrument</label>
 		<input type="text"  name="Id_Instrument" id="Id_Instrument" value="<?= ucfirst($row['Id_Instrument']) ?>" class="form-control"><br>
 
-		<input type="submit" name="update" class="btn btn-primary box-button" value="Update">
-
+		<div class="center col-4"><input type="submit" name="update" class="btn btn-primary box-button" value="Update">
+		</div>
 	</form>
 </div>

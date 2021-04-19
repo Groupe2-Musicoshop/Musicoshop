@@ -15,6 +15,16 @@
     }
 
     $cart = new Panier();
+    
+    if($_SESSION['userType'] =='admin'){
+		
+        $cart->setCOOKIE($_COOKIE["PHPSESSID"].$_SESSION['username']);
+    }
+    else{
+
+        $cart->setCOOKIE($_COOKIE["PHPSESSID"]);
+    }
+
 	$_SESSION['nbAticle']=$cart->getSumQteCart();
 
     $page = basename($_SERVER["PHP_SELF"]);

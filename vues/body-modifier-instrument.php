@@ -31,10 +31,6 @@ if(isset($_POST['update'])){
 	}
 }
 
-// recuperation du id passer en parametre 
-
-//$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
-
 $id= $_GET['id'];
 		
 $sql = "SELECT * FROM instruments WHERE Id_Instrument={$id}";
@@ -47,7 +43,9 @@ if($result->rowCount() < 1){
 $row = $result->fetch(PDO::FETCH_ASSOC);
 ?>
 <div class="jumbotron">
+
 		<form class="box" action="" method="POST">
+
 		<p class="box-return"><a href="liste-des-instruments.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
 		<u>Retour à la liste des instruments</u></a></p>
         <h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier un instrument</h3> 
@@ -59,6 +57,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 		<label for="image">Adresse image</label>
 		<input type="file"  name="image" id="image" class="form-control"><br>
 		<label for="idCategorie">Catégorie</label>
+
 		<select name="idCategorie" class="form-select">
 			<?php
 			$sql = 'SELECT idCategorie, libele FROM categorie';
@@ -70,7 +69,9 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 			}
 			?>
         </select>
+		
 		<br>
-		<input type="submit" name="update" class="box-button" value="Update">
+		<div class="center col-4"><input type="submit" name="update" class="btn btn-primary box-button" value="Update">
+		</div>
 	</form>
 </div>

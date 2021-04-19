@@ -272,6 +272,16 @@ class Commande{
 
     function cartToCmd($userName) {
         $panier = new Panier();
+        
+        if($_SESSION['userType'] =='admin'){
+		
+            $panier->setCOOKIE($_COOKIE["PHPSESSID"].$_SESSION['username']);
+        }
+        else{
+
+            $panier->setCOOKIE($_COOKIE["PHPSESSID"]);
+        }
+
         $stmt = $panier->getSqlArticles();
 
         $date = $this->getDatetimeNow("");
