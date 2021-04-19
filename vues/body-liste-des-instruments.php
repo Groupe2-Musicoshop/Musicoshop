@@ -38,32 +38,31 @@ if ($result->rowCount() > 0) { ?>
 				<?php
 				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 				echo "<form action='' method='POST'>";	//added
-				echo "<input type='hidden' value='". $row['Id_Instrument']."' name='instrumentid' />"; //added
-				echo "<tr>";
-				echo "<td>".ucfirst($row['designation']) . "</td>";
-				echo "<td><img class='img_small' src='".$row['img'] ."' alt=''></td>";
-				echo "<td>".$row['libele'] . "</td>";
-				//echo "<td>".$row['contact'] . "</td>";
-				echo "<td><a href='#' class='btn btn-danger' data-toggle='modal' data-target='#smallModal".$row['Id_Instrument']."'>Delete</a></td>";  
-				echo "<td><a href='modifier-instrument.php?id=".$row['Id_Instrument']."' class='btn btn-info'>Edit</a></td>";
-				echo "</tr>";
-				echo "<div class='modal' id='smallModal".$row['Id_Instrument']."' tabindex='-1' role='dialog' aria-labelledby='smallModal' aria-hidden='true'>";
-				echo "<div class='modal-dialog'>";
-				echo "<div class='modal-content'>";
-				echo "<div class='modal-header'>";
-				echo "<h5 class='modal-title' id='myModalLabel'>Confirmation</h5>";
-				echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'>&times;</button>";
-				echo "</div>";
-				echo "<div class='modal-body'>";
-				echo "<p>Confirmez la suppression de l'instrument<br><b> '".$row['designation'] ."'</b><p>";
-				echo "</div>";
-				echo "<div class='modal-footer'>";
-				echo "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Annuler</button>";
-				echo "<input type='submit' name='delete' value='Confirmer' class='btn btn-danger' />";
-				echo "</div>";
-				echo "</div>";
-				echo "</div>";
-				echo "</div>";
+					echo "<input type='hidden' value='". $row['Id_Instrument']."' name='instrumentid' />"; //added
+					echo "<tr>";
+					echo "<td>".ucfirst($row['designation']) . "</td>";
+					echo "<td><img class='img_small' src='".$row['img'] ."' alt=''></td>";
+					echo "<td>".$row['libele'] . "</td>";
+					echo "<td><a href='#' class='btn btn-danger' data-toggle='modal' data-target='#smallModal".$row['Id_Instrument']."'>Delete</a></td>";  
+					echo "<td><a href='modifier-instrument.php?id=".$row['Id_Instrument']."' class='btn btn-info'>Edit</a></td>";
+					echo "</tr>";
+					echo "<div class='modal' id='smallModal".$row['Id_Instrument']."' tabindex='-1' role='dialog' aria-labelledby='smallModal' aria-hidden='true'>";
+						echo "<div class='modal-dialog'>";
+							echo "<div class='modal-content'>";
+								echo "<div class='modal-header'>";
+									echo "<h5 class='modal-title' id='myModalLabel'>Confirmation</h5>";
+									echo "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'>&times;</button>";
+									echo "</div>";
+									echo "<div class='modal-body'>";
+										echo "<p>Confirmez la suppression de l'instrument<br><b> '".$row['designation'] ."'</b><p>";
+									echo "</div>";
+									echo "<div class='modal-footer'>";
+										echo "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Annuler</button>";
+										echo "<input type='submit' name='delete' value='Confirmer' class='btn btn-danger' />";
+								echo "</div>";
+							echo "</div>";
+						echo "</div>";
+					echo "</div>";
 				echo "</form>"; //added 
 				}
 				?>

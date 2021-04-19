@@ -161,9 +161,11 @@ class Commande{
             
                 echo '<h6 class="card-title">N°Commande : '.ucfirst($rowCmd['numCmd']).'</h6>';
                 echo '<h6 class="card-title">Date de la Commande : '.ucfirst($rowCmd['dateCmd']).'</h6>';
-
+                echo '<div style="padding:0;" class="col-md-1">';
+                    echo '<a class="btn btn-primary" href="facture.php?idCmd='.$rowCmd["idCmd"].'">Facture</a>';
+                echo '</div>';
                 echo'<a data-toggle="collapse" href="#collapse'.$rowCmd["idCmd"].'" role="button" aria-expanded="false" aria-controls="collapse'.$rowCmd["idCmd"].'">
-                détails</a>';
+                Détails</a>';
 
                 echo'<div class="collapse" id="collapse'.$rowCmd["idCmd"].'">
                 <div class="card card-body">';
@@ -241,6 +243,18 @@ class Commande{
         return $stmt;
     }
 
+    public function getSqlCmdsById($idCmd){
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $sqlQuery = "SELECT * FROM commande WHERE idCmd=".$idCmd;
+
+        $stmt = $conn->prepare($sqlQuery);
+
+        $stmt->execute();
+        return $stmt;
+    }
+
     public function getSqlLigneCmds($idCmd){
         $database = new Database();
         $conn = $database->getConnection();
@@ -258,6 +272,16 @@ class Commande{
 
     function cartToCmd($userName) {
         $panier = new Panier();
+        
+        if($_SESSION['userType'] =='admin'){
+		
+            $panier->setCOOKIE($_COOKIE["PHPSESSID"].$_SESSION['username']);
+        }
+        else{
+
+            $panier->setCOOKIE($_COOKIE["PHPSESSID"]);
+        }
+
         $stmt = $panier->getSqlArticles();
 
         $date = $this->getDatetimeNow("");

@@ -157,7 +157,18 @@ class Nav{
 
 
                         if($value2n->{'userType'} == "cart"){
+                            
                             $cart = new Panier();
+
+                            if($_SESSION['userType'] =='admin'){
+		
+                                $cart->setCOOKIE($_COOKIE["PHPSESSID"].$_SESSION['username']);
+                            }
+                            else{
+                        
+                                $cart->setCOOKIE($_COOKIE["PHPSESSID"]);
+                            }
+                        
                             $cart->genMiniCardArticle();
                         }
                     }

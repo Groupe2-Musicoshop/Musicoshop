@@ -13,6 +13,16 @@
 	$cat = new Categorie();
 	$art = new Article();
 	$cart = new Panier();
+    
+    if($_SESSION['userType'] =='admin'){
+		
+        $cart->setCOOKIE($_COOKIE["PHPSESSID"].$_SESSION['username']);
+    }
+    else{
+
+        $cart->setCOOKIE($_COOKIE["PHPSESSID"]);
+    }
+
 	$user = new User();
 
     $database = new Database();
