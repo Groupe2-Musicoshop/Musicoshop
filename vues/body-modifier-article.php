@@ -63,7 +63,7 @@ require_once 'modele/Database.php';
 		<label for="idCategorie">Id instrument</label>
 		<input type="text"  name="Id_Instrument" id="Id_Instrument" value="<?= ucfirst($row['Id_Instrument']) ?>" class="form-control"><br>
 
-		<input type="submit" name="update" class="btn btn-primary box-button" value="Update">
-
+		<div class="center col-4"><input type="submit" name="update" class="btn btn-primary box-button" value="Update">
+		</div>
 	</form>
 </div>
