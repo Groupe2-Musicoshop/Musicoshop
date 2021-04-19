@@ -93,20 +93,6 @@
         </div>
         </div>
         <div class="mb-3">
-<<<<<<< HEAD
-        <div class="row">
-        <div class="col">
-                    <label for="floatingInput">Nom</label>
-                    <input type="text" class="form-control" name="nom" placeholder="" required value="<?php echo isset($_POST['nom']) ? $_POST['nom'] : "";?>">
-
-        </div>
-        <div class="col">
-                    <label for="floatingInput">Prénom</label>
-                    <input type="text" class="form-control" name="prenom" placeholder="" required value="<?php echo isset($_POST['prenom']) ? $_POST['prenom'] : "";?>">
-        </div>
-        </div>
-        </div>
-=======
             <div class="row">
                 <div class="col">
                             <input type="text" class="form-control" name="nom" placeholder="Nom" required>
@@ -124,25 +110,11 @@
                 <option value="femme" required>Femme</option>
             </select>
         </div>
->>>>>>> d81e97e6ee6153d77d33546d97740324be0b4bd3
         <div class="mb-3">
             <label for="floatingInput">Rue et n°</label>
             <input type="text" class="form-control" name="adresse" placeholder="" required value="<?php echo isset($_POST['adresse']) ? $_POST['adresse'] : "";?>">
         </div>
 
-<<<<<<< HEAD
-         <div class="mb-3">
-        <div class="row">
-        <div class="col">
-            <label for="floatingInput">Code Postal</label>
-            <input type="text" class="form-control" name="codepostal" placeholder="" required value="<?php echo isset($_POST['codepostal']) ? $_POST['codepostal'] : "";?>">
-        </div>
-        <div class="col">
-            <label for="floatingInput">Ville</label>
-            <input type="text" class="form-control" name="ville" placeholder="" required value="<?php echo isset($_POST['ville']) ? $_POST['ville'] : "";?>">
-        </div>
-        </div>
-=======
         <div class="mb-3">
             <div class="row">
                 <div class="col">
@@ -152,7 +124,6 @@
                     <input type="text" class="form-control" name="ville" placeholder="ville" required>
                 </div>
             </div>
->>>>>>> d81e97e6ee6153d77d33546d97740324be0b4bd3
         </div>
 
         <div class="mb-3">
