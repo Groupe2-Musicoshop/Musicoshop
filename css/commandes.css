@@ -2,3 +2,9 @@
     width: auto!important;
     max-height: 50px!important;
 }
+.fieldset{
+    padding: 0.5rem 0;
+    margin: 0;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+}

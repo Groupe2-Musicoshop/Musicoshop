@@ -155,7 +155,6 @@ class Nav{
                             //echo '<a href="singleArticle.php?id_art='.$row['Id_Article'].'" class="btn btn-primary ">'.ucfirst($row['designation']).'</a>';
                         }
 
-
                         if($value2n->{'userType'} == "cart"){
                             
                             $cart = new Panier();

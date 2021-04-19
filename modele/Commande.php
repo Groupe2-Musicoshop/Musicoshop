@@ -145,12 +145,17 @@ class Commande{
 
         $MontantTotal = floatval(0.00);
 
+        $user = new User();
+
         echo'<div class="tbl-container">';
 
         echo '<div class="card-body row">';
         echo '<div class="col-md-12">';
         
         while ($rowCmd = $stmtCmd->fetch(PDO::FETCH_ASSOC)){
+
+            /* ['userName','sexe','nom','Prenom'] */
+            $arrayCoordUser = $user->getCoordonneesFromUser($rowCmd['idUtilisateur']);
             
             extract($rowCmd);
             
@@ -158,11 +163,23 @@ class Commande{
             
             echo '<tr><td>';
             echo '<div class="card cmd'.$rowCmd["idCmd"].' col-md-12" data-category="cmd'.$rowCmd['idCmd'].'">';   
-            
-                echo '<h6 class="card-title">N°Commande : '.ucfirst($rowCmd['numCmd']).'</h6>';
-                echo '<h6 class="card-title">Date de la Commande : '.ucfirst($rowCmd['dateCmd']).'</h6>';
-                echo '<div style="padding:0;" class="col-md-1">';
-                    echo '<a class="btn btn-primary" href="facture.php?idCmd='.$rowCmd["idCmd"].'">Facture</a>';
+                echo '<div class="row">';
+
+                    echo '<div class="col-md-3">';
+                        echo '<h6 class="card-title">N°Commande : '.ucfirst($rowCmd['numCmd']).'</h6>';
+                    echo '</div>'; 
+
+                    echo '<div class="col-md-3">';                     
+                        echo '<h6 class="card-title">Commandée le : '.ucfirst($rowCmd['dateCmd']).'</h6>';
+                    echo '</div>'; 
+
+                    echo '<div class="col-md-3">';                     
+                        echo '<h6 class="card-title">livré à : '.ucfirst($arrayCoordUser[1]).' '.ucfirst($arrayCoordUser[3]).' '.ucfirst($arrayCoordUser[2]).'</h6>';
+                    echo '</div>'; 
+
+                    echo '<div class="col-md-3">'; 
+                        echo '<a class="" target="_blank" href="facture.php?idCmd='.$rowCmd["idCmd"].'">Facture au format pdf</a>';
+                    echo '</div>';                     
                 echo '</div>';
                 echo'<a data-toggle="collapse" href="#collapse'.$rowCmd["idCmd"].'" role="button" aria-expanded="false" aria-controls="collapse'.$rowCmd["idCmd"].'">
                 Détails</a>';
@@ -272,7 +289,7 @@ class Commande{
 
     function cartToCmd($userName) {
         $panier = new Panier();
-        
+
         if($_SESSION['userType'] =='admin'){
 		
             $panier->setCOOKIE($_COOKIE["PHPSESSID"].$_SESSION['username']);
