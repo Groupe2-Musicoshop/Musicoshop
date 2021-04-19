@@ -80,4 +80,4 @@ CREATE TABLE ligne_Commande(
 );
 
 INSERT INTO `utilisateur` (`idUtilisateur`, `username`, `email`, `type`,`valideuser`,`changepwd`, `password`,`sexe`,`nom`,`prenom`) VALUES
-(1, 'pierre', 'pierre.lange@free.fr', 'admin','1','0', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','','','');
+(1, 'Pierre', 'pierre.lange@free.fr', 'admin','1','0', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','','','');
