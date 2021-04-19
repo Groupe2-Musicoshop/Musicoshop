@@ -82,7 +82,7 @@ require_once 'modele/Database.php';
 			<input type="text" id="designation"  name="email" value="<?php echo $row['email']; ?>" class="form-control"><br>
 	
 			<div class="mb-3">
-			<label>Civilitée</label>
+				<label>Civilitée</label>
 				<div class="row fieldset">					
 
 					<div class="col-1">

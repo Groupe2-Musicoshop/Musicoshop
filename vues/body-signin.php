@@ -84,32 +84,48 @@
             <h4 class="title">Enregistrement</h4>
 
         <div class="mb-3">
-            <label for="floatingInput">Civilité</label>
-            <select name="sexe" class="form-select" aria-label="Default select example" required value="<?php echo isset($_POST['sexe']) ? $_POST['sexe'] : "";?>">
-                <option selected required></option>
-                <option value="homme" required>M.</option>
-                <option value="femme" required>Mme</option>
-            </select>
-        </div>
+				<label>Civilitée</label>
+				<div class="row fieldset">					
+
+					<div class="col-1">
+						
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="sexe" value="M." id="flexRadioDefault1" <?php if(isset($_POST['sexe']) && $_POST['sexe']=='M.')echo 'checked'?>>
+							<label class="form-check-label" for="flexRadioDefault1">
+								M.
+							</label>
+						</div>
+						
+					</div>
+					
+					<div class="col-1">
+						
+						<div class="form-check ">
+							<input class="form-check-input" type="radio" name="sexe" value="Mme" id="flexRadioDefault2" <?php if(isset($_POST['sexe']) && $_POST['sexe']=='Mme')echo 'checked'?>>
+							<label class="form-check-label" for="flexRadioDefault2">
+								Mme
+							</label>
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+
+
+
         </div>
         <div class="mb-3">
             <div class="row">
                 <div class="col">
-                            <input type="text" class="form-control" name="nom" placeholder="Nom" required>
+                    <input type="text" class="form-control" name="prenom" placeholder="Prénom" required>
                 </div>
                 <div class="col">
-                            <input type="text" class="form-control" name="prenom" placeholder="Prénom" required>
+                    <input type="text" class="form-control" name="nom" placeholder="Nom" required>
                 </div>
             </div>
         </div>
 
-        <div class="mb-3">
-            <select name="sexe" class="form-select" aria-label="Default select example" required>
-                <option selected>Sexe</option>
-                <option value="homme" required>Homme</option>
-                <option value="femme" required>Femme</option>
-            </select>
-        </div>
         <div class="mb-3">
             <label for="floatingInput">Rue et n°</label>
             <input type="text" class="form-control" name="adresse" placeholder="" required value="<?php echo isset($_POST['adresse']) ? $_POST['adresse'] : "";?>">

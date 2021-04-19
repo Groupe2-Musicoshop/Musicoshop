@@ -17,7 +17,7 @@
 
 <div class="jumbotron">
 
-    <div id="body-shop" class="body-mu">
+    <div id="body-shop-single" class="body-mu">
 
         <div id="title" class="white">Simple Article</div>
 
