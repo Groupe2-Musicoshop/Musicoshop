@@ -53,8 +53,10 @@
 				$ins->execute(array($username,$nom,$prenom,$sexe,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user',0,0));
 				
                 $message="Votre inscription a bien té prise en compte un Administrateur la valideras sous 24h";
+                $message2="Votre login provisoire est : '$username'. Vous pouvez le modifier sur votre espace client";
 
 				echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
+                echo '<script type="text/javascript">window.alert("'.$message2.'");</script>';
 				echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
 			}
 		}
@@ -80,6 +82,15 @@
 
         <div class="mb-3">
             <h4 class="title">Enregistrement</h4>
+
+        <div class="mb-3">
+            <label for="floatingInput">Civilité</label>
+            <select name="sexe" class="form-select" aria-label="Default select example" required value="<?php echo isset($_POST['sexe']) ? $_POST['sexe'] : "";?>">
+                <option selected required></option>
+                <option value="homme" required>M.</option>
+                <option value="femme" required>Mme</option>
+            </select>
+        </div>
         </div>
         <div class="mb-3">
             <div class="row">
@@ -100,7 +111,8 @@
             </select>
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control" name="adresse" placeholder="Rue et n°" required>
+            <label for="floatingInput">Rue et n°</label>
+            <input type="text" class="form-control" name="adresse" placeholder="" required value="<?php echo isset($_POST['adresse']) ? $_POST['adresse'] : "";?>">
         </div>
 
         <div class="mb-3">
@@ -115,15 +127,18 @@
         </div>
 
         <div class="mb-3">
-            <input type="email" class="form-control" name="email" placeholder="Adresse e-mail" required>
+            <label for="floatingInput">Adresse e-mail</label>
+            <input type="email" class="form-control" name="email" placeholder="" required>
         </div>
 
         <div class="mb-3">
-            <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
+            <label for="floatingInput">Mot de passe</label>
+            <input type="password" class="form-control" name="password" placeholder="" required>
         </div>
 
         <div class="mb-3">
-            <input type="password" class="form-control" name="repass" placeholder="Confirmation du mot de passe"
+            <label for="floatingInput">Confirmation du mot de passe</label>
+            <input type="password" class="form-control" name="repass" placeholder=""
                 required>
         </div>
 

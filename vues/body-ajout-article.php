@@ -49,14 +49,26 @@
         </div>
 
         <div class="mb-3">
-            <input type="text" class="form-control" name="qtestock" placeholder="Quantité" required>
+            <label for="floatingInput">Quantité</label>
+            <input type="text" class="form-control" name="qtestock" placeholder="" required>
         </div>
 
         <div class="mb-3">
-            <input type="text" class="form-control" name="prix" placeholder="Prix" required>
+            <label for="floatingInput">Prix</label>
+            <input type="text" class="form-control" name="prix" placeholder="" required>
         </div>
 
         <div class="mb-3">
+<<<<<<< HEAD
+            <label for="floatingInput">Note de l'article</label>
+            <select name="note" class="form-select" aria-label="Default select example">
+                <option selected></option>
+                <option value="1">One star</option>
+                <option value="2">Two stars</option>
+                <option value="3">Three stars</option>
+                <option value="4">four stars</option>
+                <option value="5">five stars</option>
+=======
             <select id="stars" name="note" class="form-select" aria-label="Default select example">
                 <option selected>Note de l'article</option>
                 <option class="ones" value="1">*</option>
@@ -64,10 +76,12 @@
                 <option class="threes" value="3">***</option>
                 <option class="fours" value="4">****</option>
                 <option class="fives" value="5">*****</option>
+>>>>>>> d81e97e6ee6153d77d33546d97740324be0b4bd3
             </select>
         </div>
 
         <div class="mb-3">
+            <label for="floatingInput">Désignation</label>
             <select name="id_instrument" class="form-select" aria-label="Default select example">
                 <?php
                 $sql = 'SELECT Id_Instrument, designation FROM instruments ';

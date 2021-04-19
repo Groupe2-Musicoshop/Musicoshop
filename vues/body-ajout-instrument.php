@@ -47,15 +47,18 @@
         </div>
 
         <div class="mb-3">
-            <input type="text" class="form-control" name="designation" placeholder="Désignation" required>
+            <label for="floatingInput">Désignation</label>
+            <input type="text" class="form-control" name="designation" placeholder="" required>
         </div>
 
         <div class="mb-3">
-            <input type="text" class="form-control" name="img" placeholder="Adresse image" required>
+            <label for="floatingInput">Adresse image</label>
+            <input type="text" class="form-control" name="img" placeholder="" required>
         </div>
 
         <div class="mb-3">
-            <input type="text" class="form-control" name="idCategorie" placeholder="ID catégorie" required>
+            <label for="floatingInput">ID Catégorie</label>
+            <input type="text" class="form-control" name="idCategorie" placeholder="" required>
         </div>
 
         <?php if (!empty($message)) { ?>
