@@ -1,7 +1,8 @@
 body {
     background: #1c242d;
-  }
-  .box {
+}
+
+.box {
     border: 1px solid #c4c4c4;
     padding: 30px 25px 10px 25px;
     background: white;
@@ -15,21 +16,23 @@ body {
     -ms-border-radius: 0.3rem;
     -o-border-radius: 0.3rem;
 }
-  h1.box-logo a {
-    text-decoration:none;
-  }
-  h1.box-title {
+
+h1.box-logo a {
+    text-decoration: none;
+}
+
+h1.box-title {
     color: #AEAEAE;
     background: #f8f8f8;
     font-weight: 300;
     padding: 15px 25px;
     line-height: 30px;
     font-size: 25px;
-    text-align:center;
+    text-align: center;
     margin: -27px -26px 26px;
-  }
-  
-  .box-button {
+}
+
+.box-button {
     border-radius: 0.3rem;
     -webkit-border-radius: 0.3rem;
     -moz-border-radius: 0.3rem;
@@ -45,15 +48,15 @@ body {
     padding: 0;
     color: #fff;
     border: 0;
-    outline:0;
-  }
-  #nav-link{
-    
+    outline: 0;
+}
+
+#nav-link {
     background-color: #6D81A8;
     color: white;
-   
-  }
-  .box-button:hover {
+}
+
+.box-button:hover {
     border-radius: 0.3rem;
     -webkit-border-radius: 0.3rem;
     -moz-border-radius: 0.3rem;
@@ -69,46 +72,50 @@ body {
     padding: 0;
     color: #fff;
     border: 0;
-    outline:0;
-  }
-  .box-register
-  {
-    text-align:center;
-    margin-bottom:0px;
-  }
-  .box-register a
-  {
-    text-decoration:none;
-    font-size:12px;
-    color:#666;
-  }
-  .box-input {
+    outline: 0;
+}
+
+.box-register {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.box-register a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #666;
+}
+
+.box-input {
     font-size: 14px;
     background: #fff;
     border: 1px solid #ddd;
     margin-bottom: 25px;
-    padding-left:10px;
+    padding-left: 10px;
     border-radius: 5px;
     width: 347px;
     height: 50px;
-  }
-  .box-input:focus {
-      outline: none;
-      border-color:#5c7186;
-  }
-  .sucess{
-      text-align: center;
-      color: white;
-  }
-  .sucess a {
-      color: #58aef7;
-  }
-  p.errorMessage {
- 
-      color: red;
-     
-  }
-  .btn.btn-primary,
+}
+
+.box-input:focus {
+    outline: none;
+    border-color: #5c7186;
+}
+
+.sucess {
+    text-align: center;
+    color: white;
+}
+
+.sucess a {
+    color: #58aef7;
+}
+
+p.errorMessage {
+    color: red;
+}
+
+.btn.btn-primary,
 .btn-primary {
     border: 1px solid transparent;
     background-color: #6D81A8;
@@ -122,19 +129,26 @@ body {
     border-color: #1b263b;
     color: #fff;
 }
-a {
-  
-  margin: center;
-}
-.center{
 
-  margin-left: auto;
-  margin-right: auto;
+a {
+    margin: center;
 }
-.hover-image{
-  display: none;
-  position: absolute;
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
 }
-i.fa.fa-question-circle:hover .hover-image{ 
-  display: block;
+
+.hover-image {
+    display: none;
+    position: absolute;
+}
+
+i.fa.fa-question-circle:hover .hover-image {
+    display: block;
+}
+
+.modal.show-message {
+    position: static;
+    display: block;
 }

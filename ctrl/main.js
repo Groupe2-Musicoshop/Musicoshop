@@ -52,12 +52,17 @@ $(document).ready(function() {
         });
     });
 
-    $('i.fa.fa-question-circle').on("mouseover", function () {
+    $('i.fa.fa-question-circle').on("mouseover", function() {
         $(".hover-image").show();
     });
 
-    $('i.fa.fa-question-circle').on("mouseout", function () {
+    $('i.fa.fa-question-circle').on("mouseout", function() {
         $(".hover-image").hide();
+    });
+
+    $("#btn-modal").on("click", function() {
+        $("#modal.modal.fade.show").removeClass("show-message");
+        document.location = 'index.php';
     });
 });
 

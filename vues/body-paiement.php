@@ -30,10 +30,27 @@
 		$cart->deleteALlArtCart();
 
 
-		$message="Payement accepté";
+		/*$message="Payement accepté";
 
-		echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-		echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+		echo '<script type="text/javascript">window.alert("'.$message.'");</script>';*/
+		//echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+		echo '
+		<div id="modal" class="modal fade show show-message" tabindex="-1">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Information</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <p>Payement accepté</p>
+			</div>
+			<div class="modal-footer">
+			<a id="btn-modal" class="btn btn-primary" data-bs-toggle="modal" href="'.$_SESSION['root'].'/index.php" role="button" data-bs-dismiss="modal">OK</a>			  
+			</div>
+		  </div>
+		</div>
+	  </div>';
 	}
 		
 	
@@ -46,7 +63,6 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
 
 <div class="container">
 <br>  <p class="text-center">Formulaire de paiement</p>

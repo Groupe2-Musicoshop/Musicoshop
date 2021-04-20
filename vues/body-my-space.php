@@ -36,18 +36,15 @@ require_once 'modele/Database.php';
 		}
 
 	// recuperation du id passer en parametre 
-	
-	//$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
     $username=$_SESSION["username"];
-	
-	//$id= $_GET['id'];
+
 	 	 
 	$sql = "SELECT * FROM utilisateur WHERE userName='$username'";
 	$result = $conn->query($sql);
 
 	if($result->rowCount() < 1){
-		//header('Location: #');
+
 		echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
 		exit;
 	}
