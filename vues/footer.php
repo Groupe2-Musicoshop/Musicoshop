@@ -87,6 +87,11 @@
 </script>
 
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script language="javascript" type="text/javascript" src="ctrl/tableau-de-bord.js"></script>
+
 <script language="javascript" type="text/javascript" src="ctrl/main.js"></script>
 </body>
 

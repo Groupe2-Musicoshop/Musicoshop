@@ -19,7 +19,8 @@ class Nav{
         {"titre":"Ajouter un Article","link":"ajout-article.php","userType":"admin"},
         {"titre":"Ajouter un Instrument","link":"ajout-instrument.php","userType":"admin"},
         {"titre":"Liste des Articles","link":"liste-des-articles.php","userType":"admin"},
-        {"titre":"Liste des Instruments","link":"liste-des-instruments.php","userType":"admin"}
+        {"titre":"Liste des Instruments","link":"liste-des-instruments.php","userType":"admin"},
+        {"titre":"Tableau de bord","link":"tableau-de-bord.php","userType":"admin"}
         ]},
         {"titre":"img/cart.svg" , "type":"img" , "link":[
         {"titre":"","link":"","userType":"cart"},
