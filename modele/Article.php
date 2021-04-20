@@ -198,7 +198,7 @@ class Article{
                 echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
                 echo '</div>';
                 echo '<div class="card-body row">';
-                echo '<div class="col-md-8">';
+                echo '<div class="col-6 col-sm-6 col-md-8">';
                 echo '<h5 class="card-title">'.ucfirst($row['designation']).'</h5>';
                 echo '<h6>';
 
@@ -209,7 +209,7 @@ class Article{
                 echo '</h6>';
                 echo '<a href="singleArticle.php?id_art='.$row['Id_Article'].'" class="btn btn-primary ">Lire plus</a>';
                 echo '</div>';
-                echo '<div class="col-md-4">';
+                echo '<div class="col-6 col-sm-6 col-md-4">';
                 echo '<h5>'.$row['prix'].' €</h5>';
                 echo '<h5 class="';
 
