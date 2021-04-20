@@ -35,15 +35,6 @@ require_once 'modele/Database.php';
     $cat->set_PageActive($page);   
 	
 ?>
-
-<head>
-    <link rel="stylesheet" href="<?=$_SESSION['root']?>/css/login.css" />
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-</head>
-
-
 <div class="jumbotron">
     <div id="cat_b&p" class="body-mu">
 
@@ -60,7 +51,7 @@ require_once 'modele/Database.php';
             </div>
             <div class="form-floating">
             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Mot de passe" required>
-            <label for="floatingPassword">Mot de passe</label>
+            <label for="floatingPassword">Nouveau mot de passe</label>
             </div><br>
 
             <div class="form-floating">
