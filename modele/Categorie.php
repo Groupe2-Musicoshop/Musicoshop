@@ -156,6 +156,9 @@ class Categorie{
         
         $stmt->execute();
         return $stmt;
+        
+        $conn=null;
+        $stmt=null;
     }
 }
 ?>

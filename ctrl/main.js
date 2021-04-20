@@ -51,6 +51,19 @@ $(document).ready(function() {
             $(this).addClass('is-checked');
         });
     });
+
+    $('i.fa.fa-question-circle').on("mouseover", function() {
+        $(".hover-image").show();
+    });
+
+    $('i.fa.fa-question-circle').on("mouseout", function() {
+        $(".hover-image").hide();
+    });
+
+    $("#btn-modal").on("click", function() {
+        $("#modal.modal.fade.show").removeClass("show-message");
+        document.location = 'index.php';
+    });
 });
 
 function retireQte(Id_Panier, Id_Article, prix) {

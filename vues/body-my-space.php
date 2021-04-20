@@ -27,27 +27,24 @@ require_once 'modele/Database.php';
 						WHERE idUtilisateur=" . $_POST['utilisateurid'];
 
 			if( $conn->query($sql)){
-				echo "<div class='alert alert-success'>Successfully updated  article</div>";
+				echo "<div class='alert alert-success'>Votre profil à bien été modifier</div>";
 			}else{
-				echo "<div class='alert alert-danger'>Error: There was an error while updating user info</div>";
+				echo "<div class='alert alert-danger'>Une erreur est survenue veuillez réessayer</div>";
 			}
 
 			$_SESSION["username"]=$_POST['username'];
 		}
 
 	// recuperation du id passer en parametre 
-	
-	//$id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
     $username=$_SESSION["username"];
-	
-	//$id= $_GET['id'];
+
 	 	 
 	$sql = "SELECT * FROM utilisateur WHERE userName='$username'";
 	$result = $conn->query($sql);
 
 	if($result->rowCount() < 1){
-		//header('Location: #');
+
 		echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
 		exit;
 	}
@@ -154,7 +151,8 @@ require_once 'modele/Database.php';
 
 			</div>
 			
-			<div class="center col-4"><input type="submit" name="update" class="btn btn-primary box-button" value="Update">
+			<div class="center col-4">
+				<button type="submit" name="update" class="btn btn-primary box-button" >Modifier </button>
 			</div>
 		</form>
 	</div>

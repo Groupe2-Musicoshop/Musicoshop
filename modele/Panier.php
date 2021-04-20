@@ -195,20 +195,20 @@ class Panier{
                 echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
             echo '</div>';
             echo '<div class="card-body row">';
-                echo '<div class="col-md-10">';
+                echo '<div class="col-sm-12 col-md-12 col-lg-8">';
                 echo '<h5 class="card-title">Cat : '.ucfirst($row['libele']).'</h5>';
                 echo '<h5 class="card-title">Article : '.ucfirst($row['designation']).'</h5>';
                 echo "<input type='hidden' value='". $row['Id_Article'] ."' name='Id_Article_cart' />"; 
                 echo '<h6>Noté : ';
 
                     for ($i = 1; $i <= $row['note']; $i++) {
-                        echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
+                        echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="star card-img-top" alt="">';
                     }
 
                 echo '</h6>';
                 echo '<a href="singleArticle.php?id_art='.$row['Id_Article'].'" class="btn btn-primary ">Lire plus</a>';
             echo '</div>';
-            echo '<div class="col-md-2">';
+            echo '<div class="col-sm-12 col-md-12 col-lg-4">';
                 echo '<h5>'.$row['qtestock'].' en stock <br>au prix de '.$row['prix'].' €</h5>';
 
                 echo '<input type="hidden" value="'.$row['Id_Panier'].'" name="Id_Panier" />';
@@ -259,13 +259,13 @@ class Panier{
             
 
             echo '<div class="card-body row">';
-                echo '<div class="col-md-4">';
+                echo '<div class="col-sm-12 col-md-4">';
                 echo '<div class="box_img">';
                     echo '<span class="helper"></span>';
                     echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
                 echo '</div>';
                 echo '</div>';
-                    echo '<div class="col-md-8">';
+                    echo '<div class="col-sm-12 col-md-8">';
 
                     echo '<h5 class="card-title"><a href="singleArticle.php?id_art='.$row['Id_Article'].'">'.ucfirst($row['designation']).'</a></h5>';
                     echo "<input type='hidden' value='". $row['Id_Article'] ."' name='Id_Article_cart' />";
@@ -300,9 +300,6 @@ class Panier{
 		    echo "<input type='hidden' value='". $cart[$i] ."' name='Id_Article' />"; //added
             echo "<tr><th scope='row'>". $cart[$i] ."</th>";
             echo "<td>". $cart[$i] ."</td>";
-            //echo "<td>".$nom."</td>";
-            //echo "<td>".$prenom."</td>";
-            //echo "<td>".$type."</td>";
             echo "<td><input type='submit' name='view' value='Voir' class='btn btn-primary' /></td>";
             echo "</tr>";
         }
@@ -327,6 +324,9 @@ class Panier{
         $stmt->execute();
         
         return $stmt;
+        
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlArticleByCat($numCat){
@@ -346,6 +346,9 @@ class Panier{
         $stmt->execute();
 
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlSingleArticleByID(){
@@ -365,6 +368,9 @@ class Panier{
         $stmt->execute();
 
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function addArticleToCart($Qte,$Id_Article,$prix,$qtestock){
@@ -382,6 +388,9 @@ class Panier{
 
         $article = new Article();
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function updateQtiteArtCart($Id_Article,$prix,$qtestock){
@@ -404,6 +413,9 @@ class Panier{
 
         $article = new Article();
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
+
+        $conn=null;
+        $stmt=null;
 
     }
 
@@ -446,6 +458,9 @@ class Panier{
         $nav->set_nbArticle($this->getSumQteCart());
 
         return [$qte,$prixT];
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getId_PanierById_Article($Id_Article){
@@ -465,6 +480,9 @@ class Panier{
         }
 
         return $Id_PanierToReturn;
+
+        $conn=null;
+        $stmt=null;
 
     }
 
@@ -486,6 +504,9 @@ class Panier{
 
         return $qtite_ArtToReturn;
 
+        $conn=null;
+        $stmt=null;
+
     }
 
     public function getStock_ArtById_Article($Id_Article){
@@ -505,7 +526,9 @@ class Panier{
         }
 
         return $qtestock_ArtToReturn;
-
+        
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSumQteCart(){
@@ -513,7 +536,7 @@ class Panier{
         $conn = $database->getConnection();
         $sumQteToReturn=0;
 
-        $sqlQuery = "SELECT sum(qtite_Art) as sumQte FROM `panier` WHERE sessId='".$this->getCOOKIE()."'";
+        $sqlQuery = "SELECT sum(qtite_Art) as sumQte FROM panier WHERE sessid='".$this->getCOOKIE()."'";
  
         $stmt = $conn->prepare($sqlQuery);              
         
@@ -525,6 +548,9 @@ class Panier{
         }
 
         return $sumQteToReturn;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function deleteArtCart($Id_Panier,$qtite_Art,$Id_Article){
@@ -546,7 +572,10 @@ class Panier{
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
 
         $nav = new Nav();
-        $nav->set_nbArticle($this->getSumQteCart());        
+        $nav->set_nbArticle($this->getSumQteCart());
+
+        $conn=null;
+        $stmt=null;    
     }
 
     public function deleteALlArtCart(){
@@ -557,7 +586,10 @@ class Panier{
 
         $stmt = $conn->prepare($sqlQuery);
 
-        $stmt->execute();       
+        $stmt->execute();
+        
+        $conn=null;
+        $stmt=null;
     }
 
     public function getNbArtCart(){
@@ -578,6 +610,9 @@ class Panier{
         }
 
         return $nb_ArtToReturn;
+
+        $conn=null;
+        $stmt=null;
     }
 
  }

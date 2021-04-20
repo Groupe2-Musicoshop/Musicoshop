@@ -14,14 +14,6 @@
     -o-border-radius: .25rem;
 }
 
-#barre-musicoshop li:first-child {
-    margin-left: 100%;
-}
-
-#barre-musicoshop ul {
-    width: 80%;
-}
-
 #barre-musicoshop li a.dropdown-toggle::after {
     content: none;
 }

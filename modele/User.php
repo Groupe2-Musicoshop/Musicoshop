@@ -51,6 +51,9 @@ class User{
         
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function updatelUser($idUtilisateur){
@@ -63,6 +66,8 @@ class User{
         
         $stmt->execute();
 
+        $conn=null;
+        $stmt=null;
     }
 
     public function updatelUserChangePwd($email){
@@ -75,6 +80,8 @@ class User{
         
         $stmt->execute();
 
+        $conn=null;
+        $stmt=null;
     }
 
     public function getUserIdByUserName($userName){
@@ -96,7 +103,8 @@ class User{
         }
 
         return $idUtilisateurToReturn;
-
+        $conn=null;
+        $stmt=null;
     }
 
     public function getCoordonneesFromUser($idUtilisateur){
@@ -118,7 +126,8 @@ class User{
         }
 
         return $arryCoordUserToReturn;
-
+        $conn=null;
+        $stmt=null;
     }
 }
 ?>

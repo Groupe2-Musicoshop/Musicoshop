@@ -30,10 +30,27 @@
 		$cart->deleteALlArtCart();
 
 
-		$message="Payement accepté";
+		/*$message="Payement accepté";
 
-		echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-		echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+		echo '<script type="text/javascript">window.alert("'.$message.'");</script>';*/
+		//echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+		echo '
+		<div id="modal" class="modal fade show show-message" tabindex="-1">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Information</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <p>Payement accepté</p>
+			</div>
+			<div class="modal-footer">
+			<a id="btn-modal" class="btn btn-primary" data-bs-toggle="modal" href="'.$_SESSION['root'].'/index.php" role="button" data-bs-dismiss="modal">OK</a>			  
+			</div>
+		  </div>
+		</div>
+	  </div>';
 	}
 		
 	
@@ -47,14 +64,13 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
-
 <div class="container">
-<br>  <p class="text-center">Formulaire de paiement</p>
+<br>  <h2 class="text-center">Formulaire de paiement</h2>
 <hr>
 
 <div class="jumbotron">
 <form id="paiement" action="" method="POST">
-<p>Modes de paiement</p>
+<h3>Modes de paiement</h3>
 
 <article class="card">
 <div class="card-body p-5">
@@ -114,23 +130,20 @@
 					<option><?php echo $date->format('Y')+1?></option>
 					<option><?php echo $date->format('Y')+2?></option>
 					<option><?php echo $date->format('Y')+3?></option>
-
-
-
 				</select>
         	</div>
 			</div>
     </div>
 	    <div class="col-sm-4">
 	        <div class="form-group">
-	            <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+	            <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i><div class="hover-image"><img src="<?=$_SESSION['root']?>/img/cvv.png"></div></label>
 	            <input type="text" class="form-control" pattern="^[0-9]{3}$" required="" placeholder="ex. 123">
 	        </div> <!-- form-group.// -->
 	    </div>
 	</div> <!-- row.// -->
-	<div class="row">
-	<div class="center col-4"><button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider" > Acheter maintenant  </button></div>
-	</div>
+		<div class="row justify-content-center">
+			<button class="col-12 col-md-5 btn btn-primary" type="submit" name="valider" > Acheter maintenant</button>
+		</div>
 	</form>
 </div> <!-- tab-pane.// -->
 <div class="tab-pane fade" id="nav-tab-paypal">

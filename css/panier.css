@@ -23,7 +23,7 @@
 }
 
 #cart .img_thumb {
-    max-height: 120px;
+    max-height: 170px;
 }
 
 #cart .btn.btn-light {
@@ -84,4 +84,28 @@
 #miniTabCart h5,
 #miniTabCart .card-title {
     font-size: 1rem;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #cart .card .box_img {
+        width: 200px;
+    }
+    #cart .card .img_thumb {
+        max-width: 200px;
+        max-height: 200px;
+        margin-left: 160px;
+        margin-top: -15px;
+    }
+}
+
+@media (max-width: 767px) {
+    #cart .card .box_img {
+        width: 100px;
+    }
+    #cart .card .img_thumb {
+        max-width: 100px;
+        max-height: 100px;
+        margin-left: 100px;
+        margin-top: 55px;
+    }
 }

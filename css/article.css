@@ -79,6 +79,8 @@ a.linkcat:hover {
 
 .star {
     height: 17px;
+    margin: 0 auto;
+    width: auto !important;
 }
 
 h5 {
@@ -104,12 +106,52 @@ h5.text-center {
     width: 15%;
 }
 
-#body-shop-single .box_img{
+#body-shop-single .box_img {
     width: 460px;
     height: 460px;
 }
 
-#body-shop-single .img_thumb{
+#body-shop-single .img_thumb {
     max-width: 460px;
     max-height: 460px;
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    #catalog .card .box_img {
+        width: 200px;
+        height: 190px;
+    }
+    #catalog .card .img_thumb {
+        max-width: 190px;
+        max-height: 190px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .card .box_img {
+        width: 200px;
+        height: 190px;
+    }
+    .card .img_thumb {
+        max-width: 190px;
+        max-height: 190px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .card .box_img {
+        width: 300px;
+    }
+    .card .img_thumb {
+        max-width: 300px;
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 767px) {
+    #categorie {
+        display: grid!important;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }

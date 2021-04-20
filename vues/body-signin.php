@@ -134,10 +134,12 @@
         <div class="mb-3">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" name="codepostal" placeholder="Code postal" required>
+                    <label for="floatingInput">Code postal</label>
+                    <input type="text" class="form-control" name="codepostal" placeholder="" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" name="ville" placeholder="ville" required>
+                    <label for="floatingInput">Ville</label>
+                    <input type="text" class="form-control" name="ville" placeholder="" required>
                 </div>
             </div>
         </div>

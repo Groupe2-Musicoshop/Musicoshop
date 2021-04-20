@@ -59,24 +59,14 @@
         </div>
 
         <div class="mb-3">
-<<<<<<< HEAD
-            <label for="floatingInput">Note de l'article</label>
-            <select name="note" class="form-select" aria-label="Default select example">
-                <option selected></option>
-                <option value="1">One star</option>
-                <option value="2">Two stars</option>
-                <option value="3">Three stars</option>
-                <option value="4">four stars</option>
-                <option value="5">five stars</option>
-=======
+        <label for="floatingInput">Note de l'article</label>
             <select id="stars" name="note" class="form-select" aria-label="Default select example">
-                <option selected>Note de l'article</option>
+                <option selected></option>
                 <option class="ones" value="1">*</option>
                 <option class="twos" value="2">**</option>
                 <option class="threes" value="3">***</option>
                 <option class="fours" value="4">****</option>
                 <option class="fives" value="5">*****</option>
->>>>>>> d81e97e6ee6153d77d33546d97740324be0b4bd3
             </select>
         </div>
 
@@ -87,6 +77,7 @@
                 $sql = 'SELECT Id_Instrument, designation FROM instruments ';
                 foreach ($conn->query($sql) as $row) {
                 ?>
+                <option value=""></option>
                 <option value="<?php echo $row['Id_Instrument'];?>">
                     <?php echo ucfirst($row['designation']);?></option>
                 <?php

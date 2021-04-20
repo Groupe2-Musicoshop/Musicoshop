@@ -198,7 +198,7 @@ class Article{
                 echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
                 echo '</div>';
                 echo '<div class="card-body row">';
-                echo '<div class="col-md-8">';
+                echo '<div class="col-6 col-sm-6 col-md-8">';
                 echo '<h5 class="card-title">'.ucfirst($row['designation']).'</h5>';
                 echo '<h6>';
 
@@ -209,7 +209,7 @@ class Article{
                 echo '</h6>';
                 echo '<a href="singleArticle.php?id_art='.$row['Id_Article'].'" class="btn btn-primary ">Lire plus</a>';
                 echo '</div>';
-                echo '<div class="col-md-4">';
+                echo '<div class="col-6 col-sm-6 col-md-4">';
                 echo '<h5>'.$row['prix'].' €</h5>';
                 echo '<h5 class="';
 
@@ -346,7 +346,6 @@ class Article{
         if($pageCount < $nbPage-1){
             echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$pageCount+1 .'">Suivant</a></li>';
         }
-            
         echo '</ul> </nav>';
     }
 
@@ -370,6 +369,9 @@ class Article{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlArticlesNoOffSet(){
@@ -387,6 +389,9 @@ class Article{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlArticleByCat($numCat){
@@ -410,6 +415,9 @@ class Article{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlSingleArticleByID(){
@@ -428,6 +436,9 @@ class Article{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function sqlCountArticleByCat($numCat){
@@ -447,6 +458,9 @@ class Article{
     
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function sqlSearchArticle(){
@@ -475,6 +489,9 @@ class Article{
         } else{
             echo "<p>Pas de resultats </p>";
         }
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function updateStock_ArtById_Article($qtestock,$Id_Article){
@@ -487,6 +504,8 @@ class Article{
         
         $stmt->execute();      
 
+        $conn=null;
+        $stmt=null;
     }
 
 }
