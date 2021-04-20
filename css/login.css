@@ -131,3 +131,10 @@ a {
   margin-left: auto;
   margin-right: auto;
 }
+.hover-image{
+  display: none;
+  position: absolute;
+}
+i.fa.fa-question-circle:hover .hover-image{ 
+  display: block;
+}
