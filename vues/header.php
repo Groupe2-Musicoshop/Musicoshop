@@ -57,8 +57,7 @@
     <link rel="icon" href="<?=$_SESSION['root']?>/img/favicon.ico" />
 
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/global.css">
     <link rel="stylesheet" type="text/css" href="<?=$_SESSION['root']?>/css/header.css">
@@ -82,18 +81,30 @@
     <div class="container bg-color-pla">
 
         <div id="header">
-            <nav id="barre-musicoshop" class="navbar sticky-top navbar-expand-lg navbar-light bg-color-bzb">
-                <a class="navbar-brand" href="index.php">
-                    <img class="logo" src="<?=$_SESSION['root']?>/img/logo/Musicoshop_logo.PNG" width="150" alt="">
-                </a>
-                <form class="form-inline my-2 my-lg-0" action="<?=$_SESSION['root']?>/searchArticle.php" method="POST">
-                    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Rechercher un article" aria-label="Search">
-                    <button class="btn btn-outline-mu my-2 my-sm-0" type="submit">Rechercher</button>
-                </form>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <?php $nav->genNav();?>
-                    </ul>
+            <nav id="barre-musicoshop" class="navbar navbar-expand-lg navbar-light bg-color-bzb">
+
+                <div class="container-fluid">
+
+                    <a class="navbar-brand" href="index.php">
+                        <img class="logo" src="<?=$_SESSION['root']?>/img/logo/Musicoshop_logo.PNG" width="150" alt="">
+                    </a>
+                    
+                    <form class="form-inline my-2 my-lg-0" action="<?=$_SESSION['root']?>/searchArticle.php" method="POST">
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Rechercher un article" aria-label="Search">
+                        <button class="btn btn-outline-mu my-2 my-sm-0" type="submit">Rechercher</button>
+                    </form>
+                    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                        <ul class="navbar-nav ml-auto mr-auto">
+                            <?php $nav->genNav();?>
+                        </ul>
+                    </div>
+                    
                 </div>
             </nav>
         </div>

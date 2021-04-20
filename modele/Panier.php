@@ -195,20 +195,20 @@ class Panier{
                 echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
             echo '</div>';
             echo '<div class="card-body row">';
-                echo '<div class="col-md-10">';
+                echo '<div class="col-sm-12 col-md-12 col-lg-8">';
                 echo '<h5 class="card-title">Cat : '.ucfirst($row['libele']).'</h5>';
                 echo '<h5 class="card-title">Article : '.ucfirst($row['designation']).'</h5>';
                 echo "<input type='hidden' value='". $row['Id_Article'] ."' name='Id_Article_cart' />"; 
                 echo '<h6>Noté : ';
 
                     for ($i = 1; $i <= $row['note']; $i++) {
-                        echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="img_thumb star card-img-top" alt="">';
+                        echo '<img src="'.$_SESSION['root'].'/img/article/star.svg" class="star card-img-top" alt="">';
                     }
 
                 echo '</h6>';
                 echo '<a href="singleArticle.php?id_art='.$row['Id_Article'].'" class="btn btn-primary ">Lire plus</a>';
             echo '</div>';
-            echo '<div class="col-md-2">';
+            echo '<div class="col-sm-12 col-md-12 col-lg-4">';
                 echo '<h5>'.$row['qtestock'].' en stock <br>au prix de '.$row['prix'].' €</h5>';
 
                 echo '<input type="hidden" value="'.$row['Id_Panier'].'" name="Id_Panier" />';
@@ -259,13 +259,13 @@ class Panier{
             
 
             echo '<div class="card-body row">';
-                echo '<div class="col-md-4">';
+                echo '<div class="col-sm-12 col-md-4">';
                 echo '<div class="box_img">';
                     echo '<span class="helper"></span>';
                     echo '<img src="'.$row['img'].'" class="img_thumb card-img-top" alt="">';
                 echo '</div>';
                 echo '</div>';
-                    echo '<div class="col-md-8">';
+                    echo '<div class="col-sm-12 col-md-8">';
 
                     echo '<h5 class="card-title"><a href="singleArticle.php?id_art='.$row['Id_Article'].'">'.ucfirst($row['designation']).'</a></h5>';
                     echo "<input type='hidden' value='". $row['Id_Article'] ."' name='Id_Article_cart' />";
@@ -300,9 +300,6 @@ class Panier{
 		    echo "<input type='hidden' value='". $cart[$i] ."' name='Id_Article' />"; //added
             echo "<tr><th scope='row'>". $cart[$i] ."</th>";
             echo "<td>". $cart[$i] ."</td>";
-            //echo "<td>".$nom."</td>";
-            //echo "<td>".$prenom."</td>";
-            //echo "<td>".$type."</td>";
             echo "<td><input type='submit' name='view' value='Voir' class='btn btn-primary' /></td>";
             echo "</tr>";
         }
@@ -513,7 +510,7 @@ class Panier{
         $conn = $database->getConnection();
         $sumQteToReturn=0;
 
-        $sqlQuery = "SELECT sum(qtite_Art) as sumQte FROM `panier` WHERE sessId='".$this->getCOOKIE()."'";
+        $sqlQuery = "SELECT sum(qtite_Art) as sumQte FROM panier WHERE sessid='".$this->getCOOKIE()."'";
  
         $stmt = $conn->prepare($sqlQuery);              
         
