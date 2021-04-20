@@ -324,6 +324,9 @@ class Panier{
         $stmt->execute();
         
         return $stmt;
+        
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlArticleByCat($numCat){
@@ -343,6 +346,9 @@ class Panier{
         $stmt->execute();
 
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlSingleArticleByID(){
@@ -362,6 +368,9 @@ class Panier{
         $stmt->execute();
 
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function addArticleToCart($Qte,$Id_Article,$prix,$qtestock){
@@ -379,6 +388,9 @@ class Panier{
 
         $article = new Article();
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function updateQtiteArtCart($Id_Article,$prix,$qtestock){
@@ -401,6 +413,9 @@ class Panier{
 
         $article = new Article();
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
+
+        $conn=null;
+        $stmt=null;
 
     }
 
@@ -443,6 +458,9 @@ class Panier{
         $nav->set_nbArticle($this->getSumQteCart());
 
         return [$qte,$prixT];
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getId_PanierById_Article($Id_Article){
@@ -462,6 +480,9 @@ class Panier{
         }
 
         return $Id_PanierToReturn;
+
+        $conn=null;
+        $stmt=null;
 
     }
 
@@ -483,6 +504,9 @@ class Panier{
 
         return $qtite_ArtToReturn;
 
+        $conn=null;
+        $stmt=null;
+
     }
 
     public function getStock_ArtById_Article($Id_Article){
@@ -502,7 +526,9 @@ class Panier{
         }
 
         return $qtestock_ArtToReturn;
-
+        
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSumQteCart(){
@@ -522,6 +548,9 @@ class Panier{
         }
 
         return $sumQteToReturn;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function deleteArtCart($Id_Panier,$qtite_Art,$Id_Article){
@@ -543,7 +572,10 @@ class Panier{
         $article->updateStock_ArtById_Article($qtestock,$Id_Article);
 
         $nav = new Nav();
-        $nav->set_nbArticle($this->getSumQteCart());        
+        $nav->set_nbArticle($this->getSumQteCart());
+
+        $conn=null;
+        $stmt=null;    
     }
 
     public function deleteALlArtCart(){
@@ -554,7 +586,10 @@ class Panier{
 
         $stmt = $conn->prepare($sqlQuery);
 
-        $stmt->execute();       
+        $stmt->execute();
+        
+        $conn=null;
+        $stmt=null;
     }
 
     public function getNbArtCart(){
@@ -575,6 +610,9 @@ class Panier{
         }
 
         return $nb_ArtToReturn;
+
+        $conn=null;
+        $stmt=null;
     }
 
  }

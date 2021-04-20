@@ -262,6 +262,9 @@ class Commande{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlCmdsById($idCmd){
@@ -274,6 +277,9 @@ class Commande{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlLigneCmds($idCmd){
@@ -289,6 +295,9 @@ class Commande{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     function cartToCmd($userName) {
@@ -346,6 +355,9 @@ class Commande{
         $idCmdToReturn = $conn->lastInsertId();
 
         return $idCmdToReturn;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function updateCmd($idCmd,$numCmd,$description,$total){
@@ -357,6 +369,9 @@ class Commande{
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function addLigneCmd($idCmd,$Id_Article,$qtite){
@@ -369,6 +384,9 @@ class Commande{
         $stmt = $conn->prepare($sqlQuery);
 
         $stmt->execute();
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getId_PanierById_Article($Id_Article){
@@ -388,7 +406,9 @@ class Commande{
         }
 
         return $Id_PanierToReturn;
-
+        
+        $conn=null;
+        $stmt=null;
     }
 
     function getDatetimeNow($type) {

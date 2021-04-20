@@ -346,7 +346,6 @@ class Article{
         if($pageCount < $nbPage-1){
             echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$pageCount+1 .'">Suivant</a></li>';
         }
-            
         echo '</ul> </nav>';
     }
 
@@ -370,6 +369,9 @@ class Article{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlArticlesNoOffSet(){
@@ -387,6 +389,9 @@ class Article{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlArticleByCat($numCat){
@@ -410,6 +415,9 @@ class Article{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function getSqlSingleArticleByID(){
@@ -428,6 +436,9 @@ class Article{
 
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function sqlCountArticleByCat($numCat){
@@ -447,6 +458,9 @@ class Article{
     
         $stmt->execute();
         return $stmt;
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function sqlSearchArticle(){
@@ -475,6 +489,9 @@ class Article{
         } else{
             echo "<p>Pas de resultats </p>";
         }
+
+        $conn=null;
+        $stmt=null;
     }
 
     public function updateStock_ArtById_Article($qtestock,$Id_Article){
@@ -487,6 +504,8 @@ class Article{
         
         $stmt->execute();      
 
+        $conn=null;
+        $stmt=null;
     }
 
 }

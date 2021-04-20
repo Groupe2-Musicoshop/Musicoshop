@@ -89,6 +89,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script language="javascript" type="text/javascript" src="ctrl/tableau-de-bord.js"></script>
+
 <script language="javascript" type="text/javascript" src="ctrl/main.js"></script>
 </body>
 
