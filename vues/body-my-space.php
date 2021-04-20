@@ -154,7 +154,8 @@ require_once 'modele/Database.php';
 
 			</div>
 			
-			<div class="center col-4"><input type="submit" name="update" class="btn btn-primary box-button" value="Modifier">
+			<div class="center col-4">
+				<button type="submit" name="update" class="btn btn-primary box-button" >Modifier </button>
 			</div>
 		</form>
 	</div>

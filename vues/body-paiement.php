@@ -49,12 +49,12 @@
 
 
 <div class="container">
-<br>  <p class="text-center">Formulaire de paiement</p>
+<br>  <h2 class="text-center">Formulaire de paiement</h2>
 <hr>
 
 <div class="jumbotron">
 <form id="paiement" action="" method="POST">
-<p>Modes de paiement</p>
+<h3>Modes de paiement</h3>
 
 <article class="card">
 <div class="card-body p-5">
@@ -114,9 +114,6 @@
 					<option><?php echo $date->format('Y')+1?></option>
 					<option><?php echo $date->format('Y')+2?></option>
 					<option><?php echo $date->format('Y')+3?></option>
-
-
-
 				</select>
         	</div>
 			</div>
@@ -128,9 +125,9 @@
 	        </div> <!-- form-group.// -->
 	    </div>
 	</div> <!-- row.// -->
-	<div class="row">
-	<div class="center col-4"><button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider" > Acheter maintenant  </button></div>
-	</div>
+		<div class="row justify-content-center">
+			<button class="col-12 col-md-5 btn btn-primary" type="submit" name="valider" > Acheter maintenant</button>
+		</div>
 	</form>
 </div> <!-- tab-pane.// -->
 <div class="tab-pane fade" id="nav-tab-paypal">

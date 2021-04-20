@@ -27,20 +27,20 @@
     $pdf->Cell(0, 6,"Musicoshop", 0, 1);
     $pdf->SetFont('Arial','',12);
     $pdf->Cell(0, 6, utf8_decode('67 69 Avenue du Général de Gaulle'), 0, 1);
-    $pdf->Cell(0, 6, "Champs sur Marne, 77300, France", 0, 1);
+    $pdf->Cell(0, 6, utf8_decode("Champs sur Marne, 77300, France"), 0, 1);
     $pdf->Cell(0, 6, utf8_decode('Tél : 01 23 56 89 56'), 0, 1);
     $pdf->Ln(8);
 
     $pdf->SetFont('Arial','B',14);
     $pdf->Cell(130, 6,'', 0, 0);
-    $pdf->Cell(59, 6, $client['sexe'] .' '. $client['prenom'].' '.$client['nom'], 0, 1);
+    $pdf->Cell(59, 6, utf8_decode($client['sexe']) .' '. utf8_decode($client['prenom']).' '.utf8_decode($client['nom']), 0, 1);
 
     $pdf->SetFont('Arial','',12);
     $pdf->Cell(130, 6,'', 0, 0);
-    $pdf->Cell(59, 6, $client['adresse'], 0, 1);
+    $pdf->Cell(59, 6, utf8_decode($client['adresse']), 0, 1);
 
     $pdf->Cell(130, 6,'', 0, 0);
-    $pdf->Cell(59, 6, $client['codePostal'].' '.$client['ville'], 0, 1);
+    $pdf->Cell(59, 6, utf8_decode($client['codePostal']).' '.utf8_decode($client['ville']), 0, 1);
     $pdf->Ln(8);
 
     $idCmd=$_GET['idCmd'];
@@ -71,7 +71,7 @@
         extract($rowtLigneCmd);
         $pdf->SetFont('Arial','',12);
         //Designation
-        $pdf->cell(90,6,ucfirst($rowtLigneCmd['designation']) , 1, 0);
+        $pdf->cell(90,6,utf8_decode(ucfirst($rowtLigneCmd['designation'])) , 1, 0);
         //quantite
         $pdf->cell(25,6,$rowtLigneCmd['qtite'], 1, 0);
         //prix
