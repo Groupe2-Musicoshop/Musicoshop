@@ -120,7 +120,7 @@
     </div>
 	    <div class="col-sm-4">
 	        <div class="form-group">
-	            <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+	            <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i><div class="hover-image"><img src="<?=$_SESSION['root']?>/img/cvv.png"></div></label>
 	            <input type="text" class="form-control" pattern="^[0-9]{3}$" required="" placeholder="ex. 123">
 	        </div> <!-- form-group.// -->
 	    </div>
