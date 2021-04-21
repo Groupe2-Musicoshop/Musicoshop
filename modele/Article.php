@@ -323,28 +323,32 @@ class Article{
     }
 
     public function getPagination($numCat, $self){
-        $limit = 6;
-        $pageCount = (!isset($_GET['page']))? 1 : $_GET['page'];
-        $offset = ($pageCount - 1)*$limit;
-
-        echo '<nav> <ul class="pagination justify-content-center">';
-        
+        // ON RECUPERE LE NOMBRE DE PAGE
         $stmt = $this->sqlCountArticleByCat($numCat);
         $nbArticle = $stmt->fetch();
-        // ON RECUPERE LE NOMBRE DE PAGE
-        $nbPage = 1;
-        if($pageCount < 1){
-            $pageCount = 1;
+
+        $page = (!isset($_GET['page']))? 1 : $_GET['page'];
+        $limit = 6;
+        $nbPage = (int) ceil($nbArticle[0] / $limit);
+
+        $page = 1;
+        echo '<nav> <ul class="pagination justify-content-center">';
+        if($page > 1){
+            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$page-1 .'">Précédent</a></li>';
         }
-        if($pageCount > 1){
-            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$pageCount-1 .'">Précédent</a></li>';
+        for($i=0; $i < $nbPage; $i++){
+            echo '<li class="page-item ';
+                if($page===($i+1)){
+                    echo "active".' '. $i . ' ' .$page;
+                } else{
+                    echo "";
+                } 
+            echo '">';
+            echo '<a class="page-link" href="'.$self.'?page='. $i+1 .'">'.$page.'</a></li>';
+            $page++;
         }
-        for($i=0; $i < $nbArticle[0]; $i=$i+$limit){
-            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$nbPage.'">'.$nbPage.'</a></li>';
-            $nbPage++;
-        }
-        if($pageCount < $nbPage-1){
-            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$pageCount+1 .'">Suivant</a></li>';
+        if($page < $nbPage){
+            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$page+1 .'">Suivant</a></li>';
         }
         echo '</ul> </nav>';
     }
@@ -487,7 +491,7 @@ class Article{
         if($stmt->rowCount() > 0){
             return $stmt;
         } else{
-            echo "<p>Pas de resultats </p>";
+            echo "<h2>Pas de resultats </h2>";
         }
 
         $conn=null;
