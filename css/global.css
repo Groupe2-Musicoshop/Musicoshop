@@ -220,6 +220,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 .page-item.active .page-link:hover{ 
     color: #0d1b2a;
+    border-color: #0d1b2a;
 }
 
 .page-link{
@@ -230,4 +231,5 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 .page-link:hover{
     color: #fff;
     background-color: #0d1b2a;
+    border-color: #0d1b2a;
 }

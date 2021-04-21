@@ -14,7 +14,7 @@
 
 <div class="jumbotron">
     <div id="body-shop" class="body-mu">
-        <div id="title" class="white">Resultat de la recherche : <?=$_POST["search"]?></div>
+        <div id="title" class="white">Resultat de la recherche : <?=isset($_POST["search"])?></div>
         <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_no.jpg' class='w100 d-inline-block align-top landscape' alt=''>
 
         <div id="categorie" class="filters button-group js-radio-button-group bg-color-whi">
