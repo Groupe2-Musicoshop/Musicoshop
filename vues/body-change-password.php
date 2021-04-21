@@ -24,9 +24,23 @@ require_once 'modele/Database.php';
 
             $message="Votre mot de passe à été changer avec succès";
 
-            echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-            
-            echo "<script type='text/javascript'> document.location = '".$SESSION['root']."vues/logout.php'; </script>";
+            echo '
+            <div id="modal" class="modal fade show show-message" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Information</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>'.$message.'</p>
+                </div>
+                <div class="modal-footer">
+                <a id="btn-modal" class="btn btn-primary" data-bs-toggle="modal" href="'.$_SESSION['root'].'/logout.php" role="button" data-bs-dismiss="modal">OK</a>			  
+                </div>
+              </div>
+            </div>
+          </div>';
 			
 		}
 	} 

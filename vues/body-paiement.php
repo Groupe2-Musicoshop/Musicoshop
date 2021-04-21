@@ -27,13 +27,7 @@
 			$cart->setCOOKIE($_COOKIE["PHPSESSID"]);
 		}
 
-		$cart->deleteALlArtCart();
-
-
-		/*$message="Payement accepté";
-
-		echo '<script type="text/javascript">window.alert("'.$message.'");</script>';*/
-		//echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+		$cart->deleteALlArtCart();;
 		echo '
 		<div id="modal" class="modal fade show show-message" tabindex="-1">
 		<div class="modal-dialog">

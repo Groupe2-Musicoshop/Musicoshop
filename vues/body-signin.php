@@ -52,12 +52,26 @@
 				$ins=$pdo->prepare("insert into utilisateur(userName,nom,prenom,sexe,adresse,ville,codePostal,email,password,type,valideuser,changepwd) values(?,?,?,?,?,?,?,?,?,?,?,?)");
 				$ins->execute(array($username,$nom,$prenom,$sexe,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user',0,0));
 				
-                $message="Votre inscription a bien té prise en compte un Administrateur la valideras sous 24h";
-                $message2="Votre login provisoire est : '$username'. Vous pouvez le modifier sur votre espace client";
+                $message="Votre inscription a bien été prise en compte, un Administrateur la valideras sous 24h; <br>
+                Votre login provisoire sera : '$username'. Vous pouvez le modifier sur votre espace client";
 
-				echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-                echo '<script type="text/javascript">window.alert("'.$message2.'");</script>';
-				echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+                echo '
+                <div id="modal" class="modal fade show show-message" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Information</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>'.$message.'</p>
+                    </div>
+                    <div class="modal-footer">
+                    <a id="btn-modal" class="btn btn-primary" data-bs-toggle="modal" href="'.$_SESSION['root'].'/index.php" role="button" data-bs-dismiss="modal">OK</a>			  
+                    </div>
+                  </div>
+                </div>
+              </div>';
 			}
 		}
 	}

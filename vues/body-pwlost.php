@@ -42,8 +42,23 @@
 
 					$message="Vous avez reçu un lien sur votre boite mail pour modifier votre mot de passe!";
 
-					echo '<script type="text/javascript">window.alert("'.$message.'");</script>';
-					echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
+					echo '
+					<div id="modal" class="modal fade show show-message" tabindex="-1">
+					<div class="modal-dialog">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <h5 class="modal-title">Information</h5>
+						  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+						  <p>'.$message.'</p>
+						</div>
+						<div class="modal-footer">
+						<a id="btn-modal" class="btn btn-primary" data-bs-toggle="modal" href="'.$_SESSION['root'].'/index.php" role="button" data-bs-dismiss="modal">OK</a>			  
+						</div>
+					  </div>
+					</div>
+				  </div>';
 
 				}else{
 
