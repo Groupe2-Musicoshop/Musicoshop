@@ -52,7 +52,7 @@
 				$ins=$pdo->prepare("insert into utilisateur(userName,nom,prenom,sexe,adresse,ville,codePostal,email,password,type,valideuser,changepwd) values(?,?,?,?,?,?,?,?,?,?,?,?)");
 				$ins->execute(array($username,$nom,$prenom,$sexe,$adresse,$ville,$codepostal,$email,hash('sha256', $password),'user',0,0));
 				
-                $message="Votre inscription a bien été prise en compte, <br>un Administrateur la valideras sous 24h; <br>
+                $message="Votre inscription a bien été prise en compte, <br>un Administrateur la validera sous 24h; <br>
                 Votre login provisoire sera : '$username'. <br>Vous pouvez le modifier sur votre espace client";
 
                 echo '

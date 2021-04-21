@@ -18,7 +18,7 @@
             $database = new Database();
             $pdo = $database->getConnection();
 
-			$req=$pdo->prepare("select idUtilisateur from utilisateur where email=? ");
+			$req=$pdo->prepare("select * from utilisateur where email=? ");
 			$req->setFetchMode(PDO::FETCH_ASSOC);
 			$req->execute(array($email));
 			$tab=$req->fetchAll();

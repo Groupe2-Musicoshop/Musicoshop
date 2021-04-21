@@ -22,7 +22,7 @@ require_once 'modele/Database.php';
             
             $ins->execute(array(hash('sha256', $password),0,$_SESSION["username"]));
 
-            $message="Votre mot de passe à été changer avec succès";
+            $message="Votre mot de passe a été changé avec succès";
 
             echo '
             <div id="modal" class="modal fade show show-message" tabindex="-1">
