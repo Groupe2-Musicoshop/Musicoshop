@@ -322,33 +322,30 @@ class Article{
     }
 
     public function getPagination($numCat, $self){
-        // ON RECUPERE LE NOMBRE DE PAGE
+        $limit = 6;
+        $pageCount = (!isset($_GET['page']))? 1 : $_GET['page'];
+        $offset = ($pageCount - 1)*$limit;
+
+        echo '<nav> <ul class="pagination justify-content-center">';
+        
         $stmt = $this->sqlCountArticleByCat($numCat);
         $nbArticle = $stmt->fetch();
-
-        $page = (!isset($_GET['page']))? 1 : $_GET['page'];
-        $limit = 6;
-        $nbPage = (int) ceil($nbArticle[0] / $limit);
-
-        $page = 1;
-        echo '<nav> <ul class="pagination justify-content-center">';
-        if($page > 1){
-            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$page-1 .'">Précédent</a></li>';
+        // ON RECUPERE LE NOMBRE DE PAGE
+        $nbPage = 1;
+        if($pageCount < 1){
+            $pageCount = 1;
         }
-        for($i=0; $i < $nbPage; $i++){
-            echo '<li class="page-item ';
-                if($page===($i+1)){
-                    echo "active".' '. $i . ' ' .$page;
-                } else{
-                    echo "";
-                } 
-            echo '">';
-            echo '<a class="page-link" href="'.$self.'?page='. $i+1 .'">'.$page.'</a></li>';
-            $page++;
+        if($pageCount > 1){
+            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$pageCount-1 .'">Précédent</a></li>';
         }
-        if($page < $nbPage){
-            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$page+1 .'">Suivant</a></li>';
+        for($i=0; $i < $nbArticle[0]; $i=$i+$limit){
+            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$nbPage.'">'.$nbPage.'</a></li>';
+            $nbPage++;
         }
+        if($pageCount < $nbPage-1){
+            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$pageCount+1 .'">Suivant</a></li>';
+        }
+            
         echo '</ul> </nav>';
     }
 
