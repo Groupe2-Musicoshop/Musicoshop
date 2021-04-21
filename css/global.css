@@ -208,6 +208,11 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
 
+.pagination{
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+}
+
 .page-item.active .page-link{
     background-color: #6D81A8;
     border-color: #0d1b2a;
