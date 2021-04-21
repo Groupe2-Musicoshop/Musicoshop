@@ -81,6 +81,9 @@
         <?php $cat->genCategoriesHorizontaly()?>
 
         <div class="row">
+        
+            <p class="box-return"><a href="index.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+            <u>Retour à l'index</u></a></p>
             <div class="col-12">
                 <div id="commandes" class="commandes">
 

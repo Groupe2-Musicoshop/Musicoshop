@@ -14,6 +14,9 @@
 
     <section class="mb-4">
 
+    <p class="box-return"><a href="index.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+    <u>Retour à l'index</u></a></p>
+    
     <!--Section heading-->
     <h2 class="h1-responsive font-weight-bold text-center my-4">Nous contacter</h2>
     <!--Section description-->

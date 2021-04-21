@@ -56,9 +56,11 @@ require_once 'modele/Database.php';
 	
 ?>
 
+
 <div class="jumbotron">
 
     <div id="cat_b&p" class="body-mu">
+	
 
         <div id="title" class="white">Modifier votre profil</div>
 		
@@ -67,7 +69,9 @@ require_once 'modele/Database.php';
         <?php $cat->genCategoriesHorizontaly()?>
     
 		<form class="box" action="" method="POST">
-
+					
+			<p class="box-return"><a href="index.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+			<u>Retour à l'index</u></a></p>
 			<h3><i class="glyphicon glyphicon-plus"></i>&nbsp;Modifier votre profil</h3> 
 
 			<input type="hidden" value="<?php echo $row['idUtilisateur']; ?>" name="utilisateurid">
