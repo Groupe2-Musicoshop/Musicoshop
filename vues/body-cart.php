@@ -98,8 +98,12 @@
 
             <div class="row">
 
+
                 <div class="col-12">
 
+                <p class="box-return"><a href="index.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+			<u>Retour</u></a></p>
+                    
                     <?php $cart->genCardArticle()?>
 
                 </div>

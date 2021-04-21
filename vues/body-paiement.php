@@ -69,6 +69,9 @@
 <article class="card">
 <div class="card-body p-5">
 
+<p class="box-return"><a href="cart.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+			<u>Retour</u></a></p>
+
 <ul class="nav bg-light nav-pills rounded nav-fill mb-3" role="tablist">
 	<li class="nav-item">
 		<a  class="nav-link active" data-toggle="pill" href="#nav-tab-card">
