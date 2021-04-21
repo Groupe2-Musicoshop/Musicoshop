@@ -94,8 +94,7 @@
                     <form id="formSearch" class="form-group form-inline my-2 my-lg-0" action="<?=$_SESSION['root']?>/searchArticle.php" method="POST">
                         <div class="btn-group">
                             <input id="inputSearch" class="form-control mr-sm-2" type="search" name="search" value="<?=$search ?>" placeholder="Rechercher un article" aria-label="Search">
-                            <span id="searchclear" class="glyphicon glyphicon-remove-circle"><i class="fa fa-times" aria-hidden="true"></i>
-</span>
+                            <span id="searchclear" ><i class="fa fa-times" aria-hidden="true"></i></span>
                         </div>
                             <button class="btn btn-outline-mu my-2 my-sm-0" type="submit">Rechercher</button>
                     </form>
