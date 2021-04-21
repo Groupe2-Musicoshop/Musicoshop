@@ -339,7 +339,12 @@ class Article{
             echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$pageCount-1 .'">Précédent</a></li>';
         }
         for($i=0; $i < $nbArticle[0]; $i=$i+$limit){
-            echo '<li class="page-item"><a class="page-link" href="'.$self.'?page='.$nbPage.'">'.$nbPage.'</a></li>';
+            if($pageCount==$nbPage){
+               $active='active';
+            }else{
+                $active='';
+            }
+            echo '<li class="page-item '.$active.'"><a class="page-link" href="'.$self.'?page='.$nbPage.'">'.$nbPage.'</a></li>';
             $nbPage++;
         }
         if($pageCount < $nbPage-1){
