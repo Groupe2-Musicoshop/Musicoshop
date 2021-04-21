@@ -141,29 +141,28 @@
 	</form>
 </div> <!-- tab-pane.// -->
 <div class="tab-pane fade" id="nav-tab-paypal">
-<p>Paypal is easiest way to pay online</p>
+<p>Paypal est le moyen le plus simple de payer en ligne</p>
 <p>
-<button type="button" class="btn btn-primary"> <i class="fab fa-paypal"></i> Log in my Paypal </button>
+
+<a href="https://www.paypal.com/fr/signin" target="_blank" class="btn btn-primary" ><i class="fab fa-paypal"></i> Connectez-vous à votre compte PayPal</a>
+
 </p>
-<p><strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. </p>
 </div>
 <div class="tab-pane fade" id="nav-tab-bank">
-<p>Bank accaunt details</p>
+<p>Coordonnées du compte bancaire</p>
 <dl class="param">
-  <dt>BANK: </dt>
+  <dt>Banque: </dt>
   <dd> THE WORLD BANK</dd>
 </dl>
 <dl class="param">
-  <dt>Accaunt number: </dt>
+  <dt>Numéro d'accréditation: </dt>
   <dd> 12345678912345</dd>
 </dl>
 <dl class="param">
   <dt>IBAN: </dt>
-  <dd> 123456789</dd>
+  <dd> FR5212739000502454276512N40</dd>
 </dl>
-<p><strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. </p>
+
 </div> <!-- tab-pane.// -->
 </div> <!-- tab-content .// -->
 
