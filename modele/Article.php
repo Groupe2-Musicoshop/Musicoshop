@@ -167,8 +167,7 @@ class Article{
 
             $stmt = $this->sqlSearchArticle();
 
-        }
-        elseif($numCat>0){
+        }elseif($numCat>0){
 
             $stmt = $this->getSqlArticleByCat($numCat);
 

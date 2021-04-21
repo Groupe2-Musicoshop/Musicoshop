@@ -62,8 +62,29 @@ $(document).ready(function() {
 
     $("#btn-modal").on("click", function() {
         $("#modal.modal.fade.show").removeClass("show-message");
-        document.location = 'index.php';
+        document.location = 'index.php';        
     });
+
+
+    if ($("#inputSearch").val() == "") {
+
+        $("#searchclear").hide();
+
+    } else {
+
+        $("#searchclear").show();
+
+    }
+
+    $("#inputSearch").on("keypress",function() {
+        $("#searchclear").show();
+    });
+
+    $("#searchclear").click(function(){
+        $("#inputSearch").val('');
+        $("#searchclear").hide();
+    });
+
 });
 
 function retireQte(Id_Panier, Id_Article, prix) {

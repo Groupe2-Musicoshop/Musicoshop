@@ -177,3 +177,22 @@ img.landscape {
     border-color: #1b263b;
     color: #fff;
 }
+
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}
+#searchinput {
+    width: 200px;
+}
+#searchclear {
+    display: none;
+    position: absolute;
+    right: 16px;
+    top: 0;
+    bottom: 0;
+    height: 23px;
+    margin: auto;
+    font-size: 14px;
+    cursor: pointer;
+    color: #0d1b2a;
+}

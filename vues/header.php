@@ -36,6 +36,8 @@
     $nav->set_userType($_SESSION['userType']);
     $nav->set_nbArticle($cart->getSumQteCart());
 
+    @$search = $_POST["search"];
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -89,9 +91,13 @@
                         <img class="logo" src="<?=$_SESSION['root']?>/img/logo/Musicoshop_logo.PNG" width="150" alt="">
                     </a>
                     
-                    <form class="form-inline my-2 my-lg-0" action="<?=$_SESSION['root']?>/searchArticle.php" method="POST">
-                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Rechercher un article" aria-label="Search">
-                        <button class="btn btn-outline-mu my-2 my-sm-0" type="submit">Rechercher</button>
+                    <form id="formSearch" class="form-group form-inline my-2 my-lg-0" action="<?=$_SESSION['root']?>/searchArticle.php" method="POST">
+                        <div class="btn-group">
+                            <input id="inputSearch" class="form-control mr-sm-2" type="search" name="search" value="<?=$search ?>" placeholder="Rechercher un article" aria-label="Search">
+                            <span id="searchclear" class="glyphicon glyphicon-remove-circle"><i class="fa fa-times" aria-hidden="true"></i>
+</span>
+                        </div>
+                            <button class="btn btn-outline-mu my-2 my-sm-0" type="submit">Rechercher</button>
                     </form>
                     
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">

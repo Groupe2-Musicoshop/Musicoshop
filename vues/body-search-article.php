@@ -1,9 +1,10 @@
 <?php
     require_once 'modele/Database.php';
+    require 'vues/add-to-cart.php';	
     //require 'vues/search.php';
 
     $art = new Article();
-    $art->setDesignation($_POST["search"]);
+    $art->setDesignation(isset($_POST["search"]));
 
     $cat = new Categorie();
     $cat->set_PageActive($page); 
