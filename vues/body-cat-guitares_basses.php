@@ -22,7 +22,15 @@
     $user = new User();
 
 	$message="";
-    $_SESSION['page-retour'] = basename($_SERVER["PHP_SELF"]);
+
+    if(isset($_GET['page']) && $_GET['page']>1){
+
+        $_SESSION['page-retour'] = basename($_SERVER["PHP_SELF"])."?page=".$_GET['page'];
+
+    }else{
+        
+        $_SESSION['page-retour'] = basename($_SERVER["PHP_SELF"]);
+    }
 ?>
 
 <div class="jumbotron">
