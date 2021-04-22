@@ -31,7 +31,7 @@
     $page = basename($_SERVER["PHP_SELF"]);
     $cat = new Categorie();
     $cat->set_PageActive($page);   
-	
+
 ?>
 
 <div class="jumbotron">
@@ -95,3 +95,6 @@
 		</div>
     </form>
 </div>
+<?php    
+    $conn=null;
+    $stmt=null;

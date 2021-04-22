@@ -30,7 +30,9 @@
     $page = basename($_SERVER["PHP_SELF"]);
     $cat = new Categorie();
     $cat->set_PageActive($page);   
-	
+    
+    $conn=null;
+    $stmt=null;
 ?>
 <div class="jumbotron">
     <div id="cat_b&p" class="body-mu">

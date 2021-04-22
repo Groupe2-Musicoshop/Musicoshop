@@ -54,6 +54,8 @@ require_once 'modele/Database.php';
     $cat = new Categorie();
     $cat->set_PageActive($page);   
 	
+	$conn=null;
+	$result=null;
 ?>
 
 

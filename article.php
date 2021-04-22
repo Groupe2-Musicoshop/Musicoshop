@@ -56,6 +56,8 @@ if ($result->rowCount() > 0)
 		echo "</tr>";
 		echo "</form>"; //added 
 	}
+	$conn=null;
+	$stmt=null;
 	?>
 	</table>
 <?php 

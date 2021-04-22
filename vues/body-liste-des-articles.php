@@ -73,6 +73,8 @@ if ($result->rowCount() > 0)
 		echo "</div>";
 		echo "</form>"; //added 
 	}
+	$conn=null;
+	$result=null;
 	?>
 	</table>
 <?php 

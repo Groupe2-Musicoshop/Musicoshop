@@ -29,6 +29,8 @@ if (!isset($_SESSION['categories'])) {
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
+        $conn=null;
+        $stmt=null;
     }
 
     $_SESSION['categories']="Categorie";
@@ -106,6 +108,8 @@ if (!isset($_SESSION['Instrument'])) {
     
         $stmt = $conn->prepare($sql);
         $stmt->execute();
+        $conn=null;
+        $stmt=null;
     }
 
     $_SESSION['instrument']="Instrument";
@@ -192,6 +196,8 @@ if (!isset($_SESSION['articles'])) {
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
+        $conn=null;
+        $stmt=null;
     }
     
     $_SESSION['articles']="articles";
@@ -230,7 +236,8 @@ foreach ($files as $file) {
         $sql = "UPDATE instruments SET img = '".$chemin."/".$file."' WHERE Id_Instrument = $indice";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        
+        $conn=null;
+        $stmt=null;
     }
 }
 

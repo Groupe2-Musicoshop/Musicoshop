@@ -22,7 +22,8 @@
     
         $user = new User();
     }
-
+    $conn=null;
+    $stmt=null;
 ?>
 
 <div id="body-shop" class="body-mu">

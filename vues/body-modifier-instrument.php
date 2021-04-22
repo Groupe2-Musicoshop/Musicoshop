@@ -41,6 +41,7 @@ if($result->rowCount() < 1){
 	exit;
 }
 $row = $result->fetch(PDO::FETCH_ASSOC);
+
 ?>
 <div class="jumbotron">
 
@@ -76,3 +77,6 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 		</div>
 	</form>
 </div>
+<?php
+	$conn=null;
+	$result=null;

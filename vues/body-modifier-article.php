@@ -36,9 +36,8 @@ require_once 'modele/Database.php';
 		exit;
 	}
 	$row = $result->fetch(PDO::FETCH_ASSOC);
-	
-
-
+	$conn=null;
+	$result=null;
 	?>
 <div class="jumbotron">
 

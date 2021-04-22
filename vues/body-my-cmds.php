@@ -69,7 +69,9 @@
 	$userName = $_SESSION["username"];
 
 	$cmd = new Commande();
-	
+    
+	$conn=null;
+    $result=null;
 ?>
 
 <div class="jumbotron">

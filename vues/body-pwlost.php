@@ -72,7 +72,9 @@
 
 	$page = basename($_SERVER["PHP_SELF"]);
     $cat = new Categorie();
-    $cat->set_PageActive($page);   
+    $cat->set_PageActive($page);  
+	$conn=null;
+	$stmt=null; 
 ?>
 <div class="jumbotron">
     

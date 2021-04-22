@@ -16,7 +16,9 @@
 		//header('Location: #');
 		echo "<script type='text/javascript'> document.location = '".$_SESSION['root']."/index.php'; </script>";
 		exit;
-	}  
+	}
+    $conn=null;
+    $result=null;
     //Debut PDF
     $pdf = new FPDF('P', 'mm', 'A4');
     $pdf->AddPage();
