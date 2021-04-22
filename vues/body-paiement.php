@@ -113,13 +113,18 @@
 	        	<label><span class="hidden-xs">Expiration</span> </label>
         	<div class="form-inline">
         		<select class="form-control" style="width:45%">
-				  <option>07 - Juillet</option>
-				  <option>08 - Août</option>
-				  <option>09 - Septembre</option>
-				  <option>10 - Octobre</option>
-				  <option>11 - Novembre</option>
-				  <option>12 - Décembre</option>
-
+					<option>01 - Janvier</option>
+					<option>02 - Février</option>
+					<option>03 - Mars</option>
+					<option>04 - Avril</option>
+					<option>05 - Mai</option>
+					<option>06 - Juin</option>
+					<option>07 - Juillet</option>
+					<option>08 - Août</option>
+					<option>09 - Septembre</option>
+					<option>10 - Octobre</option>
+					<option>11 - Novembre</option>
+					<option>12 - Décembre</option>
 				</select>
 	            <span style="width:10%; text-align: center"> / </span>
 	            <select class="form-control" style="width:45%">

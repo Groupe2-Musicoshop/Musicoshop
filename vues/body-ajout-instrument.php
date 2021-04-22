@@ -8,16 +8,18 @@
 
     $conn = $database->getConnection();
 
-
 	@$designation=$_POST["designation"];
-	@$img=$_POST["img"];
+	@$imgName=$_POST["img"];
 	@$idCategorie=$_POST["idCategorie"];
 	@$valider=$_POST["valider"];
 
 	$message="";
 
-	if(isset($valider)){
+    $chemin = $_SESSION['root'].'/img/cart_img';
 
+    $img = $chemin.'/'.$imgName;
+
+	if(isset($valider)){
         if(empty($designation)) $message="Le champ designation est vide";
         if(empty($img)) $message.="Le champ image est vide";
         if(empty($idCategorie)) $message.="La categorie est obligatoire";
@@ -31,8 +33,7 @@
     $cat = new Categorie();
     $cat->set_PageActive($page);   
     
-    $conn=null;
-    $stmt=null;
+
 ?>
 <div class="jumbotron">
     <div id="cat_b&p" class="body-mu">
@@ -59,8 +60,18 @@
         </div>
 
         <div class="mb-3">
-            <label for="floatingInput">ID Catégorie</label>
-            <input type="text" class="form-control" name="idCategorie" placeholder="" required>
+            <label for="floatingInput">Catégorie</label>
+            <select name="idCategorie" class="form-select" aria-label="Default select example">
+                <?php
+                $sql = 'SELECT idCategorie, libele FROM categorie ';
+                foreach ($conn->query($sql) as $row) {
+                ?>
+                <option value="<?php echo $row['idCategorie'];?>">
+                    <?php echo ucfirst($row['libele']);?></option>
+                <?php
+            }
+            ?>
+            </select>
         </div>
 
         <?php if (!empty($message)) { ?>
@@ -70,3 +81,6 @@
         <div class="center col-md-6 col-lg-4"><input type="submit" name="valider" value="Valider" class="btn btn-primary box-button" />
         </div>
     </form>
+    <?php
+        $conn=null;
+        $stmt=null;

@@ -77,7 +77,6 @@
                 $sql = 'SELECT Id_Instrument, designation FROM instruments ';
                 foreach ($conn->query($sql) as $row) {
                 ?>
-                <option value=""></option>
                 <option value="<?php echo $row['Id_Instrument'];?>">
                     <?php echo ucfirst($row['designation']);?></option>
                 <?php
