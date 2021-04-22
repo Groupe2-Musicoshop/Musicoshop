@@ -52,13 +52,14 @@ require_once 'modele/Database.php';
 <div class="jumbotron">
     <div id="cat_b&p" class="body-mu">
 
-        <div id="title" class="white">Ajouter un article</div>
+        <div id="title" class="white">Changement de Mot de passe</div>
         <img src='<?=$_SESSION['root']?>/img/headers_cats/cat_login_signin.jpg' class='w100 d-inline-block align-top landscape' alt=''>
 
         <?php $cat->genCategoriesHorizontaly()?>
     
         <form class="box" action="" method="post">
-
+            <p class="box-return"><a href="index.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+			      <u>Retour</u></a></p>
 
             <div class="mb-3">
                 <h4 class="title">Changement de Mot de passe </h4>
