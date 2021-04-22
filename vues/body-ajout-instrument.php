@@ -20,10 +20,10 @@
 
         if(empty($designation)) $message="Le champ designation est vide";
         if(empty($img)) $message.="Le champ image est vide";
-        if(empty($adresse)) $message.="La categorie est obligatoire";
+        if(empty($idCategorie)) $message.="La categorie est obligatoire";
 
         $ins=$conn->prepare("insert into instruments(designation,img,idCategorie) values(?,?,?)");
-        $ins->execute(array($username,$prenom,$adresse));
+        $ins->execute(array($designation,$img,$idCategorie));
         echo "Instrument ajouté à la base";
         
     }
@@ -55,7 +55,7 @@
 
         <div class="mb-3">
             <label for="floatingInput">Adresse image</label>
-            <input type="text" class="form-control" name="img" placeholder="" required>
+            <input type="file" class="form-control" name="img" placeholder="" required>
         </div>
 
         <div class="mb-3">
