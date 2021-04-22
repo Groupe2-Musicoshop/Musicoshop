@@ -65,6 +65,6 @@
         <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
 
-        <div class="center col-4"><input type="submit" name="valider" value="Valider" class="btn btn-primary box-button" />
+        <div class="center col-md-6 col-lg-4"><input type="submit" name="valider" value="Valider" class="btn btn-primary box-button" />
         </div>
     </form>

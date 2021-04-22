@@ -43,8 +43,8 @@ if ($result->rowCount() > 0) { ?>
 					echo "<td>".ucfirst($row['designation']) . "</td>";
 					echo "<td><img class='img_small' src='".$row['img'] ."' alt=''></td>";
 					echo "<td>".$row['libele'] . "</td>";
-					echo "<td><a href='#' class='btn btn-danger' data-toggle='modal' data-target='#smallModal".$row['Id_Instrument']."'>Delete</a></td>";  
-					echo "<td><a href='modifier-instrument.php?id=".$row['Id_Instrument']."' class='btn btn-info'>Edit</a></td>";
+					echo "<td><a href='#' class='btn btn-danger' data-toggle='modal' data-target='#smallModal".$row['Id_Instrument']."'>Supprimer</a></td>";  
+					echo "<td><a href='modifier-instrument.php?id=".$row['Id_Instrument']."' class='btn btn-info'>Modifier</a></td>";
 					echo "</tr>";
 					echo "<div class='modal' id='smallModal".$row['Id_Instrument']."' tabindex='-1' role='dialog' aria-labelledby='smallModal' aria-hidden='true'>";
 						echo "<div class='modal-dialog'>";

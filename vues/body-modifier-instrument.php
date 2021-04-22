@@ -53,7 +53,7 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
 		<strong><span>Id : <?=$row['Id_Instrument'] ?></span></strong>
 		<br>
 		<label for="designation">Désignation</label>
-		<input type="text" id="designation"  name="designation" value="<?=$row['designation'] ?>" class="form-control"><br>
+		<input type="text" id="designation"  name="designation" value="<?=ucfirst($row['designation']) ?>" class="form-control"><br>
 		<label for="image">Adresse image</label>
 		<input type="file"  name="image" id="image" class="form-control"><br>
 		<label for="idCategorie">Catégorie</label>
@@ -71,7 +71,8 @@ $row = $result->fetch(PDO::FETCH_ASSOC);
         </select>
 		
 		<br>
-		<div class="center col-4"><input type="submit" name="update" class="btn btn-primary box-button" value="Update">
+		<div class="center col-md-6 col-lg-4">
+			<input type="submit" name="update" class="btn btn-primary box-button" value="Modifier">
 		</div>
 	</form>
 </div>
