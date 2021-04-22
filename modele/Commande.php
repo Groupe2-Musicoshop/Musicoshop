@@ -185,7 +185,7 @@ class Commande{
                         echo '<a class="" target="_blank" href="facture.php?idCmd='.$rowCmd["idCmd"].'">Facture au format pdf</a>';
                     echo '</div>';                     
                 echo '</div>';
-                echo'<a data-toggle="collapse" href="#collapse'.$rowCmd["idCmd"].'" role="button" aria-expanded="false" aria-controls="collapse'.$rowCmd["idCmd"].'">
+                echo'<a data-toggle="collapse" href="#collapse'.$rowCmd["idCmd"].'" role="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#collapse'.$rowCmd["idCmd"].'" aria-controls="collapse'.$rowCmd["idCmd"].'">
                 Détails</a>';
 
                 echo'<div class="collapse" id="collapse'.$rowCmd["idCmd"].'">
