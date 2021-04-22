@@ -11,7 +11,7 @@ require_once 'modele/Database.php';
 if( isset($_POST['delete'])){
 	$sql = "DELETE FROM instruments WHERE Id_Instrument=" . $_POST['instrumentid'];
 	if($conn->query($sql) === TRUE){
-		echo "<div class='alert alert-success'>Successfully delete  instrument</div>";
+		echo "<div class='alert alert-success'>Instrument supprimé avec succès</div>";
 	}
 }
 $sql 	= "SELECT * FROM instruments INNER JOIN categorie ON categorie.idCategorie = instruments.idCategorie ORDER BY instruments.Id_Instrument ASC";

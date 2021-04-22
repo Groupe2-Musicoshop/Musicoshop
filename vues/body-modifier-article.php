@@ -20,7 +20,7 @@ require_once 'modele/Database.php';
 					WHERE Id_Article=" . $_POST['articleid'];
 
 		if( $conn->query($sql)){
-			echo "<div class='alert alert-success'>Successfully updated  article</div>";
+			echo "<div class='alert alert-success'>Article mis à jour avec succès</div>";
 		}else{
 			echo "<div class='alert alert-danger'>Error: There was an error while updating user info</div>";
 		}

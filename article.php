@@ -13,7 +13,7 @@ echo "<div class='container'>";
 if( isset($_POST['delete'])){
 	$sql = "DELETE FROM instruments WHERE Id_Instrument=" . $_POST['instrumentid'];
 	if($conn->query($sql) === TRUE){
-		echo "<div class='alert alert-success'>Successfully delete  user</div>";
+		echo "<div class='alert alert-success'>Utilisateur supprimé avec succès</div>";
 	}
 }
 

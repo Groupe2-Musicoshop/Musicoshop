@@ -25,7 +25,7 @@ if(isset($_POST['update'])){
 				WHERE Id_Instrument=" . $_POST['instrumentid'];
 
 	if( $conn->query($sql)){
-		echo "<div class='alert alert-success'>Successfully updated  instrument</div>";
+		echo "<div class='alert alert-success'>Instrument mis à jour avec succès</div>";
 	}else{
 		echo "<div class='alert alert-danger'>Error: There was an error while updating user info</div>";
 	}

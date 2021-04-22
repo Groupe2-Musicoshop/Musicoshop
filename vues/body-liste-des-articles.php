@@ -13,7 +13,7 @@ echo "<div class='container'>";
 if( isset($_POST['delete'])){
 	$sql = "DELETE FROM article WHERE Id_Article=" . $_POST['articleid'];
 	if($conn->query($sql) === TRUE){
-		echo "<div class='alert alert-success'>Successfully delete  article</div>";
+		echo "<div class='alert alert-success'>Article supprimé avec succès</div>";
 	}
 }
 
