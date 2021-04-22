@@ -113,7 +113,8 @@
 
             <form action="" method="post">
 
-            <div class="center col-4"><button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider" <?php 
+            <div class="center col-md-6 col-lg-4">
+                <button  class="btn btn-primary btn-lg btn-block" type="submit" name="valider" <?php 
             
             if($cart->getNbArtCart()==0)echo "Disabled" ;?>
             > Acheter maintenant  </button></div>
