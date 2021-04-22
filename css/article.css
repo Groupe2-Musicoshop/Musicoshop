@@ -170,4 +170,7 @@ h5.text-center {
         max-width: 200px;
         max-height: 200px;
     }
+    .sep{
+        border: 0;
+    }
 }

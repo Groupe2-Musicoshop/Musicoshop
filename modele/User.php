@@ -20,7 +20,6 @@ class User{
         echo "<th scope='col'>User Name</th>";
         echo "<th scope='col'>Nom</th>";
         echo "<th scope='col'>Prénom</th>";
-        echo "<th scope='col'>Type</th>";
         echo "<th scope='col'>Action</th>";
         echo "</tr></thead><tbody>";
 
@@ -32,7 +31,6 @@ class User{
             echo "<td>".$row['idUtilisateur']."</td>";
             echo "<td>".$nom."</td>";
             echo "<td>".$prenom."</td>";
-            echo "<td>".$type."</td>";
             echo "<td><input type='submit' name='Valider' value='Valider' class='btn btn-primary' /></td>";
             echo "</tr>";
         }

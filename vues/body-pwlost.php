@@ -94,7 +94,8 @@
         <?php if (! empty($message)) { ?>
         <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
-        <div class="center col-4"><input type="submit" value="Envoyer " name="valider" class="btn btn-primary box-button">
+        <div class="center col-md-6 col-lg-4">
+			<input type="submit" value="Envoyer " name="valider" class="btn btn-primary box-button">
         </div>
 		<p class="box-register"><a href="<?=$_SESSION['root']?>/login.php"><u>Se connecter<u></a></p>
         <p class="box-register"><a href="<?=$_SESSION['root']?>/signin.php"><u>S'inscrire maintenant</u></a></p>
