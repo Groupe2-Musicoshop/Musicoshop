@@ -102,7 +102,7 @@
 				<label>Civilitée</label>
 				<div class="row fieldset">					
 
-					<div class="col-1">
+					<div class="col-sm-6 col-md-1">
 						
 						<div class="form-check">
 							<input class="form-check-input" type="radio" name="sexe" value="M." id="flexRadioDefault1" <?php if(isset($_POST['sexe']) && $_POST['sexe']=='M.')echo 'checked'?>>
@@ -113,7 +113,7 @@
 						
 					</div>
 					
-					<div class="col-1">
+					<div class="col-sm-6 col-md-1">
 						
 						<div class="form-check ">
 							<input class="form-check-input" type="radio" name="sexe" value="Mme" id="flexRadioDefault2" <?php if(isset($_POST['sexe']) && $_POST['sexe']=='Mme')echo 'checked'?>>
