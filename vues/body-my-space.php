@@ -86,7 +86,7 @@ require_once 'modele/Database.php';
 				<label>Civilitée</label>
 				<div class="row fieldset">					
 
-					<div class="col-1">
+					<div class="col-sm-6 col-md-1">
 						
 						<div class="form-check">
 							<input class="form-check-input" type="radio" name="sexe" value="M." id="flexRadioDefault1" <?php if($row['sexe']=='M.')echo 'checked'?>>
@@ -97,7 +97,7 @@ require_once 'modele/Database.php';
 						
 					</div>
 					
-					<div class="col-1">
+					<div class="col-sm-6 col-md-1">
 						
 						<div class="form-check ">
 							<input class="form-check-input" type="radio" name="sexe" value="Mme" id="flexRadioDefault2" <?php if($row['sexe']=='Mme')echo 'checked'?>>
