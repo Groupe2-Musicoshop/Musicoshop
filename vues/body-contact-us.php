@@ -56,8 +56,8 @@
                     </div>
                 </div>
             </form>
-            <div class="text-center text-md-left">
-            <div class="center col-4"><a  class="btn btn-primary btn-lg btn-block" onclick="validateForm();">Envoyer</a></div>
+            <div class="center col-md-6 col-lg-4">
+                <a  class="btn btn-primary btn-lg btn-block" onclick="validateForm();">Envoyer</a></div>
             </div>
             <div class="status"></div>
         </div>
