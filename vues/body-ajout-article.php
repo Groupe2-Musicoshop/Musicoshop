@@ -24,7 +24,7 @@
         if(empty($id_instrument)) $message.="Il faut séléctionner un instrument";
 
         $ins=$conn->prepare("insert into article(qtestock,prix,note,Id_Instrument) values(?,?,?,?)");
-        $ins->execute(array($username,$prenom,$adresse,$ville));
+        $ins->execute(array($qtestock,$prix,$note,$id_instrument));
         echo "Article ajouté à la base";
         
     }
