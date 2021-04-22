@@ -179,8 +179,9 @@
         <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
 
-        <div class="center col-4"><input type="submit" name="valider" value="Valider" class="btn btn-primary btn-lg btn-block" />
-        	</div> 
+        <div class="center col-md-6 col-lg-4">
+            <input type="submit" name="valider" value="Valider" class="btn btn-primary btn-lg btn-block" />
+        </div> 
 
         <p class="box-register">Déjà inscrit? <a href="login.php"><u>Connectez-vous ici<u></a></p>
 
