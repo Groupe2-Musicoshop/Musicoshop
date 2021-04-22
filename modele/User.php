@@ -29,11 +29,40 @@ class User{
             echo "<form action='' method='POST'>";	//added
 		    echo "<input type='hidden' value='". $row['idUtilisateur']."' name='idUtilisateur' />"; //added
             echo "<tr><th scope='row'>".$numUser."</th>";
-            echo "<td>".$userName."</td>";
+            echo "<td>".$row['idUtilisateur']."</td>";
             echo "<td>".$nom."</td>";
             echo "<td>".$prenom."</td>";
             echo "<td>".$type."</td>";
             echo "<td><input type='submit' name='Valider' value='Valider' class='btn btn-primary' /></td>";
+            echo "</tr>";
+        }
+        echo "</tbody></table>";
+        echo "</form>";
+    }
+
+    function genUsers(){
+
+        $stmt = $this->getSqlUsers();
+
+        $numUser=1;
+        
+        echo "<table class='table table-dark'><thead><tr>";
+        echo "<th scope='col'>#</th>";
+        echo "<th scope='col'>User Name</th>";
+        echo "<th scope='col'>Nom</th>";
+        echo "<th scope='col'>Prénom</th>";
+        echo "<th scope='col'>Type</th>";
+        echo "</tr></thead><tbody>";
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            echo "<form action='' method='POST'>";	//added
+		    echo "<input type='hidden' value='". $row['idUtilisateur']."' name='idUtilisateur' />"; //added
+            echo "<tr><th scope='row'>".$row['idUtilisateur']."</th>";
+            echo "<td>".$userName."</td>";
+            echo "<td>".$nom."</td>";
+            echo "<td>".$prenom."</td>";
+            echo "<td>".$type."</td>";
             echo "</tr>";
         }
         echo "</tbody></table>";
@@ -55,6 +84,23 @@ class User{
         $conn=null;
         $stmt=null;
     }
+
+    public function getSqlUsers(){
+        $database = new Database();
+        $conn = $database->getConnection();
+
+        $sqlQuery = "SELECT * FROM ". $this->db_table;
+
+         
+        $stmt = $conn->prepare($sqlQuery);              
+        
+        $stmt->execute();
+        return $stmt;
+
+        $conn=null;
+        $stmt=null;
+    }
+
 
     public function updatelUser($idUtilisateur){
         $database = new Database();

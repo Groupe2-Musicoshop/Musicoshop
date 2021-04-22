@@ -30,5 +30,30 @@
     <div id="title">Musicoshop Admin</div>
     <a class="dropdown-item bg-color-pla" href="<?=$_SESSION['root']?>/ctrl/service.php">Update BDD</a>
 
-    <?php $user->genUsersToValidate();?>
+    <article class="card">
+
+        
+        <div class="card-body p-5">
+            
+            <p>Utilisateurs à valider</p>
+
+            <?php $user->genUsersToValidate();?>
+
+        </div>
+
+    </article>
+
+    <article class="card">
+
+        
+        <div class="card-body p-5">
+            
+            <p>Liste des Utilisateurs</p>
+
+            <?php $user->genUsers();?>
+
+        </div>
+
+    </article>
+
 </div>

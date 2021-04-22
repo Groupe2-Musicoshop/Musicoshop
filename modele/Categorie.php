@@ -127,6 +127,10 @@ class Categorie{
         $stmt = $this->getSqlCategories();
         echo "<nav class='navbar navbar-expand-lg navbar-light bg-color-whi m1rem'>";
 
+        echo '<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCatHorizontalyContent" aria-controls="navbarCatHorizontalyContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>';
+
         echo "<div class='collapse navbar-collapse' id='navbarCatHorizontalyContent'>";
 
         echo "<ul id='cat-horizontaly' class='navbar-nav'>";
