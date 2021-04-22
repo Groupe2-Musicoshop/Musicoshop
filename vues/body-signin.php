@@ -93,7 +93,8 @@
         </div>
 
     <form class="box" action="" method="post">
-
+            <p class="box-return"><a href="index.php"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+			<u>Retour</u></a></p>
         <div class="mb-3">
             <h4 class="title">Enregistrement</h4>
 
